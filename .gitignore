@@ -11,3 +11,4 @@
 *.lol
 *.out
 *.bbl
+text/*.aux
