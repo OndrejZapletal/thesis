@@ -1,55 +1,80 @@
-# set class of latex document (in this case is is report)
-#+LaTeX_CLASS: org-report
-# disable automatic table of content extraction
-#+OPTIONS: toc:nil
-# self explanatory options for latex export
-#+OPTIONS: author:nil date:nil  title:nil
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
 
-# This is only testing header from VUT template. It will be modified in the future
-#+LATEX_HEADER: \usepackage{ucs}
-#+LATEX_HEADER:	\usepackage[utf8x]{inputenc}
-#+LATEX_HEADER:	\PrerenderUnicode{ěščřžýáíéĚŠČŘŽÝÁÍÉďťňĎŤŇůúÚóÓ}
-#+LATEX_HEADER: \usepackage[czech, english]{babel}
-#+LATEX_HEADER: \usepackage[IL2]{fontenc}
-#+LATEX_HEADER: \usepackage[]{diplomka}
-#+LATEX_HEADER: \usepackage[]{VSKP}
-#+LATEX_HEADER: \input{vskp}
-#+LATEX_HEADER: \splithyphens
-#+LATEX_HEADER: \usepackage[pdftitle={\typpracetxt},
-#+LATEX_HEADER:             pdfauthor={\autortxt},
-#+LATEX_HEADER:             pdftex=true,
-#+LATEX_HEADER:             bookmarks=true,
-#+LATEX_HEADER:             linkcolor=blue,
-#+LATEX_HEADER:             colorlinks=true,
-#+LATEX_HEADER:             breaklinks=true,
-#+LATEX_HEADER:             a4paper]{hyperref}
-#+LATEX_HEADER: \usepackage[pdftex]{graphicx}
-#+LATEX_HEADER: \DeclareGraphicsExtensions{.png,.pdf}
+#+LATEX_HEADER: \usepackage{graphicx}
 
-# TODO: this only test that adds numbering to heading of lever 4 and more.
-# #+LATEX_HEADER: \setcounter{secnumdepth}{4}
-# #+LATEX_HEADER: \titleformat{\paragraph}
-# #+LATEX_HEADER:  {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
-# #+LATEX_HEADER: \titlespacing*{\paragraph}
-# #+LATEX_HEADER: {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+#+LATEX_HEADER: \usepackage[nohyperlinks]{acronym}
 
-# Package used for citations
-#+LATEX_HEADER: \usepackage{cite}
-# Settings for references
-#+LATEX_HEADER: \usepackage[nottoc,notlof,notlot]{tocbibind}
-#+LATEX_HEADER: \AtBeginDocument{\renewcommand{\bibname}{References}}
+#+LATEX_HEADER: \usepackage[breaklinks=true,hypertexnames=false]{hyperref}
+
+#+LATEX_HEADER: \usepackage{pdfpages}
+
+#+LATEX_HEADER: \usepackage{enumitem}
+
+#+LATEX_HEADER: \setlist{topsep=0pt,partopsep=0pt,noitemsep}
+
+#+LATEX_HEADER: \usepackage{cmap}
+
+#+LATEX_HEADER: \usepackage{upgreek}
+
+#+LATEX_HEADER: \usepackage{dirtree}
+
+#+LATEX_HEADER: \usepackage[formats]{listings}
+#+LATEX_HEADER: \lstset{
+#+LATEX_HEADER: language={C},
+#+LATEX_HEADER: basicstyle=\ttfamily,
+#+LATEX_HEADER: tabsize=2,
+#+LATEX_HEADER: inputencoding=utf8,
+#+LATEX_HEADER: columns=fixed,
+#+LATEX_HEADER: fontadjust=true
+#+LATEX_HEADER: extendedchars=true,
+#+LATEX_HEADER: literate=
+#+LATEX_HEADER: {á}{{\'a}}1
+#+LATEX_HEADER: {č}{{\v{c}}}1
+#+LATEX_HEADER: {ď}{{\v{d}}}1
+#+LATEX_HEADER: {é}{{\'e}}1
+#+LATEX_HEADER: {ě}{{\v{e}}}1
+#+LATEX_HEADER: {í}{{\'i}}1
+#+LATEX_HEADER: {ň}{{\v{n}}}1
+#+LATEX_HEADER: {ó}{{\'o}}1
+#+LATEX_HEADER: {ř}{{\v{r}}}1
+#+LATEX_HEADER: {š}{{\v{s}}}1
+#+LATEX_HEADER: {ť}{{\v{t}}}1
+#+LATEX_HEADER: {ú}{{\'u}}1
+#+LATEX_HEADER: {ů}{{\r{u}}}1
+#+LATEX_HEADER: {ý}{{\'y}}1
+#+LATEX_HEADER: {ž}{{\v{z}}}1
+#+LATEX_HEADER: {Á}{{\'A}}1
+#+LATEX_HEADER: {Č}{{\v{C}}}1
+#+LATEX_HEADER: {Ď}{{\v{D}}}1
+#+LATEX_HEADER: {É}{{\'E}}1
+#+LATEX_HEADER: {Ě}{{\v{E}}}1
+#+LATEX_HEADER: {Í}{{\'I}}1
+#+LATEX_HEADER: {Ň}{{\v{N}}}1
+#+LATEX_HEADER: {Ó}{{\'O}}1
+#+LATEX_HEADER: {Ř}{{\v{R}}}1
+#+LATEX_HEADER: {Š}{{\v{S}}}1
+#+LATEX_HEADER: {Ť}{{\v{T}}}1
+#+LATEX_HEADER: {Ú}{{\'U}}1
+#+LATEX_HEADER: {Ů}{{\r{U}}}1
+#+LATEX_HEADER: {Ý}{{\'Y}}1
+#+LATEX_HEADER: {Ž}{{\v{Z}}}1
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \usepackage{babel}
+
+#+LATEX_HEADER: \usepackage{lmodern}
+#+LATEX_HEADER: \usepackage{textcomp}
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+
+#+LATEX_HEADER: \usepackage[center,diploma]{thesis}
+
+# ################################################################
+# #####      Definice informací o dokumentu             ##########
+# ################################################################
+#+LATEX_HEADER: \input{sablony-nastav_udaju}
+
 # Settings for glossaries
 #+LATEX_HEADER: \usepackage[acronym,nomain,toc]{glossaries}
 #+LATEX_HEADER: \makeglossaries
 
-# This is also from VUT template but this is exported within document body
-\titul
-\abstrakty
-
-\prohlaseni{Prohlašuji, že jsem to všechno opsal a vlastními chybami opatřil.}% prohlášení,
-\podekovani{Děkuji všem, kteří mi pomohli okopírovat to, co jsem potom opsal.}% poděkování, nepovinné
-
-\obsah
-
-# Contains list of abrivations
-#+INCLUDE: misc__abbreviations.org
+#+LATEX_HEADER: \nastavenipdf
