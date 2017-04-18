@@ -11,7 +11,7 @@
    Part of this work will be also devoted to choosing appropriate machine learning framework from many available open-source solutions.
 
 ** History
-   History of [[glspl:nn][NN]] can be arguably dated to 1943, when Warren Mcculloch and Walter Pitts devised mathematical model inspired by the biology of brain neuron cell.
+   History of [[glspl:nn][NN]] can be arguably dated to 1943, when Warren Mcculloch and Walter Pitts devised mathematical model inspired by the biology of neuron cell found in brains.
    This inspired the invention of Perceptron, created in 1958 by Frank Rosenblatt. Perceptron used very simple model of Neuron that was based on mathematical model of Pitts and Mcculloch. Perceptron model in [picture citation] has multiple inputs $x_1,...,x_n$ that are weighted $w_1,...,w_n$ and summed together. Additionally each neuron has bias $b$ that controls its weight.
    Result is squashed through nonlinear activation function to produce output. Depending on the application, output is bounded between values 0 to 1 or -1 to 1.
 

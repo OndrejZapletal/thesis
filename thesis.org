@@ -6,7 +6,7 @@
 # self explanatory options for latex export
 #+OPTIONS: author:nil date:nil  title:nil
 # Including header
-#+INCLUDE: text_org/header.org
+#+INCLUDE: text/header.org
 
 # ##################################################################
 # ###############        Begining of Document        ###############
@@ -31,19 +31,19 @@
 
 \lstlistoflistings
 
-#+INCLUDE: text_org/misc__abbreviations.org
+#+INCLUDE: text/misc__abbreviations.org
 
 # Chapter I Introduction
-#+INCLUDE: text_org/chapter_1_introduction.org
+#+INCLUDE: text/chapter_1_introduction.org
 
 # Chapter II for theory portion
-#+INCLUDE: text_org/chapter_2_theory.org
+#+INCLUDE: text/chapter_2_theory.org
 
 # Chapter III for experiment portion
-#+INCLUDE: text_org/chapter_3_experiment.org
+#+INCLUDE: text/chapter_3_experiment.org
 
 # Conclusions
-#+INCLUDE: text_org/chapter_4_conclusions.org
+#+INCLUDE: text/chapter_4_conclusions.org
 
 \bibliographystyle{plain}
 \bibliography{citation}

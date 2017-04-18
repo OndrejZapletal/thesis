@@ -3,6 +3,8 @@
 \newacronym{fcnn}{FCNN}{Fully Connected Neural Network}
 \newacronym{gpgpu}{GPGPU}{General-Purpose computing on Graphics Processing Units}
 \newacronym{mlp}{MLP}{Multilayer Perceptron}
+\newacronym{mri}{MRI}{Magnetic resonance imaging}
+\newacronym{rgb}{RGB}{Red Green Blue}
 \newacronym{nn}{NN}{Neural Netowrk}
 \newacronym{som}{SOM}{Self Organizing Map}
 \newacronym{svm}{SVM}{Support Vector Machines}

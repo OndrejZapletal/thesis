@@ -1,9 +1,16 @@
 * Theory
-In this chapter will dicussed concepts of Image processing, Machine learning in general, Neural networks and finaly the Convolutional neural networks.
+In this chapter will discussed concepts of Artificial intelligence, Image processing, Machine learning in general, Neural networks and finally the Convolutional neural networks.
+** Artificial Intelligence
+   Field of [[gls:ai][AI]] is very general and spawns across several different disciplines (e.g. computer science, mathematics, philosophy, economics and even ethics). It could be characterized by a pursuit of construction of intelligent agents. In other words attempt to create intelligent machines are either thinking or can be perceived as thinking ones.
 
-# Basics of image processing techniques.
-** Image Processing
-   There was no wider adoption of that machine learning  techniques in image processing for very long time, Even though they existed as field of study since 1950's. Reason being that machine learning algorithms were very simple and therefore unfit for generally very complex problems of image processing (e.g. object detection and classification).
+ that is predominantly dealing with
+
+    In the beginning the knowledge of [[gls:ai][AI]] systems was hard-coded
+    Beginnings of [[gls:ai][AI]] were
+ # Basics of image processing techniques.
+** TODO Image Processing
+
+   # There was no wider adoption of machine learning techniques in image processing for very long time, even though they existed as field of study since 1950's. Reason being that machine learning algorithms were very simple and therefore unfit for generally very complex problems of image processing (e.g. object detection and classification).
 
    Research in image processing was adopting predominately bottom up (feature-based) methodologies. Typical classification pipeline in computer vision would be following:
     - Image capture - Image is captured (by camera or similar device) and digitized.
@@ -11,6 +18,9 @@ In this chapter will dicussed concepts of Image processing, Machine learning in 
     - Segmentation - Selection of interesting features (edges, similar surfaces).
     - Description - Extraction of radiometric, photometric descriptors and so on.
     - Classification - Some means to classify the object.
+
+
+    # Classical approach to image processing is still very useful in very restricted environments with rigid constraints. One of examples can be detection of defects on line production in industrial automation.
 
     In the first attempts to apply machine learning in image processing, it was used usually deployed as the classification model. In other words complex problems were reduced and simplified in order to utilize machine learning techniques. Consequently this approach favors simpler models.
 
@@ -24,11 +34,15 @@ In this chapter will dicussed concepts of Image processing, Machine learning in 
 # Basics of Machine learning
 ** Machine Learning
    It is necessary to properly define machine learning before we move forward. There are many valid definitions that may differ but in this text we will adhere  to the following.
-   Field of Machine learning is a subset of \gls{ai} that is describing tools that can be used to solve problems.
+   Field of Machine learning is a subset of [[gls:ai][AI]] that is describing tools that can be used to solve problems.
 
    In order to properly explain
-We will use a definition from \cite{book--goodfellow--2016}
+   We will use a definition from \cite{book--goodfellow--2016}
+** Nonlinear models
 
+   Problem with nonlinear models is that their optimization doesn't result in quadratic optimization there fore it is not possible to guarantee the finding of optimal solution. It is necessary to use iterative approach to solving the optimization problem
+
+they require stochastic
 *** Task
 
 **** Loss function
@@ -40,46 +54,47 @@ We will use a definition from \cite{book--goodfellow--2016}
 *** Generalization of Machine Learning
     Machine learning approach to solving problmes can be generalized.
 
+** Neural Networks
+  Neural networks are definitely inspired by biology. First attempts to created model of neuron had multiple elements equivalent with neurons of human brain. As time progressed this equivalence sized to being as important and modern neural networks models correspond to h their biological counterparts only superficially.
+
+  # gls:NN
+
+  In the first iterations of [[gls:mlp][MLP]] evolution it generally had all neurons in hidden and output layer to be similar. Namely activation function was predominantly sigmoid. Activation function of hidden layers is to this day one of the most dynamically evolving components of Neural networks. Currently there is several options for but mainly used is Restricted Linear Unit (ReLU) which models following mathematical function
+  \begin{equation}
+  g(z) = \max \{0,z\}
+  \end{equation}
+
+  #+CAPTION: Restricted Linear Unit (ReLU)
+  #+NAME:   img__2__relu
+  #+ATTR_LATEX: :width 4in
+  [[./img/img__2__relu.png]]
+
+
+
+
+  # # Gradient Descent Optimization
+  # # Stochastic Gradient Descent
+
 *** Deep Learning in image processing
     It was found that general *Fully Connected Neural Network* is not ideal for image processing needs. Even small images typically represents enormous amount of inputs (i.e. image of the size 64x64 pixels represents 4096 inputs).
-    Since each of these inputs has to be connected to all neurons in following layer and weight of each connection has to be memorized, this represents enormous amount of parameters. Moreover because during the learning process update of these weights is computed via matrix multiplication for larger images this can be irresolvable problem, which exacerbate with the number of hidden layers.
+    Since each of these inputs has to be connected to all neurons in following layer and weight of each connection has to be memorized, this represents enormous amount of parameters. Moreover because during the learning process update of these weights is computed via matrix multiplication for larger images this can be unresolvable problem, which exacerbate with the number of hidden layers.
 
     The structure of FCNN has another deficiency for image processing application, which is that it doesn't capture geometric properties of information from input image. In other words because individual layers are fully connected (each output in lower layer is connected to each input in higher layer) networks are not capturing any information about relation of position of individual inputs (image pixels) to each other.
 
-    Third problem is that for higher depth of FCNN increases the likelihood of getting stuck in some local minima.
+    Third problem is that for higher depth of [[gls:fcnn][FCNN]] increases the likelihood of getting stuck in some local minima.
 
-    All of these problems were solved by the model of neural networks called Convolutional Neural Networks [citation]
-
+    All of these problems were solved by the specific type of [[gls:nn][NN]] model called [[glspl:cnn][CNN]] [citation]
     # For example in case of CNNs there is almost no need to process input image before it is used to train the model. Hiearchical extraction of image features that is automatically created by CNN is very advantages in this case.
     # of the fundamental two-dimensional property of image data.
 
 # Basics of Neural Networks
-# Neural Networks
-** Neural Networks
-  Neural networks are definetely inspired by bilogy. First attemps to created model of neuron had multiple elelements equvialent with neurons of human brain. As time progressed this equivalence stopped beeing important and correspondence is only superficial.
-
- # gls:NN
-
-In the first iterations of multiperceptron evolution it generaly had all neurons in hidden and output layer to be similar. Namely activation function was perdominantly sigmoid. Activation function of hidden layers is to this day one of the most dynamically evolving componenets of Neural networks. Currently there is several options for but mainly used is Restricted Linear Unit (ReLU) which models following mathematical function
-\begin{equation}
-g(z) = \max \{0,z\}
-\end{equation}
-
-#+CAPTION: Restricted Linear Unit (ReLU)
-#+NAME:   fig:relu
-#+ATTR_LATEX: :width 4in
-[[./img/img__2__relu.png]]
-
-# # Gradient Descent Optimization
-# # Stochastic Gradient Descent
-
 ** Convolutional Neural Networks
-   CNN (/Convolutional Neural Network/) is specialized type of /Neural Network/ that was originally used in image processing applications. They are arguably most successful models in *AI* inspired in biology. Even though they were guided by many different fields, the core design principles were drawn from neuroscience. Since their success in image processing, they were also very successfully deployed in natural language and video processing applications.
+   [[glspl:cnn][CNN]] are specialized type of [[glspl:nn][NN]] that was originally used in image processing applications. They are arguably most successful models in [[gls:ai][AI]] inspired in biology. Even though they were guided by many different fields, the core design principles were drawn from neuroscience. Since their success in image processing, they were also very successfully deployed in natural language and video processing applications.
 
-   Aforementioned inspiration in biology was based on scientific work of David Hubel and Torsten Wiesel. Hubel and Wisel, who were neurophysiologist, investigated vision system of mammals from late 1950 for several years. In the experiment, that might be considered little gruesome for today's standards, they connected electrodes into brain of anesthetized cat and measured brain response to visual stimuli [Citation]. They discovered that reaction of neurons in visual cortex was triggered by very narrow line of light shined under specific angle on projection screen for cat to see. They determined that individual neurons from visual cortex are reacting only to very specific features of input image. Hubel and Wiesel were awarded the Nobel Prize in Physiology and Medicine in 1981 for their discovery and their finding inspired design of CNN.
+   Aforementioned inspiration in biology was based on scientific work of David Hubel and Torsten Wiesel. Hubel and Wisel, who were neurophysiologist, investigated vision system of mammals from late 1950 for several years. In the experiment, that might be considered little gruesome for today's standards, they connected electrodes into brain of anesthetized cat and measured brain response to visual stimuli [Citation]. They discovered that reaction of neurons in visual cortex was triggered by very narrow line of light shined under specific angle on projection screen for cat to see. They determined that individual neurons from visual cortex are reacting only to very specific features of input image. Hubel and Wiesel were awarded the Nobel Prize in Physiology and Medicine in 1981 for their discovery and their finding inspired design of [[glspl:cnn][CNN]].
 
    There will be several suppositions made in order to simplify explanation of the concepts involved:
-   - It will be presumed that convolutional layer is working with rectangular input data (e.g. images). Even though the Convolutional networks can be also trained to use 1-dimensional input (e.g. sound signal) or 3-dimensional (e.g. MRI images) etc.
+   - It will be presumed that convolutional layer is working with rectangular input data (e.g. images). Even though the Convolutional networks can be also trained to use 1-dimensional input (e.g. sound signal) or 3-dimensional (e.g. [[gls:mri][MRI]] images) etc.
    - The complexity of multiple-channel inputs (i.e. colored images) will be ignored.
    - Each layer requires rectangular input and produces rectangular output per one kernel.
 
@@ -101,6 +116,12 @@ g(z) = \max \{0,z\}
 
      where h is width of used kernel. In opposite case the /feature map/ is reduced by the $2*p$. Decreasing of the /feature map/ can be in some cases desirable.
 
+     #+CAPTION: A zero padded 4x4 matrix
+     #+NAME:   img__2__zero_padding
+     #+ATTR_LATEX: :width 4in
+     [[./img/img__2__zero_padding.png]]
+
+
      Reduction of /feature map/ can go even further in case of use of stride. Application of stride specifies by how many input points is traversed when moving to neighboring position in each step. When the stride is 1, kernel is moved by 1 on each step and the resulting size of /feature map/ is not affected.
 
      Each Convolutional layer is typically composition of several different kernels. In other words output of this layer is tensor containing /feature map/ for each used kernel. Each of these is designed to underline different features of input image. In the first layers these features are typically edges. In following layers the higher the layer the more complex features are captured.
@@ -117,20 +138,23 @@ g(z) = \max \{0,z\}
 
      Type of operation that is performed on each element determines a type of pooling layer. This operation can be averaging over units within element, selecting maximal value from element or alternatively learned linear combination of units within element. Learned linear combination introduces form of learning into the pooling layer, but it is not very prevalent.
 
-     Selecting of maximal value is most common type of pooling operation and in that case the layer is called /Max-Pooling/ accordingly. Positive effect of Max-pooling down-sampling is that extracted features that are learned in convolution are invariant to small shift of input. /Max-Pooling/ layer will be used to describe process of training of CNN.
+     Selecting of maximal value is most common type of pooling operation and in that case the layer is called /Max-Pooling/ accordingly. Positive effect of Max-pooling down-sampling is that extracted features that are learned in convolution are invariant to small shift of input. /Max-Pooling/ layer will be used to describe process of training of [[glspl:cnn][CNN]].
 
      As already mentioned another advantage of Max-pooling arises when combined with /Tiled convolution/. To create simple detector that is invariant to rotation it possible to use 4 different kernels that are rotated by 90 degrees among each other and when the /tiled convolution/ is used to tile them in groups of 4, the Max-pooling makes sure that resulted /feature map/ contains output from the kernel with strongest signal (i.e. the one trained for that specific rotation of the feature).
 
 **** Fully-Connected layer
 
-     Fully-Connected layer is formed from classical neurons that can be found in FCNN and it is always located at the end of the layer stack. In other words it is never followed by another Convolutional layer. Depending on the size of whole CNN it can have 1 to 3 /fully connected/ layers (usually not more than that). Input of the first FC layer has inputs from all neurons from previous layer to all neurons of following layer (hence fully connected). All fully connected layers are together acting as FCNN.
+     Fully-Connected layer is formed from classical neurons that can be found in [[gls:fcnn][FCNN]] and it is always located at the end of the layer stack. In other words it is never followed by another Convolutional layer. Depending on the size of whole [[gls:cnn][CNN]] it can have 1 to 3 /fully connected/ layers (usually not more than that). Input of the first FC layer has inputs from all neurons from previous layer to all neurons of following layer (hence fully connected). All fully connected layers are together acting as [[gls:fcnn][FCNN]].
 
 *** Training of CNN
-    Training process of CNN is analogues to FCNN in that both are using /Forward Propagation/ and /Backward Propagation/ phases.
+    Training process of [[gls:cnn][CNN]] is analogues to [[gls:fcnn][FCNN]] in that both are using /Forward Propagation/ and /Backward Propagation/ phases.
 
-    Situation with CNN is more complicated because network is composed of different types of layers and therefore training must accommodate for variability between different layers and also the individual convolution layers are sharing weights across all neurons in each layer.
+    Situation with [[gls:cnn][CNN]] is more complicated because network is composed of different types of layers and therefore training must accommodate for variability between different layers and also the individual convolution layers are sharing weights across all neurons in each layer.
 
-    First phase is the /Forward Propagation/, where the signal is propagated from inputs of the CNN to its output. In the last layer the output is compared with desired values by /Error function E/ and error is estimated.
+    First phase is the /Forward Propagation/, where the signal is propagated from inputs of the [[glspl:cnn][CNN]] to its output.
+    # Error function should be probably be called Loss function or maybe Cost function.
+    In the last layer the output is compared with desired values by /Error function E/ and error is estimated.
+
     Secondly in /Backward Propagation/ phase the error is propagated backwards through the network and weights for individual layers are updated by its contribution on the error. Most commonly used algorithm for update of weights is /Gradient Descent/. It is not the only one used but in majority of cases the training algorithm is at least based on /Gradient descent/.
 
 **** Forward Propagation
@@ -153,12 +177,13 @@ g(z) = \max \{0,z\}
       y_{ij}^{(l)}=\sigma(x_{ij}^{(l)})
       \end{equation}
 where $\sigma$ represents this non-linear function.
+equation
 
 ***** Pooling layer (Max-Pooling)
 
       Feed forward operation of pooling layer is generally very simple and it constitutes in selecting of maximal value within subset
       pooling of multiple inputs into single output.
-      Ratio is typically 4 to 1, which means that input matrix is divided into not-overlapping sub-matrices of size 2x2 and each of these produces 1 output. Size of sub-matrices can vary and is dependent on size of input, number of layers.
+      Ratio is typically $4 to 1$, which means that input matrix is divided into not-overlapping sub-matrices of size $2x2$ and each of these produces 1 output. Size of sub-matrices can vary and is dependent on size of input, number of layers.
 
 ***** Fully Connected layer
 
@@ -199,8 +224,8 @@ where $\sigma$ represents this non-linear function.
 *** Advantages of CNN
     # Number of parameters
     # computational demand
-    To further highlight the difference between Fully Connected Neural Network and Convolution Neural Network it is worth to compare the case of 2 neighboring layers.
+    To further highlight the difference between [[gls:fcnn][FCNN]] and [[gls:cnn][CNN]] it is worth to compare the case of 2 neighboring layers.
     Lets have gray scale input image of size 32x32 pixels and following layer will be convolutional with 6 feature maps of size 28x28. Kernels used in this convolutional layer will have the size of 5x5. In this case we have totally $(5 * 5 + 1) * 6 = 156$ parameters between the two layers.
-    If we would like to create equivalent connection between two layers of FCNN, then it would have mean $(32 * 32 + 1) * 28 * 28 = 803600$ connections (parameters). Which means that difference between the two is of ~5000 ratio.
-    This difference would rise exponentially with larger images or with more color channels. When input size of the image changes to 64x64 and it has RGB color then FCNN would requires $(64 * 64 * 3 + 1) * 28 * 28 = 9634576$ connections (parameters). In the same case the CNN only needs $(5 * 5 * 3 + 1) * 6 = 456$ parameters. Which is difference of ~20000 factor.
+    If we would like to create equivalent connection between two layers of [[glspl:fcnn][FCNN]], then it would have mean $(32 * 32 + 1) * 28 * 28 = 803600$ connections (parameters). Which means that difference between the two is of ~5000 ratio.
+    This difference would rise exponentially with larger images or with more color channels. When input size of the image changes to 64x64 and it has [[gls:rgb][RGB]] color then [[glspl:fcnn][FCNN]] would requires $(64 * 64 * 3 + 1) * 28 * 28 = 9634576$ connections (parameters). In the same case the CNN only needs $(5 * 5 * 3 + 1) * 6 = 456$ parameters. Which is difference of ~20000 factor.
     Just to elaborate, in case that CNN would be used to process video. Analogically to previous examples in case of moving image in time the number of parameters raises linearly with number of images in analyzed video.
