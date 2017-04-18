@@ -33,7 +33,7 @@
 \ProvidesClass{thesis}%
   [\filedate  v\fileversion  LaTeX document class]
 \typeout{}
-\typeout{Styl '\filename' pro psani kvalifikacnich praci v(\fileversion) na VUT v Brne} 
+\typeout{Styl '\filename' pro psani kvalifikacnich praci v(\fileversion) na VUT v Brne}
 \typeout{}
 
 %% Zpracovani volby typu prace
@@ -170,7 +170,7 @@
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Nove prikazy pro symboly a jednotky                                      
+%% Nove prikazy pro symboly a jednotky
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Deklarace Eulerova cisla
@@ -203,7 +203,7 @@
 %% Definice prikazu pro sazbu "textoveho" indexu
 \DeclareMathAlphabet{\textind}{\encodingdefault}{\familydefault}{m}{n}
 %% Definice prikazu pro sazbu jednotky (mat. i text. mod)
-\def\jedn#1{% 
+\def\jedn#1{%
 \ifmmode%
 	\jednotka{#1}%
 \else%
@@ -299,7 +299,7 @@
     \cleardoublepage
     \tableofcontents
     \newpage
-	
+
     \if@twoside
       \pagestyle{empty}
       \cleardoublepage
@@ -314,7 +314,7 @@
     \cleardoublepage
     \listoffigures
     \newpage
-	
+
     \if@twoside
       \pagestyle{empty}
       \cleardoublepage
@@ -369,17 +369,17 @@
 %% treti parametr je rozepsana zkratka nebo popis symbolu
 \newcommand{\novazkratka}[3]%
   {\acro{#1}[#2]{#3}}
-	
+
 %% Vysazeni zkratky zkracene verze zkratky/symbolu a v zavorce rozepsane zkratky/popis symbolu
 %% parametr je nazev zkratky
 \newcommand{\zkratka}[1]%
   {\ac{#1}}
-	
+
 %% Vysazeni kratke verze zkratky
 %% parametr je nazev zkratky
 \newcommand{\zk}[1]%
   {\acs{#1}}
-	
+
 %% Vysazeni dlouhe verze zkratky
 %% parametr je nazev zkratky
 \newcommand{\zkratkatext}[1]%
@@ -400,7 +400,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Definice vychozich textu pro oznaceni skoly, fakulty, ...                           
+%% Definice vychozich textu pro oznaceni skoly, fakulty, ...
 %% pro ruzne jazyky
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -459,7 +459,7 @@
   \newcommand\autortext@czechvut{Doktorand}
   \newcommand\autortext@slovakvut{Doktorand}
   \newcommand\autortext@englishvut{Ph.D.\ candidate}
-  
+
   \newcommand\vedoucitext@czechvut{\v{S}kolitel(ka)}
   \newcommand\vedoucitext@slovakvut{\v{S}kolite\q{l}(ka)}
   \newcommand\vedoucitext@englishvut{Advisor}%{Supervisor}
@@ -473,7 +473,7 @@
   \newcommand\autortext@czechvut{Autor pr\'{a}ce}
   \newcommand\autortext@slovakvut{Autor pr\'{a}ce}
   \newcommand\autortext@englishvut{Author}
-  
+
   \newcommand\vedoucitext@czechvut{Vedouc\'{\i} pr\'{a}ce}
   \newcommand\vedoucitext@slovakvut{Ved\'{u}ci pr\'{a}ce}
   \newcommand\vedoucitext@englishvut{Advisor}%{Supervisor}
@@ -481,7 +481,7 @@
   \newcommand\autortext@czechvut{Autor pr\'{a}ce}
   \newcommand\autortext@slovakvut{Autor pr\'{a}ce}
   \newcommand\autortext@englishvut{Author}
-  
+
   \newcommand\vedoucitext@czechvut{Vedouc\'{\i} pr\'{a}ce}
   \newcommand\vedoucitext@slovakvut{Ved\'{u}ci pr\'{a}ce}
   \newcommand\vedoucitext@englishvut{Advisor}%{Supervisor}
@@ -537,7 +537,7 @@
 \newcommand\prohlasenitext@czechvut%
 {%
   \par%\hspace{2ex}
-  Prohla\v{s}uji, \v{z}e 
+  Prohla\v{s}uji, \v{z}e
   \ifx\akt@type\type@semestral
     sv\r{u}j semestr\'{a}ln\'{\i} projekt
   \fi
@@ -609,7 +609,7 @@
   a jsem si pln\v{e} v\v{e}dom(a) n\'{a}sledk\r{u} poru\v{s}en\'{\i} ustanoven\'{\i} $\S$\,11 a~n\'{a}sleduj\'{\i}c\'{\i}ch autorsk\'{e}ho z\'{a}kona \v{c}.~121/2000~Sb.,
   o~pr\'{a}vu autorsk\'{e}m, o~pr\'{a}vech souvisej\'{\i}c\'{\i}ch s~pr\'{a}vem autorsk\'{y}m a o~zm\v{e}n\v{e} n\v{e}kter\'{y}ch z\'{a}kon\r{u} (autorsk\'{y} z\'{a}kon), ve zn\v{e}n\'{\i} pozd\v{e}j\v{s}\'{\i}ch p\v{r}edpis\r{u},
   v\v{c}etn\v{e} mo\v{z}n\'{y}ch trestn\v{e}pr\'{a}vn\'{\i}ch d\r{u}sledk\r{u} vypl\'{y}vaj\'{\i}c\'{\i}ch z~ustanoven\'{\i}
-  \v{c}\'{a}sti druh\'{e}, hlavy VI.\ d\'{\i}l 4 Trestn\'{\i}ho z\'{a}kon\'{\i}ku \v{c}.\,40/2009~Sb. 
+  \v{c}\'{a}sti druh\'{e}, hlavy VI.\ d\'{\i}l 4 Trestn\'{\i}ho z\'{a}kon\'{\i}ku \v{c}.\,40/2009~Sb.
   %$\S$\,152 trestn\'{\i}ho z\'{a}kona \v{c}.~140/1961\,Sb.
 }%
 %
@@ -632,7 +632,7 @@
   \ifx\akt@type\type@treatise
     svoje pojednanie o~dizerta\v{c}nej pr\'{a}ci
   \fi
-  na t\'{e}mu \uv{\nazev@slovakvut} vypracoval(a) samostatne pod veden\'{\i}m ved\'{u}ceho 
+  na t\'{e}mu \uv{\nazev@slovakvut} vypracoval(a) samostatne pod veden\'{\i}m ved\'{u}ceho
   \ifx\akt@type\type@semestral
     semestr\'{a}lneho projektu,
   \fi
@@ -700,7 +700,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
   \par%\hspace{2ex}
   I~declare that I~have written the %elaborated
   \ifx\akt@type\type@semestral
-    semestral project 
+    semestral project
   \fi
   \ifx\akt@type\type@bachelor
     Bachelor's Thesis
@@ -728,7 +728,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
   %\fi
   %\ifx\akt@type\type@diploma
     %master's thesis
-  %\fi
+    %\fi
   %\ifx\akt@type\type@phd
     %doctoral thesis
   %\fi
@@ -737,7 +737,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
     %%treatise on doctoral thesis
   %\fi
     advisor %supervisor
-		and using exclusively the technical references and other sources of information cited in the 
+		and using exclusively the technical references and other sources of information cited in the
 		%and using the technical literature and other sources of information  which are all cited in the
   \ifx\akt@type\type@semestral
     project
@@ -771,10 +771,10 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
   \ifx\akt@type\type@treatise
     treatise.
   \fi
-  
+
   \par\hspace{2ex}
     As the author
-		%of the 
+		%of the
   %\ifx\akt@type\type@semestral
     %semestral project
   %\fi
@@ -790,8 +790,8 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
   %\ifx\akt@type\type@treatise
     %treatise on doctoral thesis
   %\fi
-    I~furthermore declare that, with respect to the creation of this 
-		%as regards the creation of this 
+    I~furthermore declare that, with respect to the creation of this
+		%as regards the creation of this
   \ifx\akt@type\type@semestral
     semestral project,
   \fi
@@ -1185,11 +1185,11 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
   \fontseries{\mddefault}%
   \fontshape{\updefault}\selectfont #1%
 }%
-	
+
 %% Zarovnani rovnic a titulku plovoucich objektu vlevo
 \ifx\akt@center\center@vlevo
   % zarovnani rovnic vlevo
-  \input{fleqn.clo}   
+  \input{fleqn.clo}
   % zarovnani popisku obrazku a tabulek
   \long\def\@makecaption#1#2%
     {%
@@ -1444,16 +1444,16 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
   \noindent
   \makebox[0pt][l]{%%
     \vspace{\stretch{1}}%
-		
+
     \parbox[c][0pt][c]{\textwidth}{#2}%
-	 	
+
     \vspace{\stretch{1}}%
   }%%
   \parbox[c][\textheight][c]{\textwidth}{%%
     \parbox[t][][t]{\textwidth}{#1}%
-		
+
     \vspace{\stretch{1}}%
-				
+
     \parbox[b][][b]{\textwidth}{#3}%
   }%%
   \newpage
@@ -1471,7 +1471,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 %% Sazba kompletniho prebalu prace prikazem \vytvorobalku %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand\vytvorobalku{\par  
+\newcommand\vytvorobalku{\par
   \begingroup
     \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
     \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
@@ -1511,7 +1511,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
       \noindent
       \parbox[t][26mm][t]{\linewidth}{%%%
         \raggedright
-        \sffamily \huge 
+        \sffamily \huge
         \MakeUppercase{\csname skola@\orig@lang\endcsname} \\
         \normalsize
         \MakeUppercase{\csname skola@\tran@lang\endcsname}%
@@ -1556,7 +1556,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
         \sffamily \normalsize
         \MakeUppercase{\csname autortext@\tran@lang\endcsname}%
       }%%%
-			
+
       \noindent
       \parbox[t][32mm][t]{\linewidth}{%%%
         %\raggedright
@@ -1571,7 +1571,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
   }%%
 
   \newpage
-	
+
   \if@twoside
     \thispagestyle{empty}%
     \cleardoublepage
@@ -1595,7 +1595,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
     \usebeamertemplate*{VUT title page}\@thanks
   \end{frame}
 	% resetovani citace slajdu, titulka se nepocita
-	\setcounter{framenumber}{0} 
+	\setcounter{framenumber}{0}
 }
 
 % Vzhled titulni stranky prezentace
@@ -1629,9 +1629,9 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
             \fi
            % pripadne text: "Oponent prace:  jmeno oponenta"
            % pokud byl zadan oponent prace pomoci \oponent{jmeno}
-						
-						
-					% podmínka pro oponenta, jedná-li se o semestrální práci nebo je-li zakomentován v nastevni_udaju.tex nezobrazí se, jinak se zobrazi	
+
+
+					% podmínka pro oponenta, jedná-li se o semestrální práci nebo je-li zakomentován v nastevni_udaju.tex nezobrazí se, jinak se zobrazi
 					\ifx\akt@type\type@semestral
 					%nic
 						\else
@@ -1641,8 +1641,8 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 							{\slshape \csname oponenttext@\orig@lang\endcsname:}     & \@Oponent \\%
 						\fi
 					\fi
-						
-						
+
+
          \end{tabular}%
      \end{beamercolorbox}
     \begin{beamercolorbox}[sep=13pt,center,#1]{date}
@@ -1653,7 +1653,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 }
 }%elseclassloaded
 {
-\newcommand\vytvortitulku{\par  
+\newcommand\vytvortitulku{\par
   \begingroup
     \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
     \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
@@ -1675,7 +1675,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
       \@vytvortitulku@vut
     \fi
   \endgroup
-  
+
   %% Po vysazeni zrusime prikazy
   \global\let\vytvortitulku\relax
   \global\let\@vytvortitulku@vut\relax
@@ -1773,7 +1773,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
   }%%
 
   \newpage
-	
+
   \if@twoside
     \thispagestyle{empty}%
     \cleardoublepage
@@ -1788,7 +1788,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sazba stranky s abstraktem prikazem \vytvorabstrakt                     %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand\vytvorabstrakt{\par  
+\newcommand\vytvorabstrakt{\par
   \begingroup
     \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
     \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
@@ -1828,7 +1828,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 
     \medskip
     \parbox{\linewidth}{%%%
-      \sffamily 
+      \sffamily
       \csname abstrakt@\orig@lang\endcsname
     }%%%
 
@@ -1839,7 +1839,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 
     \medskip
     \parbox{\linewidth}{%%%
-      \sffamily 
+      \sffamily
       \csname keywords@\orig@lang\endcsname
     }%%%
   }%%
@@ -1885,27 +1885,27 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 			{\slshape \csname nazev@\orig@lang\endcsname}.
 			\@misto, \@rok, \pocet@stran~\csname citace@stran@\orig@lang\endcsname.
 			{\csname oznaceniprace@\orig@lang\endcsname}.
-			\csname skola@\orig@lang\endcsname,     
+			\csname skola@\orig@lang\endcsname,
 			\csname fakulta@\orig@lang\endcsname,
 			\csname ustav@\orig@lang\endcsname.
 			\csname citace@vedouci@\orig@lang\endcsname
     }%%%
   }%%
-	
+
 	\vspace*{2ex}
- 
-	\enlargethispage{1.5\baselineskip}
-	% balicek hyperref predefinovava footnotetext, aby vyzadoval kotvu na footnotemark
-	% nasledujici prikaz docasne obnovi puvodni prikaz footnotetext bez kotvy
-	\def\@footnotetext##1{%
-		\H@@footnotetext{##1}}
-	\footnotetext{%
-		\noindent
-		\hspace*{-6.1mm}%
-		%\hspace*{-\parindent}%
-		Vysázeno pomocí balíčku \texttt{thesis} verze \fileversion ;
-		\url{http://latex.feec.vutbr.cz}%
-		}
+
+	% \enlargethispage{1.5\baselineskip}
+	% % balicek hyperref predefinovava footnotetext, aby vyzadoval kotvu na footnotemark
+	% % nasledujici prikaz docasne obnovi puvodni prikaz footnotetext bez kotvy
+	% \def\@footnotetext##1{%
+	% 	\H@@footnotetext{##1}}
+	% \footnotetext{%
+	% 	\noindent
+	% 	\hspace*{-6.1mm}%
+	% 	%\hspace*{-\parindent}%
+	% 	Vysázeno pomocí balíčku \texttt{thesis} verze \fileversion ;
+	% 	\url{http://latex.feec.vutbr.cz}%
+	% 	}
 
   \newpage
 }}%
@@ -1913,7 +1913,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sazba prohlaseni o samostatnosti prace \vytvorprohlaseni  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand\vytvorprohlaseni{\par  
+\newcommand\vytvorprohlaseni{\par
   \begingroup
     \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
     \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
@@ -1932,7 +1932,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
         \vytvorprohlaseni@vut
     \fi
   \endgroup
-  
+
   %% Tady si nesmazeme titul
   \setcounter{footnote}{0}%
   \global\let\vytvorprohlaseni\relax
@@ -1971,7 +1971,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PODEKOVANI						     %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand\vytvorpodekovani{\par  
+\newcommand\vytvorpodekovani{\par
   \begingroup
     \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
     \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
@@ -1990,7 +1990,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
         \vytvorpodekovani@vut
     \fi
   \endgroup
-  
+
   %% Tady si nesmazeme titul
   \setcounter{footnote}{0}%
   \global\let\vytvorpodekovani\relax
@@ -2027,7 +2027,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PODEKOVANI						     %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand\vytvorpodekovaniSIX{\par  
+\newcommand\vytvorpodekovaniSIX{\par
   \begingroup
     \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
     \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
@@ -2046,7 +2046,7 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
         \vytvorpodekovaniSIX@vut
     \fi
   \endgroup
-  
+
   %% Tady si nesmazeme titul
   \setcounter{footnote}{0}%
   \global\let\vytvorpodekovaniSIX\relax
@@ -2103,20 +2103,20 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 
 \newcommand\podekovaniSIX@czechvut%
 {%
-    V\'{y}zkum popsan\'{y} 
-    \ifx\akt@type\type@semestral 
+    V\'{y}zkum popsan\'{y}
+    \ifx\akt@type\type@semestral
     v~tomto semestr\'{a}ln\'{i}m projektu
     \fi
-    \ifx\akt@type\type@bachelor 
+    \ifx\akt@type\type@bachelor
     v~t\'{e}to bakal\'{a}\v{r}sk\'{e} pr\'{a}ci
     \fi
-    \ifx\akt@type\type@diploma 
+    \ifx\akt@type\type@diploma
     v~t\'{e}to diplomov\'{e} pr\'{a}ci
     \fi
-    \ifx\akt@type\type@phd 
+    \ifx\akt@type\type@phd
     v~t\'{e}to dizerta\v{c}n\'{\i} pr\'{a}ci %doktorsk\'{e} pr\'{a}ci
     \fi
-    \ifx\akt@type\type@treatise 
+    \ifx\akt@type\type@treatise
     v~tomto pojedn\'{a}n\'{i} o~dizerta\v{c}n\'{i} pr\'{a}ci
     \fi
     byl realizov\'{a}n v~laborato\v{r}\'{i}ch podpo\v{r}en\'{y}ch z~projektu \href{http://www.six.feec.vutbr.cz}{SIX}; registra\v{c}n\'{i} \v{c}\'{i}slo CZ.1.05/2.1.00/03.0072, opera\v{c}n\'{i} program V\'{y}zkum a~v\'{y}voj pro inovace.
@@ -2124,20 +2124,20 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 
 \newcommand\podekovaniSIX@slovakvut%
 {%
-    V\'{y}zkum popsan\'{y} 
-    \ifx\akt@type\type@semestral 
+    V\'{y}zkum popsan\'{y}
+    \ifx\akt@type\type@semestral
     v~tomto semestr\'{a}lnom projektu
     \fi
-    \ifx\akt@type\type@bachelor 
+    \ifx\akt@type\type@bachelor
     v~tejto bakal\'{a}rskej pr\'{a}ci
     \fi
-    \ifx\akt@type\type@diploma 
+    \ifx\akt@type\type@diploma
     v~tejto diplomovej pr\'{a}ci
     \fi
-    \ifx\akt@type\type@phd 
+    \ifx\akt@type\type@phd
     v~tejto dizerta\v{c}nej pr\'{a}ci %doktorskej pr\'{a}ci
     \fi
-    \ifx\akt@type\type@treatise 
+    \ifx\akt@type\type@treatise
     v~tomto pojednan\'{i} o~dizerta\v{c}nej pr\'{a}ci
     \fi
     bol realizovan\'{y} v~laborat\'{o}ri\'{a}ch podporen\'{y}ch projektom \href{http://www.six.feec.vutbr.cz}{SIX}; registra\v{c}n\'{e} \v{c}\'{i}slo CZ.1.05/2.1.00/03.0072, opera\v{c}n\'{y} program V\'{y}zkum a~v\'{y}voj pro inovace.
@@ -2146,21 +2146,21 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 \newcommand\podekovaniSIX@englishvut%
 {%
     Research described in this
-    \ifx\akt@type\type@semestral 
+    \ifx\akt@type\type@semestral
     semestral project
     \fi
-    \ifx\akt@type\type@bachelor 
+    \ifx\akt@type\type@bachelor
     Bachelor's Thesis
     %bachelor's thesis
     \fi
-    \ifx\akt@type\type@diploma 
+    \ifx\akt@type\type@diploma
     Master's Thesis
     %master's thesis
     \fi
-    \ifx\akt@type\type@phd 
+    \ifx\akt@type\type@phd
     Doctoral Thesis
     \fi
-    \ifx\akt@type\type@treatise 
+    \ifx\akt@type\type@treatise
     treatise on doctoral thesis
     \fi
     has been implemented in the laboratories supported by the \href{http://www.six.feec.vutbr.cz}{SIX} project; reg.\,no.\,CZ.1.05/2.1.00/03.0072, operational program V\'{y}zkum a~v\'{y}voj pro inovace.
@@ -2179,4 +2179,3 @@ a som si plne vedom\'{y}(-\'{a}) n\'{a}sledkov poru\v{s}enia ustanovenia $\S$\,1
 
 %%
 %%  End of file thesis.sty
-
