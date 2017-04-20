@@ -1,79 +1,242 @@
 * Theory
-In this chapter will discussed concepts of Artificial intelligence, Image processing, Machine learning in general, Neural networks and finally the Convolutional neural networks.
+  In this chapter will discussed concepts of Artificial intelligence, Image processing, Machine learning in general, Neural networks and finally the Convolutional neural networks.
+
 ** Artificial Intelligence
-   Field of [[gls:ai][AI]] is very general and spawns across several different disciplines (e.g. computer science, mathematics, philosophy, economics and even ethics). It could be characterized by a pursuit of construction of intelligent agents. In other words attempt to create intelligent machines are either thinking or can be perceived as thinking ones.
+   Field of [[gls:ai][AI]] is very general and spawns across several different disciplines (e.g. computer science, mathematics, philosophy, economics and even ethics). This suggests that this field is very broad and as such it won't be attempted in this document to be exhaustive or in no way complete.
 
- that is predominantly dealing with
+   It could be characterized by a pursuit of construction of intelligent agents. In other words attempt to create intelligent machines are either thinking or can be perceived as thinking ones.
 
-    In the beginning the knowledge of [[gls:ai][AI]] systems was hard-coded
-    Beginnings of [[gls:ai][AI]] were
- # Basics of image processing techniques.
+   One of the most important abilities of intelligent agents is the sens of vision (even thought this is highly dependent on concrete application). Sense of vision is usually required to certain degree and not always it is necessary that it rivals the capabilities of for example human visual apparatus.
+
+   First attempts to solve the vision problems were tackled from so called bottom up approach where system was instructed with hard-coded set of rules that were describing rules of vision. It was expected that as the understanding of mechanisms that allows humans to extract information from visual scene then these hard-coded systems can be fed more information in order to create more capable systems. Problem with this approach was that it highly underestimated the difficulty of formalization of these rules that could be prescribed into the intelligent system.
+
+   This insight lead the researchers to postulating that in order to solve this problem there needs to be introduction of process that would allow the [[gls:ai][AI]] systems to extract patterns from provided data. In other words introduction of systems that are able to learn. Process that enables systems to learn is generally called /machine learning/.
+
+   There are several types of machine learning tasks. Most commonly encountered task is called /classification/. is the task to classify instance of input into correct discreet and predominantly finite class. Another typical type of machine learning task is called regression, which is based on the input data trying to estimate value of unknown quantity. Usually integer or real type.
+
+   Rest of this publication it will be exclusively dealing with /classification/ learning tasks.
+
+   # Basics of image processing techniques.
 ** TODO Image Processing
 
    # There was no wider adoption of machine learning techniques in image processing for very long time, even though they existed as field of study since 1950's. Reason being that machine learning algorithms were very simple and therefore unfit for generally very complex problems of image processing (e.g. object detection and classification).
 
    Research in image processing was adopting predominately bottom up (feature-based) methodologies. Typical classification pipeline in computer vision would be following:
-    - Image capture - Image is captured (by camera or similar device) and digitized.
-    - Preprocessing - Digitized image is modified to emphasize important features (e.g. noise reduction, contrast normalization etc.).
-    - Segmentation - Selection of interesting features (edges, similar surfaces).
-    - Description - Extraction of radiometric, photometric descriptors and so on.
-    - Classification - Some means to classify the object.
+   - Image capture - Image is captured (by camera or similar device) and digitized.
+   - Preprocessing - Digitized image is modified to emphasize important features (e.g. noise reduction, contrast normalization etc.).
+   - Segmentation - Selection of interesting features (edges, similar surfaces).
+   - Description - Extraction of radiometric, photometric descriptors and so on.
+   - Classification - Some means to classify the object.
 
 
-    # Classical approach to image processing is still very useful in very restricted environments with rigid constraints. One of examples can be detection of defects on line production in industrial automation.
+   # Classical approach to image processing is still very useful in very restricted environments with rigid constraints. One of examples can be detection of defects on line production in industrial automation.
 
-    In the first attempts to apply machine learning in image processing, it was used usually deployed as the classification model. In other words complex problems were reduced and simplified in order to utilize machine learning techniques. Consequently this approach favors simpler models.
+   In the first attempts to apply machine learning in image processing, it was used usually deployed as the classification model. In other words complex problems were reduced and simplified in order to utilize machine learning techniques. Consequently this approach favors simpler models.
 
-    This also brings the problem that any of these applications is not very versatile. Each application is usually only capable of solving very simple problem and any deviation from ideal circumstances can mean failure. Application can have problem with varying contrast, illumination, scaling, rotation etc.
+   This also brings the problem that any of these applications is not very versatile. Each application is usually only capable of solving very simple problem and any deviation from ideal circumstances can mean failure. Application can have problem with varying contrast, illumination, scaling, rotation etc.
 
-    Second problem is often the fact that because image has to be preprocessed several times before it is fed into machine learning model it demands extra time and resources. This can created problems in training phase but also during operation after deployment.
-    This is less of a problem with technical innovation and today it can be solved by very fast DSP, but it still is not negligible effect and it can have negative affect on the price of the solution. This is where Deep learning models starts to exhibit significant advantage.
+   Second problem is often the fact that because image has to be preprocessed several times before it is fed into machine learning model it demands extra time and resources. This can created problems in training phase but also during operation after deployment.
 
-    Deep Learning models are in theory capable of capturing complex (higher order) features of the input due to the fact they can learn very high level of abstraction from even very low level features. And what is even more important, is the fact that Deep learning model in theory doesn't need any kind (or very little) of preprocessing. Input image can be directly connected as input into Deep Network.
+   This is less of a problem with technical innovation and today it can be solved by very fast [[gls:dsp][DSP]], but it still is not negligible effect and it can have negative affect on the price of the solution. This is where Deep learning models starts to exhibit significant advantage.
 
-# Basics of Machine learning
+   Deep Learning models are in theory capable of capturing complex (higher order) features of the input due to the fact they can learn very high level of abstraction from even very low level features. And what is even more important, is the fact that Deep learning model in theory doesn't need any kind (or very little) of preprocessing. Input image can be directly connected as input into Deep Network.
+
+   # Basics of Machine learning
 ** Machine Learning
-   It is necessary to properly define machine learning before we move forward. There are many valid definitions that may differ but in this text we will adhere  to the following.
-   Field of Machine learning is a subset of [[gls:ai][AI]] that is describing tools that can be used to solve problems.
+   # REMOVE:
+   # It is necessary to properly define machine learning before we move forward. There are many valid definitions that may differ but in this text we will adhere  to the following.
+   # Field of Machine learning is a subset of [[gls:ai][AI]] that is describing tools that can be used to solve problems.
 
-   In order to properly explain
-   We will use a definition from \cite{book--goodfellow--2016}
-** Nonlinear models
+   As previously described Machine learning is a process that is used to create models that are able to extract information from data to solve given problem and consequently automatically improve their performance. There are typically two different types of machine learning approaches:
+   - Unsupervised Learning
+   - Supervised Learning
 
-   Problem with nonlinear models is that their optimization doesn't result in quadratic optimization there fore it is not possible to guarantee the finding of optimal solution. It is necessary to use iterative approach to solving the optimization problem
+   # ??? Maybe find better word for this
+   Both of these are typically used for different kinds of machine learning tasks.
 
-they require stochastic
-*** Task
+*** TODO Unsupervised learning
+    In this learning approach the model is training by observing new data and extracting patterns in the date without being instructed of what they are. Interesting perspective that can be used to view this approach is to take unsupervised learning as form of information compression. Where model is trying to extract data from input in such a way that reduces the input while preserving the information contained within.
 
-**** Loss function
+    # this and the pharagraf bellow sais the same thing !!!
+    Opposed to supervised learning that is described bellow the advantage of this approach that model is able to learn from data, as the name suggests, without supervision. This means that  there is no need for input data to be annotated, therefore it takes much less time and resources to deploy this model in practice.
 
-**** Optimization
+    For real life task with supervised learning approach the biggest hurdle is to find appropriate data that could be used. Appropriate data in this context mean, data that were somehow classified into different categories, which can be very tedious and slow process.
 
-*** Supervised Learning
-*** Unsupervised Learning
-*** Generalization of Machine Learning
-    Machine learning approach to solving problmes can be generalized.
+    There is several different approaches to unsupervised learning. As main example there is [[gls:pca][PCA]], that is mainly used in statistical analysis of data. Another very important group of unsupervised learning models are clustering models, which are analyzing clustering of values in the input space and based on this information it assigns output values that are likely to represent similar properties. One of the models that is used often is called /k-means/ [citation]. Another model that is representative of this group that is at the same time member of family of neural networks and was already mentioned is called [[glspl:som][SOM]].
+
+    # In following text we will only deal with supervised learning.
+
+*** TODO Supervised learning
+    Supervised learning approach is most commonly used for the classification tasks. As was already mentioned this approach requires training data to be in specific format. Namely each instance has to have a class that corresponds to a type of the instance.
+
+    In the first approximation it could be said that the task of supervised machine learning is to model relationship between the input output data most accurately. The problem with this is that in the real world problems there is never enough data to capture true relationship between the two. Therefore the true task of machine learning is the attempt to infer true relationship by observing incomplete picture.
+
+    Therefore the most important property of machine learning model is its generalization ability. That is ability to produce meaningful results on data that were not previously observed.
+
+    #+NAME: fig:over_under_fitting
+    #+CAPTION: Figure shows different levels of generalization of model
+    [[./img/figure__2__over_under_fitting.png]]
+
+    Generalization ability is dependent on complexity of the model and its relationship to complexity of underling problem. When model doesn't capture complexity of the problem sufficiently it is described as under fitting. In cases that the complexity of model is exceeds the complexity of underling problem then this phenomenon is called over fitting.
+
+    In both of these extremes the generalization ability suffers. In the former case the model is unable to capture true intricacies of the problem and therefore is unable to reliably predict desired output. In the latter case it tries to capture even the most subtle data perturbation that might be in fact a result of stochastic nature of the problem and not the real underlying relationship. This can be caused the fact that input data is missing some variable that is necessary to capture the true relationship. This fact is unavoidable and it therefore has to be taken into account when designing machine learning model. Depiction of theses phenomena in case of two variable input is on [[fig:over_under_fitting]].
+
+    #+NAME: fig:model_complexity
+    #+CAPTION: Figure shows relationship between model complexity and resulting error.
+    #+ATTR_LATEX: :width 4in
+    [[./img/figure__2__model_complexity.png]]
+
+    Typically the machine learning model is trained on as much of input data as possible in order to achieve the best performance possible. At the same time its error rate has to be verified on independent input data to check whether the generalization ability is not deteriorating. This is typically achieved by splitting available input data into training and testing set (usually in 4:1 ratio for training to test data). Model is trained with training data only and the performance of the model is tested on the test data. Relationship between test and train error can be found on figure [[fig:test_vs_training_error]]. Even though that the true generalization error can never be truly observed its approximation by test error rate is sufficient for majority of machine learning tasks.
+
+    #+NAME: fig:test_vs_training_error
+    #+CAPTION: Different approach that examines the relationship between the model complexity and its ultimate accuracy is the relationship between training and testing error.
+    #+ATTR_LATEX: :width 4in
+    [[./img/figure__2__test_vs_training_error.png]]
+
+    # We will use a definition from \cite{book--goodfellow--2016}
+
+*** TODO Structure of machine learning algorithm
+    #     Machine learning approach to solving problems can be generalized.
+    Nearly all machine learning algorithms can be described using following components:
+    - Dataset
+    - Model
+    - Cost function
+    - Optimization procedure
+
+    # Analyze of this Description of the learning algorithm by this way
+
+    These components will be explained on /linear regression/ model due to its simplicity.
+
+**** Dataset
+     Supervised learning requires datasets with specific properties. Each dataset contains set of $n$ instances which consists of a pair of input vector $\boldsymbol{x}_i$ and output scalar $y_i$. Input vector
+
+     \begin{equation}
+     \boldsymbol{x}_i^T = [x_1, x_2, \dotsc, x_p],
+     \end{equation}
+     where $i$ is index of instance, $p$, is dimension of input vector.
+
+     Output scalar $y_i$ represents class of given instance.
+
+**** Model
+     Model is prediction apparatus that takes input $\boldsymbol{x}_i$ to predict value of it's output $y_i$. Each model has parameters represented by vector $\boldsymbol{\theta}$, which are adjusted during the training process. One of the simplest examples of this model is linear model also called /linear regression/.
+
+     Parameters $\boldsymbol{\theta}$ of this model are:
+
+     \begin{equation}
+     \boldsymbol{\theta} = [\theta_1, \theta_2, \dotsc, \theta_p],
+     \end{equation}
+     where $p$ is number of parameters equal to size of input vector.
+
+     Prediction $\hat{y}_i$ of the model on instance $i$ is:
+     \begin{equation}
+     \hat{y}_i =  \sum_{j=1}^{p} x_{ij} \theta_j,
+     \end{equation}
+
+     Therefore predictions of the model on the entire datasets in matrix notation is:
+     \begin{equation}
+     \boldsymbol{\hat{y}} = \boldsymbol{X}\boldsymbol{\theta}
+     \end{equation}
+
+     That is,
+     \begin{equation}
+        \begin{bmatrix}
+          \hat{y}_{1} \\
+          \vdots      \\
+          \hat{y}_{n}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+          x_{11} & \cdots & x_{1p} \\
+          \vdots & \ddots & \vdots \\
+          x_{n1} & \cdots & x_{np}
+        \end{bmatrix}
+        \begin{bmatrix}
+          \theta_{1} \\
+          \vdots     \\
+          \theta_{p}
+        \end{bmatrix}.
+     \end{equation}
+
+     # It most general case it can be viewed as model that is generating probability distribution.
+     # \begin{equation}
+     # p(y \mid \boldsymbol{x}; \boldsymbol{\theta})
+     # \end{equation}
+
+**** Cost function
+     In order to achieve the learning ability of the machine learning model it is necessary to estimate how correct the model is with its prediction. This is estimated with so called /cost function/ (also called /loss function/).
+
+     # This function has to meet certain conditions. It has to represent a performance measure of the model.
+     For the case of linear regression it is most common to use /Mean square error/.
+     \begin{equation}
+     J(\boldsymbol{\theta}) = \sum_{i=1}^{n}{\left(y_i - \hat{y_i}\right)^2} =
+     \sum_{i=0}^{n}{\left(y_i - \boldsymbol{x_i}^T \boldsymbol{\theta} \right)^2}
+     \end{equation}
+
+     In matrix notation
+     \begin{equation}
+     J(\boldsymbol{\theta}) = \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)^T \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)
+     \end{equation}
+
+     # relationship between the correct
+     # Firstly it has to be differentiable.
+
+**** Optimization procedure
+     The last part of learning algorithm is the optimization procedure. It consist in update of model's parameters $\boldsymbol{\theta}$ in order to improve it's prediction. In other words to find $\boldsymbol{\theta}$ such that the value of /cost function/ $J(\boldsymbol{\theta})$ for given dataset is as small as possible.
+
+     To investigate the change of /cost function/ on given dataset it is necessary to compute the derivative of $J(\boldsymbol{\theta})$ in respect to $\boldsymbol{\theta}$
+     \begin{equation}
+     \frac{\partial J(\boldsymbol{\theta})} {\partial \boldsymbol{\theta}} =
+     \frac{\partial} {\partial \boldsymbol{\theta}} \left[ \boldsymbol{y}^T \boldsymbol{y} + \boldsymbol{\theta}^T \boldsymbol{X}^T\boldsymbol{X}\boldsymbol{\theta} - 2\boldsymbol{y}^T\boldsymbol{X}\boldsymbol{\theta} \right]
+     \end{equation}
+
 
 ** Neural Networks
   Neural networks are definitely inspired by biology. First attempts to created model of neuron had multiple elements equivalent with neurons of human brain. As time progressed this equivalence sized to being as important and modern neural networks models correspond to h their biological counterparts only superficially.
 
-  # gls:NN
+*** Computational model
+In this case the computational model is composed of a network of nonlinear units that are processing input in several
 
-  In the first iterations of [[gls:mlp][MLP]] evolution it generally had all neurons in hidden and output layer to be similar. Namely activation function was predominantly sigmoid. Activation function of hidden layers is to this day one of the most dynamically evolving components of Neural networks. Currently there is several options for but mainly used is Restricted Linear Unit (ReLU) which models following mathematical function
-  \begin{equation}
-  g(z) = \max \{0,z\}
-  \end{equation}
+taking input and applying weights to it in
+*** Cost (loss) function
+*** Optimization algorithm
+*** Nonlinear models
 
-  #+CAPTION: Restricted Linear Unit (ReLU)
-  #+NAME:   img__2__relu
-  #+ATTR_LATEX: :width 4in
-  [[./img/img__2__relu.png]]
+    Problem with nonlinear models is that their optimization doesn't result in quadratic optimization there fore it is not possible to guarantee the finding of optimal solution. It is necessary to use iterative approach to solving the optimization problem
 
+ they require stochastic
 
+*** Activation functions
+    In the first iterations of [[gls:mlp][MLP]] evolution it generally had all neurons in hidden and output layer to be similar. Namely activation function was predominantly sigmoid.
 
+    #+NAME: fig:sigmoid
+    #+CAPTION: Sigmoid activation function
+    #+ATTR_LATEX: :width 4in
+    [[./img/figure__2__sigmoid.png]]
 
-  # # Gradient Descent Optimization
-  # # Stochastic Gradient Descent
+    Activation function of hidden layers is to this day one of the most dynamically evolving components of Neural networks. Currently there is several options for but mainly used is Restricted Linear Unit (ReLU) which models following mathematical function
+
+    \begin{equation}
+    g(z) = \max \{0,z\}
+    \end{equation}
+
+    #+NAME: fig:relu
+    #+CAPTION: Restricted Linear Unit (ReLU)
+    #+ATTR_LATEX: :width 4in
+    [[./img/figure__2__relu.png]]
+
+*** Gradient Descent Optimization
+    Gradient is computed with respect to each input variable. and result of this operation is representing the direction of most steep increase in the output value. There fore in the heart of every gradient based optimization is an element of applying change proportional to negative gradient of inputs.
+
+    #+NAME: fig:gradient_descent_conture_plot
+    #+CAPTION: Depiction of Gradient based optimazation of on the conture plot.
+    #+ATTR_LATEX: :width 4in
+    [[./img/figure__2__gradient_descent_conture_plot.png]]
+
+*** Stochastic Gradient Descent
+*** Network Architecture
+*** Meta-parameters
+**** Learning rate
+**** Momentum
 
 *** Deep Learning in image processing
     It was found that general *Fully Connected Neural Network* is not ideal for image processing needs. Even small images typically represents enormous amount of inputs (i.e. image of the size 64x64 pixels represents 4096 inputs).
@@ -116,10 +279,10 @@ they require stochastic
 
      where h is width of used kernel. In opposite case the /feature map/ is reduced by the $2*p$. Decreasing of the /feature map/ can be in some cases desirable.
 
+     #+NAME: fig:zero_padding
      #+CAPTION: A zero padded 4x4 matrix
-     #+NAME:   img__2__zero_padding
      #+ATTR_LATEX: :width 4in
-     [[./img/img__2__zero_padding.png]]
+     [[./img/figure__2__zero_padding.png]]
 
 
      Reduction of /feature map/ can go even further in case of use of stride. Application of stride specifies by how many input points is traversed when moving to neighboring position in each step. When the stride is 1, kernel is moved by 1 on each step and the resulting size of /feature map/ is not affected.
@@ -227,5 +390,5 @@ equation
     To further highlight the difference between [[gls:fcnn][FCNN]] and [[gls:cnn][CNN]] it is worth to compare the case of 2 neighboring layers.
     Lets have gray scale input image of size 32x32 pixels and following layer will be convolutional with 6 feature maps of size 28x28. Kernels used in this convolutional layer will have the size of 5x5. In this case we have totally $(5 * 5 + 1) * 6 = 156$ parameters between the two layers.
     If we would like to create equivalent connection between two layers of [[glspl:fcnn][FCNN]], then it would have mean $(32 * 32 + 1) * 28 * 28 = 803600$ connections (parameters). Which means that difference between the two is of ~5000 ratio.
-    This difference would rise exponentially with larger images or with more color channels. When input size of the image changes to 64x64 and it has [[gls:rgb][RGB]] color then [[glspl:fcnn][FCNN]] would requires $(64 * 64 * 3 + 1) * 28 * 28 = 9634576$ connections (parameters). In the same case the CNN only needs $(5 * 5 * 3 + 1) * 6 = 456$ parameters. Which is difference of ~20000 factor.
-    Just to elaborate, in case that CNN would be used to process video. Analogically to previous examples in case of moving image in time the number of parameters raises linearly with number of images in analyzed video.
+    This difference would rise exponentially with larger images or with more color channels. When input size of the image changes to 64x64 and it has [[gls:rgb][RGB]] color then [[glspl:fcnn][FCNN]] would requires $(64 * 64 * 3 + 1) * 28 * 28 = 9634576$ connections (parameters). In the same case the [[gls:cnn][CNN]] only needs $(5 * 5 * 3 + 1) * 6 = 456$ parameters. Which is difference of ~20000 factor.
+    Just to elaborate, in case that [[gls:cnn][CNN]] would be used to process video. Analogically to previous examples in case of moving image in time the number of parameters raises linearly with number of images in analyzed video.
