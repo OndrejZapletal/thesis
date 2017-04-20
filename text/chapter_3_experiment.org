@@ -1,8 +1,8 @@
 * Experiment
 ** Application
- In this chapter will be described several application of CNN.
+   In this chapter will be described several application of [[gls:cnn][CNN]].
 *** Handwritten Digit recognition [citation]
-    As it was mentioned before convolutional neural networks were  originally designed for image processing applications. First mention of CNN was in [LeCunn 1989] where they were used for recognition of handwritten digit from Dataset of Zip codes from US post. Concept was successfully deployed on DSP chip and tested in real-time application of sorting mail by the zip-code. CNN were in this case one of the first models that was reaching human performance level. Similar techniques were later used to power automatic mail sorting in US Postal Service.
+    As it was mentioned before convolutional neural networks were  originally designed for image processing applications. First mention of [[gls:cnn][CNN]] was in [LeCunn 1989] where they were used for recognition of handwritten digit from Dataset of Zip codes from US post. Concept was successfully deployed on DSP chip and tested in real-time application of sorting mail by the zip-code. [[gls:cnn][CNN]] were in this case one of the first models that was reaching human performance level. Similar techniques were later used to power automatic mail sorting in US Postal Service.
 
     # from http://machinelearningmastery.com/inspirational-applications-deep-learning/
 
@@ -16,21 +16,21 @@
 *** Automatically adding sounds to silent movies [citation]
  # https://arxiv.org/pdf/1512.08512.pdf
 
-    This is very interesting demonstration of capabilities of state of the art Deep Learning models. Solely based on silent video sequence of drumming stick hitting different surfaces with different textures, the model is capable to guess the sound effect that set hitting produces. Convolutional Neural Network was trained to classify the type of surface being hit from visual cues (vibration of hit surface, movement of particles upon impact and so on). And LSTM Recurrent neural network was trained to reproduce sound patterns most similar to actual sound that was recorded in original video. Produced sounds were tested with human participants that had to distinguish synthesized sound from the real ones. Surprisingly in some cases the model fulled to test subjects.
+ This is very interesting demonstration of capabilities of state of the art Deep Learning models. Solely based on silent video sequence of drumming stick hitting different surfaces with different textures, the model is capable to guess the sound effect that set hitting produces. Convolutional Neural Network was trained to classify the type of surface being hit from visual cues (vibration of hit surface, movement of particles upon impact and so on). And [[gls:lstm][LSTM]] Recurrent neural network was trained to reproduce sound patterns most similar to actual sound that was recorded in original video. Produced sounds were tested with human participants that had to distinguish synthesized sound from the real ones. Surprisingly in some cases the model fulled to test subjects.
 
 *** Automatic machine translation [citation]
  # http://www.nlpr.ia.ac.cn/cip/ZongPublications/2015/IEEE-Zhang-8-5.pdf
 
-    Convolutional Neural Network was used to detected written text within image scenes and send to large LSTM Recurrent neural network to provide translation. Translated text was then re-rendered back to original image converting foreign text into intelligible (translated). This application was deployed by Google in 2015 to their android devices as extension for Translator application. Feature was called instant visual translation.
+ Convolutional Neural Network was used to detected written text within image scenes and send to large [[gls:lstm][LSTM]] Recurrent neural network to provide translation. Translated text was then re-rendered back to original image converting foreign text into intelligible (translated). This application was deployed by Google in 2015 to their android devices as extension for Translator application. Feature was called instant visual translation.
 
 *** Automatic written description of scene in image [citation]
  # https://arxiv.org/pdf/1411.4389v4.pdf
 
-    Already familiar combination of CNN and LSTM RNN used in this case to describe scene depicted on image. CNN was trained do categorize objects on image and LSTM was to generate description of scene. It can be seen on image [] that the results are very impressive, even in cases that the model makes mistakes.
+ Already familiar combination of [[gls:cnn][CNN]] and [[gls:lstm][LSTM]] [[gls:rnn][RNN]] used in this case to describe scene depicted on image. [[gls:cnn][CNN]] was trained do categorize objects on image and [[gls:lstm][LSTM]] was to generate description of scene. It can be seen on image [] that the results are very impressive, even in cases that the model makes mistakes.
 # 6 Frameworks
 
 ** Frameworks
-   There is wide variety of options for machine learning frameworks in general and also for CNN specifically. Namely there is a variety of tools that are centered around python programming language. All of the frameworks mentioned bellow have at least some support for GPGPU computation.
+   There is wide variety of options for machine learning frameworks in general and also for [[gls:cnn][CNN]] specifically. Namely there is a variety of tools that are centered around python programming language. All of the frameworks mentioned bellow have at least some support for GPGPU computation.
 
 *** Caffe
    - Deep learning framework implemented in C++ programming language, that also supports python API.
@@ -40,7 +40,7 @@
    - Kears is implemented in python and therefore integrates well with the massive Data Science ecosystem that Python is offering. It probably currently has one of the largest communities in deep learning. It has most monthly mentions in Arxiv database, in scientific papers dealing with deep learning.
    - Keras has very good documentation, many code examples and other resources that help users to get started very quickly.
    - It can run on top of both TensorFlow and Theano engines. Specifically in the case of TensorFlow this is very good news since it is developed by Google, which is dividing enormous amount of resources to make sure that it is one of the (or maybe even the one) fastest deep learning engines out there.
-   - Keras is supported by CUDA (cuDNN) which is very important specifically for CNN models with usage of GPU hardware.
+   - Keras is supported by CUDA (cuDNN) which is very important specifically for [[gls:cnn][CNN]] models with usage of GPU hardware.
 *** MatConvNet
    - Matlab toolbox implementing CNNs for computer vision application.
    - It has the disadvantage of being part of proprietary software
