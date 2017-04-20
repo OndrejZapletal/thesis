@@ -185,19 +185,30 @@
 
      To investigate the change of /cost function/ on given dataset it is necessary to compute the derivative of $J(\boldsymbol{\theta})$ in respect to $\boldsymbol{\theta}$
      \begin{equation}
-     \frac{\partial J(\boldsymbol{\theta})} {\partial \boldsymbol{\theta}} =
-     \frac{\partial} {\partial \boldsymbol{\theta}} \left[ \boldsymbol{y}^T \boldsymbol{y} + \boldsymbol{\theta}^T \boldsymbol{X}^T\boldsymbol{X}\boldsymbol{\theta} - 2\boldsymbol{y}^T\boldsymbol{X}\boldsymbol{\theta} \right]
+      \begin{split}
+        \frac{\partial J(\boldsymbol{\theta})} {\partial \boldsymbol{\theta}} & =
+        \frac{\partial} {\partial \boldsymbol{\theta}} \left[ \boldsymbol{y}^T \boldsymbol{y} + \boldsymbol{\theta}^T \boldsymbol{X}^T\boldsymbol{X}\boldsymbol{\theta} - 2\boldsymbol{y}^T\boldsymbol{X}\boldsymbol{\theta} \right] \\
+          & = 2\boldsymbol{X}^T\boldsymbol{X}\boldsymbol{\theta} - 2\boldsymbol{X}^T\boldsymbol{y}.
+      \end{split}
      \end{equation}
 
+     Optimal solution for $\boldsymbol{\theta}$ is found by equating the result to 0
+     \begin{equation}
+      \boldsymbol{\theta} = \left(\boldsymbol{X}^T\boldsymbol{X}\right)^{-1}\boldsymbol{X}^T\boldsymbol{y},
+     \end{equation}
+     which is actually least square optimization.
 
 ** Neural Networks
-  Neural networks are definitely inspired by biology. First attempts to created model of neuron had multiple elements equivalent with neurons of human brain. As time progressed this equivalence sized to being as important and modern neural networks models correspond to h their biological counterparts only superficially.
+  # Neural networks are definitely inspired by biology. First attempts to created model of neuron had multiple elements equivalent with neurons of human brain. As time progressed this equivalence sized to being as important and modern neural networks models correspond to h their biological counterparts only superficially.
+  - inspired by biology
+  - composed of computational units (neurons)
+  - topology
 
-*** Computational model
+*** Model
 In this case the computational model is composed of a network of nonlinear units that are processing input in several
 
 taking input and applying weights to it in
-*** Cost (loss) function
+*** Cost function
 *** Optimization algorithm
 *** Nonlinear models
 
