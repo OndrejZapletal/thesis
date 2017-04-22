@@ -115,29 +115,31 @@
      \end{equation}
      where $i$ is index of instance, $p$, is dimension of input vector.
 
-     Output scalar $y_i$ represents class of given instance.
+     Individual components of input vector has to be of unified type. In case of input data in form of image it are values for individual pixels (e.g. 0-255), in other cases it can be real values. Almost universally in machine learning it stands that input should be normalized. This presumption holds in images automatically since each pixel has to have its vales in fixed range.
+     It is very important in other types of machine learning tasks, where this is not guaranteed.
+
+     Output scalar $y_i$ represents class of given instance. Type of this output value therefore has to acquire only certain values, in other words it has to be a set of cardinality equal to number of all possible classes.
 
 **** Model
-     Model is prediction apparatus that takes input $\boldsymbol{x}_i$ to predict value of it's output $y_i$. Each model has parameters represented by vector $\boldsymbol{\theta}$, which are adjusted during the training process. One of the simplest examples of this model is linear model also called /linear regression/.
+     Model is prediction apparatus that takes input $\boldsymbol{x}_i$ to predict value of it's output $y_i$. Each model has parameters represented by vector $\boldsymbol{\theta}$, which are adjusted during the training process. Probably the simplest examples of model of this type is linear model, also called /linear regression/.
 
-     Parameters $\boldsymbol{\theta}$ of this model are:
-
+     Parameters $\boldsymbol{\theta}$ of this model are
      \begin{equation}
      \boldsymbol{\theta} = [\theta_1, \theta_2, \dotsc, \theta_p],
      \end{equation}
-     where $p$ is number of parameters equal to size of input vector.
+     where $p$ is number of parameters equal to size of input vector $\boldsymbol{x}_i$.
 
-     Prediction $\hat{y}_i$ of the model on instance $i$ is:
+     Prediction $\hat{y}_i$ of the model on instance $i$ is computed as
      \begin{equation}
-     \hat{y}_i =  \sum_{j=1}^{p} x_{ij} \theta_j,
+     \hat{y}_i =  \sum_{j=1}^{p} x_{ij} \theta_j.
      \end{equation}
 
-     Therefore predictions of the model on the entire datasets in matrix notation is:
+     Therefore predictions of the model on the entire dataset in matrix notation is
      \begin{equation}
-     \boldsymbol{\hat{y}} = \boldsymbol{X}\boldsymbol{\theta}
+     \boldsymbol{\hat{y}} = \boldsymbol{X}\boldsymbol{\theta}.
      \end{equation}
 
-     That is,
+     The same thing in expanded notation is equal to
      \begin{equation}
         \begin{bmatrix}
           \hat{y}_{1} \\
@@ -163,22 +165,20 @@
      # \end{equation}
 
 **** Cost function
-     In order to achieve the learning ability of the machine learning model it is necessary to estimate how correct the model is with its prediction. This is estimated with so called /cost function/ (also called /loss function/).
+     In order to achieve the learning ability of the machine learning algorithm it is necessary to estimate how correct the model is with its predictions. This is estimated with so called /cost function/ (also sometimes called /loss function/).
 
-     # This function has to meet certain conditions. It has to represent a performance measure of the model.
-     For the case of linear regression it is most common to use /Mean square error/.
+     This function has to have certain properties. Ability of the machine learning algorithm to learn rests on the estimation of its improvement with change of its parameters. Therefore /cost function/ has be at least partially differentiable. For the case of linear regression it is most common to use /sum of square/ error. The main reason being that derivative of this function for linear model has only one global minimum.
+
+     Cost function is defined as
      \begin{equation}
      J(\boldsymbol{\theta}) = \sum_{i=1}^{n}{\left(y_i - \hat{y_i}\right)^2} =
-     \sum_{i=0}^{n}{\left(y_i - \boldsymbol{x_i}^T \boldsymbol{\theta} \right)^2}
+     \sum_{i=0}^{n}{\left(y_i - \boldsymbol{x_i}^T \boldsymbol{\theta} \right)^2}.
      \end{equation}
 
-     In matrix notation
+     For the derivation purposes it is usually useful to express the cost function in matrix notation
      \begin{equation}
-     J(\boldsymbol{\theta}) = \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)^T \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)
+     J(\boldsymbol{\theta}) = \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)^T \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right).
      \end{equation}
-
-     # relationship between the correct
-     # Firstly it has to be differentiable.
 
 **** Optimization procedure
      The last part of learning algorithm is the optimization procedure. It consist in update of model's parameters $\boldsymbol{\theta}$ in order to improve it's prediction. In other words to find $\boldsymbol{\theta}$ such that the value of /cost function/ $J(\boldsymbol{\theta})$ for given dataset is as small as possible.
@@ -194,9 +194,9 @@
 
      Optimal solution for $\boldsymbol{\theta}$ is found by equating the result to 0
      \begin{equation}
-      \boldsymbol{\theta} = \left(\boldsymbol{X}^T\boldsymbol{X}\right)^{-1}\boldsymbol{X}^T\boldsymbol{y},
+      \boldsymbol{\theta} = \left(\boldsymbol{X}^T\boldsymbol{X}\right)^{-1}\boldsymbol{X}^T\boldsymbol{y}.
      \end{equation}
-     which is actually least square optimization.
+     # add some more sauce here !!!
 
 ** Neural Networks
   # Neural networks are definitely inspired by biology. First attempts to created model of neuron had multiple elements equivalent with neurons of human brain. As time progressed this equivalence sized to being as important and modern neural networks models correspond to h their biological counterparts only superficially.
