@@ -45,7 +45,7 @@
 # Conclusions
 #+INCLUDE: text/chapter_4_conclusions.org
 
-\bibliographystyle{plain}
+\bibliographystyle{abbrv}
 \bibliography{citation}
 # Prints list of acronyms
 \printglossary[title=List of Terms]

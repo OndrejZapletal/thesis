@@ -96,18 +96,17 @@
     # We will use a definition from \cite{book--goodfellow--2016}
 
 *** TODO Structure of machine learning algorithm
-    #     Machine learning approach to solving problems can be generalized.
-    Nearly all machine learning algorithms can be described using following components:
-    - Dataset
+    Even thought that machine learning algorithms are varied and are using different techniques its structure can be generalized. Structure of nearly all machine learning algorithms can be described using following components:
+    - Dataset specification
     - Model
     - Cost function
     - Optimization procedure
 
     # Analyze of this Description of the learning algorithm by this way
 
-    These components will be explained on /linear regression/ model due to its simplicity.
+    /Linear regression/ model will be used as a case study due to its simplicity. Dataset specification is common for all of them, but instances of the rest of components can be theoretically arbitrary swapped. This level of analysis becomes useful for building of intuition for neural networks.
 
-**** Dataset
+**** Dataset specification
      Supervised learning requires datasets with specific properties. Each dataset contains set of $n$ instances which consists of a pair of input vector $\boldsymbol{x}_i$ and output scalar $y_i$. Input vector
 
      \begin{equation}
@@ -125,7 +124,7 @@
 
      Parameters $\boldsymbol{\theta}$ of this model are
      \begin{equation}
-     \boldsymbol{\theta} = [\theta_1, \theta_2, \dotsc, \theta_p],
+     \boldsymbol{\theta}^T = [\theta_1, \theta_2, \dotsc, \theta_p],
      \end{equation}
      where $p$ is number of parameters equal to size of input vector $\boldsymbol{x}_i$.
 
@@ -186,33 +185,118 @@
      To investigate the change of /cost function/ on given dataset it is necessary to compute the derivative of $J(\boldsymbol{\theta})$ in respect to $\boldsymbol{\theta}$
      \begin{equation}
       \begin{split}
-        \frac{\partial J(\boldsymbol{\theta})} {\partial \boldsymbol{\theta}} & =
-        \frac{\partial} {\partial \boldsymbol{\theta}} \left[ \boldsymbol{y}^T \boldsymbol{y} + \boldsymbol{\theta}^T \boldsymbol{X}^T\boldsymbol{X}\boldsymbol{\theta} - 2\boldsymbol{y}^T\boldsymbol{X}\boldsymbol{\theta} \right] \\
-          & = 2\boldsymbol{X}^T\boldsymbol{X}\boldsymbol{\theta} - 2\boldsymbol{X}^T\boldsymbol{y}.
+        \frac{\partial J(\boldsymbol{\theta})} {\partial \boldsymbol{\theta}} & = \frac{\partial} {\partial \boldsymbol{\theta}} \left[ \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)^T \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right) \right] \\
+        & = \frac{\partial} {\partial \boldsymbol{\theta}} \left[ \boldsymbol{y}^T \boldsymbol{y} + \boldsymbol{\theta}^T \boldsymbol{X}^T\boldsymbol{X}\boldsymbol{\theta} - 2\boldsymbol{y}^T\boldsymbol{X}\boldsymbol{\theta} \right] \\
+        & = 2\boldsymbol{X}^T\boldsymbol{X}\boldsymbol{\theta} - 2\boldsymbol{X}^T\boldsymbol{y}.
       \end{split}
      \end{equation}
 
-     Optimal solution for $\boldsymbol{\theta}$ is found by equating the result to 0
+     The optimal solution
      \begin{equation}
-      \boldsymbol{\theta} = \left(\boldsymbol{X}^T\boldsymbol{X}\right)^{-1}\boldsymbol{X}^T\boldsymbol{y}.
+      \boldsymbol{\theta} = \left(\boldsymbol{X}^T\boldsymbol{X}\right)^{-1}\boldsymbol{X}^T\boldsymbol{y},
      \end{equation}
+     is found by equating the partial derivative of $J(\boldsymbol{\theta})$ to $0$.
      # add some more sauce here !!!
 
+
+*** TODO Regularization
+    # Important concept in machine learning is regularization.
+    As it was already mentioned, the most important aspect of machine learning is striking the balance between over and under fitting of the model. To help with this problem was devised concept of regularization. It is a technique that helps penalizes the model for its complexity.
+
+    Basic concept consists of adding a term in the /cost function/ that increases with model complexity.
+    # TBD
+
 ** Neural Networks
-  # Neural networks are definitely inspired by biology. First attempts to created model of neuron had multiple elements equivalent with neurons of human brain. As time progressed this equivalence sized to being as important and modern neural networks models correspond to h their biological counterparts only superficially.
-  - inspired by biology
-  - composed of computational units (neurons)
-  - topology
+   Neural Network is very general term describing broad family of models, due to the fact that its history goes back over 75 years.
+
+   that are somehow connected to its origins, which were derived from biology of living organism.
+   # Word this better!!
+   In its infancy the goal was mostly aimed to capture mechanisms present in the pinnacle of intelligent organisms, which is human brain.
+
+   This view is useful in describing motivations, but is necessary to point out that equivalence between neural network models and biology grew less important as the researched progressed. At the same time there is one notable exception to this which are [[glspl:cnn][CNN]] that were heavily influenced by study of visual systems of mammals.
+
+   # again is this really necessary to describe???
+   Different fields of scientific inquiry adopted these principles in different ways and as a consequence the term Neural Networks is not very descriptive. There following description will be used.
+
+   # There are 3 things that define Neural network
+
+*** Model of artificial neuron
+
+    - inputs
+    - weights
+    - bias
+    - activation function
+    -
+
+    Neuron is computational unit.
+    \begin{equation}
+    h(x) = \boldsymbol{w}^T\boldsymbol{x} + b
+    \end{equation}
+
+**** activation function
+   Main strength of neural networks is its ability to approximate the theoretically arbitrary nonlinear function. In order to do that it needs to introduce some sort of non-linearity. Exactly for this reason is each neuron equipped with activation function on its output.
+
+       \begin{equation}
+       y=\sigma(h(x)) =\sigma(\boldsymbol{w}^T\boldsymbol{x} + b)
+       \end{equation}
+
 
 *** Model
-In this case the computational model is composed of a network of nonlinear units that are processing input in several
+    Model of neural networks is much more complex then in case of /linear regression/. For this reason it
 
-taking input and applying weights to it in
+    In this case the computational model is composed of a network of nonlinear units that are processing input in several
+
+    taking input and applying weights to it in
+
+   1. [ ] Model of neuron
+
+**** Perceptron
+     Computational model that is using single unit of neuron. It defines operation for prediction and also learning algorithm that it enables to compute. Later adopted to Multilayer Perceptron which uses it as building block.
+
+
+      #+NAME: fig:neuron_model
+      #+CAPTION: Model of artificial neuron used in Perceptron
+      #+ATTR_LATEX: :width 4in
+      [[./img/figure__2__neuron_model.png]]
+
+       # This was already described in introduction chapter and therefore it might be good idea to cosolidate the two.
+     - inspired by biology
+     - composed of computational units (neurons)
+     - topology
+
+     # This might be interesting to point out, but it is not necessary!!!
+     # Neural networks are definitely inspired by biology. First attempts to created model of neuron had multiple elements equivalent with neurons of human brain. As time progressed this equivalence sized to being as important and modern neural networks models correspond to h their biological counterparts only superficially.
+
+    2. [ ] Topology of the network
+
+       # This is basically optimization
+    3. [ ] Learning algorithm
+
+    4. [ ] Activation process
+
+    Neural Network is model composed of interconnected units called neurons with topology
+
 *** Cost function
 *** Optimization algorithm
+
+*** Multilayer Perceptron (Fully Connected Neural Network)
+    In some literature there might be small difference between [[gls:mlp][MLP]] and [[gls:fcnn][FCNN]] but in this document they will be used interchangeably.
+
+    As the names suggest this model is formed by combination of multiple units typically similar to Perceptron that are group into layers which are fully interconnected in between (i.e. output of each neuron in one layer is connected to all inputs of neurons in following layer). Not all neurons in the network are the same. There are typically two types of neurons. Neurons in the output layer (called /output units/) and neurons in the rest of the network (called /hidden units/). Neurons in input layer are of the same type as neurons in hidden layer even thought they are not hidden. Only difference between the two types of neurons is in their activation function.
+
+    Activation function is a component of neural network that is subject of most dynamic research. New activation function are developed on regular basis.
+
+    # This doesn't really fit here!!!
+    Simple three layered fully connected neural network, given sufficient number of neurons in each layer, is able to approximate arbitrary continues function with arbitrary accuracy \cite{article--Kurkova--1992}.
+
+**** Output Units
+
+**** Hidden Units
+
+
 *** Nonlinear models
 
-    Problem with nonlinear models is that their optimization doesn't result in quadratic optimization there fore it is not possible to guarantee the finding of optimal solution. It is necessary to use iterative approach to solving the optimization problem
+    Problem with nonlinear models is that their optimization doesn't result in quadratic optimization therefore it is not possible to guarantee the finding of optimal solution. It is necessary to use iterative approach to solving the optimization problem
 
  they require stochastic
 
@@ -250,14 +334,20 @@ taking input and applying weights to it in
 **** Momentum
 
 *** Deep Learning in image processing
-    It was found that general *Fully Connected Neural Network* is not ideal for image processing needs. Even small images typically represents enormous amount of inputs (i.e. image of the size 64x64 pixels represents 4096 inputs).
-    Since each of these inputs has to be connected to all neurons in following layer and weight of each connection has to be memorized, this represents enormous amount of parameters. Moreover because during the learning process update of these weights is computed via matrix multiplication for larger images this can be unresolvable problem, which exacerbate with the number of hidden layers.
+    It was found that general [[gls:fcnn][FCNN]] is not ideal for image processing needs. Even small images typically represents enormous amount of inputs (i.e. image of the size $64 \times 64$ pixels represents 4096 inputs).
 
-    The structure of FCNN has another deficiency for image processing application, which is that it doesn't capture geometric properties of information from input image. In other words because individual layers are fully connected (each output in lower layer is connected to each input in higher layer) networks are not capturing any information about relation of position of individual inputs (image pixels) to each other.
+    Since each of these inputs has to be connected to all neurons in following layer and weight of each connection has to be memorized, this represents enormous amount of parameters.
+
+
+    # this is not substantiated!!!
+    # Moreover because during the learning process update of these weights is computed via matrix multiplication for larger images this can be unresolvable problem, which exacerbate with the number of hidden layers.
+
+    The structure of [[gls:fcnn][FCNN]] has another deficiency for image processing application, which is that it doesn't capture geometric properties of information from input image. In other words because individual layers are fully connected (each output in lower layer is connected to each input in higher layer) networks are not capturing any information about relation of position of individual inputs (image pixels) to each other.
 
     Third problem is that for higher depth of [[gls:fcnn][FCNN]] increases the likelihood of getting stuck in some local minima.
 
     All of these problems were solved by the specific type of [[gls:nn][NN]] model called [[glspl:cnn][CNN]] [citation]
+
     # For example in case of CNNs there is almost no need to process input image before it is used to train the model. Hiearchical extraction of image features that is automatically created by CNN is very advantages in this case.
     # of the fundamental two-dimensional property of image data.
 
@@ -273,8 +363,17 @@ taking input and applying weights to it in
    - Each layer requires rectangular input and produces rectangular output per one kernel.
 
 *** Structure of CNN
+    # Keeping up with concepts of Neuron and Topology is little more difficult in case of [[gls:cnn][CNN]]. First reason being that the structure of [[gls:cnn][CNN]] is composed of three different types of layers and the second is the fact that some of these layers atypicall and hard to describe by concept of neuron!
 
     Structure of Convolutional networks is typically composed of three different types of layers. Layer can be of Convolutional, Pooling and /Fully-connected/ type. Each type of layer has different rules for forward and error backward signal propagation.
+
+    There are no precise rules on how the structure of individual layers should be organized. What is typical is that the network has two parts. First part usually called feature extraction that is using combinations of convolutional and pooling layer. Second part called classification is using fully connected layers.
+
+    #+NAME: fig:cnn_structure
+    #+CAPTION: Structure of Convolutional Neural Network
+    #+ATTR_LATEX: :width 4in
+    [[./img/figure__2__cnn_structure.png]]
+
     # Even though there is no strict rule enforcing this, it custom to Network layers can pretty much arbitrarily combine these three types of layers (with exception of Fully-Connected layers, which always have to come last).
 
 **** Convolutional layer
@@ -331,8 +430,7 @@ taking input and applying weights to it in
 
     Secondly in /Backward Propagation/ phase the error is propagated backwards through the network and weights for individual layers are updated by its contribution on the error. Most commonly used algorithm for update of weights is /Gradient Descent/. It is not the only one used but in majority of cases the training algorithm is at least based on /Gradient descent/.
 
-**** Forward Propagation
-***** Convolution Layer
+**** Forward Propagation of Convolution Layer
       # fix this sentence
       Each convolutional layer has inputs. In case that the layer is first, it is network input (i.e individual pixels of image) in other cases, the inputs are outputs from neurons from previous layer (this is typically pooling layer).
 
@@ -353,48 +451,47 @@ taking input and applying weights to it in
 where $\sigma$ represents this non-linear function.
 equation
 
-***** Pooling layer (Max-Pooling)
+**** Forward Propagation of Pooling layer (Max-Pooling)
 
-      Feed forward operation of pooling layer is generally very simple and it constitutes in selecting of maximal value within subset
-      pooling of multiple inputs into single output.
-      Ratio is typically $4 to 1$, which means that input matrix is divided into not-overlapping sub-matrices of size $2x2$ and each of these produces 1 output. Size of sub-matrices can vary and is dependent on size of input, number of layers.
+   Feed forward operation of pooling layer is generally very simple and it constitutes in selecting of maximal value within subset
+   pooling of multiple inputs into single output.
+   Ratio is typically $4 to 1$, which means that input matrix is divided into not-overlapping sub-matrices of size $2 \times 2$ and each of these produces 1 output. Size of sub-matrices can vary and is dependent on size of input, number of layers.
 
-***** Fully Connected layer
+**** Forward Propagation of Fully Connected layer
 
-      Signal is distributed through FC layer in similar fashion as in Convolutional layer. The main difference is that weights of individual neuron connections are not shared among all neurons in one layer.
+   Signal is distributed through FC layer in similar fashion as in Convolutional layer. The main difference is that weights of individual neuron connections are not shared among all neurons in one layer.
 
-**** Backward Propagation
-***** Convolution Layer
-      # To estimate contribution of convolutional layer to the total error of CNN,
-      # there needs to be computed gradient of error function
-      Following equasions were lifted from \cite{book--goodfellow--2016}.
+**** Backward Propagation of Convolution Layer
+     # To estimate contribution of convolutional layer to the total error of CNN,
+     # there needs to be computed gradient of error function
+     Following equasions were lifted from \cite{book--goodfellow--2016}.
 
-      \begin{equation}
-      \frac{\partial E} {\partial \omega_{ab}}
-      =\sum_{i=0}^{N-m} \sum_{j=0}^{N-m} \frac{\partial E}{\partial x_{ij}^{l}} \frac{\partial x_{ij}^{l}} {\partial \omega_{ab}}
-      =\sum_{i=0}^{N-m} \sum_{j=0}^{N-m} \frac{\partial E}{\partial x_{ij}^{l}} y_{(i+a)(j+b)}^{l-1}
-      \end{equation}
+     \begin{equation}
+     \frac{\partial E} {\partial \omega_{ab}}
+     =\sum_{i=0}^{N-m} \sum_{j=0}^{N-m} \frac{\partial E}{\partial x_{ij}^{l}} \frac{\partial x_{ij}^{l}} {\partial \omega_{ab}}
+     =\sum_{i=0}^{N-m} \sum_{j=0}^{N-m} \frac{\partial E}{\partial x_{ij}^{l}} y_{(i+a)(j+b)}^{l-1}
+     \end{equation}
 
-      \begin{equation}
-      \frac{\partial E} {\partial x_{ij}^{(l)}}
-      =\frac{\partial E} {\partial y_{ij}^{l}} \frac{\partial y_{ij}^{l}} {\partial x_{ij}^{l}}
-      =\frac{\partial E} {\partial y_{ij}^{l}} \frac{\partial} {\partial x_{ij}^{l}} \left( \sigma\left(x_{ij}^{l}\right) \right)
-      =\frac{\partial E} {\partial y_{ij}^{l}} \sigma' \left( x_{ij}^{l} \right)
-      \end{equation}
+     \begin{equation}
+     \frac{\partial E} {\partial x_{ij}^{(l)}}
+     =\frac{\partial E} {\partial y_{ij}^{l}} \frac{\partial y_{ij}^{l}} {\partial x_{ij}^{l}}
+     =\frac{\partial E} {\partial y_{ij}^{l}} \frac{\partial} {\partial x_{ij}^{l}} \left( \sigma\left(x_{ij}^{l}\right) \right)
+     =\frac{\partial E} {\partial y_{ij}^{l}} \sigma' \left( x_{ij}^{l} \right)
+     \end{equation}
 
-      \begin{equation}
-      \frac{\partial E} {\partial y_{ij}^{l-1}}
-      =\sum_{a=0}^{m-1} \sum_{b=0}^{m-1} \frac{\partial E} {\partial x_{(i-a)(j-b)}^{l}} \frac{\partial x_{(i-a)(j-b)}^{l}} {\partial  y_{ij}^{l-1}}
-      =\sum_{a=0}^{m-1} \sum_{b=0}^{m-1} \frac{\partial E} {\partial x_{(i-a)(j-b)}^{l}} \omega_{ab}
-      \end{equation}
+     \begin{equation}
+     \frac{\partial E} {\partial y_{ij}^{l-1}}
+     =\sum_{a=0}^{m-1} \sum_{b=0}^{m-1} \frac{\partial E} {\partial x_{(i-a)(j-b)}^{l}} \frac{\partial x_{(i-a)(j-b)}^{l}} {\partial  y_{ij}^{l-1}}
+     =\sum_{a=0}^{m-1} \sum_{b=0}^{m-1} \frac{\partial E} {\partial x_{(i-a)(j-b)}^{l}} \omega_{ab}
+     \end{equation}
 
-***** Pooling layer (Max-Pooling)
-      As mentioned in section for /forward propagation/, there is no explicit learning process happening in pooling layer. Error is propagated backwards depending on how the signal was propagated forward. In case of /Max-pooling/ layer the error is propagated only to the unit with maximal output in /forward propagation/ phase (in other words to the winner of pooling). The error is propagated very sparsely, as result.
+**** Backward Propagation of Pooling layer (Max-Pooling)
+     As mentioned in section for /forward propagation/, there is no explicit learning process happening in pooling layer. Error is propagated backwards depending on how the signal was propagated forward. In case of /Max-pooling/ layer the error is propagated only to the unit with maximal output in /forward propagation/ phase (in other words to the winner of pooling). The error is propagated very sparsely, as result.
 
-      In case of different pooling method it is adjusted accordingly (i.e. for /average pooling/ the error is propagated according to contribution of individual neurons).
+     In case of different pooling method it is adjusted accordingly (i.e. for /average pooling/ the error is propagated according to contribution of individual neurons).
 
-***** Fully connected layer
-      Training mechanism for FC layer if following the same principles as in FCNN, which is not a subject of detailed discussed here. It is similar to one for convolution layers and from our perspective is only important that the first (last in the sense of /Backward Propagation/) FC layer propagates error gradient of each neuron in it, that is then send to all neurons in preceding (following in the sense of /Backward Propagation/) layer.
+**** Backward Propagation of Fully connected layer
+     Training mechanism for FC layer if following the same principles as in FCNN, which is not a subject of detailed discussed here. It is similar to one for convolution layers and from our perspective is only important that the first (last in the sense of /Backward Propagation/) FC layer propagates error gradient of each neuron in it, that is then send to all neurons in preceding (following in the sense of /Backward Propagation/) layer.
 *** Advantages of CNN
     # Number of parameters
     # computational demand
