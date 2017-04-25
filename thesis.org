@@ -8,6 +8,7 @@
 # Including header
 #+INCLUDE: text/header.org
 
+#+INCLUDE: text/misc__abbreviations.org
 # ##################################################################
 # ###############        Begining of Document        ###############
 # ##################################################################
@@ -31,8 +32,6 @@
 
 \lstlistoflistings
 
-#+INCLUDE: text/misc__abbreviations.org
-
 # Chapter I Introduction
 #+INCLUDE: text/chapter_1_introduction.org
 
@@ -47,5 +46,6 @@
 
 \bibliographystyle{abbrv}
 \bibliography{citation}
+
 # Prints list of acronyms
 \printglossary[title=List of Terms]

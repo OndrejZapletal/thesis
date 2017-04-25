@@ -1,8 +1,8 @@
 * Theory
-  In this chapter will discussed concepts of Artificial intelligence, Image processing, Machine learning in general, Neural networks and finally the Convolutional neural networks.
+  In this chapter will be discussed concepts of Artificial intelligence, Image processing, Machine learning in general, [[glspl:nn][NN]] and finally the [[glspl:cnn][CNN]].
 
 ** Artificial Intelligence
-   Field of [[gls:ai][AI]] is very general and spawns across several different disciplines (e.g. computer science, mathematics, philosophy, economics and even ethics). This suggests that this field is very broad and as such it won't be attempted in this document to be exhaustive or in no way complete.
+   Field of [[gls:ai][AI]] is very general and spawns across several different disciplines (e.g. mathematics, computer science, philosophy, economics and even ethics). This suggests that this field is very broad and can be tackled from many different view points. Therefore this description will not be be very exhaustive. For more broad and complex dive into subject refer to \cite{book--russell--2003}.
 
    It could be characterized by a pursuit of construction of intelligent agents. In other words attempt to create intelligent machines are either thinking or can be perceived as thinking ones.
 
@@ -10,11 +10,11 @@
 
    First attempts to solve the vision problems were tackled from so called bottom up approach where system was instructed with hard-coded set of rules that were describing rules of vision. It was expected that as the understanding of mechanisms that allows humans to extract information from visual scene then these hard-coded systems can be fed more information in order to create more capable systems. Problem with this approach was that it highly underestimated the difficulty of formalization of these rules that could be prescribed into the intelligent system.
 
-   This insight lead the researchers to postulating that in order to solve this problem there needs to be introduction of process that would allow the [[gls:ai][AI]] systems to extract patterns from provided data. In other words introduction of systems that are able to learn. Process that enables systems to learn is generally called /machine learning/.
+   This insight lead the researchers to postulating that in order to solve this problem there needs to be introduction of process that would allow the [[gls:ai][AI]] systems to extract patterns from provided data. In other words introduction of systems that are able to learn. Process that enables systems to learn is generally called [[gls:machine learning][machine learning]].
 
-   There are several types of machine learning tasks. Most commonly encountered task is called /classification/. is the task to classify instance of input into correct discreet and predominantly finite class. Another typical type of machine learning task is called regression, which is based on the input data trying to estimate value of unknown quantity. Usually integer or real type.
+   There are several types of machine learning tasks. Most commonly encountered task is called [[gls:classification][classification]], which is the task to classify instance of input into correct discreet and predominantly finite class. Another typical type of machine learning task is called regression, which is based on the input data trying to estimate value of unknown quantity. Usually integer or real type.
 
-   Rest of this publication it will be exclusively dealing with /classification/ learning tasks.
+   Rest of this document will be exclusively dealing with [[gls:classification][classification]] learning tasks.
 
    # Basics of image processing techniques.
 ** TODO Image Processing
@@ -37,74 +37,56 @@
 
    Second problem is often the fact that because image has to be preprocessed several times before it is fed into machine learning model it demands extra time and resources. This can created problems in training phase but also during operation after deployment.
 
-   This is less of a problem with technical innovation and today it can be solved by very fast [[gls:dsp][DSP]], but it still is not negligible effect and it can have negative affect on the price of the solution. This is where Deep learning models starts to exhibit significant advantage.
+   This is less of a problem with technical innovation and today it can be solved by very fast [[gls:dsp][DSP]], but it still is not negligible effect and it can have negative affect on the price of the solution. This is where [[gls:deep learning][DL]] models starts to exhibit significant advantage.
 
-   Deep Learning models are in theory capable of capturing complex (higher order) features of the input due to the fact they can learn very high level of abstraction from even very low level features. And what is even more important, is the fact that Deep learning model in theory doesn't need any kind (or very little) of preprocessing. Input image can be directly connected as input into Deep Network.
+   [[Gls:deep learning][DL]] models are in theory capable of capturing complex (higher order) features of the input due to the fact they can learn very high level of abstraction from even very low level features. And what is even more important, is the fact that [[gls:deep learning][DL]] model in theory doesn't need any kind (or very little) of preprocessing. Input image can be directly connected as input into Deep Network.
 
    # Basics of Machine learning
 ** Machine Learning
-   # REMOVE:
-   # It is necessary to properly define machine learning before we move forward. There are many valid definitions that may differ but in this text we will adhere  to the following.
+   # TODO: REMOVE
+   # It is necessary to properly define machine learning before we move forward. There are many valid definitions that may differ but in this text we will adhere to the following.
    # Field of Machine learning is a subset of [[gls:ai][AI]] that is describing tools that can be used to solve problems.
 
-   As previously described Machine learning is a process that is used to create models that are able to extract information from data to solve given problem and consequently automatically improve their performance. There are typically two different types of machine learning approaches:
+   As previously described Machine learning is a process that is used to create models that are able to extract information from data to solve given problem and consequently automatically improve their performance.
+
+   Interesting perspective that can be used is to view machine learning as form of information compression. Where machine learning model is trying to extract information from input data in such a way that the amount of a data used to save it is reduced while the information contained within is preserved.
+
+   There are typically two different types of machine learning approaches:
    - Unsupervised Learning
    - Supervised Learning
 
-   # ??? Maybe find better word for this
+   # TODO: Maybe find better word for this???
    Both of these are typically used for different kinds of machine learning tasks.
 
-*** TODO Unsupervised learning
-    In this learning approach the model is training by observing new data and extracting patterns in the date without being instructed of what they are. Interesting perspective that can be used to view this approach is to take unsupervised learning as form of information compression. Where model is trying to extract data from input in such a way that reduces the input while preserving the information contained within.
+**** Unsupervised learning
+     In this learning approach the model is training by observing new data and extracting patterns in the date without being instructed of what they are. Opposed to supervised learning that is described bellow, the advantage of this approach is that the model is able to learn from data without supervision (as the name suggests). This means that there is no need for input data to be annotated, therefore it takes much less time and resources to deploy this model in practice.
 
-    # this and the pharagraf bellow sais the same thing !!!
-    Opposed to supervised learning that is described bellow the advantage of this approach that model is able to learn from data, as the name suggests, without supervision. This means that  there is no need for input data to be annotated, therefore it takes much less time and resources to deploy this model in practice.
+     The biggest hurdle of supervised learning approach in real world applications is to obtain appropriate data. Appropriate data in this context mean, data that were somehow classified into different categories, which can be very tedious and slow process.
 
-    For real life task with supervised learning approach the biggest hurdle is to find appropriate data that could be used. Appropriate data in this context mean, data that were somehow classified into different categories, which can be very tedious and slow process.
+     Majority of unsupervised learning algorithms belong to group called clustering algorithms. These algorithms are centered around the idea to analyze geometric clustering of data in input space to determined their affiliation. This is achieved by the presupposition that data points clustering in input space are likely to exhibit similar properties. Examples of these models are:
 
-    There is several different approaches to unsupervised learning. As main example there is [[gls:pca][PCA]], that is mainly used in statistical analysis of data. Another very important group of unsupervised learning models are clustering models, which are analyzing clustering of values in the input space and based on this information it assigns output values that are likely to represent similar properties. One of the models that is used often is called /k-means/ [citation]. Another model that is representative of this group that is at the same time member of family of neural networks and was already mentioned is called [[glspl:som][SOM]].
+     - [[gls:k-means][K-MEANS]] - clustering model \cite[p.~460--462]{book--hastie--2008};
+     - [[glspl:som][SOM]] - instance based \cite{book--kohonen--2001};
+     - [[gls:pca][PCA]] - dimensionality reduction \cite[p.~534--544]{book--hastie--2008}.
 
-    # In following text we will only deal with supervised learning.
+     Since unsupervised learning methods typically are not very useful for image classification, following text will be only dealing with supervised learning methods.
 
-*** TODO Supervised learning
-    Supervised learning approach is most commonly used for the classification tasks. As was already mentioned this approach requires training data to be in specific format. Namely each instance has to have a class that corresponds to a type of the instance.
+**** Supervised learning
+     Supervised learning approach is more commonly used. This approach requires training data with specific format. Each instance has to have assigned label that is used to learn the algorithm. These labels provide the supervision for the learning algorithm and are used to estimate learning error.
 
-    In the first approximation it could be said that the task of supervised machine learning is to model relationship between the input output data most accurately. The problem with this is that in the real world problems there is never enough data to capture true relationship between the two. Therefore the true task of machine learning is the attempt to infer true relationship by observing incomplete picture.
+     # TODO: add figure
 
-    Therefore the most important property of machine learning model is its generalization ability. That is ability to produce meaningful results on data that were not previously observed.
+     Supervised learning approach can be used to solve many different tasks. This document will concentrate only on the task of classification.
 
-    #+NAME: fig:over_under_fitting
-    #+CAPTION: Figure shows different levels of generalization of model
-    [[./img/figure__2__over_under_fitting.png]]
-
-    Generalization ability is dependent on complexity of the model and its relationship to complexity of underling problem. When model doesn't capture complexity of the problem sufficiently it is described as under fitting. In cases that the complexity of model is exceeds the complexity of underling problem then this phenomenon is called over fitting.
-
-    In both of these extremes the generalization ability suffers. In the former case the model is unable to capture true intricacies of the problem and therefore is unable to reliably predict desired output. In the latter case it tries to capture even the most subtle data perturbation that might be in fact a result of stochastic nature of the problem and not the real underlying relationship. This can be caused the fact that input data is missing some variable that is necessary to capture the true relationship. This fact is unavoidable and it therefore has to be taken into account when designing machine learning model. Depiction of theses phenomena in case of two variable input is on [[fig:over_under_fitting]].
-
-    #+NAME: fig:model_complexity
-    #+CAPTION: Figure shows relationship between model complexity and resulting error.
-    #+ATTR_LATEX: :width 4in
-    [[./img/figure__2__model_complexity.png]]
-
-    Typically the machine learning model is trained on as much of input data as possible in order to achieve the best performance possible. At the same time its error rate has to be verified on independent input data to check whether the generalization ability is not deteriorating. This is typically achieved by splitting available input data into training and testing set (usually in 4:1 ratio for training to test data). Model is trained with training data only and the performance of the model is tested on the test data. Relationship between test and train error can be found on figure [[fig:test_vs_training_error]]. Even though that the true generalization error can never be truly observed its approximation by test error rate is sufficient for majority of machine learning tasks.
-
-    #+NAME: fig:test_vs_training_error
-    #+CAPTION: Different approach that examines the relationship between the model complexity and its ultimate accuracy is the relationship between training and testing error.
-    #+ATTR_LATEX: :width 4in
-    [[./img/figure__2__test_vs_training_error.png]]
-
-    # We will use a definition from \cite{book--goodfellow--2016}
-
-*** TODO Structure of machine learning algorithm
+*** Structure of machine learning algorithm
     Even thought that machine learning algorithms are varied and are using different techniques its structure can be generalized. Structure of nearly all machine learning algorithms can be described using following components:
     - Dataset specification
     - Model
     - Cost function
     - Optimization procedure
 
-    # Analyze of this Description of the learning algorithm by this way
-
-    /Linear regression/ model will be used as a case study due to its simplicity. Dataset specification is common for all of them, but instances of the rest of components can be theoretically arbitrary swapped. This level of analysis becomes useful for building of intuition for neural networks.
+    # TODO: Finish the thought
+    A model of [[Gls:linear regression][Linear regression]] will be used as a case study to explain individual components mainly due to its simplicity. From the listed components the Dataset specification is usually the same for all different supervised learning algorithms. The other three components can vary dramatically. This level of analysis becomes useful for building of intuition for [[glspl:nn][NN]] and will be used to explain its individual components.
 
 **** Dataset specification
      Supervised learning requires datasets with specific properties. Each dataset contains set of $n$ instances which consists of a pair of input vector $\boldsymbol{x}_i$ and output scalar $y_i$. Input vector
@@ -120,7 +102,7 @@
      Output scalar $y_i$ represents class of given instance. Type of this output value therefore has to acquire only certain values, in other words it has to be a set of cardinality equal to number of all possible classes.
 
 **** Model
-     Model is prediction apparatus that takes input $\boldsymbol{x}_i$ to predict value of it's output $y_i$. Each model has parameters represented by vector $\boldsymbol{\theta}$, which are adjusted during the training process. Probably the simplest examples of model of this type is linear model, also called /linear regression/.
+     Model is prediction apparatus that takes input $\boldsymbol{x}_i$ to predict value of it's output $y_i$. Each model has parameters represented by vector $\boldsymbol{\theta}$, which are adjusted during the training process. Probably the simplest examples of model of this type is linear model, also called [[gls:linear regression][linear regression]].
 
      Parameters $\boldsymbol{\theta}$ of this model are
      \begin{equation}
@@ -158,31 +140,32 @@
         \end{bmatrix}.
      \end{equation}
 
+     # TODO: This probably will not fit anywhere!!!
      # It most general case it can be viewed as model that is generating probability distribution.
      # \begin{equation}
      # p(y \mid \boldsymbol{x}; \boldsymbol{\theta})
      # \end{equation}
 
 **** Cost function
-     In order to achieve the learning ability of the machine learning algorithm it is necessary to estimate how correct the model is with its predictions. This is estimated with so called /cost function/ (also sometimes called /loss function/).
+     In order to achieve the learning ability of the machine learning algorithm it is necessary to estimate how correct the model is with its predictions. This is estimated with so called [[gls:cost function][cost function]] (also sometimes called [[gls:loss function][loss function]]).
 
-     This function has to have certain properties. Ability of the machine learning algorithm to learn rests on the estimation of its improvement with change of its parameters. Therefore /cost function/ has be at least partially differentiable. For the case of linear regression it is most common to use /sum of square/ error. The main reason being that derivative of this function for linear model has only one global minimum.
+     This function has to have certain properties. Ability of the machine learning algorithm to learn rests on the estimation of its improvement with change of its parameters. Therefore [[gls:cost function][cost function]] has be at least partially differentiable. For the case of linear regression it is most common to use [[gls:sum of square][sum of square]] error. The main reason being that derivative of this function for linear model has only one global minimum.
 
-     Cost function is defined as
+     [[Gls:cost function][Cost function]] is defined as
      \begin{equation}
      J(\boldsymbol{\theta}) = \sum_{i=1}^{n}{\left(y_i - \hat{y_i}\right)^2} =
      \sum_{i=0}^{n}{\left(y_i - \boldsymbol{x_i}^T \boldsymbol{\theta} \right)^2}.
      \end{equation}
 
-     For the derivation purposes it is usually useful to express the cost function in matrix notation
+     For the optimization purposes it is usually useful to express the [[gls:cost function][cost function]] in matrix notation
      \begin{equation}
      J(\boldsymbol{\theta}) = \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)^T \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right).
      \end{equation}
 
 **** Optimization procedure
-     The last part of learning algorithm is the optimization procedure. It consist in update of model's parameters $\boldsymbol{\theta}$ in order to improve it's prediction. In other words to find $\boldsymbol{\theta}$ such that the value of /cost function/ $J(\boldsymbol{\theta})$ for given dataset is as small as possible.
+     The last part of learning algorithm is the optimization procedure. It consist of update of model's parameters $\boldsymbol{\theta}$ in order to improve it's prediction. In other words to find $\boldsymbol{\theta}$ such that the value of [[gls:cost function][cost function]] $J(\boldsymbol{\theta})$ for given dataset is as small as possible.
 
-     To investigate the change of /cost function/ on given dataset it is necessary to compute the derivative of $J(\boldsymbol{\theta})$ in respect to $\boldsymbol{\theta}$
+     To investigate the change of [[gls:cost function][cost function]] on given dataset it is necessary to compute the derivative of $J(\boldsymbol{\theta})$ in respect to $\boldsymbol{\theta}$
      \begin{equation}
       \begin{split}
         \frac{\partial J(\boldsymbol{\theta})} {\partial \boldsymbol{\theta}} & = \frac{\partial} {\partial \boldsymbol{\theta}} \left[ \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)^T \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right) \right] \\
@@ -195,152 +178,242 @@
      \begin{equation}
       \boldsymbol{\theta} = \left(\boldsymbol{X}^T\boldsymbol{X}\right)^{-1}\boldsymbol{X}^T\boldsymbol{y},
      \end{equation}
-     is found by equating the partial derivative of $J(\boldsymbol{\theta})$ to $0$.
-     # add some more sauce here !!!
+     is found by equating the partial derivative of $J(\boldsymbol{\theta})$ to $0$. Only condition is that $\boldsymbol{X}^T\boldsymbol{X}$ has to be non singular.
+     # TODO: add some more sauce here !!!
+
+*** TODO Model complexity
+
+    In the first approximation it could be said that the task of supervised machine learning is to model relationship between the input output data most accurately. The problem with this is that in the real world problems there is never enough data to capture true relationship between the two. Therefore the task of machine learning is the attempt to infer true relationship by observing incomplete picture.
+
+     Therefore the most important property of machine learning model is its generalization ability. That is ability to produce meaningful results on data that were not previously observed.
+
+     # TODO: Try to find better image depicting the sam thing
+     #+NAME: fig:over_under_fitting
+     #+CAPTION: Figure shows different levels of generalization of model
+     [[./img/figure__2__over_under_fitting.png]]
+
+     Generalization ability is dependent on complexity of the model and its relationship to complexity of underling problem. When model doesn't capture complexity of the problem sufficiently it is described as under fitting. In cases that the complexity of model is exceeds the complexity of underling problem then this phenomenon is called over fitting.
+
+     In both of these extremes the generalization ability suffers. In the former case the model is unable to capture true intricacies of the problem and therefore is unable to reliably predict desired output. In the latter case it tries to capture even the most subtle data perturbation that might be in fact a result of stochastic nature of the problem and not the real underlying relationship. This can be caused the fact that input data is missing some variable that is necessary to capture the true relationship. This fact is unavoidable and it therefore has to be taken into account when designing machine learning model. Depiction of theses phenomena in case of two variable input is on [[fig:over_under_fitting]].
+
+     #+NAME: fig:model_complexity
+     #+CAPTION: Figure shows relationship between model complexity and resulting error.
+     #+ATTR_LATEX: :width 4in
+     [[./img/figure__2__model_complexity.png]]
+
+     Typically the machine learning model is trained on as much of input data as possible in order to achieve the best performance possible. At the same time its error rate has to be verified on independent input data to check whether the generalization ability is not deteriorating. This is typically achieved by splitting available input data into training and testing set (usually in 4:1 ratio for training to test data). Model is trained with training data only and the performance of the model is tested on the test data. Relationship between test and train error can be found on figure [[fig:test_vs_training_error]]. Even though that the true generalization error can never be truly observed its approximation by test error rate is sufficient for majority of machine learning tasks.
+
+     #+NAME: fig:test_vs_training_error
+     #+CAPTION: Different approach that examines the relationship between the model complexity and its ultimate accuracy is the relationship between training and testing error.
+     #+ATTR_LATEX: :width 4in
+     [[./img/figure__2__test_vs_training_error.png]]
 
 
-*** TODO Regularization
-    # Important concept in machine learning is regularization.
-    As it was already mentioned, the most important aspect of machine learning is striking the balance between over and under fitting of the model. To help with this problem was devised concept of regularization. It is a technique that helps penalizes the model for its complexity.
+**** Regularization
+     As it was already mentioned, the most important aspect of machine learning is striking the balance between over and under fitting of the model. To help with this problem was devised concept of regularization. It is a technique that helps penalizes the model for its complexity.
 
-    Basic concept consists of adding a term in the /cost function/ that increases with model complexity.
-    # TBD
+     Basic concept consists of adding a term in the [[gls:cost function][cost function]] that increases with model complexity.
+     # TODO: TBD
 
 ** Neural Networks
-   Neural Network is very general term describing broad family of models, due to the fact that its history goes back over 75 years.
+   [[Gls:nn][NN]] is very general term describing broad family of models, due to a fact that its history goes back over 75 years. This situation often leads to confusion of some concepts. Therefore brief history of the subject is laid out.
 
-   that are somehow connected to its origins, which were derived from biology of living organism.
-   # Word this better!!
-   In its infancy the goal was mostly aimed to capture mechanisms present in the pinnacle of intelligent organisms, which is human brain.
+*** History
 
-   This view is useful in describing motivations, but is necessary to point out that equivalence between neural network models and biology grew less important as the researched progressed. At the same time there is one notable exception to this which are [[glspl:cnn][CNN]] that were heavily influenced by study of visual systems of mammals.
+    # TODO: Try to find place for this or delete!!!
+    # Perceptron model in [picture citation] has multiple inputs $x_1,...,x_n$ that are weighted $w_1,...,w_n$ and summed together. Additionally each neuron has bias $b$ that controls its weight.
+    # Result is squashed through nonlinear activation function to produce output. Depending on the application, output is bounded between values 0 to 1 or -1 to 1.
 
-   # again is this really necessary to describe???
-   Different fields of scientific inquiry adopted these principles in different ways and as a consequence the term Neural Networks is not very descriptive. There following description will be used.
+    # TODO: assign citation
+    # (citation) http://web.csulb.edu/~cwallis/artificialn/History.htm
+    # https://upload.wikimedia.org/wikipedia/commons/6/60/ArtificialNeuronModel_english.png
+    # https://commons.wikimedia.org/wiki/File:ArtificialNeuronModel_english.png
 
-   # There are 3 things that define Neural network
+    History of [[glspl:nn][NN]] can be arguably dated to 1943, when Warren Mcculloch and Walter Pitts devised mathematical model inspired by the biology of neuron cell found in brains \cite{article--mcculloch-pitts--1943}.
 
-*** Model of artificial neuron
+    This inspired the invention of [[gls:perceptron][Perceptron]], created in 1958 by Frank Rosenblatt. Perceptron used very simple model mimicking artificial neuron that was based on mathematical model of Pitts and Mcculloch. Model of [[gls:perceptron][Perceptron]] also encompassed an algorithm direct learning from data.
 
-    - inputs
-    - weights
-    - bias
-    - activation function
-    -
+    From the beginning [[gls:perceptron][Perceptron]] seemed promising, but it was soon discovered that it had severe limitations. Most prominent voice of criticism was Marvin Minsky, who published book called Perceptrons \cite{book--minsky-papert--1969}. The criticism was centered on the fact that [[gls:perceptron][Perceptron]] model was unable to solve complex problems. Among others the book contained mathematical proof that [[gls:perceptron][Perceptron]] is unable to solve simple XOR problem. More generally the [[gls:perceptron][Perceptron]] is only capable to solve linearly separable problems. Even though according to Minsky this criticism wasn't malicious, it stifled the interest in [[glspl:nn][NN]] for over a decade.
 
-    Neuron is computational unit.
-    \begin{equation}
-    h(x) = \boldsymbol{w}^T\boldsymbol{x} + b
-    \end{equation}
+    # TODO: questionable update!!!
+    # also add explanantion about equivalnce to FCNN.
+    Interest in [[glspl:nn][NN]] was rejuvenated in the early 80's by the invention of [[gls:back-propagation][back-propagation]] learning algorithm, which enabled the possibility to use multiple [[glspl:perceptron][Perceptrons]] to form networks. [[Glspl:perceptron][Perceptrons]] could also be stacked upon each other to form layers. [[gls:nn][NN]] of this type are commonly called [[gls:mlp][MLP]].
 
-**** activation function
-   Main strength of neural networks is its ability to approximate the theoretically arbitrary nonlinear function. In order to do that it needs to introduce some sort of non-linearity. Exactly for this reason is each neuron equipped with activation function on its output.
+    This simple improvement addressed majority of previously raised concerns and enable the application of [[glspl:nn][NN]] in many different technical domains with moderate success.
 
-       \begin{equation}
-       y=\sigma(h(x)) =\sigma(\boldsymbol{w}^T\boldsymbol{x} + b)
-       \end{equation}
+    In 80's and 90's the interest in [[glspl:nn][NN]] plateaued again, and general research of [[gls:ai][AI]] was more focused on other (typically less complex) machine learning techniques. In the realm of [[gls:classification][classification]] problems there were several notable examples ([[gls:svm][SVM]], [[gls:ensemble models][Ensemble models]] and [[gls:random forest][Random Forest]]). [[gls:ai][AI]] research community also developed several other paradigms of [[glspl:nn][NN]] that were similarly inspired by biology of human brain but took different approaches. Most important examples were [[gls:som][SOM]] and [[gls:rnn][RNN]] (e.g. [[gls:hopfields networks][Hopfields Networks]]).
 
+    By the year 2000 there was very few research groups that were devoting enough attention to the [[glspl:nn][NN]]. There was also certain disdain for [[glspl:nn][NN]] in academia and [[gls:ai][AI]] research community. Success of [[glspl:nn][NN]] that was promised almost half a century ago was finally encountered around 2006, when the first networks with large number of [[glspl:hidden layer][hidden layer]] was successfully trained. This led to mainstream adaption of umbrella term [[gls:deep learning][DL]] which typically refers to [[gls:dnn][DNN]]. The word [[gls:deep][Deep]] signifies that networks have large number of [[glspl:hidden layer][hidden layer]].
 
-*** Model
-    Model of neural networks is much more complex then in case of /linear regression/. For this reason it
+    The key theoretical insight was that to learn complicated functions that can represent high-level abstractions (e.g. vision recognition, language understanding etc.) there is a need for [[gls:deep][deep]] architecture.
 
-    In this case the computational model is composed of a network of nonlinear units that are processing input in several
+    [[glspl:nn][NN]] in the times before [[glspl:dnn][DNN]] typically had only 1 or 2 [[glspl:hidden layer][hidden layer]]. These are today often called shallow networks. Typical Deep Networks can have number of [[glspl:hidden layer][hidden layer]] in order of tens, but in some cases even hundreds [citation]
+    # https://www.microsoft.com/en-us/research/publication/foundations-and-trends-in-signal-processing-deep-learning-methods-and-aplications-now-publishers/
 
-    taking input and applying weights to it in
+    Even though that progress of Neural Network into direction of structures with high number of [[glspl:hidden layer][hidden layer]] was obvious, its training was unsolved technical problem for very long time. There were basically 3 reasons why this breakthrough didn't come sooner.
+    1. There were no efficient approach allowing number of [[glspl:hidden layer][hidden layer]] to scale.
+    2. There wasn't enough of labeled data to effectively train the [[gls:nn][NN]].
+    3. The computational hardware wasn't powerful enough to train sufficiently large and complex networks effectively.
 
-   1. [ ] Model of neuron
+    # TODO: add citation
+    First problem was tackled by invention of [[glspl:cnn][CNN]] [citation].
+    # LeCunn 1989
+    Second problem was solved simply when there was more data available. This was mainly achieved thanks to effort of large companies (Google, Facebook, YouTube, etc.) but also with help of large community of professionals and hobbyists in data sciences.
 
-**** Perceptron
-     Computational model that is using single unit of neuron. It defines operation for prediction and also learning algorithm that it enables to compute. Later adopted to Multilayer Perceptron which uses it as building block.
+    Both innovation in computational hardware and improvement of training methods were needed to solve the third problem. One of the technical breakthroughs was utilization of [[gls:gpgpu][GPGPU]]. Thanks to the fact that training process of [[glspl:nn][NN]] is typically large number of simple consequent computations, there is a great potential for parallelization (this is specifically true in case of [[glspl:cnn][CNN]]).
 
+    # #######################################################################################
+
+*** Theory
+    # #######################################################################################
+
+    # Remove!!
+    # that are somehow connected to its origins, which were derived from biology of living organism.
+
+    # Word this better!!
+    In its infancy the goal was mostly aimed to capture mechanisms present in the pinnacle of intelligent organisms, which is human brain.
+
+    This view is useful in describing motivations, but it is necessary to point out that equivalence between [[gls:nn][NN]] models and biology grew less important as the researched progressed. At the same time there is one notable exception to this which are [[glspl:cnn][CNN]] that were heavily influenced by study of visual systems of mammals.
+
+    # TODO: This needs an ending!!!
+    Different fields of scientific inquiry adopted these principles in different ways and as a consequence the term [[glspl:nn][NN]] is not very descriptive. There following description will be used.
+
+***** Perceptron
+      Computational model that is using single unit of neuron. It defines operation for prediction and also learning algorithm that it enables to compute. Later adopted to [[gls:mlp][MLP]] which uses it as building block.
 
       #+NAME: fig:neuron_model
       #+CAPTION: Model of artificial neuron used in Perceptron
       #+ATTR_LATEX: :width 4in
       [[./img/figure__2__neuron_model.png]]
 
-       # This was already described in introduction chapter and therefore it might be good idea to cosolidate the two.
-     - inspired by biology
-     - composed of computational units (neurons)
-     - topology
+      # TODO:
+      # This was already described in introduction chapter and therefore it might be good idea to cosolidate the two.
+      - inspired by biology
+      - composed of computational units (neurons)
+      - topology
 
-     # This might be interesting to point out, but it is not necessary!!!
-     # Neural networks are definitely inspired by biology. First attempts to created model of neuron had multiple elements equivalent with neurons of human brain. As time progressed this equivalence sized to being as important and modern neural networks models correspond to h their biological counterparts only superficially.
 
-    2. [ ] Topology of the network
+***** Model
+      Model of [[gls:nn][NN]] is much more complex then in case of [[gls:linear regression][linear regression]].
 
-       # This is basically optimization
-    3. [ ] Learning algorithm
+      Again because it can widely vary the discussion is only concentrated on model of neuron in [[gls:mlp][MLP]].
 
-    4. [ ] Activation process
+      For this reason it
 
-    Neural Network is model composed of interconnected units called neurons with topology
+      In this case the computational model is composed of a network of nonlinear units that are processing input in several
 
-*** Cost function
-*** Optimization algorithm
+      taking input and applying weights to it in
+
+      # TODO: Try to compose this into the structure
+      # There are 3 things that define Neural network
+***** Model of artificial neuron
+      Neuron is computational unit.
+      \begin{equation}
+      h(x) = \boldsymbol{w}^T\boldsymbol{x} + b
+      \end{equation}
+
+       # TODO: This might be interesting to point out, but it is not necessary!!!
+       # Neural networks are definitely inspired by biology. First attempts to created model of neuron had multiple elements equivalent with neurons of human brain. As time progressed this equivalence sized to being as important and modern neural networks models correspond to h their biological counterparts only superficially.
+
+       # *** Nonlinear models
+
+       # Problem with nonlinear models is that their optimization doesn't result in quadratic optimization therefore it is not possible to guarantee the finding of optimal solution. It is necessary to use iterative approach to solving the optimization problem
 
 *** Multilayer Perceptron (Fully Connected Neural Network)
     In some literature there might be small difference between [[gls:mlp][MLP]] and [[gls:fcnn][FCNN]] but in this document they will be used interchangeably.
 
-    As the names suggest this model is formed by combination of multiple units typically similar to Perceptron that are group into layers which are fully interconnected in between (i.e. output of each neuron in one layer is connected to all inputs of neurons in following layer). Not all neurons in the network are the same. There are typically two types of neurons. Neurons in the output layer (called /output units/) and neurons in the rest of the network (called /hidden units/). Neurons in input layer are of the same type as neurons in hidden layer even thought they are not hidden. Only difference between the two types of neurons is in their activation function.
+    As the names suggest this model is formed by combination of multiple units typically similar to [[gls:perceptron][Perceptron]] that are group into layers which are fully interconnected in between (i.e. output of each neuron in one layer is connected to all inputs of neurons in following layer). Not all neurons in the network are the same. There are typically two types of neurons. Neurons in the output layer (called [[glspl:output unit][output units]]) and neurons in the rest of the network (called [[glspl:hidden unit][hidden unit]]). Neurons in input layer are of the same type as neurons in hidden layer even thought they are not hidden. Only difference between the two types of neurons is in their activation function.
 
-    Activation function is a component of neural network that is subject of most dynamic research. New activation function are developed on regular basis.
+    [[Gls:activation function][Activation function]] is a component of neural network that is subject of most dynamic research. New [[glspl:activation function][activation function]] are developed on regular basis.
 
     # This doesn't really fit here!!!
     Simple three layered fully connected neural network, given sufficient number of neurons in each layer, is able to approximate arbitrary continues function with arbitrary accuracy \cite{article--Kurkova--1992}.
 
-**** Output Units
+**** Model of neuron
+***** Inputs
 
-**** Hidden Units
+***** Weights
+
+***** Bias
+
+***** Activation Function
+      Main strength of [[gls:nn][NN]] is its ability to approximate the theoretically arbitrary nonlinear function. In order to do that it needs to introduce some sort of non-linearity. Exactly for this reason is each neuron equipped with [[gls:activation function][activation function]] on its output.
+
+      \begin{equation}
+      y=\sigma(h(x)) =\sigma(\boldsymbol{w}^T\boldsymbol{x} + b)
+      \end{equation}
+
+      #+NAME: fig:relu
+      #+CAPTION: Restricted Linear Unit (ReLU)
+      #+ATTR_LATEX: :width 4in
+      [[./img/figure__2__relu.png]]
+
+      This function has to be nonlinear. Most commonly used [[gls:activation function][activation function]] are sigmoid, softmax and relu.
+
+      #+NAME: fig:sigmoid
+      #+CAPTION: Sigmoid activation function
+      #+ATTR_LATEX: :width 4in
+      [[./img/figure__2__sigmoid.png]]
+
+      Model of neuron can have multiple different [[glspl:activation function][activation functions]] on its output.
+
+      Different options for [[glspl:activation function][activation functions]] will be described in more detail in following sections.
+
+      Sigmoid activation function has the advantage that is differentiable over all of its possible values. Another nicce property is that its otput value is between 1 and 0, which conviniently maps to valid probability distribution.
+      Problem with sigmoid is that its gradient becomes really flat on both extremes and as such it slows down the learning process
+**** Topology of the network
+
+     Neural Network is model composed of interconnected units called neurons with topology
+
+     Topology consist of three different units:
+     - Input
+     - Hidden
+     - Output
+
+     [[Glspl:activation function][Activation functions]] of these units is only of two different types because activation function of input unit is the same as in case of hidden unit.
+
+****** Output Units
+
+       Output units have activation function typically either softmax or sigmoid in case of only two result classes
+****** Hidden Units
 
 
-*** Nonlinear models
+**** Cost function
+**** Optimization algorithm
 
-    Problem with nonlinear models is that their optimization doesn't result in quadratic optimization therefore it is not possible to guarantee the finding of optimal solution. It is necessary to use iterative approach to solving the optimization problem
+     Learning algorithm
 
- they require stochastic
+***** Activation functions
+      In the first iterations of [[gls:mlp][MLP]] evolution it generally had all neurons in hidden and output layer to be similar. Namely activation function was predominantly sigmoid [[fig:sigmoid][sigmoid]].
 
-*** Activation functions
-    In the first iterations of [[gls:mlp][MLP]] evolution it generally had all neurons in hidden and output layer to be similar. Namely activation function was predominantly sigmoid.
+      Activation function of [[glspl:hidden layer][hidden layer]] is to this day one of the most dynamically evolving components of Neural networks. Currently there is several options for but mainly used is Restricted Linear Unit (ReLU) [[fig:relu][relu]] which models following mathematical function
 
-    #+NAME: fig:sigmoid
-    #+CAPTION: Sigmoid activation function
-    #+ATTR_LATEX: :width 4in
-    [[./img/figure__2__sigmoid.png]]
+      \begin{equation}
+      g(z) = \max \{0,z\}
+      \end{equation}
 
-    Activation function of hidden layers is to this day one of the most dynamically evolving components of Neural networks. Currently there is several options for but mainly used is Restricted Linear Unit (ReLU) which models following mathematical function
+***** Gradient Descent Optimization
+      # TODO: This needs hard editing
+      Gradient is computed with respect to each input variable. and result of this operation is representing the direction of most steep increase in the output value. Therefore in the heart of every gradient based optimization is an element of applying change proportional to negative gradient of inputs.
 
-    \begin{equation}
-    g(z) = \max \{0,z\}
-    \end{equation}
+      #+NAME: fig:gradient_descent_conture_plot
+      #+CAPTION: Depiction of Gradient based optimazation of on the conture plot.
+      #+ATTR_LATEX: :width 4in
+      [[./img/figure__2__gradient_descent_conture_plot.png]]
 
-    #+NAME: fig:relu
-    #+CAPTION: Restricted Linear Unit (ReLU)
-    #+ATTR_LATEX: :width 4in
-    [[./img/figure__2__relu.png]]
-
-*** Gradient Descent Optimization
-    Gradient is computed with respect to each input variable. and result of this operation is representing the direction of most steep increase in the output value. There fore in the heart of every gradient based optimization is an element of applying change proportional to negative gradient of inputs.
-
-    #+NAME: fig:gradient_descent_conture_plot
-    #+CAPTION: Depiction of Gradient based optimazation of on the conture plot.
-    #+ATTR_LATEX: :width 4in
-    [[./img/figure__2__gradient_descent_conture_plot.png]]
-
-*** Stochastic Gradient Descent
-*** Network Architecture
+***** Stochastic Gradient Descent
 *** Meta-parameters
 **** Learning rate
 **** Momentum
-
-*** Deep Learning in image processing
+*** Regularization
+*** FCNN in image processing
     It was found that general [[gls:fcnn][FCNN]] is not ideal for image processing needs. Even small images typically represents enormous amount of inputs (i.e. image of the size $64 \times 64$ pixels represents 4096 inputs).
 
     Since each of these inputs has to be connected to all neurons in following layer and weight of each connection has to be memorized, this represents enormous amount of parameters.
 
 
-    # this is not substantiated!!!
-    # Moreover because during the learning process update of these weights is computed via matrix multiplication for larger images this can be unresolvable problem, which exacerbate with the number of hidden layers.
+    # TODO: this is not substantiated!!!
+    # Moreover because during the learning process update of these weights is computed via matrix multiplication for larger images this can be unresolvable problem, which exacerbate with the number of [[glspl:hidden layer][hidden layer]].
 
     The structure of [[gls:fcnn][FCNN]] has another deficiency for image processing application, which is that it doesn't capture geometric properties of information from input image. In other words because individual layers are fully connected (each output in lower layer is connected to each input in higher layer) networks are not capturing any information about relation of position of individual inputs (image pixels) to each other.
 
@@ -348,10 +421,10 @@
 
     All of these problems were solved by the specific type of [[gls:nn][NN]] model called [[glspl:cnn][CNN]] [citation]
 
+    # TODO: Try to find palce for this if it is relevant
     # For example in case of CNNs there is almost no need to process input image before it is used to train the model. Hiearchical extraction of image features that is automatically created by CNN is very advantages in this case.
     # of the fundamental two-dimensional property of image data.
 
-# Basics of Neural Networks
 ** Convolutional Neural Networks
    [[glspl:cnn][CNN]] are specialized type of [[glspl:nn][NN]] that was originally used in image processing applications. They are arguably most successful models in [[gls:ai][AI]] inspired in biology. Even though they were guided by many different fields, the core design principles were drawn from neuroscience. Since their success in image processing, they were also very successfully deployed in natural language and video processing applications.
 
@@ -360,12 +433,13 @@
    There will be several suppositions made in order to simplify explanation of the concepts involved:
    - It will be presumed that convolutional layer is working with rectangular input data (e.g. images). Even though the Convolutional networks can be also trained to use 1-dimensional input (e.g. sound signal) or 3-dimensional (e.g. [[gls:mri][MRI]] images) etc.
    - The complexity of multiple-channel inputs (i.e. colored images) will be ignored.
-   - Each layer requires rectangular input and produces rectangular output per one kernel.
+   - Each layer requires rectangular input and produces rectangular output per one [[gls:kernel][kernel]].
 
 *** Structure of CNN
+    # TODO: Try to find place for this!!
     # Keeping up with concepts of Neuron and Topology is little more difficult in case of [[gls:cnn][CNN]]. First reason being that the structure of [[gls:cnn][CNN]] is composed of three different types of layers and the second is the fact that some of these layers atypicall and hard to describe by concept of neuron!
 
-    Structure of Convolutional networks is typically composed of three different types of layers. Layer can be of Convolutional, Pooling and /Fully-connected/ type. Each type of layer has different rules for forward and error backward signal propagation.
+    Structure of Convolutional networks is typically composed of three different types of layers. Layer can be of Convolutional, Pooling and [[gls:fc][FC]] type. Each type of layer has different rules for forward and error backward signal propagation.
 
     There are no precise rules on how the structure of individual layers should be organized. What is typical is that the network has two parts. First part usually called feature extraction that is using combinations of convolutional and pooling layer. Second part called classification is using fully connected layers.
 
@@ -374,20 +448,21 @@
     #+ATTR_LATEX: :width 4in
     [[./img/figure__2__cnn_structure.png]]
 
+    # TODO: This probably should be deleted
     # Even though there is no strict rule enforcing this, it custom to Network layers can pretty much arbitrarily combine these three types of layers (with exception of Fully-Connected layers, which always have to come last).
 
 **** Convolutional layer
 
-     As the name suggests this layer employs convolution operation. Input into this layer is simply called input. Convolution operation is performed on input with specific filter, which is called kernel. Output of convolution operation is typically called /feature map/.
+     As the name suggests this layer employs convolution operation. Input into this layer is simply called input. Convolution operation is performed on input with specific filter, which is called [[gls:kernel][kernel]]. Output of convolution operation is typically called [[gls:feature map][feature map]].
 
-     Input into Convolutional layer is either image (in case of first network layer) or /feature map/ from previous layer. Kernel is typically of square shape and its width can range from 3 to N pixels (typically 3, 5 or 7). /Feature map/ is created by convolution of kernel over each specified element of input. Convolution is described in more detail in section describing training of CNN.
+     Input into Convolutional layer is either image (in case of first network layer) or [[gls:feature map][feature map]] from previous layer. [[Gls:kernel][kernel]] is typically of square shape and its width can range from 3 to N pixels (typically 3, 5 or 7). [[Gls:feature map][feature map]] is created by convolution of [[gls:kernel][kernel]] over each specified element of input. Convolution is described in more detail in section describing training of [[gls:cnn][CNN]].
 
-     Depending on the size of kernel and layer's padding preferences the process of convolution can produce /feature map/ of different size than input. When the size of output should be preserved it is necessary to employ /zero padding/ on the edges of input. /Zero padding/ in this case has to add necessary amount of zero elements around the edges of input. This amount is determined by
+     Depending on the size of [[gls:kernel][kernel]] and layer's padding preferences the process of convolution can produce [[gls:feature map][feature map]] of different size than input. When the size of output should be preserved it is necessary to employ [[gls:zero padding][zero padding]] on the edges of input. [[Gls:zero padding][zero padding]] in this case has to add necessary amount of zero elements around the edges of input. This amount is determined by
      \begin{equation}
      p = ((h - 1) / 2)
      \end{equation}
 
-     where h is width of used kernel. In opposite case the /feature map/ is reduced by the $2*p$. Decreasing of the /feature map/ can be in some cases desirable.
+     where h is width of used [[gls:kernel][kernel]]. In opposite case the [[gls:feature map][feature map]] is reduced by the $2*p$. Decreasing of the [[gls:feature map][feature map]] can be in some cases desirable.
 
      #+NAME: fig:zero_padding
      #+CAPTION: A zero padded 4x4 matrix
@@ -395,15 +470,15 @@
      [[./img/figure__2__zero_padding.png]]
 
 
-     Reduction of /feature map/ can go even further in case of use of stride. Application of stride specifies by how many input points is traversed when moving to neighboring position in each step. When the stride is 1, kernel is moved by 1 on each step and the resulting size of /feature map/ is not affected.
+     Reduction of [[gls:feature map][feature map]] can go even further in case of use of [[gls:stride][stride]]. Application of [[gls:stride][stride]] specifies by how many input points is traversed when moving to neighboring position in each step. When the [[gls:stride][stride]] is 1, [[gls:kernel][kernel]] is moved by 1 on each step and the resulting size of [[gls:feature map][feature map]] is not affected.
 
-     Each Convolutional layer is typically composition of several different kernels. In other words output of this layer is tensor containing /feature map/ for each used kernel. Each of these is designed to underline different features of input image. In the first layers these features are typically edges. In following layers the higher the layer the more complex features are captured.
+     Each Convolutional layer is typically composition of several different kernels. In other words output of this layer is tensor containing [[gls:feature map][feature map]] for each used [[gls:kernel][kernel]]. Each of these is designed to underline different features of input image. In the first layers these features are typically edges. In following layers the higher the layer the more complex features are captured.
 
-     Each kernel that is used is applied to all inputs of the image to produce one /feature map/ which basically means that neighboring layers are sharing the same weights. This might not be sufficient in some applications and therefore it is possible to use two other types of connections. /Locally connected/ which basically means that applied kernel is of the same size as the input and /tiled convolution/ which means alternation of more than one set of weights on entire input.
+     Each [[gls:kernel][kernel]] that is used is applied to all inputs of the image to produce one [[gls:feature map][feature map]] which basically means that neighboring layers are sharing the same weights. This might not be sufficient in some applications and therefore it is possible to use two other types of connections. [[Gls:locally connected][Locally connected]] which basically means that applied [[gls:kernel][kernel]] is of the same size as the input and [[gls:tiled convolution][tiled convolution]] which means alternation of more than one set of weights on entire input.
 
-     /Tiled convolution/ is interesting because with clever combination with /max-pooling/ explained bellow it allows to train specific feature from multiple angles (in other words invariant to rotation).
+     [[Gls:tiled convolution][tiled convolution]] is interesting because with clever combination with [[gls:max-pooling][max-pooling]] explained bellow it allows to train specific feature from multiple angles (in other words invariant to rotation).
 
-     Each convolutional layer has non-linearity on its output that is sometimes also called the /detector stage/.
+     Each convolutional layer has non-linearity on its output that is sometimes also called the [[gls:detector stage][detector stage]].
 
 **** Pooling layer
 
@@ -411,37 +486,38 @@
 
      Type of operation that is performed on each element determines a type of pooling layer. This operation can be averaging over units within element, selecting maximal value from element or alternatively learned linear combination of units within element. Learned linear combination introduces form of learning into the pooling layer, but it is not very prevalent.
 
-     Selecting of maximal value is most common type of pooling operation and in that case the layer is called /Max-Pooling/ accordingly. Positive effect of Max-pooling down-sampling is that extracted features that are learned in convolution are invariant to small shift of input. /Max-Pooling/ layer will be used to describe process of training of [[glspl:cnn][CNN]].
+     Selecting of maximal value is most common type of pooling operation and in that case the layer is called [[gls:max-pooling][max-pooling]] accordingly. Positive effect of Max-pooling down-sampling is that extracted features that are learned in convolution are invariant to small shift of input. [[gls:max-pooling][max-pooling]] layer will be used to describe process of training of [[glspl:cnn][CNN]].
 
-     As already mentioned another advantage of Max-pooling arises when combined with /Tiled convolution/. To create simple detector that is invariant to rotation it possible to use 4 different kernels that are rotated by 90 degrees among each other and when the /tiled convolution/ is used to tile them in groups of 4, the Max-pooling makes sure that resulted /feature map/ contains output from the kernel with strongest signal (i.e. the one trained for that specific rotation of the feature).
+     As already mentioned another advantage of Max-pooling arises when combined with [[gls:tiled convolution][tiled convolution]]. To create simple detector that is invariant to rotation it possible to use 4 different kernels that are rotated by 90 degrees among each other and when the [[gls:tiled convolution][tiled convolution]] is used to tile them in groups of 4, the Max-pooling makes sure that resulted [[gls:feature map][feature map]] contains output from the [[gls:kernel][kernel]] with strongest signal (i.e. the one trained for that specific rotation of the feature).
 
 **** Fully-Connected layer
 
-     Fully-Connected layer is formed from classical neurons that can be found in [[gls:fcnn][FCNN]] and it is always located at the end of the layer stack. In other words it is never followed by another Convolutional layer. Depending on the size of whole [[gls:cnn][CNN]] it can have 1 to 3 /fully connected/ layers (usually not more than that). Input of the first FC layer has inputs from all neurons from previous layer to all neurons of following layer (hence fully connected). All fully connected layers are together acting as [[gls:fcnn][FCNN]].
+     Fully-Connected layer is formed from classical neurons that can be found in [[gls:fcnn][FCNN]] and it is always located at the end of the layer stack. In other words it is never followed by another Convolutional layer. Depending on the size of whole [[gls:cnn][CNN]] it can have 1 to 3 [[gls:fc][FC]] layers (usually not more than that). Input of the first [[gls:fc][FC]] layer has inputs from all neurons from previous layer to all neurons of following layer (hence fully connected). All [[gls:fc][FC]] layers are together acting as [[gls:fcnn][FCNN]].
 
 *** Training of CNN
-    Training process of [[gls:cnn][CNN]] is analogues to [[gls:fcnn][FCNN]] in that both are using /Forward Propagation/ and /Backward Propagation/ phases.
+    Training process of [[gls:cnn][CNN]] is analogues to [[gls:fcnn][FCNN]] in that both are using [[gls:forward-propagation][forward-propagation]] and [[gls:back-propagation][back-propagation]] phases.
 
     Situation with [[gls:cnn][CNN]] is more complicated because network is composed of different types of layers and therefore training must accommodate for variability between different layers and also the individual convolution layers are sharing weights across all neurons in each layer.
 
-    First phase is the /Forward Propagation/, where the signal is propagated from inputs of the [[glspl:cnn][CNN]] to its output.
-    # Error function should be probably be called Loss function or maybe Cost function.
-    In the last layer the output is compared with desired values by /Error function E/ and error is estimated.
+    # TODO: This needs substantial upgrade !!!
+    First phase is the [[gls:forward-propagation][forward-propagation]], where the signal is propagated from inputs of the [[glspl:cnn][CNN]] to its output.
+    # TODO: Error function should be probably be called Loss function or maybe Cost function.
+    In the last layer the output is compared with desired value by [[gls:loss function][loss function]] and error is estimated.
 
-    Secondly in /Backward Propagation/ phase the error is propagated backwards through the network and weights for individual layers are updated by its contribution on the error. Most commonly used algorithm for update of weights is /Gradient Descent/. It is not the only one used but in majority of cases the training algorithm is at least based on /Gradient descent/.
+    Secondly in [[gls:back-propagation][back-propagation]] phase the error is propagated backwards through the network and weights for individual layers are updated by its contribution on the error. Most commonly used algorithm for update of weights is [[gls:gradient descent][gradient descent]]. It is not the only one used but in majority of cases the training algorithm is at least based on [[gls:gradient descent][gradient descent]].
 
 **** Forward Propagation of Convolution Layer
-      # fix this sentence
+      # TODO: fix this sentence
       Each convolutional layer has inputs. In case that the layer is first, it is network input (i.e individual pixels of image) in other cases, the inputs are outputs from neurons from previous layer (this is typically pooling layer).
 
-      Presuming that input of a layer is of size $N x N$ units and kernel is of size $m x m$. Convolution is computed over $(N-m+1) x (N-m+1)$ units (presuming that there is no zero padding).
+      Presuming that input of a layer is of size $N x N$ units and [[gls:kernel][kernel]] is of size $m x m$. Convolution is computed over $(N-m+1) x (N-m+1)$ units (presuming that there is no zero padding).
 
       Computation of convolution output $x_{ij}^{(l)}$ is defined as
       \begin{equation}
      x_{ij}^{(l)}=\sum_{a=0}^{m-1}\sum_{b=0}^{m-1}\omega_{ab}y_{(i+a)(j+b)}^{(l-1)}
       \end{equation}
 
- where $i, j \in (0,N-m+1)$, l is index of current layer, $\omega_{ab}$ are weights of layer (kernel) and $y_{(i+a)(j+b)}^{(l-1)}$ is output of previous layer.
+ where $i, j \in (0,N-m+1)$, l is index of current layer, $\omega_{ab}$ are weights of layer ([[gls:kernel][kernel]]) and $y_{(i+a)(j+b)}^{(l-1)}$ is output of previous layer.
 
       Output of convolutional layer $y_{ij}^{(l)}$ is computed by squashing of output of convolution operation $x_{ij}^{(l)}$ through non-linearity:
 
@@ -459,9 +535,10 @@ equation
 
 **** Forward Propagation of Fully Connected layer
 
-   Signal is distributed through FC layer in similar fashion as in Convolutional layer. The main difference is that weights of individual neuron connections are not shared among all neurons in one layer.
+     Signal is distributed through [[gls:fc][FC]] layer in similar fashion as in Convolutional layer. The main difference is that weights of individual neuron connections are not shared among all neurons in one layer.
 
 **** Backward Propagation of Convolution Layer
+     # TOOD: Finish this!!
      # To estimate contribution of convolutional layer to the total error of CNN,
      # there needs to be computed gradient of error function
      Following equasions were lifted from \cite{book--goodfellow--2016}.
@@ -486,13 +563,15 @@ equation
      \end{equation}
 
 **** Backward Propagation of Pooling layer (Max-Pooling)
-     As mentioned in section for /forward propagation/, there is no explicit learning process happening in pooling layer. Error is propagated backwards depending on how the signal was propagated forward. In case of /Max-pooling/ layer the error is propagated only to the unit with maximal output in /forward propagation/ phase (in other words to the winner of pooling). The error is propagated very sparsely, as result.
+     As mentioned in section for [[gls:forward-propagation][forward-propagation]], there is no explicit learning process happening in pooling layer. Error is propagated backwards depending on how the signal was propagated forward. In case of [[gls:max-pooling][Max-Pooling]] layer the error is propagated only to the unit with maximal output in [[gls:forward-propagation][forward-propagation]] phase (in other words to the winner of pooling). The error is propagated very sparsely, as result.
 
+     # TODO: Delete the bit about everage pooling it is not necessary!!!
      In case of different pooling method it is adjusted accordingly (i.e. for /average pooling/ the error is propagated according to contribution of individual neurons).
 
 **** Backward Propagation of Fully connected layer
-     Training mechanism for FC layer if following the same principles as in FCNN, which is not a subject of detailed discussed here. It is similar to one for convolution layers and from our perspective is only important that the first (last in the sense of /Backward Propagation/) FC layer propagates error gradient of each neuron in it, that is then send to all neurons in preceding (following in the sense of /Backward Propagation/) layer.
+     Training mechanism for [[gls:fc][FC]] layer if following the same principles as in [[gls:fcnn][FCNN]], which is not a subject of detailed discussed here. It is similar to one for convolution layers and from our perspective is only important that the first (last in the sense of [[gls:back-propagation][back-propagation]]) [[gls:fc][FC]] layer propagates error gradient of each neuron in it, that is then send to all neurons in preceding (following in the direction of [[gls:back-propagation][back-propagation]]) layer.
 *** Advantages of CNN
+    # TODO: Find out what I meant by this!!
     # Number of parameters
     # computational demand
     To further highlight the difference between [[gls:fcnn][FCNN]] and [[gls:cnn][CNN]] it is worth to compare the case of 2 neighboring layers.

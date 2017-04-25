@@ -1,39 +1,206 @@
-\newacronym{ai}{AI}{Artificial Intelligence}
-\newacronym{cnn}{CNN}{Convolutional Neural Network}
-\newacronym{dnn}{DNN}{Deep Neural Networks}
-\newacronym{dsp}{DSP}{Digital Signal Processor}
-\newacronym{fcnn}{FCNN}{Fully Connected Neural Network}
-\newacronym{gpgpu}{GPGPU}{General-Purpose computing on Graphics Processing Units}
-\newacronym{lstm}{LSTM}{Long Short Term Memory}
-\newacronym{mlp}{MLP}{Multilayer Perceptron}
-\newacronym{mri}{MRI}{Magnetic resonance imaging}
-\newacronym{nn}{NN}{Neural Netowrk}
-\newacronym{pca}{PCA}{Principal Coomponent Analysis}
-\newacronym{rgb}{RGB}{Red Green Blue}
-\newacronym{rnn}{RNN}{Reccursive Neural Networks}
-\newacronym{som}{SOM}{Self Organizing Map}
-\newacronym{svd}{SVD}{Singular Value Decomposition}
-\newacronym{svm}{SVM}{Support Vector Machines}
+#+LATEX_HEADER: \newacronym{ai}{AI}{Artificial Intelligence}
+#+LATEX_HEADER: \newacronym{cnn}{CNN}{Convolutional Neural Network}
+#+LATEX_HEADER: \newacronym{dnn}{DNN}{Deep Neural Networks}
+#+LATEX_HEADER: \newacronym{dsp}{DSP}{Digital Signal Processor}
+#+LATEX_HEADER: \newacronym{fcnn}{FCNN}{Fully Connected Neural Network}
+#+LATEX_HEADER: \newacronym{gpgpu}{GPGPU}{General-Purpose computing on Graphics Processing Units}
+#+LATEX_HEADER: \newacronym{lstm}{LSTM}{Long Short Term Memory}
+#+LATEX_HEADER: \newacronym{mlp}{MLP}{Multilayer Perceptron}
+#+LATEX_HEADER: \newacronym{mri}{MRI}{Magnetic resonance imaging}
+#+LATEX_HEADER: \newacronym{nn}{NN}{Neural Netowrk}
+#+LATEX_HEADER: \newacronym{pca}{PCA}{Principal Coomponent Analysis}
+#+LATEX_HEADER: \newacronym{rgb}{RGB}{Red Green Blue}
+#+LATEX_HEADER: \newacronym{rnn}{RNN}{Reccursive Neural Networks}
+#+LATEX_HEADER: \newacronym{som}{SOM}{Self Organizing Map}
+#+LATEX_HEADER: \newacronym{svd}{SVD}{Singular Value Decomposition}
+#+LATEX_HEADER: \newacronym{svm}{SVM}{Support Vector Machines}
 
-# \newglossaryentry{ensemble methods}
-# {
-# name={ensemble methods},
-# description={special case of models that is using prediction of multiple different models with the same input data in order to achieve higher accuracy}
-# }
-# \newglossaryentry{random forest}
-# {
-# name={random forest},
-# description={ensemble model that is based on combination of bagging decision trees}
-# }
+#+LATEX_HEADER: \newglossaryentry{ensemble models}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={ensemble models},
+#+LATEX_HEADER: description={special case of models that is using prediction of multiple different models with the same input data in order to achieve higher accuracy}
+#+LATEX_HEADER: }
 
-# \newglossaryentry{recursive networks}
-# {
-# name={recursive networks},
-# description={TODO}
-# }
+#+LATEX_HEADER: \newglossaryentry{random forest}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={random forest},
+#+LATEX_HEADER: description={ensemble model that is based on combination of bagging decision trees}
+#+LATEX_HEADER: }
 
-# \newglossaryentry{hopfield networks}
-# {
-# name={hopfield networks},
-# description={TODO}
-# }
+#+LATEX_HEADER: \newglossaryentry{recursive networks}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={recursive networks},
+#+LATEX_HEADER: description={TODO}
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{hopfield networks}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={hopfield networks},
+#+LATEX_HEADER: description={TODO}
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{k-means}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={K-means},
+#+LATEX_HEADER: description={Unsupervised learning algorithm}
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{perceptron}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={Perceptron},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{hopfields networks}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={Hopfields Networks},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{deep learning}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={deep learning},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{deep}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={deep},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{classification}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={classification},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{machine learning}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={machine learning},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{back-propagation}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={back-propagation},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{linear regression}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={linear regression},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{activation function}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={activation function},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{hidden unit}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={hidden unit},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{output unit}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={output unit},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{hidden layer}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={hidden layer},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{cost function}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={cost function},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{loss function}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={loss function},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{fc}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={fully connected},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{max-pooling}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={Max-Pooling},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{forward-propagation}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={forward-propagation},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{gradient descent}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={gradient descent},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{sum of square}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={sum of square},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+
+#+LATEX_HEADER: \newglossaryentry{feature map}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={feature map},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+
+#+LATEX_HEADER: \newglossaryentry{zero padding}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={zero padding},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+
+#+LATEX_HEADER: \newglossaryentry{locally connected}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={locally connected},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+
+#+LATEX_HEADER: \newglossaryentry{detector stage}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={detector stage},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{tiled convolution}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={tiled convolution},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{kernel}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={kernel},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{stride}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={stride},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }

@@ -53,3 +53,152 @@
 *** Torch
    - Scientific computing framework with support of wide variety of machine learning algorithms.
    - Torch was one of the first universal and modular frameworks developed specifically for the needs of Deep learning. It was very prominent few years ago, but it seems that it lost some traction and is not as prevalent as it once was. One of the possible reasons for this might be that it is implemented in Lua programming language that is not nearly so popular as for example python.
+** Design of experiment
+   There are three standard benchmark datasets used when it comes [[gls:deep learning][deep learning]]. MNIST, CIFAR and ILSVRC.
+Accuracy of several models on training data.
+
+\begin{tikzpicture}
+  \begin{axis}[
+      title={Accuracy on training data},
+      xlabel={epoch},
+      ylabel={accuracy [\%]},
+      ymin=0, ymax=1,
+      ytick={0.2,0.4,0.6,0.8,1},
+      legend pos=south east,
+      ymajorgrids=true,
+      xmajorgrids=true,
+      grid style=dashed,
+      scale=1.5,
+  ]
+
+  \addplot[color=blue]
+      table [x=epoch, y=acc, col sep=comma]
+      {/home/derekin/Dropbox/trained_models/model_1_13422B12_adam_performance.log};
+      \addlegendentry{Model 1}
+  \addplot[color=red]
+      table [x=epoch, y=acc, col sep=comma]
+      {/home/derekin/Dropbox/trained_models/model_2_13422B12_adam_performance.log};
+      \addlegendentry{Model 2}
+  \addplot[color=green]
+      table [x=epoch, y=acc, col sep=comma]
+      {/home/derekin/Dropbox/trained_models/model_3_13422B12_adam_performance.log};
+      \addlegendentry{Model 3}
+  \addplot[color=brown]
+      table [x=epoch, y=acc, col sep=comma]
+      {/home/derekin/Dropbox/trained_models/model_4_B536FE0E_adam_performance.log};
+      \addlegendentry{Model 4}
+  \addplot[color=yellow]
+      table [x=epoch, y=acc, col sep=comma]
+      {/home/derekin/Dropbox/trained_models/model_5_F6309B1C_adam_performance.log};
+      \addlegendentry{Model 5}
+  \addplot[color=purple]
+      table [x=epoch, y=acc, col sep=comma]
+      {/home/derekin/Dropbox/trained_models/model_6_2CD19B7B_adam_performance.log};
+      \addlegendentry{Model 6}
+
+  \end{axis}
+\end{tikzpicture}
+
+Accuracy of several models on testing data.
+
+\begin{tikzpicture}
+  \begin{axis}[
+      title={Accuracy on testing data},
+      xlabel={epoch},
+      ylabel={accuracy [\%]},
+      ymin=0.3, ymax=0.9,
+      ytick={0.4,0.6,0.8},
+      legend pos=south east,
+      ymajorgrids=true,
+      xmajorgrids=true,
+      grid style=dashed,
+      scale=1.5,
+  ]
+
+  \addplot[color=blue]
+      table [x=epoch, y=val_acc, col sep=comma]
+      {/home/derekin/Dropbox/trained_models/model_1_13422B12_adam_performance.log};
+      \addlegendentry{Model 1}
+  \addplot[color=red]
+      table [x=epoch, y=val_acc, col sep=comma]
+      {/home/derekin/Dropbox/trained_models/model_2_13422B12_adam_performance.log};
+      \addlegendentry{Model 2}
+  \addplot[color=green]
+      table [x=epoch, y=val_acc, col sep=comma]
+      {/home/derekin/Dropbox/trained_models/model_3_13422B12_adam_performance.log};
+      \addlegendentry{Model 3}
+  \addplot[color=brown]
+      table [x=epoch, y=val_acc, col sep=comma]
+      {/home/derekin/Dropbox/trained_models/model_4_B536FE0E_adam_performance.log};
+      \addlegendentry{Model 4}
+  \addplot[color=yellow]
+      table [x=epoch, y=val_acc, col sep=comma]
+      {/home/derekin/Dropbox/trained_models/model_5_F6309B1C_adam_performance.log};
+      \addlegendentry{Model 5}
+  \addplot[color=purple]
+      table [x=epoch, y=val_acc, col sep=comma]
+      {/home/derekin/Dropbox/trained_models/model_6_2CD19B7B_adam_performance.log};
+      \addlegendentry{Model 6}
+
+  \end{axis}
+\end{tikzpicture}
+*** Comparison of depth of classification portion
+ \begin{tikzpicture}
+   \begin{axis}[
+       title={Accuracy on training data},
+       xlabel={epoch},
+       ylabel={accuracy [\%]},
+       ymin=0, ymax=1,
+       ytick={0.2,0.4,0.6,0.8,1},
+       legend pos=south east,
+       ymajorgrids=true,
+       xmajorgrids=true,
+       grid style=dashed,
+       scale=1.5,
+   ]
+
+   \addplot[color=blue]
+       table [x=epoch, y=acc, col sep=comma]
+       {/home/derekin/Dropbox/trained_models/model_test_of_fully_connected_1_adam_performance.log};
+       \addlegendentry{Model 1}
+   \addplot[color=red]
+       table [x=epoch, y=acc, col sep=comma]
+       {/home/derekin/Dropbox/trained_models/model_test_of_fully_connected_2_adam_performance.log};
+       \addlegendentry{Model 2}
+   \addplot[color=green]
+       table [x=epoch, y=acc, col sep=comma]
+       {/home/derekin/Dropbox/trained_models/model_test_of_fully_connected_3_adam_performance.log};
+       \addlegendentry{Model 3}
+
+   \end{axis}
+ \end{tikzpicture}
+
+ \begin{tikzpicture}
+   \begin{axis}[
+       title={Accuracy on testing data},
+       xlabel={epoch},
+       ylabel={accuracy [\%]},
+       ymin=0.3, ymax=0.9,
+       ytick={0.4,0.6,0.8},
+       legend pos=south east,
+       ymajorgrids=true,
+       xmajorgrids=true,
+       grid style=dashed,
+       scale=1.5,
+   ]
+
+   \addplot[color=blue]
+       table [x=epoch, y=val_acc, col sep=comma]
+       {/home/derekin/Dropbox/trained_models/model_test_of_fully_connected_1_adam_performance.log};
+       \addlegendentry{Model 1}
+   \addplot[color=red]
+       table [x=epoch, y=val_acc, col sep=comma]
+       {/home/derekin/Dropbox/trained_models/model_test_of_fully_connected_2_adam_performance.log};
+       \addlegendentry{Model 2}
+   \addplot[color=green]
+       table [x=epoch, y=val_acc, col sep=comma]
+       {/home/derekin/Dropbox/trained_models/model_test_of_fully_connected_3_adam_performance.log};
+       \addlegendentry{Model 3}
+
+   \end{axis}
+ \end{tikzpicture}
