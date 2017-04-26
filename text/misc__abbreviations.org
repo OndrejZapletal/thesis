@@ -17,6 +17,7 @@
 #+LATEX_HEADER: \newacronym{svd}{SVD}{Singular Value Decomposition}
 #+LATEX_HEADER: \newacronym{sgc}{SGC}{Stochastic Gradient Descent}
 #+LATEX_HEADER: \newacronym{svm}{SVM}{Support Vector Machines}
+#+LATEX_HEADER: \newacronym{relu}{ReLU}{Restricted Linear Unit}
 
 #+LATEX_HEADER: \newglossaryentry{ensemble models}
 #+LATEX_HEADER: {
@@ -84,7 +85,7 @@
 #+LATEX_HEADER: description={TODO},
 #+LATEX_HEADER: }
 
-#+LATEX_HEADER: \newglossaryentry{back-propagation}
+#+LATEX_HEADER: \newglossaryentry{bp}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={back-propagation},
 #+LATEX_HEADER: description={TODO},
@@ -96,7 +97,7 @@
 #+LATEX_HEADER: description={TODO},
 #+LATEX_HEADER: }
 
-#+LATEX_HEADER: \newglossaryentry{activation function}
+#+LATEX_HEADER: \newglossaryentry{af}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={activation function},
 #+LATEX_HEADER: description={TODO},
@@ -205,5 +206,11 @@
 #+LATEX_HEADER: \newglossaryentry{stride}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={stride},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{sigmoid}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={sigmoid},
 #+LATEX_HEADER: description={TODO},
 #+LATEX_HEADER: }
