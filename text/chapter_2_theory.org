@@ -196,15 +196,10 @@
 
      In both of these extremes the generalization ability suffers. In the former case the model is unable to capture true intricacies of the problem and therefore is unable to reliably predict desired output. In the latter case it tries to capture even the most subtle data perturbation that might be in fact a result of stochastic nature of the problem and not the real underlying relationship. This can be caused the fact that input data is missing some variable that is necessary to capture the true relationship. This fact is unavoidable and it therefore has to be taken into account when designing machine learning model. Depiction of theses phenomena in case of two variable input is on [[fig:over_under_fitting]].
 
-     #+NAME: fig:model_complexity
-     #+CAPTION: Figure shows relationship between model complexity and resulting error.
-     #+ATTR_LATEX: :width 4in
-     [[./img/figure__2__model_complexity.png]]
-
      Typically the machine learning model is trained on as much of input data as possible in order to achieve the best performance possible. At the same time its error rate has to be verified on independent input data to check whether the generalization ability is not deteriorating. This is typically achieved by splitting available input data into training and testing set (usually in 4:1 ratio for training to test data). Model is trained with training data only and the performance of the model is tested on the test data. Relationship between test and train error can be found on figure [[fig:test_vs_training_error]]. Even though that the true generalization error can never be truly observed its approximation by test error rate is sufficient for majority of machine learning tasks.
 
      #+NAME: fig:test_vs_training_error
-     #+CAPTION: Different approach that examines the relationship between the model complexity and its ultimate accuracy is the relationship between training and testing error.
+     #+CAPTION: Relationship between the model complexity and its ultimate accuracy is the relationship between training and testing error.
      #+ATTR_LATEX: :width 4in
      [[./img/figure__2__test_vs_training_error.png]]
 
@@ -233,17 +228,17 @@
 
     This inspired the invention of [[gls:perceptron][Perceptron]], created in 1958 by Frank Rosenblatt. Perceptron used very simple model mimicking artificial neuron that was based on mathematical model of Pitts and Mcculloch. Model of [[gls:perceptron][Perceptron]] also encompassed an algorithm direct learning from data.
 
-    From the beginning [[gls:perceptron][Perceptron]] seemed promising, but it was soon discovered that it had severe limitations. Most prominent voice of criticism was Marvin Minsky, who published book called Perceptrons \cite{book--minsky-papert--1969}. The criticism was centered on the fact that [[gls:perceptron][Perceptron]] model was unable to solve complex problems. Among others the book contained mathematical proof that [[gls:perceptron][Perceptron]] is unable to solve simple XOR problem. More generally the [[gls:perceptron][Perceptron]] is only capable to solve linearly separable problems. Even though according to Minsky this criticism wasn't malicious, it stifled the interest in [[glspl:nn][NN]] for over a decade.
-
     # TODO: questionable update!!!
     # also add explanantion about equivalnce to FCNN.
-    Interest in [[glspl:nn][NN]] was rejuvenated in the early 80's by the invention of [[gls:back-propagation][back-propagation]] learning algorithm, which enabled the possibility to use multiple [[glspl:perceptron][Perceptrons]] to form networks. [[Glspl:perceptron][Perceptrons]] could also be stacked upon each other to form layers. [[gls:nn][NN]] of this type are commonly called [[gls:mlp][MLP]].
 
     This simple improvement addressed majority of previously raised concerns and enable the application of [[glspl:nn][NN]] in many different technical domains with moderate success.
 
+    From the beginning [[gls:perceptron][Perceptron]] seemed promising, but it was soon discovered that it had severe limitations. Most prominent voice of criticism was Marvin Minsky, who published book called Perceptrons \cite{book--minsky-papert--1969}. The criticism was centered on the fact that [[gls:perceptron][Perceptron]] model was unable to solve complex problems. Among others the book contained mathematical proof that [[gls:perceptron][Perceptron]] is unable to solve simple XOR problem. More generally the [[gls:perceptron][Perceptron]] is only capable to solve linearly separable problems. Even though according to Minsky this criticism wasn't malicious, it stifled the interest in [[glspl:nn][NN]] for over a decade.
+    Interest in [[glspl:nn][NN]] was rejuvenated in the early 80's by the invention of [[gls:back-propagation][back-propagation]] learning algorithm, which enabled the possibility to use multiple [[glspl:perceptron][Perceptrons]] to form networks. [[Glspl:perceptron][Perceptrons]] could also be stacked upon each other to form layers. [[gls:nn][NN]] of this type are commonly called [[gls:mlp][MLP]].
+
     In 80's and 90's the interest in [[glspl:nn][NN]] plateaued again, and general research of [[gls:ai][AI]] was more focused on other (typically less complex) machine learning techniques. In the realm of [[gls:classification][classification]] problems there were several notable examples ([[gls:svm][SVM]], [[gls:ensemble models][Ensemble models]] and [[gls:random forest][Random Forest]]). [[gls:ai][AI]] research community also developed several other paradigms of [[glspl:nn][NN]] that were similarly inspired by biology of human brain but took different approaches. Most important examples were [[gls:som][SOM]] and [[gls:rnn][RNN]] (e.g. [[gls:hopfields networks][Hopfields Networks]]).
 
-    By the year 2000 there was very few research groups that were devoting enough attention to the [[glspl:nn][NN]]. There was also certain disdain for [[glspl:nn][NN]] in academia and [[gls:ai][AI]] research community. Success of [[glspl:nn][NN]] that was promised almost half a century ago was finally encountered around 2006, when the first networks with large number of [[glspl:hidden layer][hidden layer]] was successfully trained. This led to mainstream adaption of umbrella term [[gls:deep learning][DL]] which typically refers to [[gls:dnn][DNN]]. The word [[gls:deep][Deep]] signifies that networks have large number of [[glspl:hidden layer][hidden layer]].
+    By the year 2000 there was very few research groups that were devoting enough attention to the [[glspl:nn][NN]]. There was also certain disdain for [[glspl:nn][NN]] in academia and [[gls:ai][AI]] research community. Success of [[glspl:nn][NN]] that was promised almost half a century ago was finally encountered around 2006, when the first networks with large number of [[glspl:hidden layer][hidden layer]] was successfully trained. This led to mainstream adaption of umbrella term [[gls:deep learning][DL]] which typically refers to [[gls:dnn][DNN]]. The word [[gls:deep][Deep]] indicates that networks have large number of [[glspl:hidden layer][hidden layer]].
 
     The key theoretical insight was that to learn complicated functions that can represent high-level abstractions (e.g. vision recognition, language understanding etc.) there is a need for [[gls:deep][deep]] architecture.
 
@@ -264,53 +259,91 @@
 
     # #######################################################################################
 
-*** Theory
-    # #######################################################################################
 
-    # Remove!!
-    # that are somehow connected to its origins, which were derived from biology of living organism.
+*** Structure of Neural Networks
+     Neural networks are in general described by three things:
+      - model of neuron
+      - topology of the network
+      - learning algorithm
 
-    # Word this better!!
-    In its infancy the goal was mostly aimed to capture mechanisms present in the pinnacle of intelligent organisms, which is human brain.
+**** Model of neuron
+     Model artificial neuron is shown on figure [[fig:neuron_model][neuron model]].
 
-    This view is useful in describing motivations, but it is necessary to point out that equivalence between [[gls:nn][NN]] models and biology grew less important as the researched progressed. At the same time there is one notable exception to this which are [[glspl:cnn][CNN]] that were heavily influenced by study of visual systems of mammals.
-
-    # TODO: This needs an ending!!!
-    Different fields of scientific inquiry adopted these principles in different ways and as a consequence the term [[glspl:nn][NN]] is not very descriptive. There following description will be used.
-
-***** Perceptron
-      Computational model that is using single unit of neuron. It defines operation for prediction and also learning algorithm that it enables to compute. Later adopted to [[gls:mlp][MLP]] which uses it as building block.
-
-      #+NAME: fig:neuron_model
-      #+CAPTION: Model of artificial neuron used in Perceptron
-      #+ATTR_LATEX: :width 4in
-      [[./img/figure__2__neuron_model.png]]
-
-      # TODO:
-      # This was already described in introduction chapter and therefore it might be good idea to cosolidate the two.
-      - inspired by biology
-      - composed of computational units (neurons)
-      - topology
-
-
-***** Model
-      Model of [[gls:nn][NN]] is much more complex then in case of [[gls:linear regression][linear regression]].
-
-      Again because it can widely vary the discussion is only concentrated on model of neuron in [[gls:mlp][MLP]].
-
-      For this reason it
-
-      In this case the computational model is composed of a network of nonlinear units that are processing input in several
-
-      taking input and applying weights to it in
-
-      # TODO: Try to compose this into the structure
-      # There are 3 things that define Neural network
-***** Model of artificial neuron
-      Neuron is computational unit.
+      Neuron is computational unit that is
       \begin{equation}
       h(x) = \boldsymbol{w}^T\boldsymbol{x} + b
       \end{equation}
+
+***** Topology of the network
+     #+NAME: fig:neuron_model
+     #+CAPTION: Model of artificial neuron used in Perceptron
+     #+ATTR_LATEX: :width 4in
+     [[./img/figure__2__neuron_model.png]]
+
+****** Inputs
+       Each neuron has multiple inputs that are combined together to execute some operation. Each input has designated weight assigned to it.
+
+****** Weights
+       Weights of a neuron are parameters that are modified during learning process. Each weight gives strength to each individual input into the neuron. The basic idea is that when the weight is small the particular input doesn't influence the output of the neuron very much and it has large influence in the opposite case.
+
+****** Bias
+       Bias is another modifiable parameter that controls influence of the neuron as a whole.
+
+****** Activation Function
+       [[Gls:activation function][activation function]] of a neuron gives the [[gls:nn][NN]] the ability to approximate functions. In order to be effective learning algorithm it is necessary that the model is able to approximate the arbitrary function. For this reason the activation function has to be non-linear.
+
+
+       Main strength of [[gls:nn][NN]] is its ability to approximate the theoretically arbitrary nonlinear function. In order to do that it needs to introduce some sort of non-linearity.
+
+Exactly for this reason is each neuron equipped with [[gls:activation function][activation function]] on its output.
+
+       \begin{equation}
+       y=\sigma(h(x)) =\sigma(\boldsymbol{w}^T\boldsymbol{x} + b)
+       \end{equation}
+
+       #+NAME: fig:relu
+       #+CAPTION: Restricted Linear Unit (ReLU)
+       #+ATTR_LATEX: :width 4in
+       [[./img/figure__2__relu.png]]
+
+       This function has to be nonlinear. Most commonly used [[gls:activation function][activation function]] are sigmoid, softmax and relu.
+
+       #+NAME: fig:sigmoid
+       #+CAPTION: Sigmoid activation function
+       #+ATTR_LATEX: :width 4in
+       [[./img/figure__2__sigmoid.png]]
+
+       Model of neuron can have multiple different [[glspl:activation function][activation functions]] on its output.
+
+       Different options for [[glspl:activation function][activation functions]] will be described in more detail in following sections.
+
+       Sigmoid activation function has the advantage that is differentiable over all of its possible values. Another nicce property is that its otput value is between 1 and 0, which conveniently maps to valid probability distribution.
+       Problem with sigmoid is that its gradient becomes really flat on both extremes and as such it slows down the learning process
+
+
+**** Topology of the Network
+Topology is
+
+**** Learning algorithm
+     Learning of [[gls:nn][NN]] consist of evaluating the cost function for given input data and modifying parameters of the [[gls:nn][NN]] in order to decrees it. Learning algorithm is complex because the [[gls:nn][NN]] has many parameters and it isn't obvious how a change of parameter influences the value of cost function.
+
+     Technique that is used to solve this problem is [gls:back-propagatin][back-propagatin]]. With the knowledge of how the change of parameter affects the value of cost function the optimization procedure that is used to find best possible solution. Is called gradient based optimization. More specifically most commonly is used the [[gls:sgd][SGD]] method.
+
+
+*** Fully Connected Neural Network
+    This learning algorithm is often called by several different names. These names usually indicate the perspective from which it is described. Historically the most common name was [[gls:mlp][MLP]]. In the recent years the name [[gls:fcnn][FCNN]] is used more often to differentiate it from other popular [[gls:nn][NN]] algorithms as for example [[gls:rnn][RNN]]. In the same context it is also sometimes called [[gls:ffnn][FFNN]].
+
+    # In some literature there might be small difference between [[gls:mlp][MLP]] and [[gls:fcnn][FCNN]] but in this document they will be used interchangeably.
+
+
+    # Word this better!!
+    # In its infancy the goal was mostly aimed to capture mechanisms present in the pinnacle of intelligent organisms, which is human brain.
+
+    # This view is useful in describing motivations, but it is necessary to point out that equivalence between [[gls:nn][NN]] models and biology grew less important as the researched progressed. At the same time there is one notable exception to this which are [[glspl:cnn][CNN]] that were heavily influenced by study of visual systems of mammals.
+
+    # TODO: This needs an ending!!!
+    # Different fields of scientific inquiry adopted these principles in different ways and as a consequence the term [[glspl:nn][NN]] is not very descriptive. There following description will be used.
+
 
        # TODO: This might be interesting to point out, but it is not necessary!!!
        # Neural networks are definitely inspired by biology. First attempts to created model of neuron had multiple elements equivalent with neurons of human brain. As time progressed this equivalence sized to being as important and modern neural networks models correspond to h their biological counterparts only superficially.
@@ -319,66 +352,50 @@
 
        # Problem with nonlinear models is that their optimization doesn't result in quadratic optimization therefore it is not possible to guarantee the finding of optimal solution. It is necessary to use iterative approach to solving the optimization problem
 
-*** Multilayer Perceptron (Fully Connected Neural Network)
-    In some literature there might be small difference between [[gls:mlp][MLP]] and [[gls:fcnn][FCNN]] but in this document they will be used interchangeably.
+    # ################################################################################################
+    # Structure of Neural Networks
+    # ################################################################################################
 
-    As the names suggest this model is formed by combination of multiple units typically similar to [[gls:perceptron][Perceptron]] that are group into layers which are fully interconnected in between (i.e. output of each neuron in one layer is connected to all inputs of neurons in following layer). Not all neurons in the network are the same. There are typically two types of neurons. Neurons in the output layer (called [[glspl:output unit][output units]]) and neurons in the rest of the network (called [[glspl:hidden unit][hidden unit]]). Neurons in input layer are of the same type as neurons in hidden layer even thought they are not hidden. Only difference between the two types of neurons is in their activation function.
+**** Model
+     Model of [[gls:nn][NN]] is much more complex then in case of [[gls:linear regression][linear regression]].
 
-    [[Gls:activation function][Activation function]] is a component of neural network that is subject of most dynamic research. New [[glspl:activation function][activation function]] are developed on regular basis.
+****** Perceptron
+       Computational model that is using single unit of neuron. It defines operation for prediction and also learning algorithm that it enables to compute. Later adopted to [[gls:mlp][MLP]] which uses it as building block.
 
-    # This doesn't really fit here!!!
-    Simple three layered fully connected neural network, given sufficient number of neurons in each layer, is able to approximate arbitrary continues function with arbitrary accuracy \cite{article--Kurkova--1992}.
+       # TODO:
+       # This was already described in introduction chapter and therefore it might be good idea to cosolidate the two.
 
-**** Model of neuron
-***** Inputs
+       # Again because it can widely vary the discussion is only concentrated on model of neuron in [[gls:mlp][MLP]].
 
-***** Weights
 
-***** Bias
+       # TODO: Try to compose this into the structure
+       # There are 3 things that define Neural network
 
-***** Activation Function
-      Main strength of [[gls:nn][NN]] is its ability to approximate the theoretically arbitrary nonlinear function. In order to do that it needs to introduce some sort of non-linearity. Exactly for this reason is each neuron equipped with [[gls:activation function][activation function]] on its output.
+    # As the names suggest this model is formed by combination of multiple units typically similar to [[gls:perceptron][Perceptron]] that are group into layers which are fully interconnected in between (i.e. output of each neuron in one layer is connected to all inputs of neurons in following layer). Not all neurons in the network are the same. There are typically two types of neurons. Neurons in the output layer (called [[glspl:output unit][output units]]) and neurons in the rest of the network (called [[glspl:hidden unit][hidden unit]]). Neurons in input layer are of the same type as neurons in hidden layer even thought they are not hidden. Only difference between the two types of neurons is in their activation function.
 
-      \begin{equation}
-      y=\sigma(h(x)) =\sigma(\boldsymbol{w}^T\boldsymbol{x} + b)
-      \end{equation}
+    # [[Gls:activation function][Activation function]] is a component of neural network that is subject of most dynamic research. New [[glspl:activation function][activation function]] are developed on regular basis.
 
-      #+NAME: fig:relu
-      #+CAPTION: Restricted Linear Unit (ReLU)
-      #+ATTR_LATEX: :width 4in
-      [[./img/figure__2__relu.png]]
+      Neural Network is model composed of interconnected units called neurons with topology
 
-      This function has to be nonlinear. Most commonly used [[gls:activation function][activation function]] are sigmoid, softmax and relu.
+      Topology consist of three different units:
+      - Input
+      - Hidden
+      - Output
 
-      #+NAME: fig:sigmoid
-      #+CAPTION: Sigmoid activation function
-      #+ATTR_LATEX: :width 4in
-      [[./img/figure__2__sigmoid.png]]
+      [[Glspl:activation function][Activation functions]] of these units is only of two different types because activation function of input unit is the same as in case of hidden unit.
 
-      Model of neuron can have multiple different [[glspl:activation function][activation functions]] on its output.
+******* Output Units
 
-      Different options for [[glspl:activation function][activation functions]] will be described in more detail in following sections.
+        Output units have activation function typically either softmax or sigmoid in case of only two result classes
+******* Hidden Units
 
-      Sigmoid activation function has the advantage that is differentiable over all of its possible values. Another nicce property is that its otput value is between 1 and 0, which conviniently maps to valid probability distribution.
-      Problem with sigmoid is that its gradient becomes really flat on both extremes and as such it slows down the learning process
-**** Topology of the network
 
-     Neural Network is model composed of interconnected units called neurons with topology
-
-     Topology consist of three different units:
-     - Input
-     - Hidden
-     - Output
-
-     [[Glspl:activation function][Activation functions]] of these units is only of two different types because activation function of input unit is the same as in case of hidden unit.
-
-****** Output Units
-
-       Output units have activation function typically either softmax or sigmoid in case of only two result classes
-****** Hidden Units
+    # TODO: This doesn't really fit here!!!
+    # Simple three layered fully connected neural network, given sufficient number of neurons in each layer, is able to approximate arbitrary continues function with arbitrary accuracy \cite{article--Kurkova--1992}.
 
 
 **** Cost function
+
 **** Optimization algorithm
 
      Learning algorithm
@@ -402,9 +419,12 @@
       [[./img/figure__2__gradient_descent_conture_plot.png]]
 
 ***** Stochastic Gradient Descent
+
+******* Softmax activation function
 *** Meta-parameters
 **** Learning rate
 **** Momentum
+
 *** Regularization
 *** FCNN in image processing
     It was found that general [[gls:fcnn][FCNN]] is not ideal for image processing needs. Even small images typically represents enormous amount of inputs (i.e. image of the size $64 \times 64$ pixels represents 4096 inputs).
@@ -431,7 +451,7 @@
    Aforementioned inspiration in biology was based on scientific work of David Hubel and Torsten Wiesel. Hubel and Wisel, who were neurophysiologist, investigated vision system of mammals from late 1950 for several years. In the experiment, that might be considered little gruesome for today's standards, they connected electrodes into brain of anesthetized cat and measured brain response to visual stimuli [Citation]. They discovered that reaction of neurons in visual cortex was triggered by very narrow line of light shined under specific angle on projection screen for cat to see. They determined that individual neurons from visual cortex are reacting only to very specific features of input image. Hubel and Wiesel were awarded the Nobel Prize in Physiology and Medicine in 1981 for their discovery and their finding inspired design of [[glspl:cnn][CNN]].
 
    There will be several suppositions made in order to simplify explanation of the concepts involved:
-   - It will be presumed that convolutional layer is working with rectangular input data (e.g. images). Even though the Convolutional networks can be also trained to use 1-dimensional input (e.g. sound signal) or 3-dimensional (e.g. [[gls:mri][MRI]] images) etc.
+   - It will be presumed that convolutional layer is working with rectangular input data (e.g. images). Even though the Convolutional networks can be also trained to use 1-dimensional input (e.g. sound signal) or 3-dimensional (e.g. [[gls:ct][CT]] scans) etc.
    - The complexity of multiple-channel inputs (i.e. colored images) will be ignored.
    - Each layer requires rectangular input and produces rectangular output per one [[gls:kernel][kernel]].
 

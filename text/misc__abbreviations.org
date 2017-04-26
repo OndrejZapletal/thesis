@@ -3,9 +3,11 @@
 #+LATEX_HEADER: \newacronym{dnn}{DNN}{Deep Neural Networks}
 #+LATEX_HEADER: \newacronym{dsp}{DSP}{Digital Signal Processor}
 #+LATEX_HEADER: \newacronym{fcnn}{FCNN}{Fully Connected Neural Network}
+#+LATEX_HEADER: \newacronym{ffnn}{FFNN}{Feed-Forward Neural Network}
 #+LATEX_HEADER: \newacronym{gpgpu}{GPGPU}{General-Purpose computing on Graphics Processing Units}
 #+LATEX_HEADER: \newacronym{lstm}{LSTM}{Long Short Term Memory}
 #+LATEX_HEADER: \newacronym{mlp}{MLP}{Multilayer Perceptron}
+#+LATEX_HEADER: \newacronym{ct}{CT}{Computed tomography}
 #+LATEX_HEADER: \newacronym{mri}{MRI}{Magnetic resonance imaging}
 #+LATEX_HEADER: \newacronym{nn}{NN}{Neural Netowrk}
 #+LATEX_HEADER: \newacronym{pca}{PCA}{Principal Coomponent Analysis}
@@ -13,6 +15,7 @@
 #+LATEX_HEADER: \newacronym{rnn}{RNN}{Reccursive Neural Networks}
 #+LATEX_HEADER: \newacronym{som}{SOM}{Self Organizing Map}
 #+LATEX_HEADER: \newacronym{svd}{SVD}{Singular Value Decomposition}
+#+LATEX_HEADER: \newacronym{sgc}{SGC}{Stochastic Gradient Descent}
 #+LATEX_HEADER: \newacronym{svm}{SVM}{Support Vector Machines}
 
 #+LATEX_HEADER: \newglossaryentry{ensemble models}
