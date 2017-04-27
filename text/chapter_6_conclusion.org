@@ -1,4 +1,4 @@
-* Conclusions
+* TODO Conclusions
 
   In this thesis was described brief history of Neural Network model, and its evolution into Deep learning models such as Convolutional Neural Network. Some problems of image processing discipline were highlighted and role of Deep Learning in image processing.
 

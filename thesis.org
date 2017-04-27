@@ -2,7 +2,7 @@
 # set class of latex document (in this case is is report)
 #+LaTeX_CLASS: vut-thesis
 # disable automatic table of content extraction
-#+OPTIONS: toc:nil
+#+OPTIONS: toc:nil todo:nil
 # self explanatory options for latex export
 #+OPTIONS: author:nil date:nil  title:nil
 # Including header
@@ -16,7 +16,8 @@
 \includepdf[pages=1,offset=15.4mm -1in]{pdf/student-desky}
 \setcounter{page}{1}
 \includepdf[pages=1,offset=15.4mm -1in]{pdf/student-titulka}
-\includepdf[pages=1,offset=-12mm -1in]{pdf/student-zadani}
+# \includepdf[pages=1,offset=-12mm -1in]{pdf/student-zadani}
+\includepdf[pages=1,offset=15.4mm -1in]{pdf/student-zadani}
 
 \vytvorabstrakt
 
@@ -32,17 +33,12 @@
 
 \lstlistoflistings
 
-# Chapter I Introduction
 #+INCLUDE: text/chapter_1_introduction.org
-
-# Chapter II for theory portion
 #+INCLUDE: text/chapter_2_theory.org
-
-# Chapter III for experiment portion
-#+INCLUDE: text/chapter_3_experiment.org
-
-# Conclusions
-#+INCLUDE: text/chapter_4_conclusions.org
+#+INCLUDE: text/chapter_3_neural_networks.org
+#+INCLUDE: text/chapter_4_application_of_cnn.org
+#+INCLUDE: text/chapter_5_experiment.org
+#+INCLUDE: text/chapter_6_conclusion.org
 
 \bibliographystyle{abbrv}
 \bibliography{citation}

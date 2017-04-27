@@ -214,3 +214,15 @@
 #+LATEX_HEADER: name={sigmoid},
 #+LATEX_HEADER: description={TODO},
 #+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{under fitting}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={under fitting},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{over fitting}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={over fitting},
+#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: }
