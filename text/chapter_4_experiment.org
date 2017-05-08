@@ -1,0 +1,455 @@
+# TODO: Find a better name for this chapter
+# TODO: Find all terms that need to be added into list of terms
+* Practical Part
+  # TODO: make sure that this realy stays in four parts!!!
+  This chapter is broke down into four parts. Firstly a brief history of [[glspl:cnn][CNN]] development and several examples of their successfully application. This is followed with description of commonly used tools for machine learning application with emphasis on deep learning. Design of performed experiment is described in the following section. The last portions is summarizing achieved results.
+** Practical Applications of Convolutional Neural Networks
+   <<sec:practApllication>>
+   # TODO: find better word the attributed
+   Origins of [[glspl:cnn][CNN]] are attributed to Yann LeCun for his work on hand written digit recognition described in \cite{article__lecun__1989}. Resulting model is sometimes called LeNet. What made [[gls:cnn][CNN]] front and center of everyone's attention was their success in [[gls:ilsvrc][ILSVRC]] competition in 2012, where model submitted by Alex Krizhevsky, Ilya Sutskever and Geoffrey E. Hinton \cite{article__krizhevsky__2012}, achieved top-5 test error rate of 15.3%, while the second best performance was 26.2%. This staggering gap in achieved performance garnered large interest of computer vision community. This model is often regarded as AlexNet.
+
+   In the following year the competition seen large increase of submitted [[gls:cnn][CNN]] models. Winners of the 2013 were Matthew Zeiler and Rob Fergus with their ZF Net \cite{article__zeiler__2013}, which had similar structure to AlexNet and achieved 11.2% error rate.
+
+   In the 2014 was the [[gls:ilsvrc][ILSVRC]] dominated by GoogLeNet \footnote{The name GoogLeNet is a nod to LeCun's model LeNet.} with top-5 error rate of 6.7%. This model is very different from the previously discussed [[glspl:cnn][CNN]] and it is using so-called inception modules \cite{article__szegedy__2014}. Officially it is cited to have 22 layers, but since these layers them self are combination of multiple elements the number is actually over 100.
+
+   The year 2015 [[gls:ilsvrc][ILSVRC]] was won by team from Microsoft with their ResNet model with an error rate of 3.6%. Aside from the actual record in the competition it also broke the record with most layers with 152. Results of [[gls:ilsvrc][ILSVRC]] 2016 didn't bring any revolutionary improvements and winner of used ensemble based approach. It is not likely that year 2017 will bring any significant improvement of top-5 error rate from model based on [[gls:cnn][CNN]] alone, but it remains to be seen \cite{online--Deshpande--2016}.
+
+   Apart from the [[gls:ilsvrc][ILSVRC]] the [[glspl:cnn][CNN]] are very successfully deployed in many real world applications. Some examples are described in following text.
+   # Sourced from http://machinelearningmastery.com/inspirational-applications-deep-learning/
+
+   # TODO: This has to be severly updated. Add reference to MNIST dataset
+**** Handwritten Digit Recognition
+     <<sec:digitrecognition>>
+     #+NAME: fig:mnist_100_digits
+     #+CAPTION: Examples of 100 handwritten digits from MNIST dataset
+     #+ATTR_LATEX: :width 4in
+     [[./img/figure__4__mnist_100_digits.png]]
+     As it was mentioned before convolutional neural networks were  originally designed for image processing applications. First mention of [[gls:cnn][CNN]] was in \cite{article__lecun__1989} where they were used for recognition of handwritten digit from Dataset of Zip codes from US post. Concept was successfully deployed on DSP chip and tested in real-time application of sorting mail by the zip-code. [[gls:cnn][CNN]] were in this case one of the first models that was reaching human performance level. Similar techniques were later used to power automatic mail sorting in US Postal Service.
+
+     # from http://machinelearningmastery.com/inspirational-applications-deep-learning/
+
+**** Automatic Colorization of Black and White Images [citation]
+     # http://cs231n.stanford.edu/reports2016/219_Report.pdf
+     #+NAME: fig:colorization
+     #+CAPTION: Examples of automaticall colorated images
+     #+ATTR_LATEX: :width 4in
+     [[./img/figure__4__colorization.png]]
+
+     Automatic colorization is interesting technical problem where the task is to create colored image from gray scale input. Any strides in automatization of this process are welcomed because until recently this was very tedious and slow process that needs to be heavily assisted by human operator. This task also seen some success with regression based models, but resulting images wasn't very aesthetically pleasing.
+
+     Application of very deep [[glspl:cnn][CNN]] managed to deliver very promising results.
+     In this case convolution network was trained in supervised manner. As inputs were used gray scaled images that were trained to categorized detected shapes in gray-scale image to correct color. This technology could be also used to colorize black and white video.
+
+**** Automatically Adding Sounds to Silent Movies [citation]
+     # https://arxiv.org/pdf/1512.08512.pdf
+
+     #+NAME: fig:adding_sound
+     #+CAPTION: Time line of automatically generated sound for silent video
+     #+ATTR_LATEX: :width 4in
+     [[./img/figure__4__adding_sound.png]]
+
+     This is very interesting demonstration of capabilities of state of the art Deep Learning models. Solely based on silent video sequence of drumming stick hitting different surfaces with different textures, the model is capable to guess the sound effect that set hitting produces. Convolutional Neural Network was trained to classify the type of surface being hit from visual cues (vibration of hit surface, movement of particles upon impact and so on). And [[gls:lstm][LSTM]] Recurrent neural network was trained to reproduce sound patterns most similar to actual sound that was recorded in original video. Produced sounds were tested with human participants that had to distinguish synthesized sound from the real ones. Surprisingly in some cases the model fulled to test subjects.
+
+**** Automatic Machine Translation [citation]
+     # http://www.nlpr.ia.ac.cn/cip/ZongPublications/2015/IEEE-Zhang-8-5.pdf
+     #+NAME: fig:visual_translation
+     #+CAPTION: Automatic vision translation on image in real time
+     [[./img/figure__4__visual_translation.png]]
+     Convolutional Neural Network was used to detected written text within image scenes and send to large [[gls:lstm][LSTM]] Recurrent neural network to provide translation. Translated text was then re-rendered back to original image converting foreign text into intelligible (translated). This application was deployed by Google in 2015 to their android devices as extension for Translator application. Feature was called instant visual translation.
+
+**** Automatic Written Description of Scene in Images [citation]
+     # https://research.googleblog.com/2014/11/a-picture-is-worth-thousand-coherent.html
+     #+NAME: fig:algorithm_for_image_description
+     #+CAPTION: Structure of a learning algorithm used for automatic description
+     #+ATTR_LATEX: :width 4in
+     [[./img/figure__4__algorithm_for_image_description.png]]
+
+     #+NAME: fig:scene_description
+     #+CAPTION: Examples of scene description
+     [[./img/figure__4__scene_description.png]]
+
+     Already familiar combination of [[gls:cnn][CNN]] and [[gls:lstm][LSTM]] [[gls:rnn][RNN]] used in this case to describe scene depicted on image. [[gls:cnn][CNN]] was trained do categorize objects on image and [[gls:lstm][LSTM]] was to generate description of scene. It can be seen on image [] that the results are very impressive, even in cases that the model makes mistakes.
+
+** Tools and Frameworks for Machine Learning
+   In order to select appropriate tool for implementation of [[gls:cnn][CNN]] for ILSVRC classification was conducted investigation of available software frameworks and libraries. There is vast variety of software tools for machine learning. Some of these are general tools for machine learing, but some are specifically designed for [[gls:deep learning][deep learning]].
+
+   In the last 10 years the software tools for machine learning undergone a renaissance. There is broad selection of them available and new tools are introduced quite frequently. For example Caffe2[fn:1] was introduced very recently on April 18^th. Almost every commonly used programming language has some framework, library or at least some sort of [[gls:api][API]] available.
+
+   The selection of the framework was influenced by several factors. Firstly the implementing language had to well know and somewhat mainstream. Abundance of available training materials, preferably with existing tutorials. The most important factor was good support for learning on [[gls:gpu][GPU]].
+
+   # Namely there is a variety of tools that are centered around python programming language. All of the frameworks mentioned bellow have at least some support for GPGPU computation.
+
+[fn:1] Newer version of popular Caffe framework now available at \url{https://caffe2.ai/}.
+
+*** Theano
+    # TODO: Make sure that I've written this my self
+    It is very old Framework that is written in c extension and its [[gls:api][API]] is written in python. Further more Theano is built on top of Numpy which is python module that enables efficient operation with tensors and basic image processing technique. Combination of Numpy and Scipy can rival the capabilities of MatLab, while being open source and free. Theano is solver of computational graphs and its biggest rival is currently tensorflow. Probably because it is very old it suffers is falling into way side. On of the main reasons for this is a fact that theano project was acquired by Google and as such it is in direct competition to the Tensorflow, which is younger and lately more capable.
+    Problem of Theano is that it is very low level and sometimes can be very complicated. As such it is not very suitable for implementation of [[gls:cnn][CNN]] models.
+*** Torch
+    Also one of the old frameworks. Minor negative of Torch is that it uses Lua scripting language as a programming interface. Lua is not very commonly used and as such it suffers from lack of interest of the mainstream machine learning community. It was one of the first universal and modular frameworks developed specifically for the needs of Deep learning. It was very prominent several years ago, but it seems that it lost some traction and is not as prevalent as it once was. One of the possible reasons for this might be that it is implemented in Lua programming language that is not nearly so popular as for example python.
+
+*** TODO Tensorflow
+
+    Is currently advertised as one of the fastest frameworks for deep learning needs. It is similar to Theano in the it also works on computational graphs. Among many of its adavantages one of the disadvantage is in the fact that it is very low level and direct usage for Deep learning problems is not ideal.
+
+*** Caffe
+    Caffe is a deep learning framework that aims to be modular and fast. It is developed by Berkeley AI Research (BAIR) and by community contributors. Yangqing Jia created the project during his PhD at UC Berkeley. It is implemented in C++ but it also offers [[glspl:api][API]] for several other languages as for example python.
+    Its biggest drawback is that it is sometimes difficult to find any good documentation and in terms of popularity it was not so prominent as some other frameworks in this list. This fact is partially remedied by the existence of Model Zoo, which is collection of favorite models that are freely available. Caffe was in the last years used by companies as Facebook for example mainly because its performance capabilities. Caffe is more geared towards the development of mass production application than it is for research purposes.
+
+*** Keras
+    Keras is relatively young framework written in python that is using lower level solver for computational graphs. Currently Keras supports both Theano and Tensorflow. It is very simple framework that is using straight forward model preparation and it is very easily extensible. It probably currently has one of the largest communities among similar frameworks for deep learning. It has most monthly mentions in Arxiv database, in scientific papers dealing with deep learning.
+
+    Keras has very good documentation, many code examples and other resources that help users to get started very quickly.
+
+    Since both Theano and Tensorflow support execution models on [[gls:gpu][GPU]] units it provides this possibility and it is very good at it.
+
+*** TODO MatConvNet
+    MatConvNet is a MATLAB toolbox implementing fast and efficient
+   - Matlab toolbox implementing CNNs for computer vision application.
+   - It has the disadvantage of being part of proprietary software
+   - Its community is not nearly as big as in case of Torch or Keras
+
+*** TODO Scikit learn
+   - is also python framework that is very popular and offers wide variety of machine learning models but it is not so versatile and it is obvious that is more geared towards hobbyist then for scientific community.
+   - The support for Deep Learning is not as wide as it is for example at Keras
+
+** Design of Experiment
+*** Datasets
+**** MNIST
+This dataset was already mentioned in section [[sec:digitrecognition]].
+
+**** CIFAR
+
+      # Design of experiment was heavily influenced by
+      # Configuration of the
+      # TODO: Add this to resolution
+      One of the important reasons for this significant difference in performance is also in the input data
+   When is the performance compared to CIFAR10 the main difference is that Cifar datsaet is carefully segmented. evey image contains the
+   # Main d
+   # Also it is always in the middle
+   # Object from each image is always in the middle and it is domininat element. There usually are no other elements that can confuse the prediction!!!
+
+**** ImageNet (ILSVRC)
+
+     ImageNet is a project of Stanford Vision Lab at Stanford University. It is a coordinated effort to gather largest database of annotated images for visual recognition research. As of writing of this document the database contained 14,197,122 images from 21841 categories. Hierarchy of the ImageNet is meant to map onto [[https://en.wikipedia.org/wiki/WordNet][WordNet]] database to cover significant portion of it's nouns.
+
+     ImageNet project is probably most well known for its [[gls:ilsvrc][ILSVRC]] competition happening annually since 2010. It was already mentioned several times in section [[sec:practApllication]].
+
+     Rules of the competition undergo minor updates every year but the main task remains the classification of images into 1000 categories with training dataset of 1.2 million images. These categories cover wide variety of general concepts but it also contains 120 categories for different breeds of dog, which adds problem of fine-grained recognition.
+
+     This task is measured on top-1 and top-5 error rates, where top-5 error rate is classified as success in the case that correct label is among first 5 predictions of the model.
+
+
+  # important articles:
+  # http://soumith.ch/eyescream/
+
+*** Data Preparation
+    <<data_preparation>>
+
+    # TODO: Ask Horak if this can be written here.
+    Due to a organizational difficulties it took a long time to obtain viable hardware that could have been used for training of the network. It was decided that instead of full ILSVRC challenge in this thesis will be attempted to solve reduced version of the task. This reduction involves number of classes. It was decided models will be trained on subset of the ILSVRC with 100 randomly selected classes. This seamed to be a reasonable compromise to preserve some of the inert difficulty of the problem while meeting the deadline of this thesis.
+    # TODO: Find out how many images is among the 100 classes!!
+
+    One of the biggest challenges of the dataset preparation was it's size. In case of MNIST and CIFAR10 datasets that contains only very small images, it was feasible to work with dataset within memory. In case of ImageNet dataset any augmentation of the data and by extension any training of a model, had to be performed in batches.
+    Python ecosystem offers several options for storing of data for mathematical manipulation. For these specific requirements was selected [[gls:hdf5][HDF5]][fn:3] binary data format. Image data were saved into hard-drive using h5py[fn:4] python library.
+
+    Images contained in the dataset are quite varied. They have different number of pixels, aspect ratio and overall quality. Selected model imposed the constraint that each image has to be of the same size and aspect ratio. Selected size of the images was 256x256 pixels, based on the work described in \cite{article__krizhevsky__2012}. Dataset preparation was done in three stages.
+
+[fn:3] \url{https://support.hdfgroup.org/HDF5/}
+[fn:4] \url{http://www.h5py.org/}
+
+**** Stage 1
+     In the first stage was randomly selected 100 categories. Every image from this subset was pre-processed in following way. When both sides of the image were larger than 256 pixels, it was re-sized so that the shorter side matched the 256 pixels and exceeding pixels on the longer side were cropped out.
+     Every image that had one side larger and smaller was filled by zeros on the shorter side and cropped on the longer side. In case that both sides were shorter then 256 pixels it was re-sized in similar way as in case of both sides larger but the size of image was increased instead of decreased.
+
+**** Stage 2
+     In the [[gls:ilsvrc][ILSVRC]] competition the participants are provided with special validation and testing instances, in this setup the training images were split into two datasets instead. This was done only because it saved time during crucial time period of designing the experiments. This decision has a drawback because  it necessarily reduces the amount of data available for training of the network. But since the dataset was substantially smaller then in [[gls:ilsvrc][ILSVRC]] competition it didn't represent a big problem. Ratio of train to test size was selected 9:1.
+
+     It was made sure that images are randomly split between test and train dataset so that both dataset have roughly equal split among the categories. It is very important that the model is trained with alternating categories. For example if the model would be exposed to images of the same category in the row the update of weights of in the given cycle would be biased to this category. In other words it would be over fitted, which is not desirable.
+
+     It was found that simple random selection of images didn't vouch for equally representation in resulting datasets. This was caused by the fact that not all classes had the same number of training images. Average number of images was around 500 per class, but some classes had over 1000 images. It was solved by intervention on every third draw during random selection. In this intervention was selected the category that currently had most images left.
+
+**** Stage 3
+     In the last stage were images normalized and converted to appropriate data type. Original images were typical [[gls:rgb][RGB]] images with individual pixels coded as Unit8 type with values in range 0-255. Keras model requires data to be provided in float32 type. Therefore the pre-processed images had to be converted. It was also normalized into range 0-1. To normalize each pixel was simply divided by maximal value of uint8, which is 255.
+
+     Data with correct label for the images were integers with index in range 0-100. Keras model is expecting the label data in categorical format. Categorical format converts each index of the label data into vector of all zeroes but one of length equal to number of categories. Element of the vector with index equal to original index of the labeled data is equal to one.
+
+     To convert a instance into categorical format is used function
+     #+BEGIN_SRC python
+     np_utils.to_categorical(y, num_classes)
+     #+END_SRC
+     from =keras.utils= module.
+
+     For illustration in dataset with 5 classes an instance of class label with index 3
+     #+BEGIN_SRC python
+     >>> y_instance
+     3
+     >>> np_utils.to_categorical(y_instance, 5)
+     [0.0, 0.0, 0.0, 1.0, 0.0]
+     #+END_SRC
+
+     Both of these operation needed to be performed on each instance of the data and since this couldn't be done in memory, the whole process was executed in batches of 500 images.
+     #+BEGIN_SRC python
+     # X_train Y_train datasets are devided into batches of 500
+     for index in range(0, len(X_train), 500):
+         index_end = index + 500
+
+         # normalize values
+         X_train[index:index_end] = np.divide(
+             X_train[index:index_end], 255)
+
+         # convert to categorical
+         Y_train[index:index_end] = np_utils.to_categorical(
+             Y_train[index:index_end], 100)
+     #+END_SRC
+
+
+*** Model Implementation
+     Feed-forward models in keras framework are referred to as Sequential. To create sequential model we need to create object of Sequential class:
+     #+BEGIN_SRC python
+     model = Sequential()
+     #+END_SRC
+     Definition of the network is in terms of layers, where Sequential class uses method =add()=. So for example to add first convolution layer we call
+
+     #+BEGIN_SRC python
+     model.add(Conv2D(n, kernel))
+     #+END_SRC
+
+     Convolutional layer used in the architecture is usually in following layers
+     #+BEGIN_SRC python
+     Conv2D(filters, kernel_size, strides=(1, 1), padding='valid',
+            input_shape=shape)
+     #+END_SRC
+     n is number of filters that the layer will have, kernal is definition of kernal for example (3,3) and =input_shape= defines size of input matrix.
+
+     Activation function of the convolution layer can be either specified as a parameter of the layer or it can be specified as layer of its own as
+     #+BEGIN_SRC python
+     Activation('relu')
+     #+END_SRC
+     for ReLU activation function.
+
+     Pooling layer can be specified as follows
+     #+BEGIN_SRC python
+     MaxPooling2D(pool_size=(3, 3), strides=(2, 2))
+     #+END_SRC
+
+     Feature extraction layers are multidimensional. In case of Convolution layer it is 2D.
+     To connect the feature extraction and classification parts it is necessary to create mapping between this 2D layer and fully connected layer which is only 1 dimensional. For this purposes it necessary to use following layer
+     #+BEGIN_SRC python
+     Flatten()
+     #+END_SRC
+     which takes care of necessary connections between layers
+
+     Fully connected layer is created by
+     #+BEGIN_SRC python
+     Dense(512)
+     #+END_SRC
+
+     Activation function of Fully connected layers is in this architecture twofold. Activation of inner layers is ReLU similarly as in convolution layers and in the last layer of the network is used the softmax activation function
+     #+BEGIN_SRC python
+     Activation('softmax')
+     #+END_SRC
+
+     Another commonly used element of the network is Dropout layer. Which implements Dropout regularization.
+
+     #+BEGIN_SRC python
+     Dropout(0.5)
+     #+END_SRC
+     Which shows the probability of each connection being dropped.
+
+     # Convolution
+     # The way the keras model works with layers is that concept that of a layer described in the teorethical part. Convolution layer is described
+
+*** Training of the model
+
+***** Data Augmentation
+      Main problem with ImageNet dataset is that it has relatively few images per category. This issue was exacerbated by the decision to also use train dataset for testing purposes described in section [[data_preparation]]. To combat this was performed data augmentation procedure suggested in \cite{article__krizhevsky__2012}. During training of the network each image is augmented before it is fed on input of the network. Pre-processed images from [[gls:hdf5][HDF5]] file have size 256x256x3 pixels. While the size of input of the [[gls:cnn][CNN]] is setup to process data of size 224x224x3. Therefore each image that is send on the net's input is randomly generated patch of size 224x224x3 from the pre-processed image. The generated patch is also flipped horizontally With probability of 0.5. By this augmentation the training dataset is theoretically extended by factor of 2048[fn:5]. Example of the this process is depicted on figure [[fig:data_augmentation]]
+
+
+#+NAME: fig:data_augmentation
+#+CAPTION: Original image (left up). Downsized and cropped on the sides (right up). Six randomly generated patches from processed image (bottom).
+#+ATTR_LATEX: :heigth 2in
+[[./img/figure__4__data_augmentation.png]]
+
+[fn:5] This is because =(size of an image side - size of generated patch)^2 * horizontal flip= which is $(256 - 224)^2 * 2 = 2048$.
+
+***** Model Compilation
+
+
+      #+BEGIN_SRC python
+      model.compile(
+          loss= 'categorical_crossentropy',
+          optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999,
+                         epsilon=1e-08, decay=0.0),
+          metrics=['accuracy'])
+      #+END_SRC
+
+***** Model Fitting
+
+      #+BEGIN_SRC python
+      model.fit_generator(
+          generator=generate_data(HDF5_FILE_NAME,
+                                  train_batch_size,
+                                  "train"),
+          steps_per_epoch=steps_per_epoch,
+          epochs=epochs,
+          verbose=1,
+          validation_data=generate_data(HDF5_FILE_NAME,
+                                        test_batch_size,
+                                        "test"),
+          validation_steps=validation_steps,
+          max_q_size=10,
+          workers=4,
+          pickle_safe=True)
+      #+END_SRC
+
+      =fit_generator= method takes generator function called =generate_data=. This generator is generating data from HDF5 file in infinite loop. Depending on the parameter =data_type= it ether generates training or testing data. Difference between the two is that testing data are generated as center patch of size 224x224x3 from the original sized image 256x256x3. Training data are generated as patch of size 224x224x3 from random position.
+      #+BEGIN_SRC python
+        def generate_data(hdf5_file_name, batch_size, data_type):
+            """Generator that is providing infinite loop of testing dataset.
+            Dataset is loaded from hdf5 file specified by file name. Size of
+            each batch of data is either determined from parameter batch_size
+            of from hdf5 file attribute.
+            """
+            with h5py.File(hf5_file_name, 'r') as hf5:
+                data_x = hf5["/data/%s/x" % data_type]
+                data_y = hf5["/data/%s/y" % data_type]
+                pos = 0
+                size = data_x.shape[0]
+
+                while True:
+                    if pos + step <= size:
+                        batch_x = data_x[pos:pos + step, :, :, :]
+                        batch_y = data_y[pos:pos + step, :]
+                    else:
+                        temp = pos
+                        pos = (pos + step) - size
+                        batch_x = np.concatenate((data_x[0:pos, :, :, :], data_x[temp:size, :, :, :]))
+                        batch_y = np.concatenate((data_y[0:pos, :], data_y[temp:size, :]))
+
+                    undersized_batch_x = np.empty((step, TRAIN_SIZE, TRAIN_SIZE, 3))
+                    for index, image in enumerate(batch_x):
+                        if data_type == "train":
+                            undersized_batch_x[index, :, :, :] = generate_random_patch(image)
+                        elif data_type == "test":
+                            undersized_batch_x[index, :, :, :] = get_center_patch(image)
+                    yield (undersized_batch_x, batch_y)
+
+                    pos += step
+      #+END_SRC
+
+
+      #+BEGIN_SRC python
+      def generate_random_patch(image):
+          """ Function returns random patch from original image. """
+          x_rand = randint(0, 32)
+          y_rand = randint(0, 32)
+          patch = image[x_rand:224+x_rand, y_rand:224+y_rand, :]
+          if randint(0, 1):
+              patch = np.flip(patch, 1)
+          return patch
+
+      #+END_SRC
+    feeding of the model:
+    - python generators
+      - infinite loop
+    - parallel computation
+    - utilization of GPU processing
+
+
+
+**** Preparation of CIFAR10 and MNIST Datasets
+     Keras framework offers method calls that can download both CIFAR10 and MNIST dataset from the internet.
+
+     Downloaded data are in uint8 type therefore it needs to be pre-processed in similar manner as data from ImageNet.
+
+     To get the training and testing data it is sufficient to call
+
+     #+BEGIN_SRC python
+     (x_train, y_train), (x_test, y_test) = mnist.load_data()
+     #+END_SRC
+     This loads
+     =x_train= data are represented as =np.nd_array= object of shape
+     x_train data are of shape (60000, 28, 28, 1)
+     y_train data are of shape (60000, 1)
+
+     x_test data are of shape (10000, 28, 28, 1)
+     y_test data are of shape (10000, 1)
+
+
+     (10000, 32, 32, 1)
+     and of type uint8
+     This means that the object contains 1000 grey scale images of size 32x32 pixel
+
+     y_train data are represented as =np.nd_array= object of shape (10000, 1) of type uint8 which mean that it is 10000 of labels (0 - 9) representing individual digits. Data needs to be pre-processed bececause learning algorithm requires data in particular format.
+
+     #+BEGIN_SRC python
+     (x_train, y_train), (x_test, y_test) = cifar10.load_data()
+     #+END_SRC
+
+     X_train data are of shape (50000, 32, 32, 3)
+     and of type uint8
+
+
+     x data need to converted to float32
+     #+BEGIN_SRC python
+     x_train = x_train.astype('float32')
+     x_test = x_test.astype('float32')
+     #+END_SRC
+
+     and following that they are divided as follows.
+
+     #+BEGIN_SRC python
+     x_train /= max_val
+     x_test /= max_val
+     #+END_SRC
+     this divition ensures taht value of input will fall in interval (0 - 1)
+
+     y data need to be converted into categorical
+
+     #+BEGIN_SRC python
+     y_train = np_utils.to_categorical(y_train, nb_classes)
+     y_test = np_utils.to_categorical(y_test, nb_classes)
+     #+END_SRC
+
+
+*** Selection of Model Structure
+**** Structure of selected Network
+     After weighing the pros and cons of several possible options machine learning framework to use for given tasks was selected Keras framework. There were predominantly two reasons for this. Firstly the Keras is python framework. Python language has large community enthusiastic developers and this ecosystem has many tools that can be useful during development of machine learning algorithms.
+
+     For successful machine learning application there are several components.
+     - Dataset preparation
+     - Model selection
+     - Metaparameter selection and tuning.
+     - Validation of model
+     - Model Test
+
+       # TODO: move this to an appropriate place
+***** Dataset preparation
+      Python has many tools for dataset preparation that is probably rivaled only by matlab. Python module Numpy is heavily inspired by matlab's syntax and work with tensors. Advantage of python is simpler syntax and more broad tooling. Python is multi-platform.
+
+** Results
+   # TODO: Add reference to the abbreviations!!
+   There are three standard benchmark datasets used when it comes [[gls:deep learning][deep learning]]. MNIST, CIFAR and [[gls:ilsvrc][ILSVRC]].
+   # TODO: description of why the result are not close to the ones from state of the art
+
+   The best performance of the results can be seen that there is difference between
+   From the results it
+   For one thing the complexity of selected network wasn't even close to the state of the art from previous years competition submissions.
+   This is only presumption that wasn't tested due to a lack of time, but it seams that counter intuitively the reason behind the worse performance is the reduction of the original task. In other words because the model didn't see enough images. The amount of images is proportional to amount of classes which might suggest that it doesn't play a role, but when taken into account that many images have very similar elements within them. And especially lower convolutional layer might benefit from broader spectrum of images.
+   # TODO: add citation about the lower level visualization of CNN
+   # \cite{}
+   Future work on this subject might try to use larger dataset for several epoch to pre-train the convolutional layers and then reduce the training dataset for selected classes only.
+   This also means that selected architecture might have been too complex to train on the selected samples. Even thought it is not out of the question the collected data regarding this premise doesn't seem to suggest that this was actually the case. Reduced network structures didn't bring any notable accuracy improvements.
+
+The another factor was
+ of the network
+*** Catalog of Used Networks
+
+    #+INCLUDE: results.org
+
+*** Accuracy of Trained Models
+    #+INCLUDE: charts.org
+
+*** Combined Accuracy of Models
+    #+INCLUDE: combined_chart.org

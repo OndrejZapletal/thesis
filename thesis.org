@@ -1,4 +1,4 @@
-#+TITLE: Master Thesis
+#+TITLE: Masters Thesis
 # set class of latex document (in this case is is report)
 #+LaTeX_CLASS: vut-thesis
 # disable automatic table of content extraction
@@ -31,14 +31,13 @@
 
 \seznamtabulek
 
-\lstlistoflistings
+# \lstlistoflistings
 
 #+INCLUDE: text/chapter_1_introduction.org
 #+INCLUDE: text/chapter_2_theory.org
 #+INCLUDE: text/chapter_3_neural_networks.org
-#+INCLUDE: text/chapter_4_application_of_cnn.org
-#+INCLUDE: text/chapter_5_experiment.org
-#+INCLUDE: text/chapter_6_conclusion.org
+#+INCLUDE: text/chapter_4_experiment.org
+#+INCLUDE: text/chapter_5_conclusion.org
 
 \bibliographystyle{abbrv}
 \bibliography{citation}

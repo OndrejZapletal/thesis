@@ -4,7 +4,8 @@
 
 #+LATEX_HEADER: \usepackage[nohyperlinks]{acronym}
 
-#+LATEX_HEADER: \usepackage[breaklinks=true,hypertexnames=false]{hyperref}
+#+LATEX_HEADER: \usepackage[breaklinks=true,hypertexnames=false,hidelinks]{hyperref}
+# #+LATEX_HEADER: \usepackage[breaklinks=true,hypertexnames=false]{hyperref}
 
 #+LATEX_HEADER: \usepackage{pdfpages}
 
@@ -59,6 +60,7 @@
 #+LATEX_HEADER: {Ý}{{\'Y}}1
 #+LATEX_HEADER: {Ž}{{\v{Z}}}1
 #+LATEX_HEADER: }
+#+LATEX_HEADER: \usepackage{pgfplots}
 
 #+LATEX_HEADER: \usepackage{babel}
 
@@ -75,6 +77,12 @@
 
 # Settings for glossaries
 #+LATEX_HEADER: \usepackage[acronym,nomain,toc]{glossaries}
+# Set all glosarie entries in italic
+#+LATEX_HEADER: \renewcommand{\glstextformat}[1]{\textit{#1}}
+
 #+LATEX_HEADER: \makeglossaries
+
+# Definition of variable containing source files for charts
+#+LATEX_HEADER: \def \data_source {/home/derekin/Dropbox/thesis/trained_models/}
 
 #+LATEX_HEADER: \nastavenipdf

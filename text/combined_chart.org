@@ -1,0 +1,95 @@
+
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Training accuracy},
+        xlabel={epoch},
+        ylabel={accuracy [p]},
+        ymin=0.0, ymax=1,
+        legend pos=south east,
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=dashed,
+        scale=1.5,
+    ]
+    
+    \addplot[color=blue]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__newest_model_lr_0_00012000000000000002__0__epochs_60_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{newest model lr 0 00012000000000000002}
+    
+    \addplot[color=red]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__newest_model_lr_0_00014000000000000001__0__epochs_60_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{newest model lr 0 00014000000000000001}
+    
+    \addplot[color=green]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__newest_model_lr_0_00016__0__epochs_60_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{newest model lr 0 00016}
+    
+    \addplot[color=violet]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__newest_model_lr_0_00018__0__epochs_60_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{newest model lr 0 00018}
+    
+    \addplot[color=yellow]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__newest_model_lr_0_0001__0__epochs_60_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{newest model lr 0 0001}
+    
+    \addplot[color=orange]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__newest_model_lr_8e-05__0__epochs_60_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{newest model lr 8e-05}
+    
+
+    \end{axis}
+\end{tikzpicture}
+    
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Testing accuracy},
+        xlabel={epoch},
+        ylabel={accuracy [p]},
+        ymin=0.0, ymax=1,
+        legend pos=south east,
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=dashed,
+        scale=1.5,
+    ]
+    
+    \addplot[color=blue]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__newest_model_lr_0_00012000000000000002__0__epochs_60_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{newest model lr 0 00012000000000000002}
+    
+    \addplot[color=red]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__newest_model_lr_0_00014000000000000001__0__epochs_60_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{newest model lr 0 00014000000000000001}
+    
+    \addplot[color=green]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__newest_model_lr_0_00016__0__epochs_60_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{newest model lr 0 00016}
+    
+    \addplot[color=violet]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__newest_model_lr_0_00018__0__epochs_60_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{newest model lr 0 00018}
+    
+    \addplot[color=yellow]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__newest_model_lr_0_0001__0__epochs_60_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{newest model lr 0 0001}
+    
+    \addplot[color=orange]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__newest_model_lr_8e-05__0__epochs_60_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{newest model lr 8e-05}
+    
+
+    \end{axis}
+\end{tikzpicture}
+    

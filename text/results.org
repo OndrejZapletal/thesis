@@ -1,0 +1,132 @@
+#+NAME: tab:newest_model_lr_0_00012000000000000002
+#+CAPTION: Structure of model newest model lr 0 00012000000000000002
+#+ATTR_LATEX: :align |l|l|c|c|c|c|
+|-|
+ |layer|name|kernels|size of kernel|activation function|regularization|
+|-|
+| 1 | Conv2D | 96 | (11, 11) | relu | - |
+| 2 | MaxPooling2D | - | (3, 3) | -   | - |
+| 3 | Conv2D | 128 | (5, 5) | relu | - |
+| 4 | MaxPooling2D | - | (3, 3) | -   | - |
+| 5 | Conv2D | 190 | (3, 3) | relu | - |
+| 6 | Conv2D | 190 | (3, 3) | relu | - |
+| 7 | Conv2D | 128 | (3, 3) | relu | - |
+| 8 | MaxPooling2D | - | (3, 3) | -  | - |
+|-|
+|layer|name|neurons|-|activation function|regularization|
+|- | - |
+| 9 | Dense | 1024 | - | relu| Dropout(0.5) |
+| 10 | Dense | 1024 | - | relu| Dropout(0.5) |
+| 11 | Dense | 40 | - | softmax| - |
+|-|
+
+#+NAME: tab:newest_model_lr_0_00014000000000000001
+#+CAPTION: Structure of model newest model lr 0 00014000000000000001
+#+ATTR_LATEX: :align |l|l|c|c|c|c|
+|-|
+ |layer|name|kernels|size of kernel|activation function|regularization|
+|-|
+| 1 | Conv2D | 96 | (11, 11) | relu | - |
+| 2 | MaxPooling2D | - | (3, 3) | -   | - |
+| 3 | Conv2D | 128 | (5, 5) | relu | - |
+| 4 | MaxPooling2D | - | (3, 3) | -   | - |
+| 5 | Conv2D | 190 | (3, 3) | relu | - |
+| 6 | Conv2D | 190 | (3, 3) | relu | - |
+| 7 | Conv2D | 128 | (3, 3) | relu | - |
+| 8 | MaxPooling2D | - | (3, 3) | -  | - |
+|-|
+|layer|name|neurons|-|activation function|regularization|
+|- | - |
+| 9 | Dense | 1024 | - | relu| Dropout(0.5) |
+| 10 | Dense | 1024 | - | relu| Dropout(0.5) |
+| 11 | Dense | 40 | - | softmax| - |
+|-|
+
+#+NAME: tab:newest_model_lr_0_00016
+#+CAPTION: Structure of model newest model lr 0 00016
+#+ATTR_LATEX: :align |l|l|c|c|c|c|
+|-|
+ |layer|name|kernels|size of kernel|activation function|regularization|
+|-|
+| 1 | Conv2D | 96 | (11, 11) | relu | - |
+| 2 | MaxPooling2D | - | (3, 3) | -   | - |
+| 3 | Conv2D | 128 | (5, 5) | relu | - |
+| 4 | MaxPooling2D | - | (3, 3) | -   | - |
+| 5 | Conv2D | 190 | (3, 3) | relu | - |
+| 6 | Conv2D | 190 | (3, 3) | relu | - |
+| 7 | Conv2D | 128 | (3, 3) | relu | - |
+| 8 | MaxPooling2D | - | (3, 3) | -  | - |
+|-|
+|layer|name|neurons|-|activation function|regularization|
+|- | - |
+| 9 | Dense | 1024 | - | relu| Dropout(0.5) |
+| 10 | Dense | 1024 | - | relu| Dropout(0.5) |
+| 11 | Dense | 40 | - | softmax| - |
+|-|
+
+#+NAME: tab:newest_model_lr_0_00018
+#+CAPTION: Structure of model newest model lr 0 00018
+#+ATTR_LATEX: :align |l|l|c|c|c|c|
+|-|
+ |layer|name|kernels|size of kernel|activation function|regularization|
+|-|
+| 1 | Conv2D | 96 | (11, 11) | relu | - |
+| 2 | MaxPooling2D | - | (3, 3) | -   | - |
+| 3 | Conv2D | 128 | (5, 5) | relu | - |
+| 4 | MaxPooling2D | - | (3, 3) | -   | - |
+| 5 | Conv2D | 190 | (3, 3) | relu | - |
+| 6 | Conv2D | 190 | (3, 3) | relu | - |
+| 7 | Conv2D | 128 | (3, 3) | relu | - |
+| 8 | MaxPooling2D | - | (3, 3) | -  | - |
+|-|
+|layer|name|neurons|-|activation function|regularization|
+|- | - |
+| 9 | Dense | 1024 | - | relu| Dropout(0.5) |
+| 10 | Dense | 1024 | - | relu| Dropout(0.5) |
+| 11 | Dense | 40 | - | softmax| - |
+|-|
+
+#+NAME: tab:newest_model_lr_0_0001
+#+CAPTION: Structure of model newest model lr 0 0001
+#+ATTR_LATEX: :align |l|l|c|c|c|c|
+|-|
+ |layer|name|kernels|size of kernel|activation function|regularization|
+|-|
+| 1 | Conv2D | 96 | (11, 11) | relu | - |
+| 2 | MaxPooling2D | - | (3, 3) | -   | - |
+| 3 | Conv2D | 128 | (5, 5) | relu | - |
+| 4 | MaxPooling2D | - | (3, 3) | -   | - |
+| 5 | Conv2D | 190 | (3, 3) | relu | - |
+| 6 | Conv2D | 190 | (3, 3) | relu | - |
+| 7 | Conv2D | 128 | (3, 3) | relu | - |
+| 8 | MaxPooling2D | - | (3, 3) | -  | - |
+|-|
+|layer|name|neurons|-|activation function|regularization|
+|- | - |
+| 9 | Dense | 1024 | - | relu| Dropout(0.5) |
+| 10 | Dense | 1024 | - | relu| Dropout(0.5) |
+| 11 | Dense | 40 | - | softmax| - |
+|-|
+
+#+NAME: tab:newest_model_lr_8e-05
+#+CAPTION: Structure of model newest model lr 8e-05
+#+ATTR_LATEX: :align |l|l|c|c|c|c|
+|-|
+ |layer|name|kernels|size of kernel|activation function|regularization|
+|-|
+| 1 | Conv2D | 96 | (11, 11) | relu | - |
+| 2 | MaxPooling2D | - | (3, 3) | -   | - |
+| 3 | Conv2D | 128 | (5, 5) | relu | - |
+| 4 | MaxPooling2D | - | (3, 3) | -   | - |
+| 5 | Conv2D | 190 | (3, 3) | relu | - |
+| 6 | Conv2D | 190 | (3, 3) | relu | - |
+| 7 | Conv2D | 128 | (3, 3) | relu | - |
+| 8 | MaxPooling2D | - | (3, 3) | -  | - |
+|-|
+|layer|name|neurons|-|activation function|regularization|
+|- | - |
+| 9 | Dense | 1024 | - | relu| Dropout(0.5) |
+| 10 | Dense | 1024 | - | relu| Dropout(0.5) |
+| 11 | Dense | 40 | - | softmax| - |
+|-|
+

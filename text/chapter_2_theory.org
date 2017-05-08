@@ -1,49 +1,55 @@
 * Theory
-  In this chapter will be discussed concepts of Artificial intelligence, Image processing, Machine learning in general, [[glspl:nn][NN]] and finally the [[glspl:cnn][CNN]].
+  In this chapter are discussed concepts of Artificial intelligence, image processing and machine learning in general.
 
-** Artificial Intelligence
-   Field of [[gls:ai][AI]] is very general and spawns across several different disciplines (e.g. mathematics, computer science, philosophy, economics and even ethics). This suggests that this field is very broad and can be tackled from many different view points. Therefore this description will not be be very exhaustive. For more broad and complex dive into subject refer to \cite{book--russell--2003}.
+**** Artificial Intelligence
+     Field of [[gls:ai][AI]] is very general and spawns across several different disciplines (e.g. mathematics, computer science, philosophy, economics and even ethics). This suggests that this field is very broad and can be tackled from many different view points. Therefore this description will not be be very exhaustive. For more broad and complex dive into subject refer to \cite{book--russell--2003}.
 
-   It could be characterized by a pursuit of construction of intelligent agents. In other words attempt to create intelligent machines are either thinking or can be perceived as thinking ones.
+     One of many possible definitions of [[gls:ai][AI]] can be summarized as a pursuit to develop an artificial intelligent agent. In other words attempt to create intelligent machines that are either thinking or can be perceived as thinking ones. One of the most important abilities of intelligent agents is the sens of vision[fn:1]. Sense of vision is usually required to certain degree and not always it is necessary that it rivals the capabilities of human visual apparatus.
 
-   One of the most important abilities of intelligent agents is the sens of vision (even thought this is highly dependent on concrete application). Sense of vision is usually required to certain degree and not always it is necessary that it rivals the capabilities of for example human visual apparatus.
+     First attempts to solve the vision problems were tackled from so called bottom up approach. Where the system was instructed with hard-coded set of rules that were describing rules of vision. It was expected that as the understanding of mechanisms that allows humans to extract information from visual scene the hard-coded systems can be fed this understaning in order to create more capable systems. Problem with this approach was that it highly underestimated the difficulty of formalization of these rules. And as a consequece it is difficult to prescribed any formal rules into the intelligent system.
 
-   First attempts to solve the vision problems were tackled from so called bottom up approach where system was instructed with hard-coded set of rules that were describing rules of vision. It was expected that as the understanding of mechanisms that allows humans to extract information from visual scene then these hard-coded systems can be fed more information in order to create more capable systems. Problem with this approach was that it highly underestimated the difficulty of formalization of these rules that could be prescribed into the intelligent system.
+     This insight lead the researchers to postulating that in order to solve the problem of deploing vision capeabilities for artificial inteligent system, it is necessary to introduce a process that would allow the [[gls:ai][AI]] systems to extract patterns from provided data. In other words introduction of systems that are able to learn. Process that enables systems to learn is generally called [[gls:machine learning][machine learning]].
 
-   This insight lead the researchers to postulating that in order to solve this problem there needs to be introduction of process that would allow the [[gls:ai][AI]] systems to extract patterns from provided data. In other words introduction of systems that are able to learn. Process that enables systems to learn is generally called [[gls:machine learning][machine learning]].
+     [[Gls:machine learning][Machine learning]] is again quite broad term that can be used in multiple different contexts and in this document it is meant to be understood as technique that is used to create mathematical models that can be used for image recognition. There are several types of machine learning models that are useful for different tasks. Task that is discussed in this document and is also arguably most commonly tackled is called [[gls:classification][classification]], which is the task to classify instance of input into correct discreet and predominantly finite class. Another typical type of machine learning task is called regression, which is based on the input data trying to estimate value of unknown quantity. Usually integer or real type.
 
-   There are several types of machine learning tasks. Most commonly encountered task is called [[gls:classification][classification]], which is the task to classify instance of input into correct discreet and predominantly finite class. Another typical type of machine learning task is called regression, which is based on the input data trying to estimate value of unknown quantity. Usually integer or real type.
+     Rest of this document will be exclusively dealing with [[gls:classification][classification]] learning tasks.
 
-   Rest of this document will be exclusively dealing with [[gls:classification][classification]] learning tasks.
-
-   # Basics of image processing techniques.
-
-
-** TODO Image Processing
-
-   # There was no wider adoption of machine learning techniques in image processing for very long time, even though they existed as field of study since 1950's. Reason being that machine learning algorithms were very simple and therefore unfit for generally very complex problems of image processing (e.g. object detection and classification).
-
-   Research in image processing was adopting predominately bottom up (feature-based) methodologies. Typical classification pipeline in computer vision would be following:
-   - Image capture - Image is captured (by camera or similar device) and digitized.
-   - Preprocessing - Digitized image is modified to emphasize important features (e.g. noise reduction, contrast normalization etc.).
-   - Segmentation - Selection of interesting features (edges, similar surfaces).
-   - Description - Extraction of radiometric, photometric descriptors and so on.
-   - Classification - Some means to classify the object.
+  # TODO: Make sure that numbering of each footnote is correct!!!
+[fn:1] This is highly dependent on concrete application.
 
 
-   # Classical approach to image processing is still very useful in very restricted environments with rigid constraints. One of examples can be detection of defects on line production in industrial automation.
+**** TODO Image Processing in Computer Vision
 
-   In the first attempts to apply machine learning in image processing, it was used usually deployed as the classification model. In other words complex problems were reduced and simplified in order to utilize machine learning techniques. Consequently this approach favors simpler models.
+     # TODO: Add citation to MPOV slides
+     # There was no wider adoption of machine learning techniques in image processing for very long time, even though they existed as field of study since 1950's. Reason being that machine learning algorithms were very simple and therefore unfit for generally very complex problems of image processing (e.g. object detection and classification).
 
-   This also brings the problem that any of these applications is not very versatile. Each application is usually only capable of solving very simple problem and any deviation from ideal circumstances can mean failure. Application can have problem with varying contrast, illumination, scaling, rotation etc.
 
-   Second problem is often the fact that because image has to be preprocessed several times before it is fed into machine learning model it demands extra time and resources. This can created problems in training phase but also during operation after deployment.
 
-   This is less of a problem with technical innovation and today it can be solved by very fast [[gls:dsp][DSP]], but it still is not negligible effect and it can have negative affect on the price of the solution. This is where [[gls:deep learning][DL]] models starts to exhibit significant advantage.
+     Research in image processing was adopting predominately bottom up (feature-based) methodologies. Typical classification pipeline in computer vision would be following:
+     - Image capture - Image is captured (by camera or similar device) and digitized.
+     - Preprocessing - Digitized image is modified to emphasize important features (e.g. noise reduction, contrast normalization etc.).
+     - Segmentation - Selection of interesting features (edges, similar surfaces).
+     - Description - Extraction of radiometric, photometric descriptors and so on.
+     - Classification - Some means to classify the object.
+     -
+#+NAME: fig:classification_chain
+#+CAPTION: Image processing block diagram.\cite{todo}
+[[./img/figure__1__classification_chain.png]]
 
-   [[Gls:deep learning][DL]] models are in theory capable of capturing complex (higher order) features of the input due to the fact they can learn very high level of abstraction from even very low level features. And what is even more important, is the fact that [[gls:deep learning][DL]] model in theory doesn't need any kind (or very little) of preprocessing. Input image can be directly connected as input into Deep Network.
 
-   # Basics of Machine learning
+     # Classical approach to image processing is still very useful in very restricted environments with rigid constraints. One of examples can be detection of defects on line production in industrial automation.
+
+     In the first attempts to apply machine learning in image processing, it was used usually deployed as the classification model. In other words complex problems were reduced and simplified in order to utilize machine learning techniques. Consequently this approach favors simpler models.
+
+     This also brings the problem that any of these applications is not very versatile. Each application is usually only capable of solving very simple problem and any deviation from ideal circumstances can mean failure. Application can have problem with varying contrast, illumination, scaling, rotation etc.
+
+     Second problem is often the fact that because image has to be preprocessed several times before it is fed into machine learning model it demands extra time and resources. This can created problems in training phase but also during operation after deployment.
+
+     This is less of a problem with technical innovation and today it can be solved by very fast [[gls:dsp][DSP]], but it still is not negligible effect and it can have negative affect on the price of the solution. This is where [[gls:deep learning][DL]] models starts to exhibit significant advantage.
+
+     [[Gls:deep learning][DL]] models are in theory capable of capturing complex (higher order) features of the input due to the fact they can learn very high level of abstraction from even very low level features. And what is even more important, is the fact that [[gls:deep learning][DL]] model in theory doesn't need any kind (or very little) of preprocessing. Input image can be directly connected as input into Deep Network.
+
+     # Basics of Machine learning
 
 
 ** Machine Learning
@@ -60,9 +66,9 @@
    Both of these are typically used for different kinds of machine learning tasks.
 
 **** Unsupervised learning
-     In this learning approach the model is training by observing new data and extracting patterns in the date without being instructed of what they are. Opposed to supervised learning that is described bellow, the advantage of this approach is that the model is able to learn from data without supervision (as the name suggests). This means that there is no need for input data to be annotated, therefore it takes much less time and resources to deploy this model in practice.
+     In this learning approach the model is training by observing new data and extracting patterns in the date without being instructed of what they are. Opposed to supervised learning that is described bellow, the advantage of this approach is that the model is able to learn from data without supervision (as the name suggests). This means that there is no need for input data to be annotated, therefore it takes much less time and resources to deploy these models in practice.
 
-     The biggest hurdle of supervised learning approach in real world applications is to obtain appropriate data. Appropriate data in this context mean, data that were somehow classified into different categories, which can be very tedious and slow process.
+     The biggest hurdle of supervised learning approach in real world applications is to obtain appropriate data. Appropriate data in this context mean, data that were somehow classified into different categories, which can be very tedious and slow process. In some cases the task itself prevents the usage of labeled data (i.e. labeled data are impossible to obtain or don't exist at all).
 
      Majority of unsupervised learning algorithms belong to group called clustering algorithms. These algorithms are centered around the idea to analyze geometric clustering of data in input space to determined their affiliation. This is achieved by the presupposition that data points clustering in input space are likely to exhibit similar properties. Examples of these models are:
 
@@ -70,14 +76,14 @@
      - [[glspl:som][SOM]] - instance based \cite{book--kohonen--2001};
      - [[gls:pca][PCA]] - dimensionality reduction \cite[p.~534--544]{book--hastie--2008}.
 
-     Since unsupervised learning methods typically are not very useful for image classification, following text will be only dealing with supervised learning methods.
+     Image classification usually doesn't rely heavily on the use of unsupervised learning methods, therefore the following text describes only supervised learning methods.
 
 **** Supervised learning
-     Supervised learning approach is more commonly used. This approach requires training data with specific format. Each instance has to have assigned label that is used to learn the algorithm. These labels provide the supervision for the learning algorithm and are used to estimate learning error.
-
+     Supervised learning approach is more commonly used. This approach requires training data with specific format. Each instance has to have assigned label. These labels provide the supervision for the learning algorithm.
+     Training process of supervised learning is based on the following principle. Firstly the training data are feed into the model to produce prediction of output. This prediction is compared to the assigned label of training data and based on the error that the model is producing the parameters of the model are modified in order to reduce this error on future data.
      # TODO: add figure
 
-     Supervised learning approach can be used to solve many different tasks. This document will concentrate only on the task of classification.
+     Supervised learning approach can be used to solve many different tasks. This document concentrates only on the task of classification.
 
 *** Structure of machine learning algorithm
     Even thought that machine learning algorithms are varied and are using different techniques its structure can be generalized. Structure of nearly all machine learning algorithms can be described using following components:
@@ -87,7 +93,7 @@
     - Optimization procedure
 
     # TODO: Finish the thought
-    A model of [[Gls:linear regression][Linear regression]] will be used as a case study to explain individual components mainly due to its simplicity. From the listed components the Dataset specification is usually the same for all different supervised learning algorithms. The other three components can vary dramatically. This level of analysis becomes useful for building of intuition for [[glspl:nn][NN]] and will be used to explain its individual components.
+    A model of [[Gls:linear regression][Linear regression]] is used as a case study to explain individual components mainly due to its simplicity. From the listed components the Dataset specification is usually the same for all different supervised learning algorithms. The other three components can vary dramatically. This level of analysis is useful for building of intuition for [[glspl:nn][NN]] and explanation of its individual components.
 
 **** Dataset specification
      Supervised learning requires datasets with specific properties. Each dataset contains set of $n$ instances which consists of a pair of input vector $\boldsymbol{x}_i$ and output scalar $y_i$. Input vector
@@ -183,7 +189,7 @@
 
 *** TODO Model complexity
 
-    In the first approximation it could be said that the task of supervised machine learning is to model relationship between the input output data most accurately. The problem with this is that in the real world problems there is never enough data to capture true relationship between the two. Therefore the task of machine learning is the attempt to infer true relationship by observing incomplete picture.
+    In the first approximation it could be said that the task of supervised machine learning is to model relationship between the input output data most accurately. The problem with this definition is that in the practical application there is never enough data to capture true relationship between the two. Therefore the task of machine learning is the attempt to infer true relationship by observing incomplete picture.
 
      Therefore the most important property of machine learning model is its generalization ability. That is ability to produce meaningful results on data that were not previously observed.
 
