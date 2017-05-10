@@ -6,11 +6,11 @@
 
      One of many possible definitions of [[gls:ai][AI]] can be summarized as a pursuit to develop an artificial intelligent agent. In other words attempt to create intelligent machines that are either thinking or can be perceived as thinking ones. One of the most important abilities of intelligent agents is the sens of vision[fn:1]. Sense of vision is usually required to certain degree and not always it is necessary that it rivals the capabilities of human visual apparatus.
 
-     First attempts to solve the vision problems were tackled from so called bottom up approach. Where the system was instructed with hard-coded set of rules that were describing rules of vision. It was expected that as the understanding of mechanisms that allows humans to extract information from visual scene the hard-coded systems can be fed this understaning in order to create more capable systems. Problem with this approach was that it highly underestimated the difficulty of formalization of these rules. And as a consequece it is difficult to prescribed any formal rules into the intelligent system.
+     First attempts to solve the vision problems were tackled from so called bottom up approach. Where the system was instructed with hard-coded set of rules that were describing the vision. It was expected that as the understanding of a mechanisms that allows humans to extract information from visual scene the hard-coded systems can be fed this understanding and thus more capable systems can be created. Problem with this approach was that it highly underestimated the difficulty of formalization of these rules. And as a consequece it predominantly failed to devise such a system.
 
      This insight lead the researchers to postulating that in order to solve the problem of deploing vision capeabilities for artificial inteligent system, it is necessary to introduce a process that would allow the [[gls:ai][AI]] systems to extract patterns from provided data. In other words introduction of systems that are able to learn. Process that enables systems to learn is generally called [[gls:machine learning][machine learning]].
 
-     [[Gls:machine learning][Machine learning]] is again quite broad term that can be used in multiple different contexts and in this document it is meant to be understood as technique that is used to create mathematical models that can be used for image recognition. There are several types of machine learning models that are useful for different tasks. Task that is discussed in this document and is also arguably most commonly tackled is called [[gls:classification][classification]], which is the task to classify instance of input into correct discreet and predominantly finite class. Another typical type of machine learning task is called regression, which is based on the input data trying to estimate value of unknown quantity. Usually integer or real type.
+     [[Gls:machine learning][Machine learning]] is again quite broad term that can be used in multiple different contexts and in this document it is meant to be understood as technique that is used to create mathematical models that can be used for image recognition. There are several types of machine learning models that are useful for different tasks. Task that is discussed in this document and is also arguably most commonly tackled is called [[gls:classification][classification]], which is the task to classify instance of input into correct discreet and predominantly finite class. Another typical type of machine learning task is called [[gls:regression][regression]], which is based on the input data trying to estimate unknown continues-valued quantity.
 
      Rest of this document will be exclusively dealing with [[gls:classification][classification]] learning tasks.
 
@@ -18,39 +18,35 @@
 [fn:1] This is highly dependent on concrete application.
 
 
-**** TODO Image Processing in Computer Vision
+**** TODO Image Processing
 
      # TODO: Add citation to MPOV slides
-     # There was no wider adoption of machine learning techniques in image processing for very long time, even though they existed as field of study since 1950's. Reason being that machine learning algorithms were very simple and therefore unfit for generally very complex problems of image processing (e.g. object detection and classification).
+     Computer vision is important subject in image processing. Research in the subject was for meany years approaching the problem from bottom up perspective. This was the already mentioned effort to formalize rules that are guiding the vision of living organisms. This approach was actually very successful in certain circumstances.
 
+     General description of computer vision in image processing can be summarized in following steps:
+      - Image capture - Image is captured (by camera or similar device) and digitized.
+      - Pre-processing - Digitized image is modified to emphasize important features (e.g. noise reduction, contrast normalization etc.).
+      - Segmentation - Selection of interesting features (edges, similar surfaces).
+      - Description - Extraction of radiometric, photometric descriptors and so on.
+      - Classification - Some means to classify the object.
 
+      #+NAME: fig:classification_chain
+      #+CAPTION: Block diagram of image processing pipeline.
+      #+ATTR_LATEX: :width 5in
+      [[./img/figure__2__classification_chain.png]]
 
-     Research in image processing was adopting predominately bottom up (feature-based) methodologies. Typical classification pipeline in computer vision would be following:
-     - Image capture - Image is captured (by camera or similar device) and digitized.
-     - Preprocessing - Digitized image is modified to emphasize important features (e.g. noise reduction, contrast normalization etc.).
-     - Segmentation - Selection of interesting features (edges, similar surfaces).
-     - Description - Extraction of radiometric, photometric descriptors and so on.
-     - Classification - Some means to classify the object.
-     -
-#+NAME: fig:classification_chain
-#+CAPTION: Image processing block diagram.\cite{todo}
-[[./img/figure__1__classification_chain.png]]
+      # Reason being that machine learning algorithms were very simple and therefore unfit for generally very complex problems of computer vision (e.g. object detection and classification).
+      Individual steps are shown in figure [[fig:classification_chain]]. Even though [[gls:machine learning][machine learning]] existed as field of study since the second half of the 20th century, for very long time there was no wider adoption of its techniques in image processing. It was first introduced in the classification step of the processing pipeline. In other words complex problems were simplified by reducing the visual information contained within the image into hand full of simple features that were fed into machine learning model. This approach consequently favors very simple models such as [[gls:knn][KNN]] or [[gls:svm][SVM]].
 
+      This brings the problem that these applications are not very versatile. Each application is usually only capable of solving very simple problem and any deviation from ideal circumstances can mean failure. Application can have problem with varying contrast, illumination, scaling, rotation etc.
 
-     # Classical approach to image processing is still very useful in very restricted environments with rigid constraints. One of examples can be detection of defects on line production in industrial automation.
+      Second problem is often the fact that because image has to be preprocessed several times before it is fed into machine learning model it demands extra time and resources. This is less of a problem with current hardware innovations, but it still is not negligible factor and it can have negative effect on the cost of the solution. This is where [[gls:machine learning][machine learning]] in general exhibit significant advantage.
 
-     In the first attempts to apply machine learning in image processing, it was used usually deployed as the classification model. In other words complex problems were reduced and simplified in order to utilize machine learning techniques. Consequently this approach favors simpler models.
+      # [[Gls:deep learning][DL]] models are in theory capable of learning complex features by extracting meaning from very low level features. And what is even more important, [[gls:deep learning][DL]] models in theory need very little pre-processing. Input image can be directly connected as input into Deep Network.
 
-     This also brings the problem that any of these applications is not very versatile. Each application is usually only capable of solving very simple problem and any deviation from ideal circumstances can mean failure. Application can have problem with varying contrast, illumination, scaling, rotation etc.
+      Classical approach to computer vision can find success in applications that are deployed in very restricted environments with rigid constraints[fn:2]. In this controlled environment it usually pretty simple to describe the problem in formal rules. Even thought it can be still found in certain places it starts to be forced out by application of machine learning simply because the barrier of entry for wider adoption lowers every day.
 
-     Second problem is often the fact that because image has to be preprocessed several times before it is fed into machine learning model it demands extra time and resources. This can created problems in training phase but also during operation after deployment.
-
-     This is less of a problem with technical innovation and today it can be solved by very fast [[gls:dsp][DSP]], but it still is not negligible effect and it can have negative affect on the price of the solution. This is where [[gls:deep learning][DL]] models starts to exhibit significant advantage.
-
-     [[Gls:deep learning][DL]] models are in theory capable of capturing complex (higher order) features of the input due to the fact they can learn very high level of abstraction from even very low level features. And what is even more important, is the fact that [[gls:deep learning][DL]] model in theory doesn't need any kind (or very little) of preprocessing. Input image can be directly connected as input into Deep Network.
-
-     # Basics of Machine learning
-
+[fn:2] This could be for example detection of defects on line production in industrial automation.
 
 ** Machine Learning
 
@@ -62,16 +58,16 @@
    - Unsupervised Learning
    - Supervised Learning
 
-   # TODO: Maybe find better word for this???
    Both of these are typically used for different kinds of machine learning tasks.
 
 **** Unsupervised learning
-     In this learning approach the model is training by observing new data and extracting patterns in the date without being instructed of what they are. Opposed to supervised learning that is described bellow, the advantage of this approach is that the model is able to learn from data without supervision (as the name suggests). This means that there is no need for input data to be annotated, therefore it takes much less time and resources to deploy these models in practice.
+     In this learning approach the model is training by observing new data and extracting patterns in the date without being instructed on what they are. Opposed to supervised learning that is described bellow, the advantage of this approach is that the model is able to learn from data without supervision (as the name suggests). This means that there is no need for input data to be annotated, therefore it takes much less time and resources to deploy these models in practice.
 
      The biggest hurdle of supervised learning approach in real world applications is to obtain appropriate data. Appropriate data in this context mean, data that were somehow classified into different categories, which can be very tedious and slow process. In some cases the task itself prevents the usage of labeled data (i.e. labeled data are impossible to obtain or don't exist at all).
 
-     Majority of unsupervised learning algorithms belong to group called clustering algorithms. These algorithms are centered around the idea to analyze geometric clustering of data in input space to determined their affiliation. This is achieved by the presupposition that data points clustering in input space are likely to exhibit similar properties. Examples of these models are:
+     Majority of unsupervised learning algorithms belong to group called clustering algorithms. These algorithms are centered around the idea to analyze geometric clustering of data in input space to determined their affiliation. This is achieved by the presupposition that data points clustering in input space are likely to exhibit similar properties.
 
+     Examples of unsupervised learning models are:
      - [[gls:k-means][K-MEANS]] - clustering model \cite[p.~460--462]{book--hastie--2008};
      - [[glspl:som][SOM]] - instance based \cite{book--kohonen--2001};
      - [[gls:pca][PCA]] - dimensionality reduction \cite[p.~534--544]{book--hastie--2008}.
@@ -80,20 +76,19 @@
 
 **** Supervised learning
      Supervised learning approach is more commonly used. This approach requires training data with specific format. Each instance has to have assigned label. These labels provide the supervision for the learning algorithm.
-     Training process of supervised learning is based on the following principle. Firstly the training data are feed into the model to produce prediction of output. This prediction is compared to the assigned label of training data and based on the error that the model is producing the parameters of the model are modified in order to reduce this error on future data.
+     Training process of supervised learning is based on the following principle. Firstly the training data are fed into the model to produce prediction of output. This prediction is compared to the assigned label of the training data in order to estimate models error. Based on this error the learning algorithm adjusts model's parameters in order to reduce it.
      # TODO: add figure
 
-     Supervised learning approach can be used to solve many different tasks. This document concentrates only on the task of classification.
-
 *** Structure of machine learning algorithm
-    Even thought that machine learning algorithms are varied and are using different techniques its structure can be generalized. Structure of nearly all machine learning algorithms can be described using following components:
+    Even thought that machine learning algorithms are varied and are using different techniques its structure can be generalized. Structure of nearly all machine learning algorithms can be described as composition of following components:
     - Dataset specification
     - Model
     - Cost function
     - Optimization procedure
 
-    # TODO: Finish the thought
-    A model of [[Gls:linear regression][Linear regression]] is used as a case study to explain individual components mainly due to its simplicity. From the listed components the Dataset specification is usually the same for all different supervised learning algorithms. The other three components can vary dramatically. This level of analysis is useful for building of intuition for [[glspl:nn][NN]] and explanation of its individual components.
+Nearly all supervised learning algorithms use the same Dataset specification. The other three components can vary dramatically. This level of analysis is useful for building of intuition for [[glspl:nn][NN]] and explanation of its individual components.
+
+    # A model of [[Gls:linear regression][Linear regression]] is used as a case study to explain individual components mainly due to its simplicity.
 
 **** Dataset specification
      Supervised learning requires datasets with specific properties. Each dataset contains set of $n$ instances which consists of a pair of input vector $\boldsymbol{x}_i$ and output scalar $y_i$. Input vector
@@ -127,7 +122,7 @@
      \boldsymbol{\hat{y}} = \boldsymbol{X}\boldsymbol{\theta}.
      \end{equation}
 
-     The same thing in expanded notation is equal to
+     Predictions in expanded notation are equal to
      \begin{equation}
         \begin{bmatrix}
           \hat{y}_{1} \\
@@ -147,15 +142,16 @@
         \end{bmatrix}.
      \end{equation}
 
+     # TODO: Check if it still fits here!!
      It most general case machine learning model can be viewed as model that is generating probability distribution.
      \begin{equation}
      p(y \mid \boldsymbol{x}; \boldsymbol{\theta})
      \end{equation}
 
-**** Cost function
+**** Cost Function
      In order to achieve the learning ability of the machine learning algorithm it is necessary to estimate how correct the model is with its predictions. This is estimated with so called [[gls:cost function][cost function]] (also sometimes called [[gls:loss function][loss function]]).
 
-     This function has to have certain properties. Ability of the machine learning algorithm to learn rests on the estimation of its improvement with change of its parameters. Therefore [[gls:cost function][cost function]] has be at least partially differentiable. For the case of linear regression it is most common to use [[gls:sum of square][sum of square]] error. The main reason being that derivative of this function for linear model has only one global minimum.
+     This function has to have certain properties. Ability of the machine learning algorithm to learn rests on the estimation of its improvement with change of its parameters. Therefore [[gls:cost function][cost function]] has be at least partially differentiable. For the case of [[gls:linear regression][linear regression]] it is most common to use [[gls:sum of square][sum of square]] error. The main reason being that derivative of this function for linear model has only one global minimum.
 
      [[Gls:cost function][Cost function]] is defined as
      \begin{equation}
@@ -164,14 +160,14 @@
      \end{equation}
 
      For the optimization purposes it is usually useful to express the [[gls:cost function][cost function]] in matrix notation
-     \begin{equation}
+     \begin{equation} \label{eq:1}
      J(\boldsymbol{\theta}) = \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)^T \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right).
      \end{equation}
 
-**** Optimization procedure
+**** Optimization Procedure
      The last part of learning algorithm is the optimization procedure. It consist of update of model's parameters $\boldsymbol{\theta}$ in order to improve it's prediction. In other words to find $\boldsymbol{\theta}$ such that the value of [[gls:cost function][cost function]] $J(\boldsymbol{\theta})$ for given dataset is as small as possible.
 
-     To investigate the change of [[gls:cost function][cost function]] on given dataset it is necessary to compute the derivative of $J(\boldsymbol{\theta})$ in respect to $\boldsymbol{\theta}$
+     To investigate the change of [[gls:cost function][cost function]] on given dataset it is necessary to compute the derivative of $J(\boldsymbol{\theta})$ with respect to $\boldsymbol{\theta}$
      \begin{equation}
       \begin{split}
         \frac{\partial J(\boldsymbol{\theta})} {\partial \boldsymbol{\theta}} & = \frac{\partial} {\partial \boldsymbol{\theta}} \left[ \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)^T \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right) \right] \\
@@ -180,39 +176,47 @@
       \end{split}
      \end{equation}
 
+     For linear model is possible to find optimal solution which is global minimum of the [[gls:cost function][cost function]].
      The optimal solution
      \begin{equation}
       \boldsymbol{\theta} = \left(\boldsymbol{X}^T\boldsymbol{X}\right)^{-1}\boldsymbol{X}^T\boldsymbol{y},
      \end{equation}
      is found by equating the partial derivative of $J(\boldsymbol{\theta})$ to $0$. Only condition is that $\boldsymbol{X}^T\boldsymbol{X}$ has to be non singular.
-     # TODO: add some more sauce here !!!
+
+     Unfortunately only very simple problems can be approximated using model as simple as [[gls:linear regression][linear regression]]. More complex model usually means more complicated [[gls:cost function][cost function]]. Optimization process of more complex [[glspl:cost function][cost functions]] cannot be guaranteed to find global minimum. In this case the optimization procedure has to be of iterative character. In other words algorithm has to approach the minimum in iterations. Many of the iterative methods belong to the group called gradient based optimization.
 
 *** TODO Model complexity
 
     In the first approximation it could be said that the task of supervised machine learning is to model relationship between the input output data most accurately. The problem with this definition is that in the practical application there is never enough data to capture true relationship between the two. Therefore the task of machine learning is the attempt to infer true relationship by observing incomplete picture.
 
-     Therefore the most important property of machine learning model is its generalization ability. That is ability to produce meaningful results on data that were not previously observed.
+    Therefore the most important property of machine learning model is its generalization ability. That is ability to produce meaningful results on data that were not previously observed.
 
-     # TODO: Try to find better image depicting the sam thing
-     #+NAME: fig:over_under_fitting
-     #+CAPTION: Figure shows different levels of generalization of model
-     [[./img/figure__2__over_under_fitting.png]]
+    #+NAME: fig:over_under_fitting
+    #+CAPTION: Figure shows different levels of generalization of model
+    [[./img/figure__2__over_under_fitting.png]]
 
-     Generalization ability is dependent on complexity of the model and its relationship to complexity of underling problem. When model doesn't capture complexity of the problem sufficiently it is described as [[gls:under fitting][under fitting]]. In cases that the complexity of model is exceeds the complexity of underling problem then this phenomenon is called [[gls:over fitting][over fitting]].
+    Generalization ability is dependent on complexity of the model and its relationship to complexity of underling problem. When model doesn't capture complexity of the problem sufficiently it is described as [[gls:under fitting][under fitting]]. In cases that the complexity of model exceeds the complexity of underling problem then this phenomenon is called [[gls:over fitting][over fitting]].
 
-     In both of these extremes the generalization ability suffers. In the former case the model is unable to capture true intricacies of the problem and therefore is unable to reliably predict desired output. In the latter case it tries to capture even the most subtle data perturbation that might be in fact a result of stochastic nature of the problem and not the real underlying relationship. This can be caused the fact that input data is missing some variable that is necessary to capture the true relationship. This fact is unavoidable and it therefore has to be taken into account when designing machine learning model. Depiction of theses phenomena in case of two variable input is on Fig. [[fig:over_under_fitting]].
+    In both of these extremes the generalization ability suffers. In the former case the model is unable to capture true intricacies of the problem and therefore is unable to reliably predict desired output. In the latter case it tries to capture even the most subtle data perturbation that might be in fact a result of stochastic nature of the problem and not the real underlying relationship. This can be also caused the fact that input data is missing some variable that is necessary to capture the true relationship. This fact is unavoidable and it therefore has to be taken into account when designing machine learning model. Depiction of this phenomena in case of two variable input is on Fig. [[fig:over_under_fitting]].
 
-     Typically the machine learning model is trained on as much of input data as possible in order to achieve the best performance possible. At the same time its error rate has to be verified on independent input data to check whether the generalization ability is not deteriorating. This is typically achieved by splitting available input data into training and testing set (usually in 4:1 ratio for training to test data). Model is trained with training data only and the performance of the model is tested on the test data. Relationship between test and train error can be found on Fig. [[fig:test_vs_training_error]]. Even though that the true generalization error can never be truly observed its approximation by test error rate is sufficient for majority of machine learning tasks.
+    Typically the machine learning model is trained on as much of input data as possible in order to achieve the best performance possible. At the same time its error rate has to be verified on independent input data to check whether the generalization ability is not deteriorating. This is typically achieved by splitting available input data into training and testing set (usually in 4:1 ratio for training to test data). Model is trained with training data only and the performance of the model is tested on the test data. Relationship between test and train error can be found on Fig. [[fig:test_vs_training_error]]. Even though that the true generalization error can never be truly observed its approximation by test error rate is sufficient for majority of machine learning tasks.
 
-     #+NAME: fig:test_vs_training_error
-     #+CAPTION: Relationship between the model complexity and its ultimate accuracy is the relationship between training and testing error.
-     #+ATTR_LATEX: :width 4in
-     [[./img/figure__2__test_vs_training_error.png]]
+    #+NAME: fig:test_vs_training_error
+    #+CAPTION: Relationship between the model complexity and its ultimate accuracy is the relationship between training and testing error.
+    #+ATTR_LATEX: :width 4in
+    [[./img/figure__2__test_vs_training_error.png]]
 
 
 **** Regularization
-     As it was already mentioned, the most important aspect of machine learning is striking the balance between over and under fitting of the model. To help with this problem was devised concept of regularization. It is a technique that helps penalizes the model for its complexity.
+     /Regularization is any modification that is made to the learning algorithm that is intended to reduce its generalization error but not its training error/\cite{book--goodfellow--2016}.
 
-     # TODO: You've used cost function here!!!
-     Basic concept consists of adding a term in the [[gls:cost function][cost function]] that increases with model complexity.
+     As it was already mentioned, the most important aspect of machine learning is striking the balance between over and under fitting of the model. To help with this problem was devised concept of regularization. It is a technique that helps penalizes the model for its complexity. Basic concept consists of adding a term in the [[gls:cost function][cost function]] that increases with model complexity.
+
+     # TODO: I think that this should be called L1 regularization
+     When is this applied to cost function from equation \ref{eq:1}
+     \begin{equation}
+     J(\boldsymbol{\theta}) = \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)^T \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right) + \lambda\boldsymbol{\theta}^T\boldsymbol{\theta},
+     \end{equation}
+     where $\lambda$ is a parameter that controls the strength of the preference\cite{book--goodfellow--2016}.
+
      # TODO: TBD

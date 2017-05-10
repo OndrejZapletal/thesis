@@ -3,8 +3,8 @@
 * Practical Part
   # TODO: make sure that this realy stays in four parts!!!
   This chapter is broke down into four parts. Firstly a brief history of [[glspl:cnn][CNN]] development and several examples of their successfully application. This is followed with description of commonly used tools for machine learning application with emphasis on deep learning. Design of performed experiment is described in the following section. The last portions is summarizing achieved results.
-** Practical Applications of Convolutional Neural Networks
-   <<sec:practApllication>>
+** Practical Applications of CNN
+   <<sec:practical_application>>
    # TODO: find better word the attributed
    Origins of [[glspl:cnn][CNN]] are attributed to Yann LeCun for his work on hand written digit recognition described in \cite{article__lecun__1989}. Resulting model is sometimes called LeNet. What made [[gls:cnn][CNN]] front and center of everyone's attention was their success in [[gls:ilsvrc][ILSVRC]] competition in 2012, where model submitted by Alex Krizhevsky, Ilya Sutskever and Geoffrey E. Hinton \cite{article__krizhevsky__2012}, achieved top-5 test error rate of 15.3%, while the second best performance was 26.2%. This staggering gap in achieved performance garnered large interest of computer vision community. This model is often regarded as AlexNet.
 
@@ -19,7 +19,7 @@
 
    # TODO: This has to be severly updated. Add reference to MNIST dataset
 **** Handwritten Digit Recognition
-     <<sec:digitrecognition>>
+     <<sec:digit_recognition>>
      #+NAME: fig:mnist_100_digits
      #+CAPTION: Examples of 100 handwritten digits from MNIST dataset
      #+ATTR_LATEX: :width 4in
@@ -70,53 +70,117 @@
 
      Already familiar combination of [[gls:cnn][CNN]] and [[gls:lstm][LSTM]] [[gls:rnn][RNN]] used in this case to describe scene depicted on image. [[gls:cnn][CNN]] was trained do categorize objects on image and [[gls:lstm][LSTM]] was to generate description of scene. It can be seen on image [] that the results are very impressive, even in cases that the model makes mistakes.
 
-** Tools and Frameworks for Machine Learning
+** TODO Tools and Frameworks for Machine Learning
    In order to select appropriate tool for implementation of [[gls:cnn][CNN]] for ILSVRC classification was conducted investigation of available software frameworks and libraries. There is vast variety of software tools for machine learning. Some of these are general tools for machine learing, but some are specifically designed for [[gls:deep learning][deep learning]].
 
    In the last 10 years the software tools for machine learning undergone a renaissance. There is broad selection of them available and new tools are introduced quite frequently. For example Caffe2[fn:1] was introduced very recently on April 18^th. Almost every commonly used programming language has some framework, library or at least some sort of [[gls:api][API]] available.
 
-   The selection of the framework was influenced by several factors. Firstly the implementing language had to well know and somewhat mainstream. Abundance of available training materials, preferably with existing tutorials. The most important factor was good support for learning on [[gls:gpu][GPU]].
+   The selection of the framework was influenced by several factors. Firstly the implementing language had to be well know and somewhat mainstream. Abundance of available training materials, preferably with existing tutorials. The most important factor was good support for learning on [[gls:gpu][GPU]].
 
    # Namely there is a variety of tools that are centered around python programming language. All of the frameworks mentioned bellow have at least some support for GPGPU computation.
 
 [fn:1] Newer version of popular Caffe framework now available at \url{https://caffe2.ai/}.
 
-*** Theano
-    # TODO: Make sure that I've written this my self
-    It is very old Framework that is written in c extension and its [[gls:api][API]] is written in python. Further more Theano is built on top of Numpy which is python module that enables efficient operation with tensors and basic image processing technique. Combination of Numpy and Scipy can rival the capabilities of MatLab, while being open source and free. Theano is solver of computational graphs and its biggest rival is currently tensorflow. Probably because it is very old it suffers is falling into way side. On of the main reasons for this is a fact that theano project was acquired by Google and as such it is in direct competition to the Tensorflow, which is younger and lately more capable.
-    Problem of Theano is that it is very low level and sometimes can be very complicated. As such it is not very suitable for implementation of [[gls:cnn][CNN]] models.
-*** Torch
-    Also one of the old frameworks. Minor negative of Torch is that it uses Lua scripting language as a programming interface. Lua is not very commonly used and as such it suffers from lack of interest of the mainstream machine learning community. It was one of the first universal and modular frameworks developed specifically for the needs of Deep learning. It was very prominent several years ago, but it seems that it lost some traction and is not as prevalent as it once was. One of the possible reasons for this might be that it is implemented in Lua programming language that is not nearly so popular as for example python.
+**** Theano
+     # TODO: Make sure that I've written this my self
+     It is very old Framework that is written in python. It might seem unwise that it is written in scripting language that is not as fast as other languages that are more commonly used for computation intensive application but it performs very well. This is manly because all computation intensive code is actually written in highly optimized c extensions. Theano is built on top of Numpy, which is python module that enables efficient operation with tensors and basic image processing technique. Combination of Numpy and Scipy brings rich set of tools for image processing and data processing. Its capabilities can arguably rival MatLab, while being open source and free. Theano basically works computational graphs solver. Its biggest rival is currently Tensorflow project. One of the problems of Theano is that it is very low level and sometimes can be very complicated. This is probably the reason it slowly falling by the way side.
 
-*** TODO Tensorflow
+     Theano as a framework is not very suitable for implementation of [[gls:cnn][CNN]] models.
 
-    Is currently advertised as one of the fastest frameworks for deep learning needs. It is similar to Theano in the it also works on computational graphs. Among many of its adavantages one of the disadvantage is in the fact that it is very low level and direct usage for Deep learning problems is not ideal.
+ On of the main reasons for this is a fact that theano project was acquired by Google and as such it is in direct competition to the Tensorflow, which is younger and lately more capable.
 
-*** Caffe
-    Caffe is a deep learning framework that aims to be modular and fast. It is developed by Berkeley AI Research (BAIR) and by community contributors. Yangqing Jia created the project during his PhD at UC Berkeley. It is implemented in C++ but it also offers [[glspl:api][API]] for several other languages as for example python.
-    Its biggest drawback is that it is sometimes difficult to find any good documentation and in terms of popularity it was not so prominent as some other frameworks in this list. This fact is partially remedied by the existence of Model Zoo, which is collection of favorite models that are freely available. Caffe was in the last years used by companies as Facebook for example mainly because its performance capabilities. Caffe is more geared towards the development of mass production application than it is for research purposes.
+**** Torch
+     Also one of the old frameworks. Minor negative of Torch is that it uses Lua scripting language as a programming interface. Lua is not very commonly used and as such it suffers from lack of interest of the mainstream machine learning community. It was one of the first universal and modular frameworks developed specifically for the needs of Deep learning. It was very prominent several years ago, but it seems that it lost some traction and is not as prevalent as it once was. One of the possible reasons for this might be that it is implemented in Lua programming language that is not nearly so popular as for example python.
 
-*** Keras
-    Keras is relatively young framework written in python that is using lower level solver for computational graphs. Currently Keras supports both Theano and Tensorflow. It is very simple framework that is using straight forward model preparation and it is very easily extensible. It probably currently has one of the largest communities among similar frameworks for deep learning. It has most monthly mentions in Arxiv database, in scientific papers dealing with deep learning.
+**** TODO Tensorflow
+ Similarly as Theano, Tensorflow is
+     Is currently advertised as one of the fastest frameworks for deep learning needs.
 
-    Keras has very good documentation, many code examples and other resources that help users to get started very quickly.
+ It is similar to Theano in the it also works on computational graphs.
+  Among many of its advantages one of the disadvantage is in the fact that it is very low level and direct usage for Deep learning problems is not ideal.
 
-    Since both Theano and Tensorflow support execution models on [[gls:gpu][GPU]] units it provides this possibility and it is very good at it.
+**** Caffe
+     Caffe is a deep learning framework that aims to be modular and fast. It is developed by Berkeley AI Research (BAIR) and by community contributors. Yangqing Jia created the project during his PhD at UC Berkeley. It is implemented in C++ but it also offers [[glspl:api][API]] for several other languages as for example python.
+     Its biggest drawback is that it is sometimes difficult to find any good documentation and in terms of popularity it was not so prominent as some other frameworks in this list. This fact is partially remedied by the existence of Model Zoo, which is collection of favorite models that are freely available. Caffe was in the last years used by companies as Facebook for example mainly because its performance capabilities. Caffe is more geared towards the development of mass production application than it is for research purposes.
 
-*** TODO MatConvNet
-    MatConvNet is a MATLAB toolbox implementing fast and efficient
-   - Matlab toolbox implementing CNNs for computer vision application.
-   - It has the disadvantage of being part of proprietary software
-   - Its community is not nearly as big as in case of Torch or Keras
+**** TODO MatConvNet                                               :noexport:
+     MatConvNet is a MATLAB toolbox implementing fast and efficient
+    - Matlab toolbox implementing CNNs for computer vision application.
+    - It has the disadvantage of being part of proprietary software
+    - Its community is not nearly as big as in case of Torch or Keras
 
-*** TODO Scikit learn
-   - is also python framework that is very popular and offers wide variety of machine learning models but it is not so versatile and it is obvious that is more geared towards hobbyist then for scientific community.
-   - The support for Deep Learning is not as wide as it is for example at Keras
+**** TODO Scikit learn                                             :noexport:
+    - is also python framework that is very popular and offers wide variety of machine learning models but it is not so versatile and it is obvious that is more geared towards hobbyist then for scientific community.
+    - The support for Deep Learning is not as wide as it is for example at Keras
+
+
+
+**** Keras
+     Keras is relatively young framework written in python. Its user [[gls:api][API]] is also using python. As a computational graph solver it is using back-end of either Theano or Tensorflow.
+
+     It is very simple framework that is offers straightforward model preparation and it is very easily extensible.
+
+     It probably currently has one of the largest communities among similar frameworks for deep learning.
+
+     It offers broad selection of tools for deep learning.
+     Keras has very good documentation, many code examples and other resources that help users to get started very quickly.
+
+     Since both Theano and Tensorflow support execution models on [[gls:gpu][GPU]] units it extends this possibility to Keras as well.
+
+*** Hardware and Software Configuration
+    Training of [[gls:nn][NN]] is notoriously computational expensive and it demands a lot of computational. From low level perspective training of [[gls:nn][NN]] translates into many multiplications of matrices. Modern [[glspl:cpu][CPU]] are not really optimized for such computations and therefore are not very good at it. Modern [[glspl:gpu][GPU]] on the other hand are designed to preform precisely these operations.
+
+    # Technological breakthroughs in computational hardware is one of the necessary conditions for successful training and deployment of deep learning models.
+
+    Currently on the market there are two major parallel computing platforms CUDA and OpenCL. They both have pros and cons but the major difference is that CUDA is proprietary while OpenCL is open source. This divide translates into hardware manufactures as well. CUDA is mainly supported by Nvida and OpenCL is support by AMD. There is certain cross over between the two but it still stands. Nvidia with its CUDA framework is currently leader in the domain of deep learning. For this reason was selected GPU from Nvidia.
+
+    # TODO: add hardware speciffication of the computer from lab
+    Exact selected model was GeForce GTX 1080 from GIGABYTE. Card was installed on PC ... Hardware configuration is summarized in table [[tab:hardware_configuration]].
+
+    Operating system installed on PC was Linux Ubuntu Mate 17.04. Version of CUDA computing platform was 7.5. PC also had installed cuDNN v5.1, which is GPU-accelerated library of primitives for deep neural networks.
+
+    From the list of considered frameworks was selected Keras. The reason being that Keras fulfilled all consideration factors and because it was written in python which was most familiar to the author.
+
+    Keras is high level framework that is relying on either Theano or Tensorflow. From the user perspective it doesn't really mater either way, but Tensorflow is preferred because it has performance improvements opposed to Theano. Details of software configuration is summarized in table [[tab:software_configuration]].
+
+    # TODO: fill up
+    #+NAME: tab:hardware_configuration
+    #+CAPTION: Hardware configuration
+    #+ATTR_LATEX: :align | l | l |
+    |--------+---------------------|
+    | CPU    |                     |
+    |--------+---------------------|
+    | GPU    | Gforce GTX 1080 8GB |
+    |--------+---------------------|
+    | Memory | 8GB                 |
+    |--------+---------------------|
+
+
+
+    # TODO: fill up
+    #+NAME: tab:software_configuration
+    #+CAPTION: Software configuration
+    #+ATTR_LATEX: :align | l | l |
+    |-------------+-------|
+    | Ubuntu Mate | 17.04 |
+    |-------------+-------|
+    | Python      |  3.53 |
+    |-------------+-------|
+    | Keras       |  2.04 |
+    |-------------+-------|
+    | Tensorflow  |       |
+    |-------------+-------|
+    | CUDA        |   7.5 |
+    |-------------+-------|
+    | cuDNN       |   5.1 |
+    |-------------+-------|
+
+
 
 ** Design of Experiment
 *** Datasets
 **** MNIST
-This dataset was already mentioned in section [[sec:digitrecognition]].
+This dataset was already mentioned in section [[sec:digit_recognition]].
 
 **** CIFAR
 
@@ -133,7 +197,7 @@ This dataset was already mentioned in section [[sec:digitrecognition]].
 
      ImageNet is a project of Stanford Vision Lab at Stanford University. It is a coordinated effort to gather largest database of annotated images for visual recognition research. As of writing of this document the database contained 14,197,122 images from 21841 categories. Hierarchy of the ImageNet is meant to map onto [[https://en.wikipedia.org/wiki/WordNet][WordNet]] database to cover significant portion of it's nouns.
 
-     ImageNet project is probably most well known for its [[gls:ilsvrc][ILSVRC]] competition happening annually since 2010. It was already mentioned several times in section [[sec:practApllication]].
+     ImageNet project is probably most well known for its [[gls:ilsvrc][ILSVRC]] competition happening annually since 2010. It was already mentioned several times in section [[sec:practical_application]].
 
      Rules of the competition undergo minor updates every year but the main task remains the classification of images into 1000 categories with training dataset of 1.2 million images. These categories cover wide variety of general concepts but it also contains 120 categories for different breeds of dog, which adds problem of fine-grained recognition.
 
@@ -142,6 +206,7 @@ This dataset was already mentioned in section [[sec:digitrecognition]].
 
   # important articles:
   # http://soumith.ch/eyescream/
+
 
 *** Data Preparation
     <<data_preparation>>
@@ -205,64 +270,73 @@ This dataset was already mentioned in section [[sec:digitrecognition]].
 
 
 *** Model Implementation
-     Feed-forward models in keras framework are referred to as Sequential. To create sequential model we need to create object of Sequential class:
-     #+BEGIN_SRC python
-     model = Sequential()
-     #+END_SRC
-     Definition of the network is in terms of layers, where Sequential class uses method =add()=. So for example to add first convolution layer we call
 
-     #+BEGIN_SRC python
-     model.add(Conv2D(n, kernel))
-     #+END_SRC
+**** Model structure
+     For implementation of [[gls:cnn][CNN]] was used Keras sequential model, which is a concept that is appropriate for modeling of feed forward network. Definition of the network is composed of layers. Concept of layer in Keras sequential model doesn't completely map into already described definition of layer from topological perspective. Keras layers are more fine grained and in order to create equivalent topological layer it is necessary to use multiple Keras layers.
 
-     Convolutional layer used in the architecture is usually in following layers
+     Model is created simply by calling sequential constructor:
      #+BEGIN_SRC python
-     Conv2D(filters, kernel_size, strides=(1, 1), padding='valid',
-            input_shape=shape)
-     #+END_SRC
-     n is number of filters that the layer will have, kernal is definition of kernal for example (3,3) and =input_shape= defines size of input matrix.
-
-     Activation function of the convolution layer can be either specified as a parameter of the layer or it can be specified as layer of its own as
-     #+BEGIN_SRC python
-     Activation('relu')
-     #+END_SRC
-     for ReLU activation function.
-
-     Pooling layer can be specified as follows
-     #+BEGIN_SRC python
-     MaxPooling2D(pool_size=(3, 3), strides=(2, 2))
+     model = Sequential().
      #+END_SRC
 
-     Feature extraction layers are multidimensional. In case of Convolution layer it is 2D.
-     To connect the feature extraction and classification parts it is necessary to create mapping between this 2D layer and fully connected layer which is only 1 dimensional. For this purposes it necessary to use following layer
+     Layers are added by calling an =add= method on object of sequential model:
      #+BEGIN_SRC python
-     Flatten()
-     #+END_SRC
-     which takes care of necessary connections between layers
+     model.add(layer),
+      #+END_SRC
+     where =layer= is definition of the layer.
 
-     Fully connected layer is created by
-     #+BEGIN_SRC python
-     Dense(512)
-     #+END_SRC
+     All models were created by composition of following layers.
 
-     Activation function of Fully connected layers is in this architecture twofold. Activation of inner layers is ReLU similarly as in convolution layers and in the last layer of the network is used the softmax activation function
-     #+BEGIN_SRC python
-     Activation('softmax')
-     #+END_SRC
+***** Convolutional
+      Convolutional layer used in the architecture is usually in following
+      #+BEGIN_SRC python
+      Conv2D(filters=n, kernel_size=(z, z), strides=(s, s), padding='valid',
+             input_shape=shape)
+      #+END_SRC
+      where =n= is number of filters that the layer will have, kernal is definition of kernal for example (3,3) and =input_shape= defines size of input matrix.
+***** Activation
+      To add activation function on the output of the layer user can specify parameter =activation= of the layer itself or create activation as a layer
+      #+BEGIN_SRC python
+      Activation(acitvation_function)
+      #+END_SRC
+      where =activation_function= is either 'softmax' or 'relu'. Both specifications are equivalent because Keras automatically uses linear activation function for each layer.
 
-     Another commonly used element of the network is Dropout layer. Which implements Dropout regularization.
 
-     #+BEGIN_SRC python
-     Dropout(0.5)
-     #+END_SRC
-     Which shows the probability of each connection being dropped.
+***** Pooling
+      Pooling layer can be specified as
+      #+BEGIN_SRC python
+      MaxPooling2D(pool_size=(z, z), strides=(s, s))
+      #+END_SRC
+      where =pool_size= specifies size of pooling kernel and =strides= specifies number of pixels in x and y direction that are traversed in between application of individual pools.
 
-     # Convolution
-     # The way the keras model works with layers is that concept that of a layer described in the teorethical part. Convolution layer is described
+***** Fully Connected
 
-*** Training of the model
+      Fully connected layer is created by
+      #+BEGIN_SRC python
+      Dense(num_of_units)
+      #+END_SRC
+      where =num_of_units= is a number of fully connected neurons in one layer.
 
-***** Data Augmentation
+***** Dropout
+      Similarly to activation function to apply dropout regularization on a layer it needs to be added after it as another layer.
+      #+BEGIN_SRC python
+      Dropout(p)
+      #+END_SRC
+      where =p= is both probability that any unit is dropped and also the coefficient by which are the outputs multiplied during forward evaluation.
+
+***** Other
+
+      Feature extraction layers are multidimensional. Specifically both Convolutional and Pooling layers are two dimensional. Classification layers that are created by fully connected layers are one dimensional. To connect the two, it is necessary to create mapping between them. For this purposes it necessary to use following layer
+      #+BEGIN_SRC python
+      Flatten()
+      #+END_SRC
+      which takes care of necessary connections between layers
+
+
+**** Training of the model
+
+
+**** Data Augmentation
       Main problem with ImageNet dataset is that it has relatively few images per category. This issue was exacerbated by the decision to also use train dataset for testing purposes described in section [[data_preparation]]. To combat this was performed data augmentation procedure suggested in \cite{article__krizhevsky__2012}. During training of the network each image is augmented before it is fed on input of the network. Pre-processed images from [[gls:hdf5][HDF5]] file have size 256x256x3 pixels. While the size of input of the [[gls:cnn][CNN]] is setup to process data of size 224x224x3. Therefore each image that is send on the net's input is randomly generated patch of size 224x224x3 from the pre-processed image. The generated patch is also flipped horizontally With probability of 0.5. By this augmentation the training dataset is theoretically extended by factor of 2048[fn:5]. Example of the this process is depicted on figure [[fig:data_augmentation]]
 
 
@@ -273,88 +347,92 @@ This dataset was already mentioned in section [[sec:digitrecognition]].
 
 [fn:5] This is because =(size of an image side - size of generated patch)^2 * horizontal flip= which is $(256 - 224)^2 * 2 = 2048$.
 
-***** Model Compilation
+**** Model Compilation
 
 
-      #+BEGIN_SRC python
-      model.compile(
-          loss= 'categorical_crossentropy',
-          optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999,
-                         epsilon=1e-08, decay=0.0),
-          metrics=['accuracy'])
-      #+END_SRC
+     #+BEGIN_SRC python
+     model.compile(
+         loss= 'categorical_crossentropy',
+         optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999,
+                        epsilon=1e-08, decay=0.0),
+         metrics=['accuracy'])
+     #+END_SRC
 
-***** Model Fitting
+**** Model Fitting
 
-      #+BEGIN_SRC python
-      model.fit_generator(
-          generator=generate_data(HDF5_FILE_NAME,
-                                  train_batch_size,
-                                  "train"),
-          steps_per_epoch=steps_per_epoch,
-          epochs=epochs,
-          verbose=1,
-          validation_data=generate_data(HDF5_FILE_NAME,
-                                        test_batch_size,
-                                        "test"),
-          validation_steps=validation_steps,
-          max_q_size=10,
-          workers=4,
-          pickle_safe=True)
-      #+END_SRC
+     #+BEGIN_SRC python
+     model.fit_generator(
+         generator=generate_data(HDF5_FILE_NAME,
+                                 train_batch_size,
+                                 "train"),
+         steps_per_epoch=steps_per_epoch,
+         epochs=epochs,
+         verbose=1,
+         validation_data=generate_data(HDF5_FILE_NAME,
+                                       test_batch_size,
+                                       "test"),
+         validation_steps=validation_steps,
+         max_q_size=10,
+         workers=4,
+         pickle_safe=True)
+     #+END_SRC
 
-      =fit_generator= method takes generator function called =generate_data=. This generator is generating data from HDF5 file in infinite loop. Depending on the parameter =data_type= it ether generates training or testing data. Difference between the two is that testing data are generated as center patch of size 224x224x3 from the original sized image 256x256x3. Training data are generated as patch of size 224x224x3 from random position.
-      #+BEGIN_SRC python
-        def generate_data(hdf5_file_name, batch_size, data_type):
-            """Generator that is providing infinite loop of testing dataset.
-            Dataset is loaded from hdf5 file specified by file name. Size of
-            each batch of data is either determined from parameter batch_size
-            of from hdf5 file attribute.
-            """
-            with h5py.File(hf5_file_name, 'r') as hf5:
-                data_x = hf5["/data/%s/x" % data_type]
-                data_y = hf5["/data/%s/y" % data_type]
-                pos = 0
-                size = data_x.shape[0]
+     =fit_generator= method takes generator function called =generate_data=. This generator is generating data from HDF5 file in infinite loop. Depending on the parameter =data_type= it ether generates training or testing data. Difference between the two is that testing data are generated as center patch of size 224x224x3 from the original sized image 256x256x3. Training data are generated as patch of size 224x224x3 from random position.
+     #+BEGIN_SRC python
+       def generate_data(hdf5_file_name, batch_size, data_type):
+           """Generator that is providing infinite loop of testing dataset.
+           Dataset is loaded from hdf5 file specified by file name. Size of
+           each batch of data is either determined from parameter batch_size
+           of from hdf5 file attribute.
+           """
+           with h5py.File(hf5_file_name, 'r') as hf5:
+               data_x = hf5["/data/%s/x" % data_type]
+               data_y = hf5["/data/%s/y" % data_type]
+               pos = 0
+               size = data_x.shape[0]
 
-                while True:
-                    if pos + step <= size:
-                        batch_x = data_x[pos:pos + step, :, :, :]
-                        batch_y = data_y[pos:pos + step, :]
-                    else:
-                        temp = pos
-                        pos = (pos + step) - size
-                        batch_x = np.concatenate((data_x[0:pos, :, :, :], data_x[temp:size, :, :, :]))
-                        batch_y = np.concatenate((data_y[0:pos, :], data_y[temp:size, :]))
+               while True:
+                   if pos + step <= size:
+                       batch_x = data_x[pos:pos + step, :, :, :]
+                       batch_y = data_y[pos:pos + step, :]
+                   else:
+                       temp = pos
+                       pos = (pos + step) - size
+                       batch_x = np.concatenate(
+                           (data_x[0:pos, :, :, :], data_x[temp:size, :, :, :]))
+                       batch_y = np.concatenate(
+                           (data_y[0:pos, :], data_y[temp:size, :]))
 
-                    undersized_batch_x = np.empty((step, TRAIN_SIZE, TRAIN_SIZE, 3))
-                    for index, image in enumerate(batch_x):
-                        if data_type == "train":
-                            undersized_batch_x[index, :, :, :] = generate_random_patch(image)
-                        elif data_type == "test":
-                            undersized_batch_x[index, :, :, :] = get_center_patch(image)
-                    yield (undersized_batch_x, batch_y)
+                   undersized_batch_x = np.empty((step, 224, 224, 3))
+                   for index, image in enumerate(batch_x):
+                       if data_type == "train":
+                           undersized_batch_x[index, :, :, :] = \
+                               generate_random_patch(image)
+                       elif data_type == "test":
+                           undersized_batch_x[index, :, :, :] = \
+                               get_center_patch(image)
+                   yield (undersized_batch_x, batch_y)
 
-                    pos += step
-      #+END_SRC
+                   pos += step
+     #+END_SRC
 
 
-      #+BEGIN_SRC python
-      def generate_random_patch(image):
-          """ Function returns random patch from original image. """
-          x_rand = randint(0, 32)
-          y_rand = randint(0, 32)
-          patch = image[x_rand:224+x_rand, y_rand:224+y_rand, :]
-          if randint(0, 1):
-              patch = np.flip(patch, 1)
-          return patch
+     #+BEGIN_SRC python
+     def generate_random_patch(image):
+         """ Function returns random patch from original image. """
+         x_rand = randint(0, 32)
+         y_rand = randint(0, 32)
+         patch = image[x_rand:224+x_rand, y_rand:224+y_rand, :]
+         if randint(0, 1):
+             patch = np.flip(patch, 1)
+         return patch
 
-      #+END_SRC
-    feeding of the model:
-    - python generators
-      - infinite loop
-    - parallel computation
-    - utilization of GPU processing
+     #+END_SRC
+   feeding of the model:
+   - python generators
+     - infinite loop
+   - parallel computation
+   - utilization of GPU processing
 
 
 
@@ -412,7 +490,6 @@ This dataset was already mentioned in section [[sec:digitrecognition]].
      y_test = np_utils.to_categorical(y_test, nb_classes)
      #+END_SRC
 
-
 *** Selection of Model Structure
 **** Structure of selected Network
      After weighing the pros and cons of several possible options machine learning framework to use for given tasks was selected Keras framework. There were predominantly two reasons for this. Firstly the Keras is python framework. Python language has large community enthusiastic developers and this ecosystem has many tools that can be useful during development of machine learning algorithms.
@@ -427,6 +504,7 @@ This dataset was already mentioned in section [[sec:digitrecognition]].
        # TODO: move this to an appropriate place
 ***** Dataset preparation
       Python has many tools for dataset preparation that is probably rivaled only by matlab. Python module Numpy is heavily inspired by matlab's syntax and work with tensors. Advantage of python is simpler syntax and more broad tooling. Python is multi-platform.
+
 
 ** Results
    # TODO: Add reference to the abbreviations!!
@@ -444,6 +522,13 @@ This dataset was already mentioned in section [[sec:digitrecognition]].
 
 The another factor was
  of the network
+
+*** Comparison of Training Time
+
+    Comparison of training time on CPU vs GPU was performed on MNIST dataset. It was performed on MNIST mainly because training with ImageNet dataset took too much time.
+
+    The difference is quite pronounced which is to be expected because the GeForce GTX 1080 has 2560 CUDA cores, while the CPU of used computer had 8. It is possible that the time difference on ImageNet dataset would be even more pronounced because the MNIST dataset doesn't fully exhaust the GPU resources.
+
 *** Catalog of Used Networks
 
     #+INCLUDE: results.org
@@ -453,3 +538,211 @@ The another factor was
 
 *** Combined Accuracy of Models
     #+INCLUDE: combined_chart.org
+
+*** 1024 Neurons in FCNN
+
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Training accuracy},
+        xlabel={epoch},
+        ylabel={accuracy [p]},
+        ymin=0.0, ymax=1,
+        legend pos=south east,
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=dashed,
+        scale=1.5,
+    ]
+
+    \addplot[color=blue]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_full_size_1024_fc__1__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{4 cl full size 1024 fc}
+
+    \addplot[color=red]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_half_size_1024_fc__2__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{4 cl half size 1024 fc}
+
+    \addplot[color=green]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_full_size_1024_fc__0__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{5 cl full size 1024 fc}
+
+    \addplot[color=violet]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_half_size_1024_fc__4__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{5 cl half size 1024 fc}
+
+
+    \end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Testing accuracy},
+        xlabel={epoch},
+        ylabel={accuracy [p]},
+        ymin=0.4, ymax=0.6,
+        legend pos=south west,
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=dashed,
+        scale=1.5,
+    ]
+
+    \addplot[color=blue]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_full_size_1024_fc__1__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{4 cl full size 1024 fc}
+
+    \addplot[color=red]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_half_size_1024_fc__2__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{4 cl half size 1024 fc}
+
+    \addplot[color=green]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_full_size_1024_fc__0__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{5 cl full size 1024 fc}
+
+    \addplot[color=violet]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_half_size_1024_fc__4__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{5 cl half size 1024 fc}
+
+
+    \end{axis}
+\end{tikzpicture}
+
+*** 2048 Neurons in FCNN
+
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Training accuracy},
+        xlabel={epoch},
+        ylabel={accuracy [p]},
+        ymin=0.0, ymax=1,
+        legend pos=south east,
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=dashed,
+        scale=1.5,
+    ]
+
+    \addplot[color=blue]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_full_size_2048_fc__0__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{4 cl full size 2048 fc}
+
+    \addplot[color=red]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_half_size_2048_fc__1__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{4 cl half size 2048 fc}
+
+    \addplot[color=green]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_full_size_2048_fc__1__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{5 cl full size 2048 fc}
+
+    \addplot[color=violet]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_half_size_2048_fc__3__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{5 cl half size 2048 fc}
+
+
+    \end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Testing accuracy},
+        xlabel={epoch},
+        ylabel={accuracy [p]},
+        ymin=0.4, ymax=0.6,
+        legend pos=south west,
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=dashed,
+        scale=1.5,
+    ]
+
+    \addplot[color=blue]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_full_size_2048_fc__0__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{4 cl full size 2048 fc}
+
+    \addplot[color=red]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_half_size_2048_fc__1__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{4 cl half size 2048 fc}
+
+    \addplot[color=green]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_full_size_2048_fc__1__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{5 cl full size 2048 fc}
+
+    \addplot[color=violet]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_half_size_2048_fc__3__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{5 cl half size 2048 fc}
+
+
+    \end{axis}
+\end{tikzpicture}
+
+*** 4096 Neurons in FCNN
+
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Training accuracy},
+        xlabel={epoch},
+        ylabel={accuracy [p]},
+        ymin=0.0, ymax=1,
+        legend pos=south east,
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=dashed,
+        scale=1.5,
+    ]
+
+    \addplot[color=blue]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_full_size_4096_fc__0__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{5 cl full size 4096 fc}
+
+    \addplot[color=red]
+        table [x=epoch, y=acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_half_size_4096_fc__5__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{5 cl half size 4096 fc}
+
+
+    \end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Testing accuracy},
+        xlabel={epoch},
+        ylabel={accuracy [p]},
+        ymin=0.4, ymax=0.6,
+        legend pos=south west,
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=dashed,
+        scale=1.5,
+    ]
+
+    \addplot[color=blue]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_full_size_4096_fc__0__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{5 cl full size 4096 fc}
+
+    \addplot[color=red]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_half_size_4096_fc__5__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+        \addlegendentry{5 cl half size 4096 fc}
+
+
+    \end{axis}
+\end{tikzpicture}

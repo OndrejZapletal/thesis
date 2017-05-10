@@ -61,6 +61,7 @@
 #+LATEX_HEADER: {Ž}{{\v{Z}}}1
 #+LATEX_HEADER: }
 #+LATEX_HEADER: \usepackage{pgfplots}
+#+LATEX_HEADER: \pgfplotsset{compat=1.13}
 
 #+LATEX_HEADER: \usepackage{babel}
 
@@ -78,11 +79,11 @@
 # Settings for glossaries
 #+LATEX_HEADER: \usepackage[acronym,nomain,toc]{glossaries}
 # Set all glosarie entries in italic
-#+LATEX_HEADER: \renewcommand{\glstextformat}[1]{\textit{#1}}
+# #+LATEX_HEADER: \renewcommand{\glstextformat}[1]{\textit{#1}}
 
 #+LATEX_HEADER: \makeglossaries
 
 # Definition of variable containing source files for charts
-#+LATEX_HEADER: \def \data_source {/home/derekin/Dropbox/thesis/trained_models/}
+# #+LATEX_HEADER: \def \data_source {/home/derekin/Dropbox/thesis/trained_models/}
 
 #+LATEX_HEADER: \nastavenipdf

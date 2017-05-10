@@ -16,7 +16,6 @@
 \includepdf[pages=1,offset=15.4mm -1in]{pdf/student-desky}
 \setcounter{page}{1}
 \includepdf[pages=1,offset=15.4mm -1in]{pdf/student-titulka}
-# \includepdf[pages=1,offset=-12mm -1in]{pdf/student-zadani}
 \includepdf[pages=1,offset=15.4mm -1in]{pdf/student-zadani}
 
 \vytvorabstrakt
@@ -30,8 +29,6 @@
 \seznamobrazku
 
 \seznamtabulek
-
-# \lstlistoflistings
 
 #+INCLUDE: text/chapter_1_introduction.org
 #+INCLUDE: text/chapter_2_theory.org

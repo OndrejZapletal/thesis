@@ -2,25 +2,27 @@
 #+LATEX_HEADER: \newacronym{api}{API}{Application Programming Interface}
 #+LATEX_HEADER: \newacronym{cnn}{CNN}{Convolutional Neural Network}
 #+LATEX_HEADER: \newacronym{ct}{CT}{Computed tomography}
-#+LATEX_HEADER: \newacronym{dnn}{DNN}{Deep Neural Networks}
+#+LATEX_HEADER: \newacronym{dnn}{DNN}{Deep Neural Network}
 #+LATEX_HEADER: \newacronym{dsp}{DSP}{Digital Signal Processor}
 #+LATEX_HEADER: \newacronym{fcnn}{FCNN}{Fully Connected Neural Network}
 #+LATEX_HEADER: \newacronym{ffnn}{FFNN}{Feed-Forward Neural Network}
-#+LATEX_HEADER: \newacronym{gpu}{GPU}{Graphics Processing Units}
-#+LATEX_HEADER: \newacronym{hdf5}{HDF5}{Hierarchical Data Format version 5 }
+#+LATEX_HEADER: \newacronym{gpu}{GPU}{Graphics Processing Unit}
+#+LATEX_HEADER: \newacronym{hdf5}{HDF5}{Hierarchical Data Format 5}
 #+LATEX_HEADER: \newacronym{ilsvrc}{ILSVRC}{Large Scale Visual Recognition Challenge}
 #+LATEX_HEADER: \newacronym{lstm}{LSTM}{Long Short Term Memory}
 #+LATEX_HEADER: \newacronym{mlp}{MLP}{Multilayer Perceptron}
 #+LATEX_HEADER: \newacronym{mri}{MRI}{Magnetic resonance imaging}
-#+LATEX_HEADER: \newacronym{nn}{NN}{Neural Netowrk}
-#+LATEX_HEADER: \newacronym{pca}{PCA}{Principal Coomponent Analysis}
+#+LATEX_HEADER: \newacronym{nn}{NN}{Neural Network}
+#+LATEX_HEADER: \newacronym{pca}{PCA}{Principal Component Analysis}
 #+LATEX_HEADER: \newacronym{relu}{ReLU}{Restricted Linear Unit}
 #+LATEX_HEADER: \newacronym{rgb}{RGB}{Red Green Blue}
-#+LATEX_HEADER: \newacronym{rnn}{RNN}{Reccursive Neural Networks}
-#+LATEX_HEADER: \newacronym{sgc}{SGC}{Stochastic Gradient Descent}
+#+LATEX_HEADER: \newacronym{rnn}{RNN}{Recurrent Neural Network}
+#+LATEX_HEADER: \newacronym{sgd}{SGD}{Stochastic Gradient Descent}
 #+LATEX_HEADER: \newacronym{som}{SOM}{Self Organizing Map}
 #+LATEX_HEADER: \newacronym{svd}{SVD}{Singular Value Decomposition}
 #+LATEX_HEADER: \newacronym{svm}{SVM}{Support Vector Machines}
+#+LATEX_HEADER: \newacronym{knn}{KNN}{K-nearest Neighbors}
+#+LATEX_HEADER: \newacronym{cpu}{CPU}{Central Processing Unit}
 
 #+LATEX_HEADER: \newglossaryentry{ensemble models}
 #+LATEX_HEADER: {
@@ -37,13 +39,19 @@
 #+LATEX_HEADER: \newglossaryentry{recursive networks}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={recursive networks},
-#+LATEX_HEADER: description={TODO}
+#+LATEX_HEADER: description={General type of neural networks that contains feedback loop within its structure.}
 #+LATEX_HEADER: }
 
-#+LATEX_HEADER: \newglossaryentry{hopfield networks}
+#+LATEX_HEADER: \newglossaryentry{hopfield network}
 #+LATEX_HEADER: {
-#+LATEX_HEADER: name={hopfield networks},
-#+LATEX_HEADER: description={TODO}
+#+LATEX_HEADER: name={hopfield network},
+#+LATEX_HEADER: description={Specific type of recurrent neural network invented by John Hopfield in 1982.}
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{regression}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={regression},
+#+LATEX_HEADER: description={Machine learning task for approximation of continuous-valued function response}
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{k-means}
@@ -55,19 +63,13 @@
 #+LATEX_HEADER: \newglossaryentry{perceptron}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={Perceptron},
-#+LATEX_HEADER: description={TODO},
-#+LATEX_HEADER: }
-
-#+LATEX_HEADER: \newglossaryentry{hopfields networks}
-#+LATEX_HEADER: {
-#+LATEX_HEADER: name={Hopfields Networks},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Model of artificial neuron},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{deep learning}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={deep learning},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Popularized term that refers to machine learning models that have architecture that contains many layers.},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{deep}
@@ -85,13 +87,13 @@
 #+LATEX_HEADER: \newglossaryentry{machine learning}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={machine learning},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={research study dealing with models able to learn from experience.},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{bp}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={back-propagation},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Technique that enables the computation of error distribution throughout the network.},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{linear regression}
@@ -221,11 +223,11 @@
 #+LATEX_HEADER: \newglossaryentry{under fitting}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={under fitting},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Statistical term describing models inferior ability to capture underlying relationship between input and output due to a lack of complexity},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{over fitting}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={over fitting},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Statistical term describing models inferior ability to capture underlying relationship between input and output due to an abundance of complexity},
 #+LATEX_HEADER: }
