@@ -1,0 +1,289 @@
+# TODO: Find a better name for this chapter
+# TODO: Find all terms that need to be added into list of terms
+* Experiment
+  # TODO: make sure that this realy stays in four parts!!!
+  This chapter is broke down into two parts. In first part is described the process of selection of model structure and its parameters. In the second part are summarized achieved results on ImageNet dataset.
+
+** Selection of Model Structure and Parameters
+   Selection of a [[gls:nn][NN]] structure is very difficult problem. Networks that were successfully deployed in large scale applications as for example [[gls:ilsvrc][ILSVRC]] can have millions of parameters, while their training process is guided by selection of several meta-parameters. All of it put together creates enormous complexity. To combat this fact selected structure of the model was inspired by AlexNet \citation{article__krizhevsky__2012}. The original structure was modified by scaling down due to a smaller dataset. Structure of the network was also simplified because entire model could be trained on only one GPU card.
+
+   To find optimal structure of the network it was performed multiple experiments with varying following variables.
+
+**** Number of Convolution Layers
+     To find appropriate number and size of convolution layers it was experimented with 3, 4 and 5 layers, while reducing number of kernels in each layer by 2. The presumption was that complexity of convolution layers shouldn't suffer so much by over-fitting due to a data augmentation described in
+
+     In experiments for determined optimal number of convolution layer and consequently number of convolution filters in each layer was performed several test while keeping
+**** Number of Neurons in Fully Connected Layers
+     Number of neurons in dense layer was kept in proportion with AlexNet wile scaling it down. The presumption was that since training dataset only had 1 tenth of the original size it wold suffer from severe over-fitting. This presumption was verified because the testing accuracy was rising with lowering number of neurons.
+
+     # TODO: make sure this is correct.
+     Best performance was recorded with 1024 neurons in first two dense layers. Which is approximately 1 eight of the AlexNet.
+
+**** Optimization procedure
+
+     Optimization procedure that was used to train AlexNet was [[gls:sgd][SGD]] algorithm. This was taken into consideration and [[gls:nn][NN]] was also trained with Adam and Nadam optimization algorithms. Result of these algorithms were compared and determined that in default settings best performance of the 3 is with Adam optimizer.
+
+**** Batch Size
+     Another tested parameter was number of images in each training batch that was used during one epoch[fn:8]. Tested options were 600, 4000 and 10000.
+     # TODO: make sure that this is correct!!
+     Best performance was achieved with batch size of 10000.
+
+[fn:8] Each training epoch means update of a gradient.
+**** Weight Decay
+     According to Krizhevsky the key parameter that allowed the [[gls:cnn][CNN]] to train successfully was weight decay. This unfortunately didn't seem to hold true when using Adam optimizer. Several experiments with weight decay varying from 0 to 0.0005 were performed and in all cases other then decay set to 0 the testing error was manifesting over-fitting.
+**** Dropout
+     Suggestion from Krizhevsky's paper was to use dropout regularization only in first and second fully connected layers. During the experimentation it was also tried to add dropout in-between the convolution layers. This didn't bring any improvements in performance.
+     Influence of change of a dropout probability was also investigated, but the optimal settings was found to be 0.5.
+**** Learning Rate
+     As it might be expected, from all the parameters the largest effect on the performance of the network had the change of learning rate. Adam optimizer has default setting of learning rate set to 0.001. It was found that the smaller learning rate had positive effect on the performance. Best performance was recorded wit learning rate of 0.00008.
+
+**** Beta Parameters
+Default settings of parameters of the Adam optimizer
+beta 1 = 0.9
+beta 2 = 0.999
+
+
+       # TODO: move this to an appropriate place
+ # **** Dataset preparation
+ #      Python has many tools for dataset preparation that is probably rivaled only by matlab. Python module Numpy is heavily inspired by matlab's syntax and work with tensors. Advantage of python is simpler syntax and more broad tooling. Python is multi-platform.
+
+
+** Results
+   # TODO: Add reference to the abbreviations!!
+   There are three standard benchmark datasets used when it comes [[gls:deep learning][deep learning]]. MNIST, CIFAR and [[gls:ilsvrc][ILSVRC]].
+   # TODO: description of why the result are not close to the ones from state of the art
+
+   The best performance of the results can be seen that there is difference between
+   From the results it
+   For one thing the complexity of selected network wasn't even close to the state of the art from previous years competition submissions.
+   This is only presumption that wasn't tested due to a lack of time, but it seams that counter intuitively the reason behind the worse performance is the reduction of the original task. In other words because the model didn't see enough images. The amount of images is proportional to amount of classes which might suggest that it doesn't play a role, but when taken into account that many images have very similar elements within them. And especially lower convolutional layer might benefit from broader spectrum of images.
+   # TODO: add citation about the lower level visualization of CNN
+   # \cite{}
+   Future work on this subject might try to use larger dataset for several epoch to pre-train the convolutional layers and then reduce the training dataset for selected classes only.
+   This also means that selected architecture might have been too complex to train on the selected samples. Even thought it is not out of the question the collected data regarding this premise doesn't seem to suggest that this was actually the case. Reduced network structures didn't bring any notable accuracy improvements.
+
+
+
+*** Topology of Used Networks
+
+    #+INCLUDE: results.org
+
+*** Accuracy of Trained Models
+    #+INCLUDE: charts.org
+
+*** Comparison of Training Time
+
+    Comparison of training time on CPU vs GPU was performed on MNIST dataset. It was performed on MNIST mainly because training with ImageNet dataset took too much time.
+
+    The difference is quite pronounced which is to be expected because the GeForce GTX 1080 has 2560 CUDA cores, while the CPU of used computer had 8. It is possible that the time difference on ImageNet dataset would be even more pronounced because the MNIST dataset doesn't fully exhaust the GPU resources.
+
+*** Combined Accuracy of Models
+    #+INCLUDE: combined_chart.org
+
+# *** 1024 Neurons in FCNN
+
+# \begin{tikzpicture}
+#     \begin{axis}[
+#         title={Training accuracy},
+#         xlabel={epoch},
+#         ylabel={accuracy [p]},
+#         ymin=0.0, ymax=1,
+#         legend pos=south east,
+#         ymajorgrids=true,
+#         xmajorgrids=true,
+#         grid style=dashed,
+#         scale=1.5,
+#     ]
+
+#     \addplot[color=blue]
+#         table [x=epoch, y=acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_full_size_1024_fc__1__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{4 cl full size 1024 fc}
+
+#     \addplot[color=red]
+#         table [x=epoch, y=acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_half_size_1024_fc__2__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{4 cl half size 1024 fc}
+
+#     \addplot[color=green]
+#         table [x=epoch, y=acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_full_size_1024_fc__0__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{5 cl full size 1024 fc}
+
+#     \addplot[color=violet]
+#         table [x=epoch, y=acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_half_size_1024_fc__4__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{5 cl half size 1024 fc}
+
+
+#     \end{axis}
+# \end{tikzpicture}
+
+# \begin{tikzpicture}
+#     \begin{axis}[
+#         title={Testing accuracy},
+#         xlabel={epoch},
+#         ylabel={accuracy [p]},
+#         ymin=0.4, ymax=0.6,
+#         legend pos=south west,
+#         ymajorgrids=true,
+#         xmajorgrids=true,
+#         grid style=dashed,
+#         scale=1.5,
+#     ]
+
+#     \addplot[color=blue]
+#         table [x=epoch, y=val_acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_full_size_1024_fc__1__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{4 cl full size 1024 fc}
+
+#     \addplot[color=red]
+#         table [x=epoch, y=val_acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_half_size_1024_fc__2__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{4 cl half size 1024 fc}
+
+#     \addplot[color=green]
+#         table [x=epoch, y=val_acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_full_size_1024_fc__0__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{5 cl full size 1024 fc}
+
+#     \addplot[color=violet]
+#         table [x=epoch, y=val_acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_half_size_1024_fc__4__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{5 cl half size 1024 fc}
+
+
+#     \end{axis}
+# \end{tikzpicture}
+
+# *** 2048 Neurons in FCNN
+
+# \begin{tikzpicture}
+#     \begin{axis}[
+#         title={Training accuracy},
+#         xlabel={epoch},
+#         ylabel={accuracy [p]},
+#         ymin=0.0, ymax=1,
+#         legend pos=south east,
+#         ymajorgrids=true,
+#         xmajorgrids=true,
+#         grid style=dashed,
+#         scale=1.5,
+#     ]
+
+#     \addplot[color=blue]
+#         table [x=epoch, y=acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_full_size_2048_fc__0__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{4 cl full size 2048 fc}
+
+#     \addplot[color=red]
+#         table [x=epoch, y=acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_half_size_2048_fc__1__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{4 cl half size 2048 fc}
+
+#     \addplot[color=green]
+#         table [x=epoch, y=acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_full_size_2048_fc__1__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{5 cl full size 2048 fc}
+
+#     \addplot[color=violet]
+#         table [x=epoch, y=acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_half_size_2048_fc__3__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{5 cl half size 2048 fc}
+
+
+#     \end{axis}
+# \end{tikzpicture}
+
+# \begin{tikzpicture}
+#     \begin{axis}[
+#         title={Testing accuracy},
+#         xlabel={epoch},
+#         ylabel={accuracy [p]},
+#         ymin=0.4, ymax=0.6,
+#         legend pos=south west,
+#         ymajorgrids=true,
+#         xmajorgrids=true,
+#         grid style=dashed,
+#         scale=1.5,
+#     ]
+
+#     \addplot[color=blue]
+#         table [x=epoch, y=val_acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_full_size_2048_fc__0__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{4 cl full size 2048 fc}
+
+#     \addplot[color=red]
+#         table [x=epoch, y=val_acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__4_cl_half_size_2048_fc__1__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{4 cl half size 2048 fc}
+
+#     \addplot[color=green]
+#         table [x=epoch, y=val_acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_full_size_2048_fc__1__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{5 cl full size 2048 fc}
+
+#     \addplot[color=violet]
+#         table [x=epoch, y=val_acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_half_size_2048_fc__3__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{5 cl half size 2048 fc}
+
+
+#     \end{axis}
+# \end{tikzpicture}
+
+# *** 4096 Neurons in FCNN
+
+# \begin{tikzpicture}
+#     \begin{axis}[
+#         title={Training accuracy},
+#         xlabel={epoch},
+#         ylabel={accuracy [p]},
+#         ymin=0.0, ymax=1,
+#         legend pos=south east,
+#         ymajorgrids=true,
+#         xmajorgrids=true,
+#         grid style=dashed,
+#         scale=1.5,
+#     ]
+
+#     \addplot[color=blue]
+#         table [x=epoch, y=acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_full_size_4096_fc__0__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{5 cl full size 4096 fc}
+
+#     \addplot[color=red]
+#         table [x=epoch, y=acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_half_size_4096_fc__5__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{5 cl half size 4096 fc}
+
+
+#     \end{axis}
+# \end{tikzpicture}
+
+# \begin{tikzpicture}
+#     \begin{axis}[
+#         title={Testing accuracy},
+#         xlabel={epoch},
+#         ylabel={accuracy [p]},
+#         ymin=0.4, ymax=0.6,
+#         legend pos=south west,
+#         ymajorgrids=true,
+#         xmajorgrids=true,
+#         grid style=dashed,
+#         scale=1.5,
+#     ]
+
+#     \addplot[color=blue]
+#         table [x=epoch, y=val_acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_full_size_4096_fc__0__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{5 cl full size 4096 fc}
+
+#     \addplot[color=red]
+#         table [x=epoch, y=val_acc, col sep=comma]
+#         {/home/derekin/Dropbox/thesis/tools/../trained_models_1080/image_net_40_cat__5_cl_half_size_4096_fc__5__epochs_150_steps_per_epoch_500_batch_size_20__adam__performance.log};
+#         \addlegendentry{5 cl half size 4096 fc}
+
+
+#     \end{axis}
+# \end{tikzpicture}

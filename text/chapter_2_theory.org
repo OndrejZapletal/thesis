@@ -1,50 +1,50 @@
 * Theory
   In this chapter are discussed concepts of Artificial intelligence, image processing and machine learning in general.
 
-**** Artificial Intelligence
-     Field of [[gls:ai][AI]] is very general and spawns across several different disciplines (e.g. mathematics, computer science, philosophy, economics and even ethics). This suggests that this field is very broad and can be tackled from many different view points. Therefore this description will not be be very exhaustive. For more broad and complex dive into subject refer to \cite{book--russell--2003}.
+** Artificial Intelligence
+   Field of [[gls:ai][AI]] is very general and spawns across several different disciplines (e.g. mathematics, computer science, philosophy, economics and even ethics). This suggests that this field is very broad and can be tackled from many different view points. Therefore this description will not be be very exhaustive. For more broad and complex dive into subject refer to \cite{book--russell--2003}.
 
-     One of many possible definitions of [[gls:ai][AI]] can be summarized as a pursuit to develop an artificial intelligent agent. In other words attempt to create intelligent machines that are either thinking or can be perceived as thinking ones. One of the most important abilities of intelligent agents is the sens of vision[fn:1]. Sense of vision is usually required to certain degree and not always it is necessary that it rivals the capabilities of human visual apparatus.
+   One of many possible definitions of [[gls:ai][AI]] can be summarized as a pursuit to develop an artificial intelligent agent. In other words attempt to create intelligent machines that are either thinking or can be perceived as thinking ones. One of the most important abilities of intelligent agents is the sens of vision[fn:1]. Sense of vision is usually required to certain degree and not always it is necessary that it rivals the capabilities of human visual apparatus.
 
-     First attempts to solve the vision problems were tackled from so called bottom up approach. Where the system was instructed with hard-coded set of rules that were describing the vision. It was expected that as the understanding of a mechanisms that allows humans to extract information from visual scene the hard-coded systems can be fed this understanding and thus more capable systems can be created. Problem with this approach was that it highly underestimated the difficulty of formalization of these rules. And as a consequece it predominantly failed to devise such a system.
+   First attempts to solve the vision problems were tackled from so called bottom up approach. Where the system was instructed with hard-coded set of rules that were describing the vision. It was expected that as the understanding of a mechanisms that allows humans to extract information from visual scene the hard-coded systems can be fed this understanding and thus more capable systems can be created. Problem with this approach was that it highly underestimated the difficulty of formalization of these rules. And as a consequece it predominantly failed to devise such a system.
 
-     This insight lead the researchers to postulating that in order to solve the problem of deploing vision capeabilities for artificial inteligent system, it is necessary to introduce a process that would allow the [[gls:ai][AI]] systems to extract patterns from provided data. In other words introduction of systems that are able to learn. Process that enables systems to learn is generally called [[gls:machine learning][machine learning]].
+   This insight lead the researchers to postulating that in order to solve the problem of deploing vision capeabilities for artificial inteligent system, it is necessary to introduce a process that would allow the [[gls:ai][AI]] systems to extract patterns from provided data. In other words introduction of systems that are able to learn. Process that enables systems to learn is generally called [[gls:machine learning][machine learning]].
 
-     [[Gls:machine learning][Machine learning]] is again quite broad term that can be used in multiple different contexts and in this document it is meant to be understood as technique that is used to create mathematical models that can be used for image recognition. There are several types of machine learning models that are useful for different tasks. Task that is discussed in this document and is also arguably most commonly tackled is called [[gls:classification][classification]], which is the task to classify instance of input into correct discreet and predominantly finite class. Another typical type of machine learning task is called [[gls:regression][regression]], which is based on the input data trying to estimate unknown continues-valued quantity.
+   [[Gls:machine learning][Machine learning]] is again quite broad term that can be used in multiple different contexts and in this document it is meant to be understood as technique that is used to create mathematical models that can be used for image recognition. There are several types of machine learning models that are useful for different tasks. Task that is discussed in this document and is also arguably most commonly tackled is called [[gls:classification][classification]], which is the task to classify instance of input into correct discreet and predominantly finite class. Another typical type of machine learning task is called [[gls:regression][regression]], which is based on the input data trying to estimate unknown continues-valued quantity.
 
-     Rest of this document will be exclusively dealing with [[gls:classification][classification]] learning tasks.
+   Rest of this document will be exclusively dealing with [[gls:classification][classification]] learning tasks.
 
-  # TODO: Make sure that numbering of each footnote is correct!!!
+# TODO: Make sure that numbering of each footnote is correct!!!
 [fn:1] This is highly dependent on concrete application.
 
 
-**** TODO Image Processing
+** TODO Image Processing
 
-     # TODO: Add citation to MPOV slides
-     Computer vision is important subject in image processing. Research in the subject was for meany years approaching the problem from bottom up perspective. This was the already mentioned effort to formalize rules that are guiding the vision of living organisms. This approach was actually very successful in certain circumstances.
+   # TODO: Add citation to MPOV slides
+   Computer vision is important subject in image processing. Research in the subject was for meany years approaching the problem from bottom up perspective. This was the already mentioned effort to formalize rules that are guiding the vision of living organisms. This approach was actually very successful in certain circumstances.
 
-     General description of computer vision in image processing can be summarized in following steps:
-      - Image capture - Image is captured (by camera or similar device) and digitized.
-      - Pre-processing - Digitized image is modified to emphasize important features (e.g. noise reduction, contrast normalization etc.).
-      - Segmentation - Selection of interesting features (edges, similar surfaces).
-      - Description - Extraction of radiometric, photometric descriptors and so on.
-      - Classification - Some means to classify the object.
+   General description of computer vision in image processing can be summarized in following steps:
+    - Image capture - Image is captured (by camera or similar device) and digitized.
+    - Pre-processing - Digitized image is modified to emphasize important features (e.g. noise reduction, contrast normalization etc.).
+    - Segmentation - Selection of interesting features (edges, similar surfaces).
+    - Description - Extraction of radiometric, photometric descriptors and so on.
+    - Classification - Some means to classify the object.
 
-      #+NAME: fig:classification_chain
-      #+CAPTION: Block diagram of image processing pipeline.
-      #+ATTR_LATEX: :width 5in
-      [[./img/figure__2__classification_chain.png]]
+    #+NAME: fig:classification_chain
+    #+CAPTION: Block diagram of image processing pipeline.
+    #+ATTR_LATEX: :width 5in
+    [[./img/figure__2__classification_chain.png]]
 
-      # Reason being that machine learning algorithms were very simple and therefore unfit for generally very complex problems of computer vision (e.g. object detection and classification).
-      Individual steps are shown in figure [[fig:classification_chain]]. Even though [[gls:machine learning][machine learning]] existed as field of study since the second half of the 20th century, for very long time there was no wider adoption of its techniques in image processing. It was first introduced in the classification step of the processing pipeline. In other words complex problems were simplified by reducing the visual information contained within the image into hand full of simple features that were fed into machine learning model. This approach consequently favors very simple models such as [[gls:knn][KNN]] or [[gls:svm][SVM]].
+    # Reason being that machine learning algorithms were very simple and therefore unfit for generally very complex problems of computer vision (e.g. object detection and classification).
+    Individual steps are shown in figure [[fig:classification_chain]]. Even though [[gls:machine learning][machine learning]] existed as field of study since the second half of the 20th century, for very long time there was no wider adoption of its techniques in image processing. It was first introduced in the classification step of the processing pipeline. In other words complex problems were simplified by reducing the visual information contained within the image into hand full of simple features that were fed into machine learning model. This approach consequently favors very simple models such as [[gls:knn][KNN]] or [[gls:svm][SVM]].
 
-      This brings the problem that these applications are not very versatile. Each application is usually only capable of solving very simple problem and any deviation from ideal circumstances can mean failure. Application can have problem with varying contrast, illumination, scaling, rotation etc.
+    This brings the problem that these applications are not very versatile. Each application is usually only capable of solving very simple problem and any deviation from ideal circumstances can mean failure. Application can have problem with varying contrast, illumination, scaling, rotation etc.
 
-      Second problem is often the fact that because image has to be preprocessed several times before it is fed into machine learning model it demands extra time and resources. This is less of a problem with current hardware innovations, but it still is not negligible factor and it can have negative effect on the cost of the solution. This is where [[gls:machine learning][machine learning]] in general exhibit significant advantage.
+    Second problem is often the fact that because image has to be preprocessed several times before it is fed into machine learning model it demands extra time and resources. This is less of a problem with current hardware innovations, but it still is not negligible factor and it can have negative effect on the cost of the solution. This is where [[gls:machine learning][machine learning]] in general exhibit significant advantage.
 
-      # [[Gls:deep learning][DL]] models are in theory capable of learning complex features by extracting meaning from very low level features. And what is even more important, [[gls:deep learning][DL]] models in theory need very little pre-processing. Input image can be directly connected as input into Deep Network.
+    # [[Gls:deep learning][DL]] models are in theory capable of learning complex features by extracting meaning from very low level features. And what is even more important, [[gls:deep learning][DL]] models in theory need very little pre-processing. Input image can be directly connected as input into Deep Network.
 
-      Classical approach to computer vision can find success in applications that are deployed in very restricted environments with rigid constraints[fn:2]. In this controlled environment it usually pretty simple to describe the problem in formal rules. Even thought it can be still found in certain places it starts to be forced out by application of machine learning simply because the barrier of entry for wider adoption lowers every day.
+    Classical approach to computer vision can find success in applications that are deployed in very restricted environments with rigid constraints[fn:2]. In this controlled environment it usually pretty simple to describe the problem in formal rules. Even thought it can be still found in certain places it starts to be forced out by application of machine learning simply because the barrier of entry for wider adoption lowers every day.
 
 [fn:2] This could be for example detection of defects on line production in industrial automation.
 
@@ -54,12 +54,15 @@
 
    Interesting perspective that can be used is to view machine learning as form of information compression. Where machine learning model is trying to extract information from input data in such a way that the amount of a data used to save it is reduced while the information contained within is preserved.
 
-   There are typically two different types of machine learning approaches:
-   - Unsupervised Learning
-   - Supervised Learning
 
-   Both of these are typically used for different kinds of machine learning tasks.
+*** Machine Learning Approach
+    There are typically two different types of machine learning approaches:
+    - Unsupervised Learning
+    - Supervised Learning
 
+    Both of these are typically used for different kinds of machine learning tasks.
+
+    # TODO : Maybe add reinforcement learning as well
 **** Unsupervised learning
      In this learning approach the model is training by observing new data and extracting patterns in the date without being instructed on what they are. Opposed to supervised learning that is described bellow, the advantage of this approach is that the model is able to learn from data without supervision (as the name suggests). This means that there is no need for input data to be annotated, therefore it takes much less time and resources to deploy these models in practice.
 
@@ -208,7 +211,7 @@ Nearly all supervised learning algorithms use the same Dataset specification. Th
 
 
 **** Regularization
-     /Regularization is any modification that is made to the learning algorithm that is intended to reduce its generalization error but not its training error/\cite{book--goodfellow--2016}.
+     /Regularization is any modification that is made to the learning algorithm that is intended to reduce its generalization error but not its training error/ \cite{book--goodfellow--2016}.
 
      As it was already mentioned, the most important aspect of machine learning is striking the balance between over and under fitting of the model. To help with this problem was devised concept of regularization. It is a technique that helps penalizes the model for its complexity. Basic concept consists of adding a term in the [[gls:cost function][cost function]] that increases with model complexity.
 
@@ -217,6 +220,6 @@ Nearly all supervised learning algorithms use the same Dataset specification. Th
      \begin{equation}
      J(\boldsymbol{\theta}) = \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)^T \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right) + \lambda\boldsymbol{\theta}^T\boldsymbol{\theta},
      \end{equation}
-     where $\lambda$ is a parameter that controls the strength of the preference\cite{book--goodfellow--2016}.
+     where $\lambda$ is a parameter that controls the strength of the preference \cite{book--goodfellow--2016}.
 
      # TODO: TBD

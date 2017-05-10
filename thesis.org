@@ -33,8 +33,10 @@
 #+INCLUDE: text/chapter_1_introduction.org
 #+INCLUDE: text/chapter_2_theory.org
 #+INCLUDE: text/chapter_3_neural_networks.org
-#+INCLUDE: text/chapter_4_experiment.org
-#+INCLUDE: text/chapter_5_conclusion.org
+#+INCLUDE: text/chapter_4_application_of_cnn.org
+#+INCLUDE: text/chapter_5_implementation.org
+#+INCLUDE: text/chapter_6_experiment.org
+#+INCLUDE: text/chapter_7_conclusion.org
 
 \bibliographystyle{abbrv}
 \bibliography{citation}

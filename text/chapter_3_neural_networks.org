@@ -4,52 +4,52 @@
   # This situation often leads to confusion of some concepts.
   [[Gls:nn][NN]] is a distributed and parallel model that is capable to approximate complex non-linear functions. Network is composed from multiple computational units called neurons that are assembled in particular topology.
 
-**** History
-     # TODO: assign citation
-     # (citation) http://web.csulb.edu/~cwallis/artificialn/History.htm
-     # https://upload.wikimedia.org/wikipedia/commons/6/60/ArtificialNeuronModel_english.png
-     # https://commons.wikimedia.org/wiki/File:ArtificialNeuronModel_english.png
+** History
+   # TODO: assign citation
+   # (citation) http://web.csulb.edu/~cwallis/artificialn/History.htm
+   # https://upload.wikimedia.org/wikipedia/commons/6/60/ArtificialNeuronModel_english.png
+   # https://commons.wikimedia.org/wiki/File:ArtificialNeuronModel_english.png
 
-     History of [[glspl:nn][NN]] can be arguably dated from 1943, when Warren Mcculloch and Walter Pitts devised mathematical model inspired by the biology of central nervous systems of mammals \cite{article--mcculloch-pitts--1943}.
+   History of [[glspl:nn][NN]] can be arguably dated from 1943, when Warren Mcculloch and Walter Pitts devised mathematical model inspired by the biology of central nervous systems of mammals \cite{article--mcculloch-pitts--1943}.
 
-     This inspired the invention of [[gls:perceptron][Perceptron]], created in 1958 by Frank Rosenblatt. Perceptron used very simple model mimicking biological neuron that was based on mathematical model of Pitts and Mcculloch. Definition of the [[gls:perceptron][Perceptron]] model also described an algorithm for direct learning from data.
+   This inspired the invention of [[gls:perceptron][Perceptron]], created in 1958 by Frank Rosenblatt. Perceptron used very simple model mimicking biological neuron that was based on mathematical model of Pitts and Mcculloch. Definition of the [[gls:perceptron][Perceptron]] model also described an algorithm for direct learning from data.
 
-     # This simple improvement addressed majority of previously raised concerns and enable the application of [[glspl:nn][NN]] in many different technical domains with moderate success.
+   # This simple improvement addressed majority of previously raised concerns and enable the application of [[glspl:nn][NN]] in many different technical domains with moderate success.
 
-     In the beginning [[gls:perceptron][Perceptron]] seemed very promising, but it was soon discovered that it had severe limitations. Most prominent voice of criticism was Marvin Minsky, who published book called Perceptrons \cite{book--minsky-papert--1969}. The criticism was centered on the fact that [[gls:perceptron][Perceptron]] model was unable to solve complex problems. Among others the book contained mathematical proof that [[gls:perceptron][Perceptron]] is unable to solve simple XOR problem. More generally the [[gls:perceptron][Perceptron]] is only capable to solve linearly separable problems. Even though according to Minsky this criticism wasn't malicious, it in effect stifled the interest in [[glspl:nn][NN]] for over a decade.
+   In the beginning [[gls:perceptron][Perceptron]] seemed very promising, but it was soon discovered that it had severe limitations. Most prominent voice of criticism was Marvin Minsky, who published book called Perceptrons \cite{book--minsky-papert--1969}. The criticism was centered on the fact that [[gls:perceptron][Perceptron]] model was unable to solve complex problems. Among others the book contained mathematical proof that [[gls:perceptron][Perceptron]] is unable to solve simple XOR problem. More generally the [[gls:perceptron][Perceptron]] is only capable to solve linearly separable problems. Even though according to Minsky this criticism wasn't malicious, it in effect stifled the interest in [[glspl:nn][NN]] for over a decade.
 
-     Interest in [[glspl:nn][NN]] was rejuvenated in the early 80's, when it was shown that any previously raised deficiencies can solved by usage of multiple units. This was later exacerbated by invention of [[gls:bp][BP]] learning algorithm, which enabled the possibility to gather neurons into groups called layers, which can be stacked into hierarchical structures to form a network. [[Gls:nn][NN]] of this type are commonly called [[gls:mlp][MLP]].
+   Interest in [[glspl:nn][NN]] was rejuvenated in the early 80's, when it was shown that any previously raised deficiencies can solved by usage of multiple units. This was later exacerbated by invention of [[gls:bp][BP]] learning algorithm, which enabled the possibility to gather neurons into groups called layers, which can be stacked into hierarchical structures to form a network. [[Gls:nn][NN]] of this type are commonly called [[gls:mlp][MLP]].
 
-     In 80's and 90's the interest in [[glspl:nn][NN]] plateaued again, and general research of [[gls:ai][AI]] was more focused on other (typically less complex) machine learning techniques. In the realm of [[gls:classification][classification]] problems there were several notable examples ([[gls:svm][SVM]], [[gls:ensemble models][Ensemble models]] and [[gls:random forest][Random Forest]]). [[gls:ai][AI]] research community also developed several other paradigms of [[glspl:nn][NN]] that were similarly inspired by biology of certain aspect of central nervous system but took different approaches. Most important examples were [[gls:som][SOM]] and [[gls:rnn][RNN]] (e.g. [[glspl:hopfield network][Hopfield Networks]]).
+   In 80's and 90's the interest in [[glspl:nn][NN]] plateaued again, and general research of [[gls:ai][AI]] was more focused on other (typically less complex) machine learning techniques. In the realm of [[gls:classification][classification]] problems there were several notable examples ([[gls:svm][SVM]], [[gls:ensemble models][Ensemble models]] and [[gls:random forest][Random Forest]]). [[gls:ai][AI]] research community also developed several other paradigms of [[glspl:nn][NN]] that were similarly inspired by biology of certain aspect of central nervous system but took different approaches. Most important examples were [[gls:som][SOM]] and [[gls:rnn][RNN]] (e.g. [[glspl:hopfield network][Hopfield Networks]]).
 
-     By the year 2000 there was very few research groups that were devoting enough attention to the [[glspl:nn][NN]]. There was also certain disdain for [[glspl:nn][NN]] in academia and [[gls:ai][AI]] research community. Success of [[glspl:nn][NN]] that was promised almost half a century ago was finally encountered around 2006, when the first networks with large number of [[glspl:hidden layer][hidden layer]] was successfully trained. This led to mainstream adaption of umbrella term [[gls:deep learning][DL]] which typically refers to [[gls:dnn][DNN]]. The word [[gls:deep][Deep]] indicates that networks have large number of [[glspl:hidden layer][hidden layer]].
+   By the year 2000 there was very few research groups that were devoting enough attention to the [[glspl:nn][NN]]. There was also certain disdain for [[glspl:nn][NN]] in academia and [[gls:ai][AI]] research community. Success of [[glspl:nn][NN]] that was promised almost half a century ago was finally encountered around 2006, when the first networks with large number of [[glspl:hidden layer][hidden layer]] was successfully trained. This led to mainstream adaption of umbrella term [[gls:deep learning][DL]] which typically refers to [[gls:dnn][DNN]]. The word [[gls:deep][Deep]] indicates that networks have large number of [[glspl:hidden layer][hidden layer]].
 
-     The key theoretical insight was that to learn complicated functions that can represent high-level abstractions (e.g. vision recognition, language understanding etc.) there is a need for [[gls:deep][deep]] architecture.
+   The key theoretical insight was that to learn complicated functions that can represent high-level abstractions (e.g. vision recognition, language understanding etc.) there is a need for [[gls:deep][deep]] architecture.
 
-     [[glspl:nn][NN]] in the times before [[glspl:dnn][DNN]] typically had only 1 or 2 [[glspl:hidden layer][hidden layer]]. These are today often called shallow networks. Typical Deep Networks can have number of [[glspl:hidden layer][hidden layer]] in order of tens, but in some cases even hundreds \cite{article__He_Zhang__2015}
-     # https://www.microsoft.com/en-us/research/publication/foundations-and-trends-in-signal-processing-deep-learning-methods-and-aplications-now-publishers/
+   [[glspl:nn][NN]] in the times before [[glspl:dnn][DNN]] typically had only 1 or 2 [[glspl:hidden layer][hidden layer]]. These are today often called shallow networks. Typical Deep Networks can have number of [[glspl:hidden layer][hidden layer]] in order of tens, but in some cases even hundreds \cite{article__He_Zhang__2015}
+   # https://www.microsoft.com/en-us/research/publication/foundations-and-trends-in-signal-processing-deep-learning-methods-and-aplications-now-publishers/
 
-     Even though that progress of Neural Network into direction of structures with high number of [[glspl:hidden layer][hidden layer]] was obvious, its training was unsolved technical problem for very long time. There were basically 3 reasons why this breakthrough didn't come sooner.
-     1. There were no technique allowing the number of [[glspl:hidden layer][hidden layer]] to scale.
-     2. There wasn't enough of labeled data necessary to train the [[gls:nn][NN]].
-     3. The computational hardware wasn't powerful enough to train sufficiently large and complex networks effectively.
+   Even though that progress of Neural Network into direction of structures with high number of [[glspl:hidden layer][hidden layer]] was obvious, its training was unsolved technical problem for very long time. There were basically 3 reasons why this breakthrough didn't come sooner.
+   1. There were no technique allowing the number of [[glspl:hidden layer][hidden layer]] to scale.
+   2. There wasn't enough of labeled data necessary to train the [[gls:nn][NN]].
+   3. The computational hardware wasn't powerful enough to train sufficiently large and complex networks effectively.
 
-     First problem was tackled by invention of [[glspl:cnn][CNN]] \cite{article__lecun__1989}.
-     Second problem was solved simply when there was more data available. This was mainly achieved thanks to effort of large companies (Google, Facebook, YouTube, etc.) but also with help of large community of professionals and hobbyists in data sciences.
+   First problem was tackled by invention of [[glspl:cnn][CNN]] \cite{article__lecun__1989}.
+   Second problem was solved simply when there was more data available. This was mainly achieved thanks to effort of large companies (Google, Facebook, YouTube, etc.) but also with help of large community of professionals and hobbyists in data sciences.
 
-     # TODO: maybe make sure that you still stay behind this!
-     Both innovation in computational hardware and improvement of training methods were needed to solve the third problem. One of the technical breakthroughs was utilization of [[glspl:gpu][GPU]] for the demanding computation involved in training of a complex network. Thanks to the fact that training process of [[glspl:nn][NN]] is typically large number of simple consequent computations, there is a great potential for parallelization.
+   # TODO: maybe make sure that you still stay behind this!
+   Both innovation in computational hardware and improvement of training methods were needed to solve the third problem. One of the technical breakthroughs was utilization of [[glspl:gpu][GPU]] for the demanding computation involved in training of a complex network. Thanks to the fact that training process of [[glspl:nn][NN]] is typically large number of simple consequent computations, there is a great potential for parallelization.
 
 ** Structure of Neural Networks
    Description of [[gls:nn][NN]] structure will follow the convention laid out in the description of learning algorithm. Meaning that a description of the learning algorithm is composed of model, cost function and optimization procedure. The difference comes into play with the fact that model of [[gls:nn][NN]] is much more complex than the model [[gls:linear regression][linear regression]]. Therefore the analysis is divided into model of neuron and topology of the network.
 
 *** Model of neuron
-    Typical structure of artificial neuron is shown on Fig. [[fig:neuron_model]]. As it was already mentioned model of neuron was inspired by biology. It computational unit performing operation
+    Typical structure of artificial neuron is shown on Figure [[fig:neuron_model]]. As it was already mentioned model of neuron was inspired by biology. It computational unit performing operation
     \begin{equation}
     z = g(\boldsymbol{w}^T\boldsymbol{x} + b).
     \end{equation}
     # TODO: two references to the same thing right bellow each other!
-    Typical schema is shown on Fig. [[fig:neuron_model]], which depicts inputs, weights bias and activation function.
+    Typical schema is shown on Figure [[fig:neuron_model]], which depicts inputs, weights bias and activation function.
 
     #+NAME: fig:neuron_model
     #+CAPTION: Model of artificial neuron
@@ -64,85 +64,58 @@
 **** Bias
      Another modifiable parameter is bias $b$ that controls influence of the neuron as a whole.
 
-**** TODO Activation Function
-     # TODO:
-
-     # In order to be effective learning algorithm it is necessary that the model is able to approximate the arbitrary function.
-     #  For this reason the [[gls:af][AF]] has to be non-linear.
-     # Therefore the
-
+**** Activation Function
      For [[gls:nn][NN]] to approximate nonlinear function each neuron has to perform nonlinear transformation of its input. This is done with activation function that preforms nonlinear transformation
      \begin{equation}
      y=g(z).
      \end{equation}
+     There are several different commonly used activation functions. Its usage depends on the type of network and also on the type of layer in which they operate.
 
-     There are several different activation functions that were used throughout the history of neural network development. In the beginning the most commonly used activation function was [[gls:sigmoid][sigmoid]] illustrated on figure \ref{fig:activation}. Sigmoid function is defined as
+     One of the oldest and historically most commonly used [[gls:af][AF]] if [[gls:sigmoid][sigmoid]] function. It is defined by
      \begin{equation}
      g(z)=\frac {1} {1+e^{-z}}.
      \end{equation}
+     Problem with [[gls:sigmoid][sigmoid]] is that its gradient becomes really flat on both extremes and as such it slows down the learning process \cite{article__krizhevsky__2012}.
 
-     Another activation function is hyperbolic tangent illustrated on figure \ref{fig:activation}. It is defined as
+     Another activation function is [[gls:hyperbolic tangent][hyperbolic tangent]]. It is less common but still used in specific types of networks. It is defined as
      \begin{equation}
      g(z)=tanh(-z).
      \end{equation}
+     Hyperbolic tangent function is not used in feed forward [[gls:nn][NN]] as often, but it is largely used in [[gls:rnn][RNN]].
 
-     Currently most frequently used activation function is [[gls:relu][RELU]] illustrated on figure \ref{fig:activation} and defined as
+     Currently most frequently used activation function is [[gls:relu][ReLU]]. It is very commonly used in both convolutional and fully connected layers. It is defined by
      \begin{equation}
      g(z)=\max \{0,z\}.
      \end{equation}
+     It has a drawback because it is not differentiable for $z=0$, but it is not a problem in software implementation and one of its biggest advantages is that it can learn very quickly.
 
-     Each defined activation function has some application that is dependent on the topology of the network.
+     All three activation functions are illustrated in Figure \ref{fig:activation}.
 
      #+INCLUDE: activation_function.org
 
-*** TODO Topology of the Network
+*** Topology of the Network
     # TODO: feed-forward and recurrent below should be glossaries!!!
     There are several different commonly used topologies. Two most commonly used in [[gls:deep learning][deep learning]] are feed-forward and recurrent. Feed forward networks are characterized by the fact that during activation the information flows only in forward direction from inputs to output. A recurrent network has some sort of feedback loop.
 
-    # Only feed-forward topology will be discussed further.
+    Another criterion of topology is how are individual neurons in the network connected. Most commonly are [[glspl:nn][NN]] ordered in layers. In each layer there can be from /1/ to /n/ neurons. Layers are hierarchically stacked. In typical terminology the first layer is called input layer, the last layer is called output layer and the layers in-between are called hidden.
 
-    Another criterion of topology is how are individual neurons in the network connected. Most commonly are [[glspl:nn][NN]] ordered in layers. In each layer there can be from =1= to =n= neurons.  Layers are hierarchically stacked. In typical terminology the first layer is called input layer, the last layer is called output layer and the layers in-between are called hidden.
+    Description of the network rests on interconnections between individual layers. Most common scheme is called fully connected where each neuron in hidden layer $l$ has input connections from all neurons from previous layer $l-1$ and its output is connected to input of each neuron in following $l+1$ layer. Entire structure is illustrated on Figure [[fig:net_structure]].
 
-    Description of the network rests on interconnections between individual layers. Most common scheme is called fully connected where each neuron in hidden layer $l$ has input connections from all neurons from previous layer $l-1$ and its output is connected to input of each neuron in following $l+1$ layer. Entire structure is illustrated on Fig. [[fig:net_structure]].
+    From this point on the term [[gls:nn][NN]] will refer to Feed-forward fully connected Neural Network.
 
     #+NAME: fig:net_structure
-    #+CAPTION: Fully connected feed forward neural network
+    #+CAPTION: Fully connected Feed Forward Neural Network
     #+ATTR_LATEX: :width 4in
     [[./img/figure__2__net_structure.png]]
 
-    Neurons in individual layers are dependent on the type of layer. Currently the main difference is in their [[gls:af][af]], which wasn't the case for a long time. For a long time in the history the neurons in [[gls:nn][NN]] were equipped with [[gls:sigmoid][sigmoid]] [[glspl:af][AF]]. Neurons with [[gls:sigmoid][sigmoid]] [[glspl:af][AFs]] are difficult to train, because they have tendency to saturate. Only relatively recently[fn:3] it was found that network composed of neurons with [[gls:relu][ReLU]] [[gls:af][AFs]] can be trained very quickly.
+    Types of neurons are dependent on the type of the layer. Currently the main difference is in their [[gls:af][af]], which wasn't the case for a long time. Historically all layers had neurons with [[gls:sigmoid][sigmoid]] [[gls:af][AF]]. It was mainly because the output [[gls:sigmoid][sigmoid]] layer can be easily mapped onto probability distribution, since it acquires vales between 0 and 1. Only relatively recently[fn:3] it was found that network composed of neurons with [[gls:relu][ReLU]] [[gls:af][AFs]] in the hidden layers can be trained very quickly and are more resistant against over-fitting. [[Glspl:af][AF]] are still subject of ongoing research.
 
+    Neurons in output layer need output that can produce probability distribution that can be used to estimate the probability of individual classes. For this reason most commonly used [[gls:af][AF]] of output neuron is called [[gls:softmax][softmax]]. [[Gls:softmax][Softmax]] is normalized exponential function that can represent probability of en element being member of class $j$.
+    \begin{equation}
+    g(z)_j = \frac {e^{z_j}} {\sum_{K}^{k=1} {e^{z_k}}}.
+    \end{equation}
+    where $j$ is given class of total $K$ classes.
 
-    This [[gls:af][AF]] is used in input and hidden layers.
-
-    # TODO: Make sure that each neuron in output layer actually has softmax function!!!
-    Neurons in output layer need output that can produce probability distribution that can be used to estimate the probability of individual classes. For this reason most commonly used [[gls:af][AF]] of output neuron is softmax.
-
-    From this point on the term [[gls:nn][NN]] will refer to Feed-forward fully connected Neural Network.
-    # TODO: Fix this mess
-
-     # And lastly probably the most commonly used [[gls:af][AF]] is called Softmax
-
-     # Different options for [[glspl:af][AFs]] will be described in more detail in following sections.
-
-     # TODO: make seure it fits
-
-     # [[Gls:sigmoid][Sigmoid]] [[gls:af][AF]] has the advantage that is differentiable over all of its possible values. Another nice property is that its output value is between 1 and 0, which conveniently maps to valid probability distribution.
-     # Problem with sigmoid is that its gradient becomes really flat on both extremes and as such it slows down the learning process
-
-     # Both sigmoid and hyperbolic tangent function are not used as often in feed forward
-     # Less commonly used function was gradient
-
-     # Model of neuron can have multiple different [[glspl:af][AFs]] on its output.
-
-     # all neurons in hidden and output layer to be similar. Namely activation function was predominantly
-
-     # [[Glspl:af][AF]] is still subject of ongoing research, but there are certain recommendation that can be made.
-
-     # This function has to be nonlinear. Most commonly used [[gls:af][AF]] are [[gls:sigmoid][sigmoid]], softmax and [[gls:relu][relu]].
-
-     # TODO: This doesn't fit here!!!
-     # Activation function of [[glspl:hidden layer][hidden layer]] is to this day one of the most dynamically evolving components of Neural networks. Currently there is several options but mainly used is [[gls:relu][ReLU]] on figure \ref{fig:activation}, which models following mathematical function
 
 [fn:3] In the last decade which is relatively recently in the grand scheme of neural network history.
 
@@ -173,7 +146,6 @@
      \begin{equation}
      \delta^L = \sigma^{'} (z^L) \nabla_x \mathcal{L}
      \end{equation}
-
 
 **** TODO Meta-parameters
 ***** Learning rate
@@ -349,7 +321,7 @@
       \begin{equation}
       y_{ij}^{l}=\sigma(x_{ij}^{l})
       \end{equation}
-where $\sigma$ represents this non-linear function.
+      where $\sigma$ represents this non-linear function.
 equation
 
 **** Forward Propagation of Pooling layer (Max-Pooling)
@@ -409,10 +381,12 @@ equation
 
 ** TODO Complexity Control for Neural Networks
    Control of complexity applies to both [[gls:nn][NN]] and [[gls:cnn][CNN]].
-**** Regularization
 
-***** Early stoppage
+*** Early stoppage
 
-***** Weight decay
+*** Weight decay
 
-***** Dropout
+*** Dropout
+#+NAME: fig:dropout
+#+CAPTION: Concept of Dropout optimization
+[[./img/figure__3__dropout.png]]

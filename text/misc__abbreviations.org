@@ -205,29 +205,41 @@
 #+LATEX_HEADER: \newglossaryentry{kernel}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={kernel},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Filter used by convolutional layer.},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{stride}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={stride},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={It specifies size of convolution step. Default value is one, which means that kernel is moved by one pixel in each direction.},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{sigmoid}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={sigmoid},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Activation function historically usded Perceptron model.},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{under fitting}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={under fitting},
-#+LATEX_HEADER: description={Statistical term describing models inferior ability to capture underlying relationship between input and output due to a lack of complexity},
+#+LATEX_HEADER: description={Statistical term describing models inferior ability to capture underlying relationship between input and output due to a lack of complexity.},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{over fitting}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={over fitting},
-#+LATEX_HEADER: description={Statistical term describing models inferior ability to capture underlying relationship between input and output due to an abundance of complexity},
+#+LATEX_HEADER: description={Statistical term describing models inferior ability to capture underlying relationship between input and output due to an abundance of complexity.},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{hyperbolic tangent}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={hyperbolic tangent},
+#+LATEX_HEADER: description={Activation function commonly used in recurrent neural networs.},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{softmax}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={softmax},
+#+LATEX_HEADER: description={Activation function commonly used output layer of feed forward neural networks.},
 #+LATEX_HEADER: }

@@ -1,0 +1,394 @@
+* TODO Implementation Details
+  # TODO: Add some text describing the structure of the chapter
+  TBD
+** Software tools
+   In order to select appropriate tool for implementation of [[gls:cnn][CNN]] for ILSVRC classification was conducted investigation of available software frameworks and libraries. There is vast variety of software tools for machine learning. Some of these are general tools for machine learing, but some are specifically designed for [[gls:deep learning][deep learning]].
+
+   In the last 10 years the software tools for machine learning undergone a renaissance. There is broad selection of them available and new tools are introduced quite frequently. For example Caffe2[fn:1] was introduced very recently on April 18^th. Almost every commonly used programming language has some framework, library or at least some sort of [[gls:api][API]] available.
+
+   # TODO: this need some polishing
+   The selection of the framework was influenced by several factors. Firstly the implementing language had to be well know and somewhat mainstream. Abundance of available training materials, preferably with existing tutorials. The most important factor was good support for learning on [[gls:gpu][GPU]].
+
+   # Namely there is a variety of tools that are centered around python programming language. All of the frameworks mentioned bellow have at least some support for GPGPU computation.
+
+[fn:1] Newer version of popular Caffe framework now available at \url{https://caffe2.ai/}.
+**** Theano
+     # TODO: Make sure that I've written this my self
+     It is very old Framework that is written in python. It might seem unwise that it is written in scripting language that is not as fast as other languages that are more commonly used for computation intensive application but it performs very well. This is manly because all computation intensive code is actually written in highly optimized c extensions. Theano is built on top of Numpy, which is python module that enables efficient operation with tensors and basic image processing technique. Combination of Numpy and Scipy brings rich set of tools for image processing and data processing. Its capabilities can arguably rival MatLab, while being open source and free. Theano basically works computational graphs solver. Its biggest rival is currently Tensorflow project. One of the problems of Theano is that it is very low level and sometimes can be very complicated. This is probably the reason it slowly falling by the way side.
+
+     Theano as a framework is not very suitable for implementation of [[gls:cnn][CNN]] models.
+
+ On of the main reasons for this is a fact that theano project was acquired by Google and as such it is in direct competition to the Tensorflow, which is younger and lately more capable.
+
+**** Torch
+     Also one of the old frameworks. Minor negative of Torch is that it uses Lua scripting language as a programming interface. Lua is not very commonly used and as such it suffers from lack of interest of the mainstream machine learning community. It was one of the first universal and modular frameworks developed specifically for the needs of Deep learning. It was very prominent several years ago, but it seems that it lost some traction and is not as prevalent as it once was. One of the possible reasons for this might be that it is implemented in Lua programming language that is not nearly so popular as for example python.
+
+**** TODO Tensorflow
+ Similarly as Theano, Tensorflow is
+     Is currently advertised as one of the fastest frameworks for deep learning needs.
+
+ It is similar to Theano in the it also works on computational graphs.
+  Among many of its advantages one of the disadvantage is in the fact that it is very low level and direct usage for Deep learning problems is not ideal.
+
+**** Caffe
+     Caffe is a deep learning framework that aims to be modular and fast. It is developed by Berkeley AI Research (BAIR) and by community contributors. Yangqing Jia created the project during his PhD at UC Berkeley. It is implemented in C++ but it also offers [[glspl:api][API]] for several other languages as for example python.
+     Its biggest drawback is that it is sometimes difficult to find any good documentation and in terms of popularity it was not so prominent as some other frameworks in this list. This fact is partially remedied by the existence of Model Zoo, which is collection of favorite models that are freely available. Caffe was in the last years used by companies as Facebook for example mainly because its performance capabilities. Caffe is more geared towards the development of mass production application than it is for research purposes.
+
+**** TODO MatConvNet                                               :noexport:
+     MatConvNet is a MATLAB toolbox implementing fast and efficient
+    - Matlab toolbox implementing CNNs for computer vision application.
+    - It has the disadvantage of being part of proprietary software
+    - Its community is not nearly as big as in case of Torch or Keras
+
+**** TODO Scikit learn                                             :noexport:
+    - is also python framework that is very popular and offers wide variety of machine learning models but it is not so versatile and it is obvious that is more geared towards hobbyist then for scientific community.
+    - The support for Deep Learning is not as wide as it is for example at Keras
+
+
+
+**** Keras
+     Keras is relatively young framework written in python. Its user [[gls:api][API]] is also using python. As a computational graph solver it is using back-end of either Theano or Tensorflow.
+
+     It is very simple framework that is offers straightforward model preparation and it is very easily extensible.
+
+     It probably currently has one of the largest communities among similar frameworks for deep learning.
+
+     It offers broad selection of tools for deep learning.
+     Keras has very good documentation, many code examples and other resources that help users to get started very quickly.
+
+     Since both Theano and Tensorflow support execution models on [[gls:gpu][GPU]] units it extends this possibility to Keras as well.
+
+** Hardware and Software Configuration
+   Training of [[gls:nn][NN]] is notoriously computational expensive and it demands a lot of computational. From low level perspective training of [[gls:nn][NN]] translates into many multiplications of matrices. Modern [[glspl:cpu][CPU]] are not really optimized for such computations and therefore are not very good at it. Modern [[glspl:gpu][GPU]] on the other hand are designed to preform precisely these operations.
+
+   # Technological breakthroughs in computational hardware is one of the necessary conditions for successful training and deployment of deep learning models.
+
+   Currently on the market there are two major parallel computing platforms CUDA and OpenCL. They both have pros and cons but the major difference is that CUDA is proprietary while OpenCL is open source. This divide translates into hardware manufactures as well. CUDA is mainly supported by Nvida and OpenCL is support by AMD. There is certain cross over between the two but it still stands. Nvidia with its CUDA framework is currently leader in the domain of deep learning. For this reason was selected GPU from Nvidia.
+
+   # TODO: add hardware speciffication of the computer from lab
+   Exact selected model was GeForce GTX 1080 from GIGABYTE. Card was installed on PC ... Hardware configuration is summarized in table [[tab:hardware_configuration]].
+
+   Operating system installed on PC was Linux Ubuntu Mate 17.04. Version of CUDA computing platform was 7.5. PC also had installed cuDNN v5.1, which is GPU-accelerated library of primitives for deep neural networks.
+
+   From the list of considered frameworks was selected Keras. The reason being that Keras fulfilled all consideration factors and because it was written in python which was most familiar to the author.
+
+   Keras is high level framework that is relying on either Theano or Tensorflow. From the user perspective it doesn't really mater either way, but Tensorflow is preferred because it has performance improvements opposed to Theano. Details of software configuration is summarized in table [[tab:software_configuration]].
+
+   # TODO: fill up
+   #+NAME: tab:hardware_configuration
+   #+CAPTION: Hardware configuration
+   #+ATTR_LATEX: :align | l | l |
+   |--------+---------------------|
+   | CPU    |                     |
+   |--------+---------------------|
+   | GPU    | Gforce GTX 1080 8GB |
+   |--------+---------------------|
+   | Memory | 8GB                 |
+   |--------+---------------------|
+
+
+
+   # TODO: fill up
+   #+NAME: tab:software_configuration
+   #+CAPTION: Software configuration
+   #+ATTR_LATEX: :align | l | l |
+   |-------------+-------|
+   | Ubuntu Mate | 17.04 |
+   |-------------+-------|
+   | Python      |  3.53 |
+   |-------------+-------|
+   | Keras       |  2.04 |
+   |-------------+-------|
+   | Tensorflow  |       |
+   |-------------+-------|
+   | CUDA        |   7.5 |
+   |-------------+-------|
+   | cuDNN       |   5.1 |
+   |-------------+-------|
+
+** Dataset Preparation
+
+   # *** CIFAR10 and MNIST Datasets
+
+    # MNIST dataset was already mentioned in section [[sec:digit_recognition]].
+    # # TODO: add some more description
+
+    # Keras framework offers method calls that can download both CIFAR10 and MNIST dataset from the internet.
+
+    # Downloaded data are in uint8 type therefore it needs to be pre-processed in similar manner as data from ImageNet.
+
+    # To get the training and testing data it is sufficient to call
+
+    # # Design of experiment was heavily influenced by
+    # # Configuration of the
+    # # TODO: Add this to resolution
+    # One of the important reasons for this significant difference in performance is also in the input data
+    # When is the performance compared to CIFAR10 the main difference is that Cifar datsaet is carefully segmented. evey image contains the
+    # # Main d
+    # # Also it is always in the middle
+    # # Object from each image is always in the middle and it is domininat element. There usually are no other elements that can confuse the prediction!!!
+
+    # #+BEGIN_SRC python
+    # (x_train, y_train), (x_test, y_test) = mnist.load_data()
+    # #+END_SRC
+    # This loads
+    # =x_train= data are represented as =np.nd_array= object of shape
+    # x_train data are of shape (60000, 28, 28, 1)
+    # y_train data are of shape (60000, 1)
+
+    # x_test data are of shape (10000, 28, 28, 1)
+    # y_test data are of shape (10000, 1)
+
+
+    # (10000, 32, 32, 1)
+    # and of type uint8
+    # This means that the object contains 1000 grey scale images of size 32x32 pixel
+
+    # y_train data are represented as =np.nd_array= object of shape (10000, 1) of type uint8 which mean that it is 10000 of labels (0 - 9) representing individual digits. Data needs to be pre-processed bececause learning algorithm requires data in particular format.
+
+    # #+BEGIN_SRC python
+    # (x_train, y_train), (x_test, y_test) = cifar10.load_data()
+    # #+END_SRC
+
+    # X_train data are of shape (50000, 32, 32, 3)
+    # and of type uint8
+
+    # x data need to converted to float32
+    # #+BEGIN_SRC python
+    # x_train = x_train.astype('float32')
+    # x_test = x_test.astype('float32')
+    # #+END_SRC
+
+    # and following that they are divided as follows.
+
+    # #+BEGIN_SRC python
+    # x_train /= max_val
+    # x_test /= max_val
+    # #+END_SRC
+    # this divition ensures taht value of input will fall in interval (0 - 1)
+
+    # y data need to be converted into categorical
+
+    # #+BEGIN_SRC python
+    # y_train = np_utils.to_categorical(y_train, nb_classes)
+    # y_test = np_utils.to_categorical(y_test, nb_classes)
+    # #+END_SRC
+
+# *** ImageNet
+
+   # TODO: Ask Horak if this can be written here.
+   Due to a organizational difficulties it took a long time to obtain viable hardware that could have been used for training of the network. It was decided that instead of full ILSVRC challenge in this thesis will be attempted to solve reduced version of the task. This reduction involves number of classes. It was decided models will be trained on subset of the ILSVRC with 100 randomly selected classes. This seamed to be a reasonable compromise to preserve some of the inert difficulty of the problem while meeting the deadline of this thesis.
+   # TODO: Find out how many images is among the 100 classes!!
+
+   One of the biggest challenges of the dataset preparation was it's size. In case of MNIST and CIFAR10 datasets that contains only very small images, it was feasible to work with dataset within memory. In case of ImageNet dataset any augmentation of the data and by extension any training of a model, had to be performed in batches.
+   Python ecosystem offers several options for storing of data for mathematical manipulation. For these specific requirements was selected [[gls:hdf5][HDF5]][fn:3] binary data format. Image data were saved into hard-drive using h5py[fn:4] python library.
+
+   Images contained in the dataset are quite varied. They have different number of pixels, aspect ratio and overall quality. Selected model imposed the constraint that each image has to be of the same size and aspect ratio. Selected size of the images was 256x256 pixels, based on the work described in \cite{article__krizhevsky__2012}. Dataset preparation was done in three stages.
+
+
+[fn:3] \url{https://support.hdfgroup.org/HDF5/}
+[fn:4] \url{http://www.h5py.org/}
+
+
+ # important articles:
+ # http://soumith.ch/eyescream/
+**** Image Pre-processing
+     In the first stage was randomly selected 100 categories. Every image from this subset was pre-processed in following way. When both sides of the image were larger than 256 pixels, it was re-sized so that the shorter side matched the 256 pixels and exceeding pixels on the longer side were cropped out.
+     Every image that had one side larger and smaller was filled by zeros on the shorter side and cropped on the longer side. In case that both sides were shorter then 256 pixels it was re-sized in similar way as in case of both sides larger but the size of image was increased instead of decreased.
+
+**** Split Data into Training a Testing Dataset
+     <<data_preparation>>
+     In the [[gls:ilsvrc][ILSVRC]] competition the participants are provided with special validation and testing instances, in this setup the training images were split into two datasets instead. This was done only because it saved time during crucial time period of designing the experiments. This decision has a drawback because  it necessarily reduces the amount of data available for training of the network. But since the dataset was substantially smaller then in [[gls:ilsvrc][ILSVRC]] competition it didn't represent a big problem. Ratio of train to test size was selected 9:1.
+
+     It was made sure that images are randomly split between test and train dataset so that both dataset have roughly equal split among the categories. It is very important that the model is trained with alternating categories. For example if the model would be exposed to images of the same category in the row the update of weights of in the given cycle would be biased to this category. In other words it would be over fitted, which is not desirable.
+
+     It was found that simple random selection of images didn't vouch for equally representation in resulting datasets. This was caused by the fact that not all classes had the same number of training images. Average number of images was around 500 per class, but some classes had over 1000 images. It was solved by intervention on every third draw during random selection. In this intervention was selected the category that currently had most images left.
+
+**** Format Conversion
+     In the last stage were images normalized and converted to appropriate data type. Original images were typical [[gls:rgb][RGB]] images with individual pixels coded as Unit8 type with values in range 0-255. Keras model requires data to be provided in float32 type. Therefore the pre-processed images had to be converted. It was also normalized into range 0-1. To normalize each pixel was simply divided by maximal value of uint8, which is 255.
+
+     Data with correct label for the images were integers with index in range 0-100. Keras model is expecting the label data in categorical format. Categorical format converts each index of the label data into vector of all zeroes but one of length equal to number of categories. Element of the vector with index equal to original index of the labeled data is equal to one.
+
+     To convert a instance into categorical format is used function
+     #+BEGIN_SRC python
+     np_utils.to_categorical(y, num_classes)
+     #+END_SRC
+     from =keras.utils= module.
+
+     For illustration in dataset with 5 classes an instance of class label with index 3
+     #+BEGIN_SRC python
+     >>> y_instance
+     3
+     >>> np_utils.to_categorical(y_instance, 5)
+     [0.0, 0.0, 0.0, 1.0, 0.0]
+     #+END_SRC
+
+     Both of these operation needed to be performed on each instance of the data and since this couldn't be done in memory, the whole process was executed in batches of 500 images.
+     #+BEGIN_SRC python
+     # X_train Y_train datasets are devided into batches of 500
+     for index in range(0, len(X_train), 500):
+         index_end = index + 500
+
+         # normalize values
+         X_train[index:index_end] = np.divide(
+             X_train[index:index_end], 255)
+
+         # convert to categorical
+         Y_train[index:index_end] = np_utils.to_categorical(
+             Y_train[index:index_end], 100)
+     #+END_SRC
+
+** Data Augmentation
+    Main problem with ImageNet dataset is that it has relatively few images per category. This issue was exacerbated by the decision to also use train dataset for testing purposes described in section [[data_preparation]]. To combat this was performed data augmentation procedure suggested in \cite{article__krizhevsky__2012}. During training of the network each image is augmented before it is fed on input of the network. Pre-processed images from [[gls:hdf5][HDF5]] file have size 256x256x3 pixels. While the size of input of the [[gls:cnn][CNN]] is setup to process data of size 224x224x3. Therefore each image that is send on the net's input is randomly generated patch of size 224x224x3 from the pre-processed image. The generated patch is also flipped horizontally With probability of 0.5. By this augmentation the training dataset is theoretically extended by factor of 2048[fn:5]. Example of the this process is depicted on figure [[fig:data_augmentation]]
+
+
+#+NAME: fig:data_augmentation
+#+CAPTION: Original image (left up). Downsized and cropped on the sides (right up). Six randomly generated patches from processed image (bottom).
+#+ATTR_LATEX: :heigth 2in
+[[./img/figure__4__data_augmentation.png]]
+
+[fn:5] This is because =(size of an image side - size of generated patch)^2 * horizontal flip= which is $(256 - 224)^2 * 2 = 2048$.
+
+** Model Building Blocks
+   For implementation of [[gls:cnn][CNN]] was used Keras sequential model, which is a concept that is appropriate for modeling of feed forward network. Definition of the network is composed of layers. Concept of layer in Keras sequential model doesn't completely map into already described definition of layer from topological perspective. Keras layers are more fine grained and in order to create equivalent topological layer it is necessary to use multiple Keras layers.
+
+   Model is created simply by calling sequential constructor:
+   #+BEGIN_SRC python
+   model = Sequential().
+   #+END_SRC
+
+   Layers are added by calling an =add= method on object of sequential model:
+   #+BEGIN_SRC python
+   model.add(layer),
+    #+END_SRC
+   where =layer= is definition of the layer.
+
+   All models were created by composition of following layers.
+
+**** Convolutional
+     Convolutional layer used in the architecture is usually in following
+     #+BEGIN_SRC python
+     Conv2D(filters=n, kernel_size=(z, z), strides=(s, s), padding='valid',
+            input_shape=shape)
+     #+END_SRC
+     where =n= is number of filters that the layer will have, kernal is definition of kernal for example (3,3) and =input_shape= defines size of input matrix.
+**** Activation
+     To add activation function on the output of the layer user can specify parameter =activation= of the layer itself or create activation as a layer
+     #+BEGIN_SRC python
+     Activation(acitvation_function)
+     #+END_SRC
+     where =activation_function= is either 'softmax' or 'relu'. Both specifications are equivalent because Keras automatically uses linear activation function for each layer.
+
+
+**** Pooling
+     Pooling layer can be specified as
+     #+BEGIN_SRC python
+     MaxPooling2D(pool_size=(z, z), strides=(s, s))
+     #+END_SRC
+     where =pool_size= specifies size of pooling kernel and =strides= specifies number of pixels in x and y direction that are traversed in between application of individual pools.
+
+**** Fully Connected
+
+     Fully connected layer is created by
+     #+BEGIN_SRC python
+     Dense(num_of_units)
+     #+END_SRC
+     where =num_of_units= is a number of fully connected neurons in one layer.
+
+**** Dropout
+     Similarly to activation function to apply dropout regularization on a layer it needs to be added after it as another layer.
+     #+BEGIN_SRC python
+     Dropout(p)
+     #+END_SRC
+     where =p= is both probability that any unit is dropped and also the coefficient by which are the outputs multiplied during forward evaluation.
+
+**** Other
+
+     Feature extraction layers are multidimensional. Specifically both Convolutional and Pooling layers are two dimensional. Classification layers that are created by fully connected layers are one dimensional. To connect the two, it is necessary to create mapping between them. For this purposes it necessary to use following layer
+     #+BEGIN_SRC python
+     Flatten()
+     #+END_SRC
+     which takes care of necessary connections between layers
+
+
+*** Model Compilation
+
+
+      #+BEGIN_SRC python
+      model.compile(
+          loss= 'categorical_crossentropy',
+          optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999,
+                         epsilon=1e-08, decay=0.0),
+          metrics=['accuracy'])
+      #+END_SRC
+  # TODO: Try to put here how was the model doing when the metric was top-5 error rate instead of top-1 error
+*** Model Fitting
+
+    #+BEGIN_SRC python
+    model.fit_generator(
+        generator=generate_data(HDF5_FILE_NAME,
+                                train_batch_size,
+                                "train"),
+        steps_per_epoch=steps_per_epoch,
+        epochs=epochs,
+        verbose=1,
+        validation_data=generate_data(HDF5_FILE_NAME,
+                                      test_batch_size,
+                                      "test"),
+        validation_steps=validation_steps,
+        max_q_size=10,
+        workers=4,
+        pickle_safe=True)
+    #+END_SRC
+
+    =fit_generator= method takes generator function called =generate_data=. This generator is generating data from HDF5 file in infinite loop. Depending on the parameter =data_type= it ether generates training or testing data. Difference between the two is that testing data are generated as center patch of size 224x224x3 from the original sized image 256x256x3. Training data are generated as patch of size 224x224x3 from random position.
+    #+BEGIN_SRC python
+      def generate_data(hdf5_file_name, batch_size, data_type):
+          """Generator that is providing infinite loop of testing dataset.
+          Dataset is loaded from hdf5 file specified by file name. Size of
+          each batch of data is either determined from parameter batch_size
+          of from hdf5 file attribute.
+          """
+          with h5py.File(hf5_file_name, 'r') as hf5:
+              data_x = hf5["/data/%s/x" % data_type]
+              data_y = hf5["/data/%s/y" % data_type]
+              pos = 0
+              size = data_x.shape[0]
+
+              while True:
+                  if pos + step <= size:
+                      batch_x = data_x[pos:pos + step, :, :, :]
+                      batch_y = data_y[pos:pos + step, :]
+                  else:
+                      temp = pos
+                      pos = (pos + step) - size
+                      batch_x = np.concatenate(
+                          (data_x[0:pos, :, :, :], data_x[temp:size, :, :, :]))
+                      batch_y = np.concatenate(
+                          (data_y[0:pos, :], data_y[temp:size, :]))
+
+                  undersized_batch_x = np.empty((step, 224, 224, 3))
+                  for index, image in enumerate(batch_x):
+                      if data_type == "train":
+                          undersized_batch_x[index, :, :, :] = \
+                              generate_random_patch(image)
+                      elif data_type == "test":
+                          undersized_batch_x[index, :, :, :] = \
+                              get_center_patch(image)
+                  yield (undersized_batch_x, batch_y)
+
+                  pos += step
+    #+END_SRC
+
+
+    #+BEGIN_SRC python
+    def generate_random_patch(image):
+        """ Function returns random patch from original image. """
+        x_rand = randint(0, 32)
+        y_rand = randint(0, 32)
+        patch = image[x_rand:224+x_rand, y_rand:224+y_rand, :]
+        if randint(0, 1):
+            patch = np.flip(patch, 1)
+        return patch
+
+    #+END_SRC
