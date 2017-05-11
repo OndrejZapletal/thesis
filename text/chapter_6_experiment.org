@@ -37,7 +37,7 @@
 **** Learning Rate
      As it might be expected, from all the parameters the largest effect on the performance of the network had the change of learning rate. Adam optimizer has default setting of learning rate set to 0.001. It was found that the smaller learning rate had positive effect on the performance. Best performance was recorded wit learning rate of 0.00008.
 
-**** Beta Parameters
+**** TODO Beta Parameters
 Default settings of parameters of the Adam optimizer
 beta 1 = 0.9
 beta 2 = 0.999
@@ -66,7 +66,7 @@ beta 2 = 0.999
 
 *** Topology of Used Networks
 
-    #+INCLUDE: results.org
+    # #+INCLUDE: results.org
 
 *** Accuracy of Trained Models
     #+INCLUDE: charts.org
@@ -78,7 +78,7 @@ beta 2 = 0.999
     The difference is quite pronounced which is to be expected because the GeForce GTX 1080 has 2560 CUDA cores, while the CPU of used computer had 8. It is possible that the time difference on ImageNet dataset would be even more pronounced because the MNIST dataset doesn't fully exhaust the GPU resources.
 
 *** Combined Accuracy of Models
-    #+INCLUDE: combined_chart.org
+    # #+INCLUDE: combined_chart.org
 
 # *** 1024 Neurons in FCNN
 

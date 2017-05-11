@@ -24,9 +24,9 @@
 #+LATEX_HEADER: \newacronym{knn}{KNN}{K-nearest Neighbors}
 #+LATEX_HEADER: \newacronym{cpu}{CPU}{Central Processing Unit}
 
-#+LATEX_HEADER: \newglossaryentry{ensemble models}
+#+LATEX_HEADER: \newglossaryentry{ensemble model}
 #+LATEX_HEADER: {
-#+LATEX_HEADER: name={ensemble models},
+#+LATEX_HEADER: name={ensemble model},
 #+LATEX_HEADER: description={special case of models that is using prediction of multiple different models with the same input data in order to achieve higher accuracy}
 #+LATEX_HEADER: }
 
@@ -242,4 +242,16 @@
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={softmax},
 #+LATEX_HEADER: description={Activation function commonly used output layer of feed forward neural networks.},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{categorical cross entropy}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={categorical cross entropy},
+#+LATEX_HEADER: description={Cost function used for neral networks with classification into multiple classes.},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{dropout}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={dropout},
+#+LATEX_HEADER: description={Regularization technique that is randomly disabling some connections in network during traing phase.},
 #+LATEX_HEADER: }

@@ -83,6 +83,8 @@
 
 #+LATEX_HEADER: \makeglossaries
 
+#+LATEX_HEADER: \usepackage{algorithm}
+#+LATEX_HEADER: \usepackage{algpseudocode}
 # Definition of variable containing source files for charts
 # #+LATEX_HEADER: \def \data_source {/home/derekin/Dropbox/thesis/trained_models/}
 

@@ -1,7 +1,6 @@
 * Practical Applications of CNN
   # TODO:
   TBD
-   # Origins of [[glspl:cnn][CNN]] are attributed to Yann LeCun for his work on hand written digit recognition described in \cite{article__lecun__1989}.
 
    # Resulting model is sometimes called LeNet.
 
@@ -14,21 +13,17 @@
    #+ATTR_LATEX: :width 4in
    [[./img/figure__4__mnist_100_digits.png]]
 
-   # TODO: This has to be severly updated. Add reference to MNIST dataset
-   As it was mentioned before convolutional neural networks were originally designed for image processing applications. First mention of [[gls:cnn][CNN]] was in \cite{article__lecun__1989} where they were used for recognition of handwritten digit from Dataset of Zip codes from US post. Concept was successfully deployed on DSP chip and tested in real-time application of sorting mail by the zip-code. [[gls:cnn][CNN]] were in this case one of the first models that was reaching human performance level. Similar techniques were later used to power automatic mail sorting in US Postal Service.
+   As it was mentioned before [[glspl:cnn][CNN]] were originally designed for image processing applications. Their invention is credited to Yann LeCun \cite{article__lecun__1989}. In 1989 LeCun was working on recognition of hand written digits. Source of the dataset were handwritten zip codes from US post database. Concept was successfully deployed on [[gls:dsp][DSP]] chip and tested in real-time application of sorting mail by the zip-code. [[Gls:cnn][CNN]] were in this case one of the first models that were capable to replace human operators. Architecture of [[gls:cnn][CNN]] used to solve this problem is often regarded as LeNet-5.
 
+Modified version of the original dataset was later established as one of the benchmark datasets for image processing. This dataset is called MNIST and it contains $60000$ training and $10000$ testing gray-scaled images of size $28 \times 28$. Example of images from the MNIST dataset are shown on Figure [[fig:mnist_100_digits]].
 
    # from http://machinelearningmastery.com/inspirational-applications-deep-learning/
 ** ImageNet and ILSVRC Competition
      ImageNet is a project of Stanford Vision Lab at Stanford University. It is a coordinated effort to gather largest database of annotated images for visual recognition research. As of writing of this document the database contained 14,197,122 images from 21841 categories. Hierarchy of the ImageNet is meant to map onto [[https://en.wikipedia.org/wiki/WordNet][WordNet]] database to cover significant portion of it's nouns.
 
-     ImageNet project is probably most well known for its [[gls:ilsvrc][ILSVRC]] competition happening annually since 2010.
-# It was already mentioned several times in section [[sec:practical_application]].
-
-     Rules of the competition undergo minor updates every year but the main task remains the classification of images into 1000 categories with training dataset of 1.2 million images. These categories cover wide variety of general concepts but it also contains 120 categories for different breeds of dog, which adds problem of fine-grained recognition.
+     ImageNet project is probably most well known for its [[gls:ilsvrc][ILSVRC]] competition happening annually since 2010. Rules of the competition undergo minor updates every year but the main task remains the classification of images into 1000 categories with training dataset of 1.2 million images. These categories cover wide variety of general concepts but it also contains 120 categories for different breeds of dog, which adds problem of fine-grained recognition.
 
      This task is measured on top-1 and top-5 error rates, where top-5 error rate is classified as success in the case that correct label is among first 5 predictions of the model.
-
 
      What made [[gls:cnn][CNN]] front and center of everyone's attention was their success in [[gls:ilsvrc][ILSVRC]] competition in 2012, where model submitted by Alex Krizhevsky, Ilya Sutskever and Geoffrey E. Hinton \cite{article__krizhevsky__2012}, achieved top-5 test error rate of 15.3%, while the second best performance was 26.2%. This staggering gap in achieved performance garnered large interest of computer vision community. This model is often regarded as AlexNet.
 
@@ -36,7 +31,7 @@
 
      In the 2014 was the [[gls:ilsvrc][ILSVRC]] dominated by GoogLeNet \footnote{The name GoogLeNet is a nod to LeCun's model LeNet.} with top-5 error rate of 6.7%. This model is very different from the previously discussed [[glspl:cnn][CNN]] and it is using so-called inception modules \cite{article__szegedy__2014}. Officially it is cited to have 22 layers, but since these layers them self are combination of multiple elements the number is actually over 100.
 
-     The year 2015 [[gls:ilsvrc][ILSVRC]] was won by team from Microsoft with their ResNet model with an error rate of 3.6%. Aside from the actual record in the competition it also broke the record with most layers with 152. Results of [[gls:ilsvrc][ILSVRC]] 2016 didn't bring any revolutionary improvements and winner of used ensemble based approach. It is not likely that year 2017 will bring any significant improvement of top-5 error rate from model based on [[gls:cnn][CNN]] alone, but it remains to be seen \cite{online--Deshpande--2016}.
+     The year 2015 [[gls:ilsvrc][ILSVRC]] was won by team from Microsoft with their ResNet model with an error rate of 3.6%. Aside from the actual record in the competition it also broke the record with most layers with 152. Results of [[gls:ilsvrc][ILSVRC]] 2016 didn't bring any revolutionary improvements and winner of used ensemble based approach. It is not likely that year 2017 will bring any significant improvement of top-5 error rate from model based on [[gls:cnn][CNN]] alone, but it remains to be seen \cite{online--deshpande--2016}.
 
      Apart from the [[gls:ilsvrc][ILSVRC]] the [[glspl:cnn][CNN]] are very successfully deployed in many real world applications. Some examples are described in following text.
      # Sourced from http://machinelearningmastery.com/inspirational-applications-deep-learning/
@@ -77,8 +72,12 @@
    #+ATTR_LATEX: :width 4in
    [[./img/figure__4__algorithm_for_image_description.png]]
 
+   Already familiar combination of [[gls:cnn][CNN]] and [[gls:lstm][LSTM]] [[gls:rnn][RNN]] used in this case to describe scene depicted on image.
+
+   Structure of learning algorithm is illustrated on Figure [[fig:algorithm_for_image_description]]. [[Gls:cnn][CNN]] was trained do categorize objects on image and last layer of the network was directly fed into language generating [[gls:lstm][LSTM]] to generate description of the scene.
+
+   Figure [[fig:scene_description]] shows examples of translation with varying level of success. It is interesting that the mistakes not really seem outrages and are mostly  understandable.
+
    #+NAME: fig:scene_description
    #+CAPTION: Examples of scene description
    [[./img/figure__4__scene_description.png]]
-
-   Already familiar combination of [[gls:cnn][CNN]] and [[gls:lstm][LSTM]] [[gls:rnn][RNN]] used in this case to describe scene depicted on image. [[gls:cnn][CNN]] was trained do categorize objects on image and [[gls:lstm][LSTM]] was to generate description of scene. It can be seen on image [] that the results are very impressive, even in cases that the model makes mistakes.

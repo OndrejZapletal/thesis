@@ -48,6 +48,7 @@
 
 [fn:2] This could be for example detection of defects on line production in industrial automation.
 
+
 ** Machine Learning
 
    As previously described Machine learning is a process that is used to create models that are able to extract information from data to solve given problem and consequently automatically improve their performance.
@@ -82,7 +83,7 @@
      Training process of supervised learning is based on the following principle. Firstly the training data are fed into the model to produce prediction of output. This prediction is compared to the assigned label of the training data in order to estimate models error. Based on this error the learning algorithm adjusts model's parameters in order to reduce it.
      # TODO: add figure
 
-*** Structure of machine learning algorithm
+*** Structure of Machine Learning Algorithm
     Even thought that machine learning algorithms are varied and are using different techniques its structure can be generalized. Structure of nearly all machine learning algorithms can be described as composition of following components:
     - Dataset specification
     - Model
@@ -163,7 +164,7 @@ Nearly all supervised learning algorithms use the same Dataset specification. Th
      \end{equation}
 
      For the optimization purposes it is usually useful to express the [[gls:cost function][cost function]] in matrix notation
-     \begin{equation} \label{eq:1}
+     \begin{equation} \label{eq:linear_cost}
      J(\boldsymbol{\theta}) = \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)^T \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right).
      \end{equation}
 
@@ -188,7 +189,7 @@ Nearly all supervised learning algorithms use the same Dataset specification. Th
 
      Unfortunately only very simple problems can be approximated using model as simple as [[gls:linear regression][linear regression]]. More complex model usually means more complicated [[gls:cost function][cost function]]. Optimization process of more complex [[glspl:cost function][cost functions]] cannot be guaranteed to find global minimum. In this case the optimization procedure has to be of iterative character. In other words algorithm has to approach the minimum in iterations. Many of the iterative methods belong to the group called gradient based optimization.
 
-*** TODO Model complexity
+*** TODO Model Complexity
 
     In the first approximation it could be said that the task of supervised machine learning is to model relationship between the input output data most accurately. The problem with this definition is that in the practical application there is never enough data to capture true relationship between the two. Therefore the task of machine learning is the attempt to infer true relationship by observing incomplete picture.
 
@@ -216,7 +217,7 @@ Nearly all supervised learning algorithms use the same Dataset specification. Th
      As it was already mentioned, the most important aspect of machine learning is striking the balance between over and under fitting of the model. To help with this problem was devised concept of regularization. It is a technique that helps penalizes the model for its complexity. Basic concept consists of adding a term in the [[gls:cost function][cost function]] that increases with model complexity.
 
      # TODO: I think that this should be called L1 regularization
-     When is this applied to cost function from equation \ref{eq:1}
+     When is this applied to cost function from equation \ref{eq:linear_cost}
      \begin{equation}
      J(\boldsymbol{\theta}) = \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right)^T \left(\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\theta}\right) + \lambda\boldsymbol{\theta}^T\boldsymbol{\theta},
      \end{equation}

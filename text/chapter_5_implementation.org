@@ -1,7 +1,7 @@
 * TODO Implementation Details
   # TODO: Add some text describing the structure of the chapter
   TBD
-** Software tools
+** Software Tools
    In order to select appropriate tool for implementation of [[gls:cnn][CNN]] for ILSVRC classification was conducted investigation of available software frameworks and libraries. There is vast variety of software tools for machine learning. Some of these are general tools for machine learing, but some are specifically designed for [[gls:deep learning][deep learning]].
 
    In the last 10 years the software tools for machine learning undergone a renaissance. There is broad selection of them available and new tools are introduced quite frequently. For example Caffe2[fn:1] was introduced very recently on April 18^th. Almost every commonly used programming language has some framework, library or at least some sort of [[gls:api][API]] available.
@@ -59,11 +59,13 @@
      Since both Theano and Tensorflow support execution models on [[gls:gpu][GPU]] units it extends this possibility to Keras as well.
 
 ** Hardware and Software Configuration
-   Training of [[gls:nn][NN]] is notoriously computational expensive and it demands a lot of computational. From low level perspective training of [[gls:nn][NN]] translates into many multiplications of matrices. Modern [[glspl:cpu][CPU]] are not really optimized for such computations and therefore are not very good at it. Modern [[glspl:gpu][GPU]] on the other hand are designed to preform precisely these operations.
+   Training of [[gls:nn][NN]] is notoriously computational expensive and it demands a lot of resources. From low level perspective training of [[gls:nn][NN]] translates into many multiplications of matrices. Modern [[glspl:cpu][CPU]] are not optimized for such computations and therefore are not very good at it. On the other hand modern [[glspl:gpu][GPU]] are designed to preform precisely these operations.
 
    # Technological breakthroughs in computational hardware is one of the necessary conditions for successful training and deployment of deep learning models.
 
-   Currently on the market there are two major parallel computing platforms CUDA and OpenCL. They both have pros and cons but the major difference is that CUDA is proprietary while OpenCL is open source. This divide translates into hardware manufactures as well. CUDA is mainly supported by Nvida and OpenCL is support by AMD. There is certain cross over between the two but it still stands. Nvidia with its CUDA framework is currently leader in the domain of deep learning. For this reason was selected GPU from Nvidia.
+   Currently on the market there are two major parallel computing platforms CUDA and OpenCL. They both have pros and cons but the major difference is that CUDA is proprietary, while OpenCL is open source. This divide translates into hardware manufactures as well. CUDA is mainly supported by Nvida and OpenCL is support by AMD.
+ # There is certain overlap between the two but it still stands.
+ Nvidia with its CUDA framework is currently leader in the domain of deep learning. For this reason was selected GPU from Nvidia.
 
    # TODO: add hardware speciffication of the computer from lab
    Exact selected model was GeForce GTX 1080 from GIGABYTE. Card was installed on PC ... Hardware configuration is summarized in table [[tab:hardware_configuration]].
@@ -177,10 +179,10 @@
 # *** ImageNet
 
    # TODO: Ask Horak if this can be written here.
-   Due to a organizational difficulties it took a long time to obtain viable hardware that could have been used for training of the network. It was decided that instead of full ILSVRC challenge in this thesis will be attempted to solve reduced version of the task. This reduction involves number of classes. It was decided models will be trained on subset of the ILSVRC with 100 randomly selected classes. This seamed to be a reasonable compromise to preserve some of the inert difficulty of the problem while meeting the deadline of this thesis.
+   Due to a organizational difficulties it took a long time to obtain viable hardware that could have been used for training of the network. It was decided that instead of regular ILSVRC challenge, this thesis will attempted to solve reduced version of the task. This reduction involves number of classes. From original ILSVRC dataset was randomly selected 100 classes. This seamed to be a reasonable compromise to preserve some of the inert difficulty of the problem while meeting the deadline of this thesis.
    # TODO: Find out how many images is among the 100 classes!!
 
-   One of the biggest challenges of the dataset preparation was it's size. In case of MNIST and CIFAR10 datasets that contains only very small images, it was feasible to work with dataset within memory. In case of ImageNet dataset any augmentation of the data and by extension any training of a model, had to be performed in batches.
+   One of the biggest challenges of the dataset preparation was its size. In case of MNIST and CIFAR10 datasets that contains only very small images, it is feasible to work with dataset within memory. In case of ImageNet dataset, any augmentation of the data and by extension any training of a model, had to be performed in batches.
    Python ecosystem offers several options for storing of data for mathematical manipulation. For these specific requirements was selected [[gls:hdf5][HDF5]][fn:3] binary data format. Image data were saved into hard-drive using h5py[fn:4] python library.
 
    Images contained in the dataset are quite varied. They have different number of pixels, aspect ratio and overall quality. Selected model imposed the constraint that each image has to be of the same size and aspect ratio. Selected size of the images was 256x256 pixels, based on the work described in \cite{article__krizhevsky__2012}. Dataset preparation was done in three stages.
@@ -188,7 +190,6 @@
 
 [fn:3] \url{https://support.hdfgroup.org/HDF5/}
 [fn:4] \url{http://www.h5py.org/}
-
 
  # important articles:
  # http://soumith.ch/eyescream/
