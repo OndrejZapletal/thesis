@@ -1,4 +1,4 @@
-* Practical Applications of CNN
+* Overview  of CNN Applications
   # TODO:
   TBD
 

@@ -1,4 +1,4 @@
-* TODO Implementation Details
+* TODO Proposed Experimental Concept
   # TODO: Add some text describing the structure of the chapter
   TBD
 ** Software Tools
@@ -248,7 +248,7 @@
 #+ATTR_LATEX: :heigth 2in
 [[./img/figure__4__data_augmentation.png]]
 
-[fn:5] This is because =(size of an image side - size of generated patch)^2 * horizontal flip= which is $(256 - 224)^2 * 2 = 2048$.
+[fn:5] /(size of an image side - size of generated patch)^2 * horizontal flip/ $[(256 - 224)^2 \times 2 = 2048]$.
 
 ** Model Building Blocks
    For implementation of [[gls:cnn][CNN]] was used Keras sequential model, which is a concept that is appropriate for modeling of feed forward network. Definition of the network is composed of layers. Concept of layer in Keras sequential model doesn't completely map into already described definition of layer from topological perspective. Keras layers are more fine grained and in order to create equivalent topological layer it is necessary to use multiple Keras layers.
@@ -313,7 +313,6 @@
 
 
 *** Model Compilation
-
 
       #+BEGIN_SRC python
       model.compile(

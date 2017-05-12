@@ -41,7 +41,7 @@
    Both innovation in computational hardware and improvement of training methods were needed to solve the third problem. One of the technical breakthroughs was utilization of [[glspl:gpu][GPU]] for the demanding computation involved in training of a complex network. Thanks to the fact that training process of [[glspl:nn][NN]] is typically large number of simple consequent computations, there is a great potential for parallelization.
 
 ** Structure of Neural Networks
-   Description of [[gls:nn][NN]] structure will follow the convention laid out in the description of learning algorithm. Meaning that a description of the learning algorithm is composed of model, cost function and optimization procedure. The difference comes into play with the fact that model of [[gls:nn][NN]] is much more complex than the model [[gls:linear regression][linear regression]]. Therefore the analysis is divided into model of neuron and topology of the network.
+   Description of [[gls:nn][NN]] structure will follow the convention laid out in the description of learning algorithm. Meaning that a description of the learning algorithm is composed of model, cost function and optimization procedure. The difference comes into play with the fact that model of [[gls:nn][NN]] is much more complex than the model [[gls:linear regression][linear regression]]. Therefore, the analysis is divided into model of neuron and topology of the network.
 
 *** Model of Neuron
     Typical structure of artificial neuron is shown on Figure [[fig:neuron_model]]. As it was already mentioned model of neuron was inspired by biology. It computational unit performing operation
@@ -59,7 +59,7 @@
      Each neuron has multiple inputs that are combined together to execute some operation. Each input has designated weight assigned to it.
 
 **** Weights
-     Inputs of a neuron are weighted by parameters $\boldsymbol{w}$ that are modified during learning process. Each weight gives strength to each individual input into the neuron. The basic idea is that when the weight is small the particular input doesn't influence the output of the neuron very much. It's influence is large in the opposite case.
+     Inputs of a neuron are weighted by parameters $\boldsymbol{w}$ that are modified during learning process. Each weight gives strength to each individual input into the neuron. The basic idea is that when the weight is small the particular input doesn't influence the output of the neuron very much. Its influence is large in the opposite case.
 
 **** Bias
      Another modifiable parameter is bias $b$ that controls influence of the neuron as a whole.
@@ -110,7 +110,7 @@
 
     Types of neurons are dependent on the type of the layer. Currently the main difference is in their [[gls:af][af]], which wasn't the case for a long time. Historically all layers had neurons with [[gls:sigmoid][sigmoid]] [[gls:af][AF]]. It was mainly because the output [[gls:sigmoid][sigmoid]] layer can be easily mapped onto probability distribution, since it acquires vales between 0 and 1. Only relatively recently[fn:1] it was found that network composed of neurons with [[gls:relu][ReLU]] [[gls:af][AFs]] in the hidden layers can be trained very quickly and are more resistant against over-fitting. [[Glspl:af][AF]] are still subject of ongoing research.
 
-    Neurons in output layer need output that can produce probability distribution that can be used to estimate the probability of individual classes. For this reason most commonly used [[gls:af][AF]] of output neuron is called [[gls:softmax][softmax]]. [[Gls:softmax][Softmax]] is normalized exponential function. It is used to represent probability of en element being member of class $j$ as
+    Neurons in output layer need output that can produce probability distribution that can be used to estimate the probability of individual classes. For this reason, most commonly used [[gls:af][AF]] of output neuron is called [[gls:softmax][softmax]]. [[Gls:softmax][Softmax]] is normalized exponential function. It is used to represent probability of an element being member of class $j$ as
     \begin{equation} \label{eq:softmax}
     g(z)_j = \frac {e^{z_j}} {\sum_{K}^{k=1} {e^{z_k}}},
     \end{equation}
@@ -131,12 +131,12 @@
     # Optimization procedure or in other words learning of [[gls:nn][NN]] consist of evaluating the cost function for given input data and modifying parameters of the [[gls:nn][NN]] in order to decrees it.
 
 
-    Every optimization procedure for [[gls:nn][NN]] is based on gradient descent. In other words it is iterative process that is trying to lower training error of the network by differentiating of [[gls:cost function][cost function]] and adjusting parameters of the model by following the negative gradient.
+    Every optimization procedure for [[gls:nn][NN]] is based on gradient descent. In other words, it is iterative process that is trying to lower training error of the network by differentiating of [[gls:cost function][cost function]] and adjusting parameters of the model by following the negative gradient.
 
     The problem is that [[gls:cost function][cost function]] of entire network is very complex and has many parameters. To find the gradient of the cost function it is necessary to go through all of the units in the network. Technique that is used to solve this problem is called [[gls:bp][BP]]. [[Gls:bp][BP]] if often confused to be complete learning algorithm which is not the case, it is only the method to compute the gradient \cite{book--goodfellow--2016}.
 
     # TODO: maybe word this better
-    Algorithm that facilitates the learning is the most important peace of the puzzle. There are many different variations on the gradient descent method. Following definitions are taken from \cite{article__dozat__2015}.
+    Algorithm that facilitates the learning is the most important piece of the puzzle. There are many different variations on the gradient descent method. Following definitions are taken from \cite{article__dozat__2015}.
     # With the knowledge of how the change of parameter affects the value of cost function the optimization procedure that is used to find best possible solution.
 
     # Is called gradient based optimization. More specifically most commonly is used the [[gls:sgd][SGD]] method.
@@ -209,7 +209,7 @@ n_t \leftarrow \nu n_{t-1} + (1 - \nu) g_{t}^{2} \\
     # TODO: this is not substantiated!!!
     # Moreover because during the learning process update of these weights is computed via matrix multiplication for larger images this can be unresolvable problem, which exacerbate with the number of [[glspl:hidden layer][hidden layer]].
 
-    The structure of [[gls:fcnn][FCNN]] has another deficiency for image processing application, which is that it doesn't capture geometric properties of information from input image. In other words because individual layers are fully connected (each output in lower layer is connected to each input in higher layer) networks are not capturing any information about relation of position of individual inputs (image pixels) to each other.
+    The structure of [[gls:fcnn][FCNN]] has another deficiency for image processing application, which is that it doesn't capture geometric properties of information from input image. In other words, because individual layers are fully connected (each output in lower layer is connected to each input in higher layer) networks are not capturing any information about relation of position of individual inputs (image pixels) to each other.
 
     Third problem is that for higher depth of [[gls:fcnn][FCNN]] increases the likelihood of getting stuck in some local minima.
 
@@ -316,7 +316,7 @@ n_t \leftarrow \nu n_{t-1} + (1 - \nu) g_{t}^{2} \\
 
      Reduction of [[gls:feature map][feature map]] can go even further in case of use of [[gls:stride][stride]]. Application of [[gls:stride][stride]] specifies by how many input points is traversed when moving to neighboring position in each step. When the [[gls:stride][stride]] is 1, [[gls:kernel][kernel]] is moved by 1 on each step and the resulting size of [[gls:feature map][feature map]] is not affected.
 
-     Each Convolutional layer is typically composition of several different kernels. In other words output of this layer is tensor containing [[gls:feature map][feature map]] for each used [[gls:kernel][kernel]]. Each of these is designed to underline different features of input image. In the first layers these features are typically edges. In following layers the higher the layer the more complex features are captured.
+     Each Convolutional layer is typically composition of several different kernels. In other words, output of this layer is tensor containing [[gls:feature map][feature map]] for each used [[gls:kernel][kernel]]. Each of these is designed to underline different features of input image. In the first layers these features are typically edges. In following layers the higher the layer, the more complex features are captured.
 
      Each [[gls:kernel][kernel]] that is used is applied to all inputs of the image to produce one [[gls:feature map][feature map]] which basically means that neighboring layers are sharing the same weights. This might not be sufficient in some applications and therefore it is possible to use two other types of connections. [[Gls:locally connected][Locally connected]] which basically means that applied [[gls:kernel][kernel]] is of the same size as the input and [[gls:tiled convolution][tiled convolution]] which means alternation of more than one set of weights on entire input.
 
@@ -326,7 +326,7 @@ n_t \leftarrow \nu n_{t-1} + (1 - \nu) g_{t}^{2} \\
 
 **** Pooling layer
 
-     This layer typically (more details later) doesn't constitute any learning process but it is used to down-sample size of the input. The Principle is that input is divided into multiple not-overlapping rectangular elements and units within each element are used to create single unit of output. This decreases the size of output layer while preserving the most important information contained in input layer. In other words pooling layer compresses information contained within input.
+     This layer typically (more details later) doesn't constitute any learning process but it is used to down-sample size of the input. The Principle is that input is divided into multiple not-overlapping rectangular elements and units within each element are used to create single unit of output. This decreases the size of output layer while preserving the most important information contained in input layer. In other words, pooling layer compresses information contained within input.
 
      Type of operation that is performed on each element determines a type of pooling layer. This operation can be averaging over units within element, selecting maximal value from element or alternatively learned linear combination of units within element. Learned linear combination introduces form of learning into the pooling layer, but it is not very prevalent.
 
@@ -336,7 +336,7 @@ n_t \leftarrow \nu n_{t-1} + (1 - \nu) g_{t}^{2} \\
 
 **** Fully-Connected layer
 
-     Fully-Connected layer is formed from classical neurons that can be found in [[gls:fcnn][FCNN]] and it is always located at the end of the layer stack. In other words it is never followed by another Convolutional layer. Depending on the size of whole [[gls:cnn][CNN]] it can have 1 to 3 [[gls:fc][FC]] layers (usually not more than that). Input of the first [[gls:fc][FC]] layer has inputs from all neurons from previous layer to all neurons of following layer (hence fully connected). All [[gls:fc][FC]] layers are together acting as [[gls:fcnn][FCNN]].
+     Fully-Connected layer is formed from classical neurons that can be found in [[gls:fcnn][FCNN]] and it is always located at the end of the layer stack. In other words, it is never followed by another Convolutional layer. Depending on the size of whole [[gls:cnn][CNN]] it can have 1 to 3 [[gls:fc][FC]] layers (usually not more than that). Input of the first [[gls:fc][FC]] layer has inputs from all neurons from previous layer to all neurons of following layer (hence fully connected). All [[gls:fc][FC]] layers are together acting as [[gls:fcnn][FCNN]].
 
 
 *** TODO Training of CNN
@@ -411,7 +411,7 @@ equation
      As mentioned in section for [[gls:forward-propagation][forward-propagation]], there is no explicit learning process happening in pooling layer. Error is propagated backwards depending on how the signal was propagated forward. In case of [[gls:max-pooling][Max-Pooling]] layer the error is propagated only to the unit with maximal output in [[gls:forward-propagation][forward-propagation]] phase (in other words to the winner of pooling). The error is propagated very sparsely, as result.
 
      # TODO: Delete the bit about everage pooling it is not necessary!!!
-     In case of different pooling method it is adjusted accordingly (i.e. for /average pooling/ the error is propagated according to contribution of individual neurons).
+     In case of different pooling method, it is adjusted accordingly (i.e. for /average pooling/ the error is propagated according to contribution of individual neurons).
 
 **** Backward Propagation of Fully connected layer
      Training mechanism for [[gls:fc][FC]] layer if following the same principles as in [[gls:fcnn][FCNN]], which is not a subject of detailed discussed here. It is similar to one for convolution layers and from our perspective is only important that the first (last in the sense of [[gls:bp][BP]]) [[gls:fc][FC]] layer propagates error gradient of each neuron in it, that is then send to all neurons in preceding (following in the direction of [[gls:bp][BP]]) layer.
@@ -422,7 +422,7 @@ equation
     # Number of parameters
     # computational demand
     To further highlight the difference between [[gls:fcnn][FCNN]] and [[gls:cnn][CNN]] it is worth to compare the case of 2 neighboring layers.
-    Lets have a gray scale input image of size $32 \times 32$ pixels and following layer will be convolutional with 6 feature maps of size 28x28. Kernels used in this convolutional layer will have the size of $5 \times 5$. In this case we have totally $(5 \times 5 + 1) \times 6 = 156$ parameters between the two layers.
+    Let's have a gray scale input image of size $32 \times 32$ pixels and following layer will be convolutional with 6 feature maps of size 28x28. Kernels used in this convolutional layer will have the size of $5 \times 5$. In this case we have totally $(5 \times 5 + 1) \times 6 = 156$ parameters between the two layers.
     If we would like to create equivalent connection between two layers of [[glspl:fcnn][FCNN]], then it would have mean $(32 \times 32 + 1) \times 28 \times 28 = 803600$ connections (parameters). Which means that difference between the two is of ~5000 ratio.
     This difference would rise exponentially with larger images or with more color channels. When input size of the image changes to 64x64 and it has [[gls:rgb][RGB]] color then [[glspl:fcnn][FCNN]] would requires $(64 \times 64 \times 3 + 1) \times 28 \times 28 = 9634576$ connections (parameters). In the same case the [[gls:cnn][CNN]] only needs $(5 \times 5 \times 3 + 1) \times 6 = 456$ parameters. Which is difference of ~20000 factor.
     Just to elaborate, in case that [[gls:cnn][CNN]] would be used to process video. Analogically to previous examples in case of moving image in time the number of parameters raises linearly with number of images in analyzed video.
@@ -437,14 +437,14 @@ equation
 *** Dropout
     By far the best regularization method is to combine predictions of many different models. Exactly on this idea are based [[glspl:ensemble model][ensemble model]]. The problem with [[glspl:ensemble model][ensemble model]] is that they are computationally expensive. Because of this, ensembles are usually composed of many very simple models \cite{article__srivastava__2014}.
 
-    This idea is specially problematic with [[glspl:dnn][DNN]], which are model with many parameters that are difficult to train. Moreover even when trained models are available in some applications it still isn't feasible to evaluate many different models in production environment. Another problem is that there might not be enough data to train these different models.
+    This idea is especially problematic with [[glspl:dnn][DNN]], which are model with many parameters that are difficult to train. Moreover, even when trained models are available in some applications it still isn't feasible to evaluate many different models in production environment. Another problem is that there might not be enough data to train these different models.
 
     All of these problems can be solved by dropout technique. The basic idea is that each neuron in the network has certain probability to be deactivated during one iteration. This potential for deactivation is evaluated in every iteration, to ensure that network has different architecture every time. Deactivated means that it will not propagate any signal through.
 
     Probability for deactivation is a hyper-parameter that can be tuned, but reasonable default value is 0.5. Dropping out is only happening in the training phase. In testing phase are all weight connection multiplied by the probability of a dropout. This is done because the activation of the network has to stay roughly equivalent[fn:2] in both training ant testing phase. Basic concept is illustrated in Figure [[fig:dropout]]
 
 #+NAME: fig:dropout
-#+CAPTION: Dropout: (a) Standard fully connected network. (b) Network with some neurons deactivated. (c) Activation of neuron during training phase. (d) Activation of neuron during testin phase.
+#+CAPTION: Dropout: (a) Standard fully connected network. (b) Network with some neurons deactivated. (c) Activation of neuron during training phase. (d) Activation of neuron during testing phase.
 [[./img/figure__3__dropout.png]]
 
-[fn:2] For example when the dropout probability is 0.5, approximately half of the neurons in the network will be deactivated. Therefore in the testing phase the activation would be twice as big.
+[fn:2] For example, when the dropout probability is 0.5, approximately half of the neurons in the network will be deactivated. Therefore in the testing phase the activation would be twice as big.

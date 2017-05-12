@@ -1,6 +1,6 @@
 # TODO: Find a better name for this chapter
 # TODO: Find all terms that need to be added into list of terms
-* Experiment
+* Experiments
   # TODO: make sure that this realy stays in four parts!!!
   This chapter is broke down into two parts. In first part is described the process of selection of model structure and its parameters. In the second part are summarized achieved results on ImageNet dataset.
 
@@ -62,11 +62,9 @@ beta 2 = 0.999
    Future work on this subject might try to use larger dataset for several epoch to pre-train the convolutional layers and then reduce the training dataset for selected classes only.
    This also means that selected architecture might have been too complex to train on the selected samples. Even thought it is not out of the question the collected data regarding this premise doesn't seem to suggest that this was actually the case. Reduced network structures didn't bring any notable accuracy improvements.
 
-
-
 *** Topology of Used Networks
 
-    # #+INCLUDE: results.org
+    #+INCLUDE: results.org
 
 *** Accuracy of Trained Models
     #+INCLUDE: charts.org
@@ -78,7 +76,7 @@ beta 2 = 0.999
     The difference is quite pronounced which is to be expected because the GeForce GTX 1080 has 2560 CUDA cores, while the CPU of used computer had 8. It is possible that the time difference on ImageNet dataset would be even more pronounced because the MNIST dataset doesn't fully exhaust the GPU resources.
 
 *** Combined Accuracy of Models
-    # #+INCLUDE: combined_chart.org
+    #+INCLUDE: combined_chart.org
 
 # *** 1024 Neurons in FCNN
 
