@@ -243,10 +243,10 @@
     Main problem with ImageNet dataset is that it has relatively few images per category. This issue was exacerbated by the decision to also use train dataset for testing purposes described in section [[data_preparation]]. To combat this was performed data augmentation procedure suggested in \cite{article__krizhevsky__2012}. During training of the network each image is augmented before it is fed on input of the network. Pre-processed images from [[gls:hdf5][HDF5]] file have size 256x256x3 pixels. While the size of input of the [[gls:cnn][CNN]] is setup to process data of size 224x224x3. Therefore each image that is send on the net's input is randomly generated patch of size 224x224x3 from the pre-processed image. The generated patch is also flipped horizontally With probability of 0.5. By this augmentation the training dataset is theoretically extended by factor of 2048[fn:5]. Example of the this process is depicted on figure [[fig:data_augmentation]]
 
 
-#+NAME: fig:data_augmentation
-#+CAPTION: Original image (left up). Downsized and cropped on the sides (right up). Six randomly generated patches from processed image (bottom).
-#+ATTR_LATEX: :heigth 2in
-[[./img/figure__4__data_augmentation.png]]
+    #+NAME: fig:data_augmentation
+    #+CAPTION: Original image (left up). Downsized and cropped on the sides (right up). Six randomly generated patches from processed image (bottom).
+    #+ATTR_LATEX: :heigth 2in
+    [[./img/figure__4__data_augmentation.jpg]]
 
 [fn:5] /(size of an image side - size of generated patch)^2 * horizontal flip/ $[(256 - 224)^2 \times 2 = 2048]$.
 

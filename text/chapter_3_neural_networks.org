@@ -427,7 +427,7 @@ equation
     This difference would rise exponentially with larger images or with more color channels. When input size of the image changes to 64x64 and it has [[gls:rgb][RGB]] color then [[glspl:fcnn][FCNN]] would requires $(64 \times 64 \times 3 + 1) \times 28 \times 28 = 9634576$ connections (parameters). In the same case the [[gls:cnn][CNN]] only needs $(5 \times 5 \times 3 + 1) \times 6 = 456$ parameters. Which is difference of ~20000 factor.
     Just to elaborate, in case that [[gls:cnn][CNN]] would be used to process video. Analogically to previous examples in case of moving image in time the number of parameters raises linearly with number of images in analyzed video.
 
-** TODO Complexity Control for Neural Networks
+** TODO Regularization of Neural Networks
    Control of complexity applies to both [[gls:nn][NN]] and [[gls:cnn][CNN]].
 
    # *** TODO Early stoppage
@@ -443,8 +443,8 @@ equation
 
     Probability for deactivation is a hyper-parameter that can be tuned, but reasonable default value is 0.5. Dropping out is only happening in the training phase. In testing phase are all weight connection multiplied by the probability of a dropout. This is done because the activation of the network has to stay roughly equivalent[fn:2] in both training ant testing phase. Basic concept is illustrated in Figure [[fig:dropout]]
 
-#+NAME: fig:dropout
-#+CAPTION: Dropout: (a) Standard fully connected network. (b) Network with some neurons deactivated. (c) Activation of neuron during training phase. (d) Activation of neuron during testing phase.
-[[./img/figure__3__dropout.png]]
+    #+NAME: fig:dropout
+    #+CAPTION: Dropout: (a) Standard fully connected network. (b) Network with some neurons deactivated. (c) Activation of neuron during training phase. (d) Activation of neuron during testing phase.
+    [[./img/figure__3__dropout.png]]
 
 [fn:2] For example, when the dropout probability is 0.5, approximately half of the neurons in the network will be deactivated. Therefore in the testing phase the activation would be twice as big.

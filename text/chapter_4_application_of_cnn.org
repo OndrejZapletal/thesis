@@ -1,4 +1,4 @@
-* Overview  of CNN Applications
+* Overview of CNN Applications
   # TODO:
   TBD
 
@@ -41,7 +41,7 @@ Modified version of the original dataset was later established as one of the ben
    #+NAME: fig:colorization
    #+CAPTION: Examples of automaticall colorated images
    #+ATTR_LATEX: :width 4in
-   [[./img/figure__4__colorization.png]]
+   [[./img/figure__4__colorization.jpg]]
 
    Automatic colorization is interesting technical problem where the task is to create colored image from gray scale input. Any strides in automatization of this process are welcomed because until recently this was very tedious and slow process that needs to be heavily assisted by human operator. This task also seen some success with regression based models, but resulting images wasn't very aesthetically pleasing.
 
@@ -70,14 +70,14 @@ Modified version of the original dataset was later established as one of the ben
    #+NAME: fig:algorithm_for_image_description
    #+CAPTION: Structure of a learning algorithm used for automatic description
    #+ATTR_LATEX: :width 4in
-   [[./img/figure__4__algorithm_for_image_description.png]]
+   [[./img/figure__4__algorithm_for_image_description.jpg]]
 
    Already familiar combination of [[gls:cnn][CNN]] and [[gls:lstm][LSTM]] [[gls:rnn][RNN]] used in this case to describe scene depicted on image.
 
    Structure of learning algorithm is illustrated on Figure [[fig:algorithm_for_image_description]]. [[Gls:cnn][CNN]] was trained do categorize objects on image and last layer of the network was directly fed into language generating [[gls:lstm][LSTM]] to generate description of the scene.
 
-   Figure [[fig:scene_description]] shows examples of translation with varying level of success. It is interesting that the mistakes not really seem outrages and are mostly  understandable.
+   Figure [[fig:scene_description]] shows examples of translation with varying level of success. It is interesting that the mistakes not really seem outrages and are mostly understandable.
 
    #+NAME: fig:scene_description
    #+CAPTION: Examples of scene description
-   [[./img/figure__4__scene_description.png]]
+   [[./img/figure__4__scene_description.jpg]]
