@@ -11,4 +11,7 @@
 *.lol
 *.out
 *.bbl
-text/*.aux
+*.acn
+*.docx
+*.pdf
+thesis.tex
