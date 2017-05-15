@@ -41,5 +41,12 @@
 \bibliographystyle{abbrv}
 \bibliography{citation}
 
-# Prints list of acronyms
+# Prints list of terms
 \printglossary[title=List of Terms]
+# Prints list of acronyms
+\printglossary[title=Acronyms,type=acronym]
+
+\prilohy
+\seznampriloh
+
+#+INCLUDE: text/results.org

@@ -1,0 +1,85 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Train},
+        xlabel={epoch},
+        ylabel={accuracy [p]},
+        ymin=0.0, ymax=1,
+        xtick distance=10000,
+        legend pos=south east,
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=dashed,
+        scale=1.5,
+    ]
+
+    \addplot[color=blue]
+        table [x=epoch, y=acc, col sep=comma]
+        {./logs/batch_size_500.log};
+        \addlegendentry{batch size 500}
+
+    \addplot[color=red]
+        table [x=epoch, y=acc, col sep=comma]
+        {./logs/batch_size_300.log};
+        \addlegendentry{batch size 300}
+
+    \addplot[color=yellow]
+        table [x=epoch, y=acc, col sep=comma]
+        {./logs/batch_size_100.log};
+        \addlegendentry{batch size 100}
+
+    \addplot[color=brown]
+        table [x=epoch, y=acc, col sep=comma]
+        {./logs/batch_size_50.log};
+        \addlegendentry{batch size 50}
+
+    \addplot[color=green]
+        table [x=epoch, y=acc, col sep=comma]
+        {./logs/batch_size_30.log};
+        \addlegendentry{batch size 30}
+
+    \end{axis}
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Test},
+        xlabel={epoch},
+        ylabel={accuracy [p]},
+        ymin=0.0, ymax=1,
+        xtick distance=10000,
+        legend pos=south east,
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=dashed,
+        scale=1.5,
+    ]
+
+    \addplot[color=blue]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {./logs/batch_size_500.log};
+        \addlegendentry{batch size 500}
+
+    \addplot[color=red]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {./logs/batch_size_300.log};
+        \addlegendentry{batch size 300}
+
+    \addplot[color=yellow]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {./logs/batch_size_100.log};
+        \addlegendentry{batch size 100}
+
+    \addplot[color=brown]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {./logs/batch_size_50.log};
+        \addlegendentry{batch size 50}
+
+    \addplot[color=green]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {./logs/batch_size_30.log};
+        \addlegendentry{batch size 30}
+
+
+    \end{axis}
+\end{tikzpicture}

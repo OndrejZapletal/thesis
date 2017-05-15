@@ -1,74 +1,65 @@
 * Overview of CNN Applications
-  # TODO:
-  TBD
-
-   # Resulting model is sometimes called LeNet.
-
-   # <<sec:practical_application>>
+  In this chapter is laid out an overview of [[gls:cnn][CNN]] applications.
 
 ** Handwritten Digit Recognition
    <<sec:digit_recognition>>
    #+NAME: fig:mnist_100_digits
-   #+CAPTION: Examples of 100 handwritten digits from MNIST dataset
+   #+CAPTION: Examples of 100 handwritten digits from MNIST dataset \cite{image__mnits_100_digits}
    #+ATTR_LATEX: :width 4in
    [[./img/figure__4__mnist_100_digits.png]]
 
-   As it was mentioned before [[glspl:cnn][CNN]] were originally designed for image processing applications. Their invention is credited to Yann LeCun \cite{article__lecun__1989}. In 1989 LeCun was working on recognition of hand written digits. Source of the dataset were handwritten zip codes from US post database. Concept was successfully deployed on [[gls:dsp][DSP]] chip and tested in real-time application of sorting mail by the zip-code. [[Gls:cnn][CNN]] were in this case one of the first models that were capable to replace human operators. Architecture of [[gls:cnn][CNN]] used to solve this problem is often regarded as LeNet-5.
+   As it was mentioned before [[glspl:cnn][CNN]] were originally designed for image processing applications. Their invention is credited to Yann LeCun \cite{article--lecun--1989}. In 1989 LeCun was working on recognition of hand written digits. Source of the dataset were handwritten zip codes from US post database. Concept was successfully deployed on \acrshort{dsp} chip and tested in real-time application of sorting mail by the zip-code. [[Gls:cnn][CNN]] were in this case one of the first models that were capable to replace human operators. Architecture of [[gls:cnn][CNN]] used to solve this problem is often regarded as LeNet-5.
 
-Modified version of the original dataset was later established as one of the benchmark datasets for image processing. This dataset is called MNIST and it contains $60000$ training and $10000$ testing gray-scaled images of size $28 \times 28$. Example of images from the MNIST dataset are shown on Figure [[fig:mnist_100_digits]].
+   Modified version of the original dataset was later established as one of the benchmark datasets for image processing. This dataset is called MNIST and it contains $60000$ training and $10000$ testing gray-scaled images of size $28 \times 28$. Example of images from the MNIST dataset are shown on Figure [[fig:mnist_100_digits]].
 
-   # from http://machinelearningmastery.com/inspirational-applications-deep-learning/
 ** ImageNet and ILSVRC Competition
-     ImageNet is a project of Stanford Vision Lab at Stanford University. It is a coordinated effort to gather largest database of annotated images for visual recognition research. As of writing of this document the database contained 14,197,122 images from 21841 categories. Hierarchy of the ImageNet is meant to map onto [[https://en.wikipedia.org/wiki/WordNet][WordNet]] database to cover significant portion of it's nouns.
+   <<sec:ilsvrc>>
+   ImageNet is a project of Stanford Vision Lab at Stanford University. It is a coordinated effort to gather largest database of annotated images for visual recognition research. As of writing of this document the database contained 14,197,122 images from 21841 categories. Hierarchy of the ImageNet is meant to map onto [[https://en.wikipedia.org/wiki/WordNet][WordNet]] database to cover significant portion of it's nouns.
 
-     ImageNet project is probably most well known for its [[gls:ilsvrc][ILSVRC]] competition happening annually since 2010. Rules of the competition undergo minor updates every year but the main task remains the classification of images into 1000 categories with training dataset of 1.2 million images. These categories cover wide variety of general concepts but it also contains 120 categories for different breeds of dog, which adds problem of fine-grained recognition.
+   ImageNet project is probably most well known for its [[gls:ilsvrc][ILSVRC]] competition happening annually since 2010. Rules of the competition undergo minor updates every year but the main task remains the classification of images into 1000 categories with training dataset of 1.2 million images. These categories cover wide variety of general concepts but it also contains 120 categories for different breeds of dog, which adds problem of fine-grained recognition.
 
-     This task is measured on top-1 and top-5 error rates, where top-5 error rate is classified as success in the case that correct label is among first 5 predictions of the model.
+   This task is measured on top-1 and top-5 error rates, where top-5 error rate is classified as success in the case that correct label is among first 5 predictions of the model.
 
-     What made [[gls:cnn][CNN]] front and center of everyone's attention was their success in [[gls:ilsvrc][ILSVRC]] competition in 2012, where model submitted by Alex Krizhevsky, Ilya Sutskever and Geoffrey E. Hinton \cite{article__krizhevsky__2012}, achieved top-5 test error rate of 15.3%, while the second best performance was 26.2%. This staggering gap in achieved performance garnered large interest of computer vision community. This model is often regarded as AlexNet.
+   What made [[gls:cnn][CNN]] front and center of everyone's attention was their success in [[gls:ilsvrc][ILSVRC]] competition in 2012, where model submitted by Alex Krizhevsky, Ilya Sutskever and Geoffrey E. Hinton \cite{article--krizhevsky--2012}, achieved top-5 test error rate of 15.3%, while the second best performance was 26.2%. This staggering gap in achieved performance garnered large interest of computer vision community. This model is often regarded as AlexNet.
 
-     In the following year the competition seen large increase of submitted [[gls:cnn][CNN]] models. Winners of the 2013 were Matthew Zeiler and Rob Fergus with their ZF Net \cite{article__zeiler__2013}, which had similar structure to AlexNet and achieved 11.2% error rate.
+   In the following year the competition seen large increase of submitted [[gls:cnn][CNN]] models. Winners of the 2013 were Matthew Zeiler and Rob Fergus with their ZF Net \cite{article--zeiler--2013}, which had similar structure to AlexNet and achieved 11.2% error rate.
 
-     In the 2014 was the [[gls:ilsvrc][ILSVRC]] dominated by GoogLeNet \footnote{The name GoogLeNet is a nod to LeCun's model LeNet.} with top-5 error rate of 6.7%. This model is very different from the previously discussed [[glspl:cnn][CNN]] and it is using so-called inception modules \cite{article__szegedy__2014}. Officially it is cited to have 22 layers, but since these layers them self are combination of multiple elements the number is actually over 100.
+   In the 2014 was the [[gls:ilsvrc][ILSVRC]] dominated by GoogLeNet[fn:1] with top-5 error rate of 6.7%. This model is very different from the previously discussed [[glspl:cnn][CNN]] and it is using so-called inception modules \cite{article--szegedy--2014}. Officially it is cited to have 22 layers, but since these layers them self are combination of multiple elements the number is actually over 100.
 
-     The year 2015 [[gls:ilsvrc][ILSVRC]] was won by team from Microsoft with their ResNet model with an error rate of 3.6%. Aside from the actual record in the competition it also broke the record with most layers with 152. Results of [[gls:ilsvrc][ILSVRC]] 2016 didn't bring any revolutionary improvements and winner of used ensemble based approach. It is not likely that year 2017 will bring any significant improvement of top-5 error rate from model based on [[gls:cnn][CNN]] alone, but it remains to be seen \cite{online--deshpande--2016}.
+   The year 2015 [[gls:ilsvrc][ILSVRC]] was won by team from Microsoft with their ResNet model with an error rate of 3.6%. Aside from the actual record in the competition it also broke the record with most layers with 152. Trained network had been so enormous thanks to trick called residual learning \cite{article--owens--2015}.
 
-     Apart from the [[gls:ilsvrc][ILSVRC]] the [[glspl:cnn][CNN]] are very successfully deployed in many real world applications. Some examples are described in following text.
-     # Sourced from http://machinelearningmastery.com/inspirational-applications-deep-learning/
+   Results of [[gls:ilsvrc][ILSVRC]] 2016 didn't bring any revolutionary improvements and winner of used ensemble based approach. It is not likely that year 2017 will bring any significant improvement of top-5 error rate from model based on [[gls:cnn][CNN]] alone, but it remains to be seen \cite{online--deshpande--2016}.
+
+[fn:1] The name GoogLeNet is a nod to LeCun's model LeNet-5.
 
 ** Colorization of Black and White Images
-   # http://cs231n.stanford.edu/reports2016/219_Report.pdf
    #+NAME: fig:colorization
-   #+CAPTION: Examples of automaticall colorated images
+   #+CAPTION: Examples of automaticall colorated images \cite{image__colorozation}
    #+ATTR_LATEX: :width 4in
    [[./img/figure__4__colorization.jpg]]
 
-   Automatic colorization is interesting technical problem where the task is to create colored image from gray scale input. Any strides in automatization of this process are welcomed because until recently this was very tedious and slow process that needs to be heavily assisted by human operator. This task also seen some success with regression based models, but resulting images wasn't very aesthetically pleasing.
+   Automatic colorization is interesting technical problem where the task is to create colored image from gray scale input. Any strides in automatization of this process are welcomed because until recently it has been was very tedious and slow process that needs heavy assistance from human operator. This task also seen some success with regression based models, but resulting images were not very aesthetically pleasing.
 
    Application of very deep [[glspl:cnn][CNN]] managed to deliver very promising results.
-   In this case convolution network was trained in supervised manner. As inputs were used gray scaled images that were trained to categorized detected shapes in gray-scale image to correct color. This technology could be also used to colorize black and white video.
+   In this case convolution network was trained in supervised manner. As inputs, gray scaled images were used. They were trained to categorize detected shapes in gray-scale image to correct color. This technology could be also used to colorize black and white video \cite{article--zhang--2016}.
 
 ** Adding Sounds to Silent Movies
-   # https://arxiv.org/pdf/1512.08512.pdf
-
    #+NAME: fig:adding_sound
-   #+CAPTION: Time line of automatically generated sound for silent video
+   #+CAPTION: Time line of automatically generated sound for silent video \cite{image__adding_sound}.
    #+ATTR_LATEX: :width 4in
    [[./img/figure__4__adding_sound.png]]
 
-   This is very interesting demonstration of capabilities of state of the art Deep Learning models. Solely based on silent video sequence of drumming stick hitting different surfaces with different textures, the model is capable to guess the sound effect that set hitting produces. Convolutional Neural Network was trained to classify the type of surface being hit from visual cues (vibration of hit surface, movement of particles upon impact and so on). And [[gls:lstm][LSTM]] Recurrent neural network was trained to reproduce sound patterns most similar to actual sound that was recorded in original video. Produced sounds were tested with human participants that had to distinguish synthesized sound from the real ones. Surprisingly in some cases the model fulled to test subjects.
+   This is very interesting demonstration of capabilities of state of the art Deep Learning models. Solely based on silent video sequence of drumming stick hitting different surfaces with different textures, the model is capable to guess the sound effect that set hitting produces. Convolutional Neural Network was trained to classify the type of surface being hit from visual cues (vibration of hit surface, movement of particles upon impact and so on). And [[gls:lstm][LSTM]] Recurrent neural network was trained to reproduce sound patterns most similar to actual sound that was recorded in original video. Produced sounds were tested with human participants, who had to distinguish synthesized sound from the real ones. Surprisingly in some cases the model fouled to test subjects \cite{article--owens--2015}.
 
 ** Real-time Machine Translation
-   # http://www.nlpr.ia.ac.cn/cip/ZongPublications/2015/IEEE-Zhang-8-5.pdf
    #+NAME: fig:visual_translation
-   #+CAPTION: Automatic vision translation on image in real time
+   #+CAPTION: Automatic vision translation on image in real time \cite{image__visual_translation}.
    [[./img/figure__4__visual_translation.png]]
-   Convolutional Neural Network was used to detected written text within image scenes and send to large [[gls:lstm][LSTM]] Recurrent neural network to provide translation. Translated text was then re-rendered back to original image converting foreign text into intelligible (translated). This application was deployed by Google in 2015 to their android devices as extension for Translator application. Feature was called instant visual translation.
+   Convolutional Neural Network was used to detected written text within image scenes and send to large [[gls:lstm][LSTM]] Recurrent neural network to provide translation. Translated text was then re-rendered back to original image converting foreign text into intelligible (translated). This application was deployed by Google in 2015 to their android devices as extension for Translator application. Feature was called instant visual translation \cite{article--zhang--2015}.
 
 ** Description of Scene in Images
-   # https://research.googleblog.com/2014/11/a-picture-is-worth-thousand-coherent.html
    #+NAME: fig:algorithm_for_image_description
-   #+CAPTION: Structure of a learning algorithm used for automatic description
+   #+CAPTION: Structure of a learning algorithm used for automatic description \cite{image__algorithm_for_image_description}.
    #+ATTR_LATEX: :width 4in
    [[./img/figure__4__algorithm_for_image_description.jpg]]
 
@@ -76,8 +67,8 @@ Modified version of the original dataset was later established as one of the ben
 
    Structure of learning algorithm is illustrated on Figure [[fig:algorithm_for_image_description]]. [[Gls:cnn][CNN]] was trained do categorize objects on image and last layer of the network was directly fed into language generating [[gls:lstm][LSTM]] to generate description of the scene.
 
-   Figure [[fig:scene_description]] shows examples of translation with varying level of success. It is interesting that the mistakes not really seem outrages and are mostly understandable.
+   Figure [[fig:scene_description]] shows examples of translation with varying level of success. It is interesting that the mistakes not really seem outrages and are mostly understandable \cite{article--vinyals--2014}.
 
    #+NAME: fig:scene_description
-   #+CAPTION: Examples of scene description
+   #+CAPTION: Examples of scene description \cite{image__scene_description}.
    [[./img/figure__4__scene_description.jpg]]

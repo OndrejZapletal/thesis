@@ -1,7 +1,7 @@
 #+LATEX_HEADER: \newacronym{ai}{AI}{Artificial Intelligence}
 #+LATEX_HEADER: \newacronym{api}{API}{Application Programming Interface}
 #+LATEX_HEADER: \newacronym{cnn}{CNN}{Convolutional Neural Network}
-#+LATEX_HEADER: \newacronym{ct}{CT}{Computed tomography}
+#+LATEX_HEADER: \newacronym{ct}{CT}{Computed Tomography}
 #+LATEX_HEADER: \newacronym{dnn}{DNN}{Deep Neural Network}
 #+LATEX_HEADER: \newacronym{dsp}{DSP}{Digital Signal Processor}
 #+LATEX_HEADER: \newacronym{fcnn}{FCNN}{Fully Connected Neural Network}
@@ -11,7 +11,6 @@
 #+LATEX_HEADER: \newacronym{ilsvrc}{ILSVRC}{Large Scale Visual Recognition Challenge}
 #+LATEX_HEADER: \newacronym{lstm}{LSTM}{Long Short Term Memory}
 #+LATEX_HEADER: \newacronym{mlp}{MLP}{Multilayer Perceptron}
-#+LATEX_HEADER: \newacronym{mri}{MRI}{Magnetic resonance imaging}
 #+LATEX_HEADER: \newacronym{nn}{NN}{Neural Network}
 #+LATEX_HEADER: \newacronym{pca}{PCA}{Principal Component Analysis}
 #+LATEX_HEADER: \newacronym{relu}{ReLU}{Restricted Linear Unit}
@@ -39,13 +38,13 @@
 #+LATEX_HEADER: \newglossaryentry{recursive networks}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={recursive networks},
-#+LATEX_HEADER: description={General type of neural networks that contains feedback loop within its structure.}
+#+LATEX_HEADER: description={General type of neural networks that contains feedback loop within its structure}
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{hopfield network}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={hopfield network},
-#+LATEX_HEADER: description={Specific type of recurrent neural network invented by John Hopfield in 1982.}
+#+LATEX_HEADER: description={Specific type of recurrent neural network invented by John Hopfield in 1982}
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{regression}
@@ -69,189 +68,173 @@
 #+LATEX_HEADER: \newglossaryentry{deep learning}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={deep learning},
-#+LATEX_HEADER: description={Popularized term that refers to machine learning models that have architecture that contains many layers.},
-#+LATEX_HEADER: }
-
-#+LATEX_HEADER: \newglossaryentry{deep}
-#+LATEX_HEADER: {
-#+LATEX_HEADER: name={deep},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Popularized term that refers to machine learning models that have architecture that contains many layers},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{classification}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={classification},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Machine learning task that tries to assign correct class to a data instance},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{machine learning}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={machine learning},
-#+LATEX_HEADER: description={research study dealing with models able to learn from experience.},
+#+LATEX_HEADER: description={research study dealing with models able to learn from experience},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{bp}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={back-propagation},
-#+LATEX_HEADER: description={Technique that enables the computation of error distribution throughout the network.},
+#+LATEX_HEADER: description={Technique that enables the computation of error distribution throughout the network},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{linear regression}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={linear regression},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Linear model},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{af}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={activation function},
-#+LATEX_HEADER: description={TODO},
-#+LATEX_HEADER: }
-
-#+LATEX_HEADER: \newglossaryentry{hidden unit}
-#+LATEX_HEADER: {
-#+LATEX_HEADER: name={hidden unit},
-#+LATEX_HEADER: description={TODO},
-#+LATEX_HEADER: }
-
-#+LATEX_HEADER: \newglossaryentry{output unit}
-#+LATEX_HEADER: {
-#+LATEX_HEADER: name={output unit},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{hidden layer}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={hidden layer},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Referring to a layer that is neither input nor output, but merely somewhere between},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{cost function}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={cost function},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Equivalent to loss function},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{loss function}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={loss function},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Function that is used to estimate error of a model on given data},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{fc}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={fully connected},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Outputs of each neuron in $l$ layer are connected into inputs of all neurons in $l+1$ layer},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{max-pooling}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={Max-Pooling},
-#+LATEX_HEADER: description={TODO},
-#+LATEX_HEADER: }
-
-#+LATEX_HEADER: \newglossaryentry{forward-propagation}
-#+LATEX_HEADER: {
-#+LATEX_HEADER: name={forward-propagation},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Method of input size reduction in convolutional neural networks},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{gradient descent}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={gradient descent},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Learning algorithm based on following path of steepest negative change in gradient},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{sum of square}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={sum of square},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Loss function},
 #+LATEX_HEADER: }
-
 
 #+LATEX_HEADER: \newglossaryentry{feature map}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={feature map},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Output of convolution operation over input},
 #+LATEX_HEADER: }
-
 
 #+LATEX_HEADER: \newglossaryentry{zero padding}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={zero padding},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Expansion of input data by adding elements of zero value around the edges},
 #+LATEX_HEADER: }
-
 
 #+LATEX_HEADER: \newglossaryentry{locally connected}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={locally connected},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Convolution layer that has kernel of the same size as input},
 #+LATEX_HEADER: }
-
 
 #+LATEX_HEADER: \newglossaryentry{detector stage}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={detector stage},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Application of activation function},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{tiled convolution}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={tiled convolution},
-#+LATEX_HEADER: description={TODO},
+#+LATEX_HEADER: description={Convolution layer with differing coverage in neighboring pixels},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{kernel}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={kernel},
-#+LATEX_HEADER: description={Filter used by convolutional layer.},
+#+LATEX_HEADER: description={Filter used by convolutional layer},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{stride}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={stride},
-#+LATEX_HEADER: description={It specifies size of convolution step. Default value is one, which means that kernel is moved by one pixel in each direction.},
+#+LATEX_HEADER: description={It specifies size of convolution step. Default value is one, which means that kernel is moved by one pixel in each direction},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{sigmoid}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={sigmoid},
-#+LATEX_HEADER: description={Activation function historically usded Perceptron model.},
+#+LATEX_HEADER: description={Activation function historically used in Perceptron model},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{under fitting}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={under fitting},
-#+LATEX_HEADER: description={Statistical term describing models inferior ability to capture underlying relationship between input and output due to a lack of complexity.},
+#+LATEX_HEADER: description={Statistical term describing models inferior ability to capture underlying relationship between input and output due to a lack of complexity},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{over fitting}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={over fitting},
-#+LATEX_HEADER: description={Statistical term describing models inferior ability to capture underlying relationship between input and output due to an abundance of complexity.},
+#+LATEX_HEADER: description={Statistical term describing models inferior ability to capture underlying relationship between input and output due to an abundance of complexity},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{hyperbolic tangent}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={hyperbolic tangent},
-#+LATEX_HEADER: description={Activation function commonly used in recurrent neural networs.},
+#+LATEX_HEADER: description={Activation function commonly used in recurrent neural networks},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{softmax}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={softmax},
-#+LATEX_HEADER: description={Activation function commonly used output layer of feed forward neural networks.},
+#+LATEX_HEADER: description={Activation function commonly used output layer of feed forward neural networks},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{categorical cross entropy}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={categorical cross entropy},
-#+LATEX_HEADER: description={Cost function used for neral networks with classification into multiple classes.},
+#+LATEX_HEADER: description={Cost function used for neural networks with classification into multiple classes},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{dropout}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={dropout},
-#+LATEX_HEADER: description={Regularization technique that is randomly disabling some connections in network during traing phase.},
+#+LATEX_HEADER: description={Regularization technique that is randomly disabling some connections in network during training phase},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{adam}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={adam},
+#+LATEX_HEADER: description={Learning algorithm based on gradient descent \cite{article--dozat--2015}},
+#+LATEX_HEADER: }
+
+#+LATEX_HEADER: \newglossaryentry{nadam}
+#+LATEX_HEADER: {
+#+LATEX_HEADER: name={nadam},
+#+LATEX_HEADER: description={Learning algorithm based on gradient descent \cite{article--dozat--2015}},
 #+LATEX_HEADER: }

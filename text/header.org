@@ -77,7 +77,7 @@
 #+LATEX_HEADER: \input{sablony-nastav_udaju}
 
 # Settings for glossaries
-#+LATEX_HEADER: \usepackage[acronym,nomain,toc]{glossaries}
+#+LATEX_HEADER: \usepackage[acronyms,toc]{glossaries}
 # Set all glosarie entries in italic
 # #+LATEX_HEADER: \renewcommand{\glstextformat}[1]{\textit{#1}}
 
