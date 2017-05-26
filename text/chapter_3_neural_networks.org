@@ -218,7 +218,7 @@
     [[./img/figure__2__cnn_structure.png]]
 
 
-    There are no precise rules on how the structure of individual layers should be organized. However with exception of recent development[fn:6] [[glspl:cnn][CNN]] are typically structured in two parts. First part, usually called feature extraction, is using combinations of convolutional and pooling layers. Second part called classification is using fully connected layers. This illustrated in [[fig:cnn_structure]]
+    There are no precise rules on how the structure of individual layers should be organized. However with exception of recent development[fn:6] [[glspl:cnn][CNN]] are typically structured in two parts. First part, usually called feature extraction, is using combinations of convolutional and pooling layers. Second part called classification is using fully connected layers. This is illustrated in Figure [[fig:cnn_structure]].
 
 [fn:6] GoogLeNet described in section [[sec:ilsvrc]].
 

@@ -1,11 +1,11 @@
 * TODO Conclusion
 
-  This thesis described brief history of Neural Network, and its evolution into deep learning models. It highlighted differences of Convolutional and Fully Connected Neural Networks. Several examples of state of the art applications of  Convolutional Neural Network were described.
+  This thesis described brief history of Neural Networks, and its evolution into deep learning models. It highlighted differences of Convolutional and Fully Connected Neural Networks. Several examples of state of the art applications of Convolutional Neural Network were described.
 
-  Practical experiments with Convolutional Neural Network model were proposed and carried out. Proposed models were implemented using Keras library with support of Tensorflow. Training of implemented models was aided by parallel computing platform CUDA on Gforce GTX 1080 [[gls:gpu][GPU]].
+  Practical experiments with Convolutional Neural Network models were proposed and. Proposed models were implemented using Keras library with support of Tensorflow. Training of implemented models was aided by parallel computing platform CUDA on Gforce GTX 1080 [[gls:gpu][GPU]].
 
 # TODO: add actual numbers for top-1 and top-5 accuracy!!!
-  Trained model was compared to latest results of [[gls:ilsvrc][ILSVRC]] competition. Somewhat surprisingly, best achieved top-1 accuracy of 0.614 did not surpassed the AlexNet's top-1 accuracy of 0.625 on original [[gls:ilsvrc][ILSVRC]] dataset. This was surprising because reduced dataset had one-tenth of it's original classes. Possible explanation is that reduced dataset was too small and caused over-fitting of selected model.
+  Trained model was compared to latest results of [[gls:ilsvrc][ILSVRC]] competition. Somewhat surprisingly, best achieved top-1 accuracy of 0.6156 did not surpassed the AlexNet's top-1 accuracy of 0.625 on original [[gls:ilsvrc][ILSVRC]] dataset. This was surprising because reduced dataset had one-tenth of it's original classes. Possible explanation is that reduced dataset was too small and caused over-fitting of selected model.
 
   Future work would include expansion of selected dataset to full extend of [[gls:ilsvrc][ILSVRC]]. Another interesting avenue seems to be in non-conventional structure of Convolutional Neural Network. This includes inception modules from GoogLeNet or residual learning from Microsoft's ResNet.
 

@@ -1,3 +1,4 @@
+\begin{figure}
 \begin{tikzpicture}
     \begin{axis}[
         title={Train},
@@ -39,8 +40,10 @@
 
     \end{axis}
 \end{tikzpicture}
+\end{figure}
 
 
+\begin{figure}
 \begin{tikzpicture}
     \begin{axis}[
         title={Test},
@@ -83,3 +86,4 @@
 
     \end{axis}
 \end{tikzpicture}
+\end{figure}

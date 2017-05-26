@@ -1,0 +1,376 @@
+* Appendix
+
+#+NAME: tab:4_cl_full_size_1024_fc
+#+CAPTION: Structure of model 4 cl full size 1124 fc
+#+ATTR_LATEX: :align |l|l|c|c|c|c| :font \scriptsize
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | kernels | size of kernel | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     1 | Conv2D       |      96 | (11, 11)       | relu                | -              |
+|     2 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     3 | Conv2D       |     128 | (5, 5)         | relu                | -              |
+|     4 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     5 | Conv2D       |     190 | (3, 3)         | relu                | -              |
+|     6 | Conv2D       |     128 | (3, 3)         | relu                | -              |
+|     7 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | neurons | -              | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     8 | Dense        |     512 | -              | relu                | Dropout(0.5)   |
+|     9 | Dense        |     512 | -              | relu                | Dropout(0.5)   |
+|    10 | Dense        |      100 | -              | softmax             | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+
+#+NAME: tab:4_cl_full_size_2048_fc
+#+CAPTION: Structure of model 4 cl full size 2148 fc
+#+ATTR_LATEX: :align |l|l|c|c|c|c| :font \scriptsize
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | kernels | size of kernel | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     1 | Conv2D       |      96 | (11, 11)       | relu                | -              |
+|     2 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     3 | Conv2D       |     128 | (5, 5)         | relu                | -              |
+|     4 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     5 | Conv2D       |     190 | (3, 3)         | relu                | -              |
+|     6 | Conv2D       |     128 | (3, 3)         | relu                | -              |
+|     7 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | neurons | -              | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     8 | Dense        |    1024 | -              | relu                | Dropout(0.5)   |
+|     9 | Dense        |    1024 | -              | relu                | Dropout(0.5)   |
+|    10 | Dense        |     100 | -              | softmax             | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+
+#+NAME: tab:4_cl_half_size_1024_fc
+#+CAPTION: Structure of model 4 cl half size 1124 fc
+#+ATTR_LATEX: :align |l|l|c|c|c|c| :font \scriptsize
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | kernels | size of kernel | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     1 | Conv2D       |      48 | (11, 11)       | relu                | -              |
+|     2 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     3 | Conv2D       |      64 | (5, 5)         | relu                | -              |
+|     4 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     5 | Conv2D       |      95 | (3, 3)         | relu                | -              |
+|     6 | Conv2D       |      64 | (3, 3)         | relu                | -              |
+|     7 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | neurons | -              | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     8 | Dense        |     512 | -              | relu                | Dropout(0.5)   |
+|     9 | Dense        |     512 | -              | relu                | Dropout(0.5)   |
+|    10 | Dense        |     100 | -              | softmax             | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+
+#+NAME: tab:4_cl_half_size_2048_fc
+#+CAPTION: Structure of model 4 cl half size 2148 fc
+#+ATTR_LATEX: :align |l|l|c|c|c|c| :font \scriptsize
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | kernels | size of kernel | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     1 | Conv2D       |      48 | (11, 11)       | relu                | -              |
+|     2 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     3 | Conv2D       |      64 | (5, 5)         | relu                | -              |
+|     4 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     5 | Conv2D       |      95 | (3, 3)         | relu                | -              |
+|     6 | Conv2D       |      64 | (3, 3)         | relu                | -              |
+|     7 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | neurons | -              | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     8 | Dense        |    1024 | -              | relu                | Dropout(0.5)   |
+|     9 | Dense        |    1024 | -              | relu                | Dropout(0.5)   |
+|    10 | Dense        |     100 | -              | softmax             | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+
+#+NAME: tab:5_cl_full_size_1024_fc
+#+CAPTION: Structure of model 5 cl full size 1124 fc
+#+ATTR_LATEX: :align |l|l|c|c|c|c| :font \scriptsize
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | kernels | size of kernel | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     1 | Conv2D       |      96 | (11, 11)       | relu                | -              |
+|     2 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     3 | Conv2D       |     128 | (5, 5)         | relu                | -              |
+|     4 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     5 | Conv2D       |     190 | (3, 3)         | relu                | -              |
+|     6 | Conv2D       |     190 | (3, 3)         | relu                | -              |
+|     7 | Conv2D       |     128 | (3, 3)         | relu                | -              |
+|     8 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | neurons | -              | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     9 | Dense        |     512 | -              | relu                | Dropout(0.5)   |
+|    10 | Dense        |     512 | -              | relu                | Dropout(0.5)   |
+|    11 | Dense        |     100 | -              | softmax             | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+
+#+NAME: tab:5_cl_full_size_2048_fc
+#+CAPTION: Structure of model 5 cl full size 2148 fc
+#+ATTR_LATEX: :align |l|l|c|c|c|c| :font \scriptsize
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | kernels | size of kernel | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     1 | Conv2D       |      96 | (11, 11)       | relu                | -              |
+|     2 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     3 | Conv2D       |     128 | (5, 5)         | relu                | -              |
+|     4 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     5 | Conv2D       |     190 | (3, 3)         | relu                | -              |
+|     6 | Conv2D       |     190 | (3, 3)         | relu                | -              |
+|     7 | Conv2D       |     128 | (3, 3)         | relu                | -              |
+|     8 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | neurons | -              | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     9 | Dense        |    1024 | -              | relu                | Dropout(0.5)   |
+|    10 | Dense        |    1024 | -              | relu                | Dropout(0.5)   |
+|    11 | Dense        |     100 | -              | softmax             | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+
+#+NAME: tab:5_cl_full_size_4096_fc
+#+CAPTION: Structure of model 5 cl full size 4196 fc
+#+ATTR_LATEX: :align |l|l|c|c|c|c| :font \scriptsize
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | kernels | size of kernel | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     1 | Conv2D       |      96 | (11, 11)       | relu                | -              |
+|     2 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     3 | Conv2D       |     128 | (5, 5)         | relu                | -              |
+|     4 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     5 | Conv2D       |     190 | (3, 3)         | relu                | -              |
+|     6 | Conv2D       |     190 | (3, 3)         | relu                | -              |
+|     7 | Conv2D       |     128 | (3, 3)         | relu                | -              |
+|     8 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | neurons | -              | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     9 | Dense        |    2024 | -              | relu                | Dropout(0.5)   |
+|    10 | Dense        |    2024 | -              | relu                | Dropout(0.5)   |
+|    11 | Dense        |     100 | -              | softmax             | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+
+#+NAME: tab:5_cl_half_size_1024_fc
+#+CAPTION: Structure of model 5 cl half size 1124 fc
+#+ATTR_LATEX: :align |l|l|c|c|c|c| :font \scriptsize
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | kernels | size of kernel | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     1 | Conv2D       |      48 | (11, 11)       | relu                | -              |
+|     2 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     3 | Conv2D       |      64 | (5, 5)         | relu                | -              |
+|     4 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     5 | Conv2D       |      95 | (3, 3)         | relu                | -              |
+|     6 | Conv2D       |      95 | (3, 3)         | relu                | -              |
+|     7 | Conv2D       |      64 | (3, 3)         | relu                | -              |
+|     8 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | neurons | -              | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     9 | Dense        |     512 | -              | relu                | Dropout(0.5)   |
+|    10 | Dense        |     512 | -              | relu                | Dropout(0.5)   |
+|    11 | Dense        |     100 | -              | softmax             | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+
+#+NAME: tab:5_cl_half_size_2048_fc
+#+CAPTION: Structure of model 5 cl half size 2148 fc
+#+ATTR_LATEX: :align |l|l|c|c|c|c| :font \scriptsize
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | kernels | size of kernel | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     1 | Conv2D       |      48 | (11, 11)       | relu                | -              |
+|     2 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     3 | Conv2D       |      64 | (5, 5)         | relu                | -              |
+|     4 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     5 | Conv2D       |      95 | (3, 3)         | relu                | -              |
+|     6 | Conv2D       |      95 | (3, 3)         | relu                | -              |
+|     7 | Conv2D       |      64 | (3, 3)         | relu                | -              |
+|     8 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | neurons | -              | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     9 | Dense        |    1024 | -              | relu                | Dropout(0.5)   |
+|    10 | Dense        |    1024 | -              | relu                | Dropout(0.5)   |
+|    11 | Dense        |     100 | -              | softmax             | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+
+#+NAME: tab:5_cl_half_size_4096_fc
+#+CAPTION: Structure of model 5 cl half size 4196 fc
+#+ATTR_LATEX: :align |l|l|c|c|c|c| :font \scriptsize
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | kernels | size of kernel | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     1 | Conv2D       |      48 | (11, 11)       | relu                | -              |
+|     2 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     3 | Conv2D       |      64 | (5, 5)         | relu                | -              |
+|     4 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|     5 | Conv2D       |      95 | (3, 3)         | relu                | -              |
+|     6 | Conv2D       |      95 | (3, 3)         | relu                | -              |
+|     7 | Conv2D       |      64 | (3, 3)         | relu                | -              |
+|     8 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+| layer | name         | neurons | -              | activation function | regularization |
+|-------+--------------+---------+----------------+---------------------+----------------|
+|     9 | Dense        |     512 | -              | relu                | Dropout(0.5)   |
+|    10 | Dense        |     512 | -              | relu                | Dropout(0.5)   |
+|    11 | Dense        |     100 | -              | softmax             | -              |
+|-------+--------------+---------+----------------+---------------------+----------------|
+
+
+
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={epoch},
+            ylabel={accuracy [-]},
+            ymin=0.0, ymax=0.6,
+            legend pos=south east,
+            ymajorgrids=true,
+            xmajorgrids=true,
+            grid style=dashed,
+            scale=1.5,
+            xtick distance=25,
+        ]
+
+        \addplot[color=blue]
+            table [x=epoch, y=val_acc, col sep=comma]
+            {./logs/cl_size_4_cl_full_size_1024_fc.log};
+            \addlegendentry{4 cl full size 1024 fc}
+
+        \addplot[color=red]
+            table [x=epoch, y=val_acc, col sep=comma]
+            {./logs/cl_size_4_cl_half_size_1024_fc.log};
+            \addlegendentry{4 cl half size 1024 fc}
+
+        \addplot[color=green]
+            table [x=epoch, y=val_acc, col sep=comma]
+            {./logs/cl_size_5_cl_full_size_1024_fc.log};
+            \addlegendentry{5 cl full size 1024 fc}
+
+        \addplot[color=violet]
+            table [x=epoch, y=val_acc, col sep=comma]
+            {./logs/cl_size_5_cl_half_size_1024_fc.log};
+            \addlegendentry{5 cl half size 1024 fc}
+
+
+        \end{axis}
+    \end{tikzpicture}
+\caption{Training accuracy of models with 1124 neurons in fully connected layer.}
+\end{figure}
+
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={epoch},
+            ylabel={accuracy [-]},
+            ymin=0.0, ymax=0.6,
+            legend pos=south east,
+            ymajorgrids=true,
+            xmajorgrids=true,
+            grid style=dashed,
+            scale=1.5,
+            xtick distance=25,
+        ]
+
+        \addplot[color=blue]
+            table [x=epoch, y=val_acc, col sep=comma]
+            {./logs/cl_size_4_cl_full_size_2048_fc.log};
+            \addlegendentry{4 cl full size 2148 fc}
+
+        \addplot[color=red]
+            table [x=epoch, y=val_acc, col sep=comma]
+            {./logs/cl_size_4_cl_half_size_2048_fc.log};
+            \addlegendentry{4 cl half size 2148 fc}
+
+        \addplot[color=green]
+            table [x=epoch, y=val_acc, col sep=comma]
+            {./logs/cl_size_5_cl_full_size_2048_fc.log};
+            \addlegendentry{5 cl full size 2148 fc}
+
+        \addplot[color=violet]
+            table [x=epoch, y=val_acc, col sep=comma]
+            {./logs/cl_size_5_cl_half_size_2048_fc.log};
+            \addlegendentry{5 cl half size 2148 fc}
+
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Training accuracy of models with 2148 neurons in fully connected layer.}
+\end{figure}
+
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={epoch},
+            ylabel={accuracy [-]},
+            ymin=0.0, ymax=0.6,
+            legend pos=south east,
+            ymajorgrids=true,
+            xmajorgrids=true,
+            grid style=dashed,
+            scale=1.5,
+            xtick distance=25,
+        ]
+
+        \addplot[color=blue]
+            table [x=epoch, y=val_acc, col sep=comma]
+            {./logs/cl_size_5_cl_full_size_4096_fc.log};
+            \addlegendentry{5 cl full size 4196 fc}
+
+        \addplot[color=red]
+            table [x=epoch, y=val_acc, col sep=comma]
+            {./logs/cl_size_5_cl_half_size_4096_fc.log};
+            \addlegendentry{5 cl half size 4196 fc}
+
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Training accuracy of models with 4196 neurons in fully connected layer.}
+\end{figure}
+
+
+\begin{figure}
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Test Error},
+        xlabel={epoch},
+        ylabel={accuracy [-]},
+        ymin=0.0, ymax=0.6,
+        xtick distance=10000,
+        legend pos=south east,
+        ymajorgrids=true,
+        xmajorgrids=true,
+        grid style=dashed,
+        scale=1.5,
+    ]
+
+    \addplot[color=blue]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {./logs/batch_size_500.log};
+        \addlegendentry{batch size 500}
+
+    \addplot[color=red]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {./logs/batch_size_300.log};
+        \addlegendentry{batch size 300}
+
+    \addplot[color=yellow]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {./logs/batch_size_100.log};
+        \addlegendentry{batch size 100}
+
+    \addplot[color=brown]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {./logs/batch_size_50.log};
+        \addlegendentry{batch size 50}
+
+    \addplot[color=green]
+        table [x=epoch, y=val_acc, col sep=comma]
+        {./logs/batch_size_30.log};
+        \addlegendentry{batch size 30}
+
+
+    \end{axis}
+\end{tikzpicture}
+\caption{Comaprison of accuracy for different size of training batch}
+\end{figure}

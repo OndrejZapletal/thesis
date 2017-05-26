@@ -98,7 +98,7 @@
 #+LATEX_HEADER: \newglossaryentry{af}
 #+LATEX_HEADER: {
 #+LATEX_HEADER: name={activation function},
-#+LATEX_HEADER: description={},
+#+LATEX_HEADER: description={Function that usually performes non-linear transformation of inputs},
 #+LATEX_HEADER: }
 
 #+LATEX_HEADER: \newglossaryentry{hidden layer}

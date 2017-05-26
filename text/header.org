@@ -83,6 +83,7 @@
 
 #+LATEX_HEADER: \makeglossaries
 
+#+LATEX_HEADER: \usepackage{subfig}
 #+LATEX_HEADER: \usepackage{algorithm}
 #+LATEX_HEADER: \usepackage{algpseudocode}
 # Coloring of source code

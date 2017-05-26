@@ -49,4 +49,4 @@
 \prilohy
 \seznampriloh
 
-#+INCLUDE: text/results.org
+#+INCLUDE: text/appendix.org

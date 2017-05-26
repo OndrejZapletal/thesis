@@ -46,9 +46,9 @@
 
    #+NAME: tab:hardware_configuration
    #+CAPTION: Hardware configuration
-   #+ATTR_LATEX: :align | l | l |
+   #+ATTR_LATEX: :align | l | l | :font \scriptsize
    |--------+-----------------------------------------|
-   | GPU    | Gforce GTX 1080 8GB                     |
+   | GPU    | GeForce GTX 1080 8GB                    |
    |--------+-----------------------------------------|
    | CPU    | Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz |
    |--------+-----------------------------------------|
@@ -59,7 +59,7 @@
 
    #+NAME: tab:software_configuration
    #+CAPTION: Software configuration
-   #+ATTR_LATEX: :align | l | l |
+   #+ATTR_LATEX: :align | l | l | :font \scriptsize
    |-------------+-------|
    | Keras       |  2.04 |
    |-------------+-------|
@@ -98,7 +98,7 @@
 
 **** Split Data into Training a Testing Dataset
      <<data-preparation>>
-     In the [[gls:ilsvrc][ILSVRC]] competition the participants are provided with special validation and testing instances, in this setup the training images were split into two datasets instead. This was done only because it saved time during crucial time period of designing the experiments. This decision has a drawback because it necessarily reduces the amount of data available for training of the network. But since the dataset was substantially smaller then in [[gls:ilsvrc][ILSVRC]] competition it didn't represent a big problem. Ratio of train to test size was selected 9:1.
+     In the [[gls:ilsvrc][ILSVRC]] competition the participants are provided with special validation and testing instances, in this setup the training images were split into two datasets instead. This was done only because it saved time during crucial time period of designing the experiments. This decision has a drawback because it necessarily reduces the amount of data available for training of the network. But since the dataset was substantially smaller then in [[gls:ilsvrc][ILSVRC]] competition it didn't represent a big problem. Ratio of train to test size was selected 9:1. Training dataset contained 44323 images and testing dataset contained 4925 images.
 
      It was made sure that images are randomly split between test and train dataset so that both dataset have roughly equal split among the categories. It is very important that the model is trained with alternating categories. For example if the model would be exposed to images of the same category in the row the update of weights of in the given cycle would be biased to this category. In other words it would be over fitted, which is not desirable.
 

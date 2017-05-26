@@ -1,0 +1,24 @@
+
+\begin{figure}[htp]
+    \centering
+    \subfloat[class = forg, prediction = frog]{
+        \includegraphics[width=0.45\textwidth]{./img/correct/image_0_category_03_prediction_03_frog.jpg}
+        \label{fig:corr_1}
+    } \hfil
+    \subfloat[class = piano, prediction = piano]{
+        \includegraphics[width=0.45\textwidth]{./img/correct/image_1_category_31_prediction_31_piano.jpg}
+        \label{fig:corr_2}
+    }
+
+    \subfloat[class = dog, prediction = dog]{
+        \includegraphics[width=0.45\textwidth]{./img/correct/image_2_category_16_prediction_16_dog.jpg}
+        \label{fig:corr_3}
+    } \hfil
+    \subfloat[class = harmonica, prediction = harmonica]{
+        \includegraphics[width=0.45\textwidth]{./img/correct/image_3_category_33_prediction_33_harmonica.jpg}
+        \label{fig:corr_4}
+    }
+
+    \label{fig:correct}
+    \caption{Correctly classified images}
+\end{figure}

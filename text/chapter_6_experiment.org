@@ -15,7 +15,7 @@
 
     #+NAME: tab:structure_summary
     #+CAPTION: Influence of network structure on its accuracy.
-    #+ATTR_LATEX: :align |c|c|c|c|c|c|c| :size \tiny
+    #+ATTR_LATEX: :align |c|c|c|c|c|c|c| :font \scriptsize
     |--------------+---------+--------------+---------+-------+----------|
     | Conv. Layers | Kernels | Dense Layers | Neurons | Epoch | Accuracy |
     |--------------+---------+--------------+---------+-------+----------|
@@ -41,17 +41,7 @@
     |--------------+---------+--------------+---------+-------+----------|
 
 
-    # Comparison of models with number of neurons in Dense layers kept constant is illustrated in Figures [[fig:1124_fc]], [[fig:2148_fc]] and [[fig:4196_fc]]. Three best performances regardless of dense layer sizes are shown in Figure [[fig:best_structure]].
-
     Structure with highest achieved accuracy was structure with 4 convolutional layers, 271 kernels, 3 fully connected layers and 1124 neurons. This structure was also tested with [[Gls:nadam][Nadam]] and [[gls:sgd][SGD]] optimizer to determined best option for this structure. Training was performed with default parameters that are predefined in Keras library. Neither [[Gls:nadam][Nadam]] nor [[gls:sgd][SGD]] brought any improvements in accuracy. It is interesting to compare original structure of AlexNet with the selected. ILSVRC dataset was reduced approximately by factor of 10 and number of convolution kernels is 5 smaller and number of neurons in fully connected layer is 8 times smaller.
-
-    #+INCLUDE: charts_cl_size_1124.org
-
-    #+INCLUDE: charts_cl_size_2148.org
-
-    #+INCLUDE: charts_cl_size_4196.org
-
-    #+INCLUDE: charts_structure_best.org
 
 *** Parameters of Learning Algorithm
 
@@ -69,8 +59,8 @@
 
 
     #+NAME: tab:optimization_summary
-    #+CAPTION: Accuracy of different learnign parameters.
-    #+ATTR_LATEX: :align |c|c|c|c|c| :size \tiny
+    #+CAPTION: Accuracy of different learning parameters.
+    #+ATTR_LATEX: :align |c|c|c|c|c| :font \scriptsize
     |---------------+--------+--------+-------+----------|
     | Learning Rate | Beta 1 | Beta 2 | Epoch | Accuracy |
     |---------------+--------+--------+-------+----------|
@@ -133,7 +123,7 @@
 
     #+NAME: tab:learning_rate
     #+CAPTION: Summary of Learning rate influence on model accuracy.
-    #+ATTR_LATEX: :align |c|c|c| :size \tiny
+    #+ATTR_LATEX: :align |c|c|c| :font \scriptsize
     |---------------+----------+-------|
     | learning rate | Accuracy | Epoch |
     |---------------+----------+-------|
@@ -158,8 +148,8 @@
      According to Krizhevsky the key parameter that allowed the [[gls:cnn][CNN]] to train successfully was weight decay. This unfortunately didn't seem to hold true when using Adam optimizer. Several experiments with weight decay varying from 0 to 0.0005 were performed and in all cases other then decay set to 0 the testing error was manifesting over-fitting.
 
      #+NAME: tab:weight_decay
-     #+CAPTION: Summary of weight decay influence on models accuracy.
-     #+ATTR_LATEX: :align |c|c|c| :size \tiny
+     #+CAPTION: Summary of Weight Decay influence on model accuracy.
+     #+ATTR_LATEX: :align |c|c|c| :font \scriptsize
      |--------------+-------+----------|
      | Weight Decay | Epoch | Accuracy |
      |--------------+-------+----------|
@@ -176,8 +166,8 @@
     Last parameter that was taken into consideration was size of training batch. In order to compare accuracy of training with differing batch size the number of total images was 500 000. This means that for batch size 0f 600 images it took 833 batches and so on. Summary of tested batch size is in Table [[tab:batch_size]]. Based on the accuracy alone it suggest that best batch size is 600 images per epoch, the problem is that training takes almost 4 times as long. This is caused by the fact that in each epoch the training algorithm has to go through entire testing dataset.
 
     #+NAME: tab:batch_size
-    #+CAPTION: Summary of batch size influence on model accuracy and training time.
-    #+ATTR_LATEX: :align |c|c|c|c| :size \tiny
+    #+CAPTION: Summary of Batch Size influence on model accuracy and training time.
+    #+ATTR_LATEX: :align |c|c|c|c| :font \scriptsize
     |------------+---------------+----------+-------------------|
     | Batch Size | Total Batches | Accuracy | Training time [s] |
     |------------+---------------+----------+-------------------|
@@ -192,44 +182,196 @@
     |      10000 |            50 |     0.50 |              2425 |
     |------------+---------------+----------+-------------------|
 
-    #+INCLUDE: charts_batch_size.org
 
 ** Results
-Best noted result was in 250 epoch, whit training error on 0.838 and testing error 0.616.
+   Structure of final [[gls:cnn][CNN]] model is summarized in Table [[tab:best_structure]]. Network was trained using [[Gls:adam][Adam]] learning algorithm with following parameters:
+   - Learning rate: 0.00008,
+   - Beta 1: 0.8
+   - Beta 2:  0.999
+   - Weight Decay: 0.0
+   Size of training batch was 10000 images.
 
-   # 249,0.838999999881,0.513817027565,0.615604405298,1.96595864587
 
-   Training of final configuration is illustrated in Image [[fig:best_performance]].
+   #+NAME: tab:best_structure
+   #+CAPTION: Structure of model with highest achieved accuracy.
+   #+ATTR_LATEX: :align |l|l|c|c|c|c| :font \scriptsize
+   |-------+--------------+---------+----------------+---------------------+----------------|
+   | layer | name         | kernels | size of kernel | activation function | regularization |
+   |-------+--------------+---------+----------------+---------------------+----------------|
+   |     1 | Conv2D       |      48 | (11, 11)       | relu                | -              |
+   |     2 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+   |     3 | Conv2D       |      64 | (5, 5)         | relu                | -              |
+   |     4 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+   |     5 | Conv2D       |      95 | (3, 3)         | relu                | -              |
+   |     6 | Conv2D       |      64 | (3, 3)         | relu                | -              |
+   |     7 | MaxPooling2D |       - | (3, 3)         | -                   | -              |
+   |-------+--------------+---------+----------------+---------------------+----------------|
+   | layer | name         | neurons | -              | activation function | regularization |
+   |-------+--------------+---------+----------------+---------------------+----------------|
+   |     8 | Dense        |     512 | -              | relu                | Dropout(0.5)   |
+   |     9 | Dense        |     512 | -              | relu                | Dropout(0.5)   |
+   |    10 | Dense        |     100 | -              | soft max            | -              |
+   |-------+--------------+---------+----------------+---------------------+----------------|
 
-   #+INCLUDE: charts_best.org
+   Training of final configuration is illustrated in Figure 6.1. Best noted accuracy for top-1 guess was estimated in epoch 250, with training error of 0.8389 and testing error 0.6156. This model was also evaluated for accuracy of top-3 0.7804 and top-5 0.8474 guesses. Comparison of model accuracy with other [[gls:cnn][Cnn]] models from previous [[gls:ilsvrc][ILSVRC]] competition is summarized in Table [[tab:model_comparison]]. Examples of the network can be found on Figures 6.2, 6.3 and 6.4.
 
-   The best performance of the results can be seen that there is difference between
-   From the results it
-   For one thing the complexity of selected network wasn't even close to the state of the art from previous years competition submissions.
-   This is only presumption that wasn't tested due to a lack of time, but it seams that counter intuitively the reason behind the worse performance is the reduction of the original task. In other words because the model didn't see enough images. The amount of images is proportional to amount of classes which might suggest that it doesn't play a role, but when taken into account that many images have very similar elements within them. And especially lower convolutional layer might benefit from broader spectrum of images.
-   # TODO: add citation about the lower level visualization of CNN
-   # \cite{}
-   Future work on this subject might try to use larger dataset for several epoch to pre-train the convolutional layers and then reduce the training dataset for selected classes only.
-   This also means that selected architecture might have been too complex to train on the selected samples. Even thought it is not out of the question the collected data regarding this premise doesn't seem to suggest that this was actually the case. Reduced network structures didn't bring any notable accuracy improvements.
 
-*** Topology of Used Networks
-Best performing network had following configuration.
-*** Accuracy of Trained Models
-    # #+INCLUDE: charts.org
+   \begin{figure}
+     \begin{tikzpicture}
+         \begin{axis}[
+             xlabel={epoch},
+             ylabel={accuracy [-]},
+             ymin=0.0, ymax=1,
+             legend pos=south east,
+             ymajorgrids=true,
+             xmajorgrids=true,
+             grid style=dashed,
+             scale=1.5,
+         ]
 
-*** Comparison of Training Time
+         \addplot[color=blue]
+             table [x=epoch, y=acc, col sep=comma]
+             {./logs/best_result.log};
+             \addlegendentry{Train error}
 
-    Comparison of training time on [[gls:cpu][CPU]] vs [[gls:gpu][GPU]] was performed on MNIST dataset. It was performed on MNIST mainly because training with ImageNet dataset took too much time.
+         \addplot[color=red]
+             table [x=epoch, y=val_acc, col sep=comma]
+             {./logs/best_result.log};
+             \addlegendentry{Test error}
 
-    The difference is quite pronounced which is to be expected because the GeForce GTX 1080 has 2560 CUDA cores, while the CPU of used computer had 8. It is possible that the time difference on ImageNet dataset would be even more pronounced because the MNIST dataset doesn't fully exhaust the GPU resources.
+         \end{axis}
+     \end{tikzpicture}
 
-    # #+INCLUDE: combined_chart.org
+        \label{fig:best_performance}
+        \caption{Test of final configuration and parameters.}
+   \end{figure}
 
-*** Estimation of top 5 and top 3 error
 
-*** Showcase of Correctly classified images
-    It can be seen that the correct prediction was found on third place
-*** Showcase of incorrectly classified images
-    It can be seen that the correct prediction was found on third place
+   #+NAME: tab:model_comparison
+   #+CAPTION: Comparison of implemented model with ILSVRC competition submissions.
+   #+ATTR_LATEX: :align |r|c|c| :font \scriptsize
+   |----------------+----------------+----------------|
+   |                | Top-1 Accuracy | Top-5 Accuracy |
+   |----------------+----------------+----------------|
+   | implementation |           0.62 |           0.84 |
+   |----------------+----------------+----------------|
+   | AlexNet        |           0.63 |           0.83 |
+   |----------------+----------------+----------------|
+   | GoogLeNet      |              - |           0.93 |
+   |----------------+----------------+----------------|
+   | ResNet         |           0.78 |           0.94 |
+   |----------------+----------------+----------------|
 
-*** Showcase of Images with top-5 Error
+
+    Given the fact that for this experiment was used reduced dataset with only 100 classes, it was expected that the accuracy of model will be noticeable better accuracy of AlexNet. In actuality top-1 accuracy is slightly worse and top-5 only slightly better. This can be caused by variety of factors. Configuration of [[gls:cnn][CNN]] parameters is daunting task and there is always space for improvement. For example some literature suggests that [[gls:nadam][nadam]] learning algorithm can achieve better performance \cite{article--dozat--2015}. This was not found during limited time of its testing it.
+
+    Another possible reason behind inferior performance can be insufficient data augmentation. Article by Krizhevsky suggests augmentation by random adjustment of image brightness. Already implemented augmentation could be also expanded by geometric transformation of the images (e.g. rotation).
+
+
+
+    \begin{figure}[htp]
+        \centering
+        \subfloat[class = forg]{
+            \includegraphics[width=0.45\textwidth]{./img/correct/image_0_category_03_prediction_03_frog.jpg}
+            \label{fig:corr_1}
+        } \hfil
+        \subfloat[class = piano, prediction = piano]{
+            \includegraphics[width=0.45\textwidth]{./img/correct/image_1_category_31_prediction_31_piano.jpg}
+            \label{fig:corr_2}
+        }
+
+        \subfloat[class = dog]{
+            \includegraphics[width=0.45\textwidth]{./img/correct/image_2_category_16_prediction_16_dog.jpg}
+            \label{fig:corr_3}
+        } \hfil
+        \subfloat[class = harmonica]{
+            \includegraphics[width=0.45\textwidth]{./img/correct/image_3_category_33_prediction_33_harmonica.jpg}
+            \label{fig:corr_4}
+        }
+
+        \label{fig:correct}
+        \caption{Correctly classified images}
+    \end{figure}
+
+
+    \begin{figure}[htp]
+        \centering
+        \subfloat[class = rabbit, prediction = pig]{
+            \includegraphics[width=0.45\textwidth]{./img/slightly_wrong/image_0_category_19_prediction_21_rabbit_pig.jpg}
+            \label{fig:slightly_wrong_1}
+        } \hfil
+        \subfloat[class = dog, prediction = group of people]{
+            \includegraphics[width=0.45\textwidth]{./img/slightly_wrong/image_1_category_16_prediction_0_dog_group_of_people.jpg}
+            \label{fig:slightly_wrong_2}
+        }
+
+        \subfloat[c = cow, p = dog]{
+            \includegraphics[width=0.45\textwidth]{./img/slightly_wrong/image_2_category_16_prediction_20_cow_dog.jpg}
+            \label{fig:slightly_wrong_3}
+        } \hfil
+        \subfloat[class = jellyfixh, prediction frog]{
+            \includegraphics[width=0.45\textwidth]{./img/slightly_wrong/image_3_category_08_prediction_3_jellyfish_frog.jpg}
+            \label{fig:slightly_wrong_4}
+        }
+
+        \label{fig:slightly_wrong}
+        \caption{Guess of Images in Top-5}
+    \end{figure}
+
+
+
+\begin{figure}[htp]
+    \centering
+    \subfloat[class = dog, prediction = frog]{
+        \includegraphics[width=0.45\textwidth]{./img/wrong/image_0_category_16_prediction_3_dog_frog.jpg}
+        \label{fig:wrong_1}
+    } \hfil
+    \subfloat[class = fish, prediction = cow]{
+        \includegraphics[width=0.45\textwidth]{./img/wrong/image_1_category_1_prediction_22_golden_fish_cow.jpg}
+        \label{fig:wrong_2}
+    }
+
+    \subfloat[class = snake, prediction = harmonica]{
+        \includegraphics[width=0.45\textwidth]{./img/wrong/image_2_category_5_prediction_33_snake_harmonica.jpg}
+        \label{fig:wrong_3}
+    } \hfil
+    \subfloat[class = monior, prediction = frog]{
+        \includegraphics[width=0.45\textwidth]{./img/wrong/image_3_category_34_prediction_3_pc_monitor_frog.jpg}
+        \label{fig:wrong_4}
+    }
+
+    \label{fig:wrong}
+    \caption{Incorrectly Classified Images}
+\end{figure}
+
+
+
+
+    # Last factor that shouldn't be omitted is the difference in experience of parties involved. Author of this thesis was relatively inexperienced, with this subject which was quite possibly
+
+
+#    For one thing the complexity of selected network wasn't even close to the state of the art from previous years competition submissions.
+#    This is only presumption that wasn't tested due to a lack of time, but it seams that counter intuitively the reason behind the worse performance is the reduction of the original task. In other words because the model didn't see enough images. The amount of images is proportional to amount of classes which might suggest that it doesn't play a role, but when taken into account that many images have very similar elements within them. And especially lower convolutional layer might benefit from broader spectrum of images.
+#    # TODO: add citation about the lower level visualization of CNN
+#    # \cite{}
+#    Future work on this subject might try to use larger dataset for several epoch to pre-train the convolutional layers and then reduce the training dataset for selected classes only.
+#    This also means that selected architecture might have been too complex to train on the selected samples. Even thought it is not out of the question the collected data regarding this premise doesn't seem to suggest that this was actually the case. Reduced network structures didn't bring any notable accuracy improvements.
+# *** Accuracy of Trained Models
+#     # #+INCLUDE: charts.org
+
+# *** Comparison of Training Time
+
+#     Comparison of training time on [[gls:cpu][CPU]] vs [[gls:gpu][GPU]] was performed on MNIST dataset. It was performed on MNIST mainly because training with ImageNet dataset took too much time.
+
+#     The difference is quite pronounced which is to be expected because the GeForce GTX 1080 has 2560 CUDA cores, while the CPU of used computer had 8. It is possible that the time difference on ImageNet dataset would be even more pronounced because the MNIST dataset doesn't fully exhaust the GPU resources.
+
+#     # #+INCLUDE: combined_chart.org
+
+# *** Estimation of top 5 and top 3 error
+
+# *** Showcase of Correctly classified images
+#     It can be seen that the correct prediction was found on third place
+# *** Showcase of incorrectly classified images
+#     It can be seen that the correct prediction was found on third place
+
+# [[fig:correct]]
